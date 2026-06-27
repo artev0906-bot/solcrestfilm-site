@@ -59,8 +59,9 @@ textarea {
 
 .topbar {
   position: sticky;
-  top: 16px;
+  top: 0;
   z-index: 20;
+  transition: transform 0.25s ease, opacity 0.25s ease;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -718,4 +719,10 @@ body::before {
 
 .section:first-of-type {
   background: linear-gradient(180deg, rgba(10, 10, 12, 0.98), rgba(7, 7, 9, 0.96)) !important;
+}
+
+
+.topbar.topbar-hidden {
+  transform: translateY(-120%);
+  opacity: 0;
 }

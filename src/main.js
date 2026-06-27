@@ -286,3 +286,17 @@ document.querySelector('#app').innerHTML = `
     </footer>
   </div>
 `
+
+
+const topbar = document.querySelector('.topbar')
+let lastScrollY = window.scrollY
+window.addEventListener('scroll', () => {
+  if (!topbar) return
+  const currentY = window.scrollY
+  if (currentY > 120 && currentY > lastScrollY) {
+    topbar.classList.add('topbar-hidden')
+  } else {
+    topbar.classList.remove('topbar-hidden')
+  }
+  lastScrollY = currentY
+})
