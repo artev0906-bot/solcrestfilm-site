@@ -18,10 +18,10 @@ document.querySelector('#app').innerHTML = `
     <main>
       <section class="section service-hero">
         <p class="eyebrow">Residential Window Film</p>
-        <h1>Premium window film for cooler, more private, and more comfortable homes.</h1>
+        <h1>Built to Protect. Designed to Impress.</h1>
         <p class="hero-text service-hero-text">
           Solcrest Film Co helps Los Angeles homeowners reduce heat, glare, and UV exposure while keeping interiors bright,
-          polished, and visually clean. This page is the first dedicated service page in the SEO structure for the website.
+          polished, and visually clean. Solar control, decorative film, smart film, and protection-focused solutions can all fit within the same premium visual standard.
         </p>
         <div class="hero-actions">
           <a class="button button-primary" href="/#contact">Request a Quote</a>

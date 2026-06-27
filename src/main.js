@@ -22,11 +22,11 @@ document.querySelector('#app').innerHTML = `
         <div class="hero-grid">
           <div class="hero-copy">
             <p class="eyebrow">Premium window film for Los Angeles properties</p>
-            <h1>Luxury comfort, privacy, and glare control for modern glass.</h1>
+            <h1>Built to Protect. Designed to Impress.</h1>
             <p class="hero-text">
               Solcrest Film Co installs premium window film for homes, storefronts, offices, and interior glass across
-              Los Angeles County. We help you reduce heat, improve privacy, control glare, and create a cleaner,
-              more elevated finish without sacrificing natural light.
+              Los Angeles County. We help you reduce heat, improve privacy, protect vulnerable glass, and create a
+              cleaner, more elevated finish without sacrificing natural light.
             </p>
             <div class="hero-actions">
               <a class="button button-primary" href="#contact">Get a Private Quote</a>
@@ -37,20 +37,7 @@ document.querySelector('#app').innerHTML = `
               <span>•</span>
               <span>Serving Los Angeles County & nearby cities</span>
             </div>
-            <div class="hero-stat-row">
-              <div>
-                <strong>Residential</strong>
-                <span>Heat, glare, UV, privacy</span>
-              </div>
-              <div>
-                <strong>Commercial</strong>
-                <span>Storefronts, offices, interior glass</span>
-              </div>
-              <div>
-                <strong>Luxury finish</strong>
-                <span>Clean visual integration with modern spaces</span>
-              </div>
-            </div>
+            <div class="hero-tagline">Solar Control · Safety & Security · Anti-Graffiti · Decorative · Smart Film</div>
           </div>
 
           <div class="hero-side">
