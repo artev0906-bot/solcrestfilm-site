@@ -8,285 +8,308 @@ document.querySelector('#app').innerHTML = `
       </a>
       <nav class="nav">
         <a href="#services">Services</a>
-        <a href="#advantages">Advantages</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#process">Process</a>
-        <a href="#contact">Contact</a>
+        <a href="#residential">Residential</a>
+        <a href="#commercial">Commercial</a>
+        <a href="#projects">Projects</a>
+        <a href="#areas">Areas</a>
+        <a href="#faq">FAQ</a>
       </nav>
-      <a class="nav-cta" href="#contact">Request Quote</a>
+      <div class="nav-actions">
+        <a class="nav-cta nav-cta-secondary" href="tel:7473249008">Call / Text</a>
+        <a class="nav-cta" href="#contact">Get Estimate</a>
+      </div>
     </header>
 
     <main>
       <section class="hero section" id="hero">
         <div class="hero-overlay"></div>
-        <div class="hero-grid">
+        <div class="hero-grid hero-grid-premium">
           <div class="hero-copy">
-            <p class="eyebrow">Premium window film for Los Angeles properties</p>
-            <h1>Built to Protect. Designed to Impress.</h1>
-            <div class="hero-tagline">Solar Control · Safety & Security · Anti-Graffiti · Decorative · Smart Film</div>
+            <p class="eyebrow">SOLCREST FILM CO</p>
+            <h1>Premium Window Film Installation in Los Angeles</h1>
+            <h2 class="hero-subheadline">Built to Protect. Designed to Impress.</h2>
+            <p class="hero-tagline">Solar Control · Safety & Security · Anti-Graffiti · Decorative · Smart Film</p>
             <p class="hero-text">
-              Solcrest Film Co installs premium window film for homes, storefronts, offices, and interior glass across
-              Los Angeles County. We help you reduce heat, improve privacy, protect vulnerable glass, and create a
-              cleaner, more elevated finish without sacrificing natural light.
+              Solcrest Film Co provides premium solar control, safety & security, anti-graffiti, decorative and smart film installation
+              for homes, storefronts and commercial properties across Los Angeles.
             </p>
             <div class="hero-actions">
-              <a class="button button-primary" href="#contact">Get a Private Quote</a>
-              <a class="button button-secondary" href="tel:7473249008">Call 747-324-9008</a>
+              <a class="button button-primary" href="#contact">Get a Free Estimate</a>
+              <a class="button button-secondary" href="tel:7473249008">Call / Text Now</a>
             </div>
             <div class="contact-inline">
               <a href="mailto:info@solcrestfilm.com">info@solcrestfilm.com</a>
               <span>•</span>
-              <span>Serving Los Angeles County & nearby cities</span>
+              <span>Los Angeles Based</span>
             </div>
           </div>
 
           <div class="hero-side">
             <article class="feature-panel panel-tall">
-              <p class="panel-label">Why clients call Solcrest</p>
+              <p class="panel-label">Why clients reach out</p>
               <div class="feature-list">
                 <div>
-                  <strong>Too much sun</strong>
-                  <span>Rooms and storefronts that overheat or get washed out during the day.</span>
+                  <strong>Heat & glare</strong>
+                  <span>Rooms, storefronts and offices that get too hot, too bright, or uncomfortable during the day.</span>
                 </div>
                 <div>
-                  <strong>Need more privacy</strong>
-                  <span>Street-facing glass, bathrooms, offices, and entry zones that need cleaner separation.</span>
+                  <strong>Privacy & security</strong>
+                  <span>Glass that needs better privacy, stronger hold after impact, or more protection from break-in damage.</span>
                 </div>
                 <div>
-                  <strong>Want a better look</strong>
-                  <span>Film that improves the visual character of the glass without heavy coverings.</span>
+                  <strong>Vandalism & finish</strong>
+                  <span>Storefront glass, decorative panels, and luxury interiors that need protection and a cleaner final look.</span>
                 </div>
               </div>
             </article>
             <article class="feature-panel panel-accent">
-              <p class="panel-label">Fast quote workflow</p>
-              <h3>Tell us the project type, city, and your main goal.</h3>
-              <p>We can quote faster when we know whether the priority is solar control, privacy, security, anti-graffiti, decorative film, or smart film.</p>
+              <p class="panel-label">Fast estimate workflow</p>
+              <h3>Send photos, measurements, and your main goal.</h3>
+              <p>We can quote faster when we know whether the priority is heat reduction, security, anti-graffiti protection, privacy, or smart film.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section benefit-strip" aria-label="Core benefits">
-        <div>Heat reduction</div>
-        <div>Privacy film</div>
-        <div>Glare control</div>
-        <div>UV protection</div>
-        <div>Security film</div>
+      <section class="section trust-bar" aria-label="Trust bar">
+        <div>11+ Years Experience</div>
+        <div>Residential & Commercial</div>
+        <div>Los Angeles Based</div>
+        <div>Free Estimates</div>
+        <div>Clean Professional Installation</div>
       </section>
 
       <section class="section" id="services">
         <div class="section-heading">
           <p class="eyebrow">Services</p>
-          <h2>Window film solutions designed for comfort, privacy, and architectural polish.</h2>
+          <h2>Premium architectural window film services for homes, offices and storefront glass.</h2>
           <p>
-            This homepage is now aligned with the Solcrest identity and structured so we can grow it into a stronger
-            multi-page SEO site with service pages, city pages, and a premium portfolio section.
+            We do not sell "tinting" as a generic commodity. We solve heat, glare, privacy, security, break-in protection,
+            anti-graffiti, and smart privacy needs with a cleaner architectural finish.
           </p>
         </div>
-        <div class="card-grid four-up">
+        <div class="card-grid services-grid">
           <article class="service-card service-card-featured">
             <span class="service-number">01</span>
-            <h3>Residential Window Film</h3>
-            <p>Reduce harsh sun, improve room comfort, and protect interiors while keeping the space bright and clean.</p>
-            <a class="text-link" href="/residential-window-film">View Residential Page</a>
+            <h3>Solar Control Film</h3>
+            <p>Reduce heat, glare and UV damage for homes, offices and storefronts.</p>
+            <a class="text-link" href="/residential-window-film-los-angeles.html">Explore Solar / Residential</a>
           </article>
           <article class="service-card">
             <span class="service-number">02</span>
-            <h3>Commercial Window Film</h3>
-            <p>Upgrade offices, storefronts, and work environments with better comfort, consistency, and presentation.</p>
+            <h3>Safety & Security Film</h3>
+            <p>Help strengthen glass and hold shattered glass together after impact.</p>
+            <a class="text-link" href="/safety-security-window-film-los-angeles.html">View Safety Film</a>
           </article>
           <article class="service-card">
             <span class="service-number">03</span>
-            <h3>Privacy & Decorative Film</h3>
-            <p>Create elegant separation for bathrooms, conference rooms, entries, and interior partitions.</p>
+            <h3>Anti-Graffiti Film</h3>
+            <p>Protect storefront glass from scratches, vandalism and costly replacement.</p>
+            <a class="text-link" href="/anti-graffiti-window-film-los-angeles.html">View Anti-Graffiti</a>
           </article>
           <article class="service-card">
             <span class="service-number">04</span>
-            <h3>Safety & Security Film</h3>
-            <p>Add another layer of protection to vulnerable glass while keeping a polished architectural look.</p>
+            <h3>Decorative / Privacy Film</h3>
+            <p>Frosted, blackout, gradient and custom privacy solutions.</p>
+            <a class="text-link" href="/decorative-privacy-window-film-los-angeles.html">View Decorative Film</a>
+          </article>
+          <article class="service-card">
+            <span class="service-number">05</span>
+            <h3>Smart Film</h3>
+            <p>Switchable privacy film for offices, clinics, conference rooms and luxury interiors.</p>
+            <a class="text-link" href="/smart-film-installation-los-angeles.html">View Smart Film</a>
           </article>
         </div>
       </section>
 
-      <section class="section split-section" id="advantages">
+      <section class="section split-section" id="why-solcrest">
         <div>
-          <p class="eyebrow">Advantages</p>
-          <h2>The value is not just functional — it is visual, practical, and long-term.</h2>
+          <p class="eyebrow">Why Solcrest</p>
+          <h2>A premium finish depends on clean installation, precise measurements, and the right materials.</h2>
           <p>
-            Premium window film can make a property feel more refined while solving real daily problems: heat, glare,
-            privacy, and overexposure. For both residential and commercial spaces, it creates a cleaner experience and
-            a more intentional finish.
+            Solcrest is positioned as a premium architectural window film company, not a basic tint shop. That means cleaner work,
+            stronger presentation, better material fit, and a process that respects the property.
           </p>
         </div>
         <div class="luxury-list">
-          <div>Reduce heat and hot spots in sun-heavy rooms</div>
-          <div>Cut glare on TVs, desks, displays, and work surfaces</div>
-          <div>Protect interiors from UV exposure and fading</div>
-          <div>Improve privacy without fully blocking natural light</div>
-          <div>Give the glass a cleaner, more premium visual tone</div>
+          <div>Precise measurements and cleaner final fit</div>
+          <div>Premium materials matched to the use case</div>
+          <div>Professional finish for high-visibility spaces</div>
+          <div>Solutions for heat, privacy, security, vandalism and smart glass needs</div>
+          <div>Residential and commercial project experience</div>
         </div>
       </section>
 
-      <section class="section portfolio-section" id="portfolio">
-        <div class="section-heading">
-          <p class="eyebrow">Portfolio direction</p>
-          <h2>A more premium foundation for future photos, before/afters, and case studies.</h2>
+      <section class="section split-section" id="residential">
+        <div>
+          <p class="eyebrow">Residential Window Film</p>
+          <h2>For homes that need better comfort, privacy, and UV protection.</h2>
           <p>
-            Once you send real project images, I can turn these into a strong luxury portfolio section that actually sells the brand.
+            Residential projects usually start with heat reduction, glare, privacy, UV protection, or comfort issues in bedrooms,
+            living rooms, bathrooms, entries, and home offices.
+          </p>
+          <a class="button button-primary inline-cta" href="/residential-window-film-los-angeles.html">Residential Window Film in Los Angeles</a>
+        </div>
+        <div class="card-grid two-up compact-grid">
+          <article class="service-card"><h3>Heat reduction</h3><p>Cooler rooms and less afternoon discomfort.</p></article>
+          <article class="service-card"><h3>Privacy</h3><p>Cleaner privacy without heavy coverings.</p></article>
+          <article class="service-card"><h3>UV protection</h3><p>Help protect floors, finishes and furniture.</p></article>
+          <article class="service-card"><h3>Comfort</h3><p>Reduce glare on TVs, desks and everyday living spaces.</p></article>
+        </div>
+      </section>
+
+      <section class="section split-section" id="commercial">
+        <div>
+          <p class="eyebrow">Commercial Window Film</p>
+          <h2>For storefronts, offices, mixed-use buildings and customer-facing glass.</h2>
+          <p>
+            Commercial work often involves anti-graffiti protection, safety film, privacy, glare control, branding support,
+            or a cleaner exterior presentation for the property.
+          </p>
+          <a class="button button-primary inline-cta" href="/commercial-window-film-los-angeles.html">Commercial Window Film in Los Angeles</a>
+        </div>
+        <div class="card-grid two-up compact-grid">
+          <article class="service-card"><h3>Storefront protection</h3><p>Stronger presentation and anti-graffiti solutions.</p></article>
+          <article class="service-card"><h3>Office privacy</h3><p>Conference rooms, interior glass, and work zones.</p></article>
+          <article class="service-card"><h3>Safety film</h3><p>Help hold glass together after impact or breakage.</p></article>
+          <article class="service-card"><h3>Brand finish</h3><p>Architectural look that feels clean and premium.</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section-heading">
+          <p class="eyebrow">Recent Projects / Before & After</p>
+          <h2>Real project proof should become the strongest sales section on this site.</h2>
+          <p>
+            Real before/after photos, installation process shots, finished windows, storefronts, residential glass, safety film,
+            decorative film, and smart film photos should live here. For now, these are structured placeholders for the real work.
           </p>
         </div>
         <div class="portfolio-grid">
           <article class="portfolio-card portfolio-dark">
-            <p class="card-kicker">Residential</p>
-            <h3>Sun-heavy living rooms and bedrooms</h3>
-            <p>Perfect for spaces that get too bright, too hot, or uncomfortable in the afternoon.</p>
+            <p class="card-kicker">Before / After</p>
+            <h3>Sun-heavy residential glass</h3>
+            <p>Heat reduction, glare control and a cleaner final look.</p>
           </article>
           <article class="portfolio-card portfolio-gold">
-            <p class="card-kicker">Commercial</p>
-            <h3>Storefronts, offices, and customer-facing glass</h3>
-            <p>Clean up the look of the space while making it more comfortable for staff and guests.</p>
+            <p class="card-kicker">Storefront protection</p>
+            <h3>Retail glass with anti-graffiti or safety film</h3>
+            <p>Protection for high-traffic commercial environments.</p>
           </article>
           <article class="portfolio-card portfolio-silver">
-            <p class="card-kicker">Interior glass</p>
-            <h3>Bathrooms, entries, partitions, and private work areas</h3>
-            <p>Create privacy and visual structure without replacing the existing glass.</p>
+            <p class="card-kicker">Interior privacy</p>
+            <h3>Decorative and smart film for offices and luxury interiors</h3>
+            <p>Elegant privacy solutions without replacing the glass.</p>
           </article>
+        </div>
+        <div class="cta-row">
+          <a class="button button-primary" href="#contact">Send Photos for Estimate</a>
+          <a class="button button-secondary" href="tel:7473249008">Call Now</a>
         </div>
       </section>
 
       <section class="section" id="process">
         <div class="section-heading">
           <p class="eyebrow">Process</p>
-          <h2>A clean experience from first conversation to final installation.</h2>
+          <h2>Simple, fast, and clean from first message to final installation.</h2>
         </div>
         <div class="steps">
           <article>
             <span>01</span>
-            <h3>Reach out</h3>
-            <p>Tell us what type of project you have, where it is, and what issue you want to solve.</p>
+            <h3>Send photos and measurements</h3>
+            <p>We need the project type, city, photos and rough measurements if available.</p>
           </article>
           <article>
             <span>02</span>
-            <h3>Review options</h3>
-            <p>We guide you toward the right film based on comfort, privacy, glare, and appearance.</p>
+            <h3>Get a rough estimate</h3>
+            <p>We give a rough estimate based on the type of film and the project scope.</p>
           </article>
           <article>
             <span>03</span>
-            <h3>Confirm scope</h3>
-            <p>We align on the right solution, project scope, and best next step for installation.</p>
+            <h3>Schedule installation</h3>
+            <p>Once the scope is confirmed, we schedule the installation window.</p>
           </article>
           <article>
             <span>04</span>
-            <h3>Install cleanly</h3>
-            <p>Your space gets a more polished, comfortable, and elevated glass finish.</p>
+            <h3>Professional clean installation</h3>
+            <p>Your glass gets a cleaner, protected, more premium final finish.</p>
           </article>
         </div>
       </section>
 
-      <section class="section testimonials">
+      <section class="section" id="areas">
         <div class="section-heading">
-          <p class="eyebrow">Trust & proof</p>
-          <h2>Ready for real reviews, project images, and high-trust proof blocks.</h2>
-          <p>
-            Right now this section is styled to match the brand. Next we should replace these placeholders with real photos,
-            Google reviews, and project-specific proof.
-          </p>
+          <p class="eyebrow">Service Areas</p>
+          <h2>Serving Los Angeles and surrounding premium residential and commercial markets.</h2>
         </div>
-        <div class="card-grid two-up">
-          <article class="quote-card">
-            <p>“The room felt noticeably cooler, the glare dropped, and the windows still looked elegant.”</p>
-            <strong>Residential review slot</strong>
-          </article>
-          <article class="quote-card">
-            <p>“The storefront looked cleaner and the space felt more comfortable for both customers and staff.”</p>
-            <strong>Commercial review slot</strong>
-          </article>
+        <div class="areas-grid">
+          <span>Los Angeles</span>
+          <span>Beverly Hills</span>
+          <span>Santa Monica</span>
+          <span>West Hollywood</span>
+          <span>Glendale</span>
+          <span>Burbank</span>
+          <span>Pasadena</span>
+          <span>DTLA</span>
+          <span>Hollywood</span>
+          <span>Sherman Oaks</span>
+          <span>Studio City</span>
+          <span>Culver City</span>
+          <span>Long Beach</span>
+          <span>Orange County</span>
         </div>
       </section>
 
       <section class="section faq" id="faq">
         <div class="section-heading">
           <p class="eyebrow">FAQ</p>
-          <h2>Common questions before choosing the right film.</h2>
+          <h2>Questions people ask before requesting an estimate.</h2>
         </div>
         <div class="faq-list">
-          <details>
-            <summary>What types of properties do you work on?</summary>
-            <p>Homes, offices, storefronts, entry glass, bathrooms, interior partitions, and other residential or commercial spaces.</p>
-          </details>
-          <details>
-            <summary>Can this website become a full SEO site later?</summary>
-            <p>Yes. It is already structured so we can add service pages, city pages, gallery pages, and stronger local SEO content.</p>
-          </details>
-          <details>
-            <summary>What helps speed up the quote process?</summary>
-            <p>The project type, city, a short description of the problem, and photos if available.</p>
-          </details>
-          <details>
-            <summary>Do you only work in Los Angeles?</summary>
-            <p>The brand is positioned for Los Angeles County and nearby cities, and we can expand location coverage as we build city pages.</p>
-          </details>
+          <details><summary>How much does window film cost?</summary><p>Pricing depends on the type of film, square footage, glass conditions, and whether the project is residential or commercial.</p></details>
+          <details><summary>How long does installation take?</summary><p>Small projects may move quickly, while larger storefront or commercial work takes longer depending on scope.</p></details>
+          <details><summary>Can window film reduce heat?</summary><p>Yes, solar control film can significantly reduce heat, glare, and UV exposure in the right application.</p></details>
+          <details><summary>Does privacy film work at night?</summary><p>Some privacy films behave differently at night depending on interior and exterior lighting, so film selection matters.</p></details>
+          <details><summary>What is safety film?</summary><p>Safety and security film helps hold shattered glass together after impact and adds another layer of protection.</p></details>
+          <details><summary>Is anti-graffiti film replaceable?</summary><p>Yes, anti-graffiti film is designed as a sacrificial protective layer that can be replaced after damage.</p></details>
+          <details><summary>Can smart film be installed on existing glass?</summary><p>In many cases yes, depending on the existing glass and project requirements.</p></details>
+          <details><summary>Do I need photos and measurements for an estimate?</summary><p>Yes — photos and rough measurements make it much easier to provide a faster, more accurate estimate.</p></details>
         </div>
       </section>
 
-      <section class="section contact-section" id="contact">
-        <div>
-          <p class="eyebrow">Request a quote</p>
-          <h2>Tell us what you want to get done.</h2>
+      <section class="section final-cta" id="contact">
+        <div class="section-heading narrow-center">
+          <p class="eyebrow">Final CTA</p>
+          <h2>Get a Free Estimate Today</h2>
           <p>
-            This gives the live site a clean conversion point right now. Next we can replace the temporary mailto flow with a real lead form,
-            CRM integration, or direct GoHighLevel intake.
+            If you send photos, rough measurements, and the city, we can help move faster with a relevant estimate.
           </p>
-          <div class="contact-block">
-            <a href="tel:7473249008">747-324-9008</a>
-            <a href="mailto:info@solcrestfilm.com">info@solcrestfilm.com</a>
-            <span>solcrestfilm.com</span>
-          </div>
         </div>
-        <form class="contact-card" action="mailto:info@solcrestfilm.com" method="post" enctype="text/plain">
-          <label>
-            Name
-            <input type="text" placeholder="Your name" />
-          </label>
-          <label>
-            Email
-            <input type="email" placeholder="info@solcrestfilm.com" />
-          </label>
-          <label>
-            Project type
-            <select>
-              <option>Residential window film</option>
-              <option>Commercial window film</option>
-              <option>Privacy / decorative film</option>
-              <option>Safety / security film</option>
-            </select>
-          </label>
-          <label>
-            Project details
-            <textarea rows="4" placeholder="Example: home in Glendale, front windows get too hot in the afternoon."></textarea>
-          </label>
-          <button class="button button-primary" type="submit">Send Quote Request</button>
-        </form>
+        <div class="cta-row center-cta-row">
+          <a class="button button-primary" href="mailto:info@solcrestfilm.com">Get a Free Estimate</a>
+          <a class="button button-secondary" href="tel:7473249008">Call Now</a>
+          <a class="button button-secondary" href="sms:7473249008">Text Us</a>
+          <a class="button button-secondary" href="mailto:info@solcrestfilm.com">Send Photos for Estimate</a>
+        </div>
       </section>
     </main>
 
     <footer class="footer">
       <div>
         <strong>SOLCREST FILM CO</strong>
-        <p>Luxury window film for comfort, privacy, and a more refined architectural finish.</p>
+        <p>Premium Architectural Window Film Installation in Los Angeles.</p>
         <p><a href="mailto:info@solcrestfilm.com">info@solcrestfilm.com</a></p>
         <p><a href="tel:7473249008">747-324-9008</a></p>
       </div>
       <div class="footer-links">
         <a href="#services">Services</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Get a Quote</a>
+        <a href="#residential">Residential</a>
+        <a href="#commercial">Commercial</a>
+        <a href="#contact">Estimate</a>
       </div>
     </footer>
   </div>
 `
-
 
 const topbar = document.querySelector('.topbar')
 let lastScrollY = window.scrollY
