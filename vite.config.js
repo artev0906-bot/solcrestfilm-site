@@ -5,6 +5,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
+        about: 'about.html',
         residential: 'residential-window-film-los-angeles.html',
         commercial: 'commercial-window-film-los-angeles.html',
         safety: 'safety-security-window-film-los-angeles.html',

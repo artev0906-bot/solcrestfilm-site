@@ -247,7 +247,7 @@ document.querySelector('#app').innerHTML = `
           </div>
           <a href="/residential-window-film-los-angeles.html">Residential</a>
           <a href="/commercial-window-film-los-angeles.html">Commercial</a>
-          <a href="/#why-solcrest">About</a>
+          <a href="/about.html">About</a>
           <a href="/#contact">Contact</a>
         </nav>
         <div class="nav-actions">

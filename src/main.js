@@ -106,7 +106,7 @@ document.querySelector('#app').innerHTML = `
           </div>
           <a href="#residential">Residential</a>
           <a href="#commercial">Commercial</a>
-          <a href="#why-solcrest">About</a>
+          <a href="/about.html">About</a>
           <a href="#contact">Contact</a>
         </nav>
         <div class="nav-actions">
