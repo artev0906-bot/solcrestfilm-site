@@ -4,7 +4,7 @@ document.querySelector('#app').innerHTML = `
   <div class="site-shell">
     <header class="topbar">
       <a class="brand" href="#hero" aria-label="Solcrest Film Co home">
-        <img class="brand-logo" src="/solcrest-logo-final.jpg" alt="Solcrest Film Co logo" />
+        <img class="brand-logo" src="/solcrest-logo-dark-final.jpg" alt="Solcrest Film Co logo" />
       </a>
       <nav class="nav">
         <a href="#services">Services</a>
