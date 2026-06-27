@@ -277,10 +277,10 @@ document.querySelector('#app').innerHTML = `
       <section class="section" id="projects">
         <div class="section-heading">
           <p class="eyebrow">Recent Projects / Before & After</p>
-          <h2>Real project proof should become the strongest sales section on this site.</h2>
+          <h2>Recent Los Angeles window film projects and installation examples.</h2>
           <p>
-            Real before/after photos, installation process shots, finished windows, storefronts, residential glass, safety film,
-            decorative film, and smart film photos should live here. For now, these are structured placeholders for the real work.
+            Preview the types of residential, storefront, decorative and privacy projects Solcrest Film Co handles across Los Angeles.
+            This section is designed to showcase finished work, before-and-after results and real installation examples.
           </p>
         </div>
         <div class="portfolio-grid">

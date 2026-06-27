@@ -101,6 +101,21 @@ document.querySelector('#app').innerHTML = `
         </div>
       </section>
     </main>
+
+    <footer class="footer">
+      <div>
+        <strong>SOLCREST FILM CO</strong>
+        <p>Premium Architectural Window Film Installation in Los Angeles.</p>
+        <p><a href="mailto:${business.email}">${business.email}</a></p>
+        <p><a href="${business.phoneHref}">${business.phoneDisplay}</a></p>
+      </div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/residential-window-film-los-angeles.html">Residential</a>
+        <a href="/commercial-window-film-los-angeles.html">Commercial</a>
+        <a href="/#contact">Estimate</a>
+      </div>
+    </footer>
   </div>
 `
 
