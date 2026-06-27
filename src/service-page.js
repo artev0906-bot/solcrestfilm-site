@@ -1,11 +1,37 @@
 import './style.css'
 
+const business = {
+  phoneDisplay: '747-324-9008',
+  phoneHref: 'tel:7473249008',
+  textHref: 'sms:7473249008',
+  email: 'info@solcrestfilm.com',
+  estimateFormAction: 'https://formspree.io/f/xzzvrjwe',
+}
+
+const serviceMenuItems = [
+  { label: 'Solar Control', href: '/residential-window-film-los-angeles.html' },
+  { label: 'Safety & Security', href: '/safety-security-window-film-los-angeles.html' },
+  { label: 'Anti-Graffiti', href: '/anti-graffiti-window-film-los-angeles.html' },
+  { label: 'Decorative & Privacy', href: '/decorative-privacy-window-film-los-angeles.html' },
+  { label: 'Smart Film', href: '/smart-film-installation-los-angeles.html' },
+]
+
+const serviceOptions = [
+  'Solar Control',
+  'Safety & Security',
+  'Anti-Graffiti',
+  'Decorative & Privacy',
+  'Smart Film',
+  'Not Sure',
+]
+
 const servicePages = [
   {
     file: 'residential-window-film-los-angeles.html',
     eyebrow: 'Residential Window Film',
     title: 'Premium Residential Window Film in Los Angeles',
-    description: 'Reduce heat, glare, UV exposure and privacy issues for homes, bedrooms, bathrooms and living spaces across Los Angeles.',
+    description:
+      'Reduce heat, glare, UV exposure and privacy issues for homes, bedrooms, bathrooms and living spaces across Los Angeles.',
     problemsTitle: 'Most residential film projects start with comfort and privacy problems.',
     problems: [
       'Rooms that overheat in the afternoon',
@@ -25,7 +51,8 @@ const servicePages = [
     file: 'commercial-window-film-los-angeles.html',
     eyebrow: 'Commercial Window Film',
     title: 'Commercial Window Film for Offices, Storefronts and Buildings in Los Angeles',
-    description: 'Improve comfort, privacy, anti-graffiti protection, glare control and overall presentation for commercial glass across Los Angeles.',
+    description:
+      'Improve comfort, privacy, anti-graffiti protection, glare control and overall presentation for commercial glass across Los Angeles.',
     problemsTitle: 'Commercial projects usually start with customer-facing glass problems.',
     problems: [
       'Overheating storefront and office glass',
@@ -45,7 +72,8 @@ const servicePages = [
     file: 'safety-security-window-film-los-angeles.html',
     eyebrow: 'Safety & Security Film',
     title: 'Safety & Security Window Film Installation in Los Angeles',
-    description: 'Help strengthen vulnerable glass and hold shattered glass together after impact with safety and security film solutions.',
+    description:
+      'Help strengthen vulnerable glass and hold shattered glass together after impact with safety and security film solutions.',
     problemsTitle: 'Security-focused projects usually start with vulnerable glass.',
     problems: [
       'Concern about shattered glass after impact',
@@ -65,7 +93,8 @@ const servicePages = [
     file: 'anti-graffiti-window-film-los-angeles.html',
     eyebrow: 'Anti-Graffiti Film',
     title: 'Anti-Graffiti Window Film for Storefront Protection in Los Angeles',
-    description: 'Protect storefront glass from scratches, vandalism and costly replacement with sacrificial anti-graffiti film.',
+    description:
+      'Protect storefront glass from scratches, vandalism and costly replacement with sacrificial anti-graffiti film.',
     problemsTitle: 'Anti-graffiti projects usually start with exposed storefront glass.',
     problems: [
       'Frequent scratches or vandalism on street-facing glass',
@@ -85,7 +114,8 @@ const servicePages = [
     file: 'decorative-privacy-window-film-los-angeles.html',
     eyebrow: 'Decorative / Privacy Film',
     title: 'Decorative and Privacy Window Film Installation in Los Angeles',
-    description: 'Frosted, blackout, gradient and custom privacy film solutions for offices, homes, bathrooms and luxury interiors.',
+    description:
+      'Frosted, blackout, gradient and custom privacy film solutions for offices, homes, bathrooms and luxury interiors.',
     problemsTitle: 'Decorative and privacy projects usually start with exposed interior glass.',
     problems: [
       'Bathrooms and entries that need privacy',
@@ -105,7 +135,8 @@ const servicePages = [
     file: 'smart-film-installation-los-angeles.html',
     eyebrow: 'Smart Film',
     title: 'Smart Film Installation in Los Angeles',
-    description: 'Switchable privacy film for offices, clinics, conference rooms and luxury interiors that want instant privacy control.',
+    description:
+      'Switchable privacy film for offices, clinics, conference rooms and luxury interiors that want instant privacy control.',
     problemsTitle: 'Smart film projects usually start with a need for flexible privacy.',
     problems: [
       'Glass that needs privacy on demand',
@@ -125,7 +156,8 @@ const servicePages = [
     file: 'storefront-window-protection-los-angeles.html',
     eyebrow: 'Storefront Window Protection',
     title: 'Storefront Window Protection in Los Angeles',
-    description: 'Protection-oriented film solutions for storefront glass, including anti-graffiti, solar control and security-focused applications.',
+    description:
+      'Protection-oriented film solutions for storefront glass, including anti-graffiti, solar control and security-focused applications.',
     problemsTitle: 'Storefront projects usually combine visibility, comfort and protection issues.',
     problems: [
       'Scratches, vandalism or graffiti on exterior glass',
@@ -143,25 +175,85 @@ const servicePages = [
   },
 ]
 
+const servicesDropdown = serviceMenuItems
+  .map((item) => `<a href="${item.href}">${item.label}</a>`)
+  .join('')
+
+const serviceSelectOptions = serviceOptions
+  .map((option) => `<option value="${option}">${option}</option>`)
+  .join('')
+
 const route = window.location.pathname.split('/').pop() || 'residential-window-film-los-angeles.html'
 const page = servicePages.find((item) => item.file === route) ?? servicePages[0]
 
+const projectImageByPage = {
+  'residential-window-film-los-angeles.html': {
+    alt: 'Residential window film Los Angeles solar control film installation on home glass',
+    text: 'Premium residential glass film for heat reduction, privacy and UV protection across Los Angeles.',
+  },
+  'commercial-window-film-los-angeles.html': {
+    alt: 'Commercial window film Los Angeles office and storefront solar control film installation',
+    text: 'Commercial film applications for storefronts, offices, glare control and cleaner building presentation.',
+  },
+  'safety-security-window-film-los-angeles.html': {
+    alt: 'Safety security window film Los Angeles protection film on storefront glass and entry glazing',
+    text: 'Safety and security film helps strengthen vulnerable glazing and hold shattered glass together after impact.',
+  },
+  'anti-graffiti-window-film-los-angeles.html': {
+    alt: 'Anti graffiti window film Los Angeles storefront glass protection installation',
+    text: 'Anti-graffiti protection for storefront glass exposed to scratching, tagging and repeated vandalism.',
+  },
+  'decorative-privacy-window-film-los-angeles.html': {
+    alt: 'Decorative privacy window film Los Angeles frosted film on office and interior glass',
+    text: 'Decorative and privacy film for offices, bathrooms, conference rooms and luxury interior glass.',
+  },
+  'smart-film-installation-los-angeles.html': {
+    alt: 'Smart film installation Los Angeles switchable privacy film on office conference room glass',
+    text: 'Switchable smart film for modern privacy control in clinics, offices and luxury interiors.',
+  },
+  'storefront-window-protection-los-angeles.html': {
+    alt: 'Storefront window protection Los Angeles anti graffiti and safety film on retail glass',
+    text: 'Storefront-focused film solutions that combine protection, comfort and premium curb presentation.',
+  },
+}
+
+const pageImage = projectImageByPage[page.file]
+
 document.querySelector('#app').innerHTML = `
   <div class="site-shell service-page-shell">
-    <header class="topbar">
+    <header class="topbar" id="topbar">
       <a class="brand" href="/" aria-label="Solcrest Film Co home">
-        <img class="brand-logo" src="/solcrest-logo-dark-final.jpg" alt="Solcrest Film Co logo" />
+        <img
+          class="brand-logo"
+          src="/solcrest-logo-dark-final.jpg"
+          alt="Solcrest Film Co premium window film Los Angeles logo"
+        />
       </a>
-      <nav class="nav">
-        <a href="/#services">Services</a>
-        <a href="/#residential">Residential</a>
-        <a href="/#commercial">Commercial</a>
-        <a href="/#areas">Areas</a>
-        <a href="/#contact">Estimate</a>
-      </nav>
-      <div class="nav-actions">
-        <a class="nav-cta nav-cta-secondary" href="tel:7473249008">Call / Text</a>
-        <a class="nav-cta" href="/#contact">Get Estimate</a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-shell" id="mobile-nav">
+        <nav class="nav" aria-label="Main navigation">
+          <a href="/#hero">Home</a>
+          <div class="nav-dropdown">
+            <button class="nav-dropdown-toggle" type="button" aria-expanded="false">Services</button>
+            <div class="nav-dropdown-menu">
+              ${servicesDropdown}
+            </div>
+          </div>
+          <a href="/residential-window-film-los-angeles.html">Residential</a>
+          <a href="/commercial-window-film-los-angeles.html">Commercial</a>
+          <a href="/#why-solcrest">About</a>
+          <a href="/#contact">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="nav-cta nav-cta-secondary" href="${business.phoneHref}">Call / Text Now</a>
+          <a class="nav-cta" href="/#contact">Get Estimate</a>
+        </div>
       </div>
     </header>
 
@@ -172,7 +264,7 @@ document.querySelector('#app').innerHTML = `
         <p class="hero-text service-hero-text">${page.description}</p>
         <div class="hero-actions">
           <a class="button button-primary" href="/#contact">Get a Free Estimate</a>
-          <a class="button button-secondary" href="tel:7473249008">Call / Text Now</a>
+          <a class="button button-secondary" href="${business.phoneHref}">Call / Text Now</a>
         </div>
       </section>
 
@@ -205,33 +297,183 @@ document.querySelector('#app').innerHTML = `
         </div>
       </section>
 
-      <section class="section contact-section">
+      <section class="section service-proof-section">
+        <div class="section-heading">
+          <p class="eyebrow">Project fit</p>
+          <h2>How this service supports premium Los Angeles properties.</h2>
+          <p>${pageImage.text}</p>
+        </div>
+        <div class="service-proof-card">
+          <div class="portfolio-image-frame">
+            <img
+              class="portfolio-image"
+              src="/solcrest-logo-dark-final.jpg"
+              alt="${pageImage.alt}"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact-section contact-section-form">
         <div>
           <p class="eyebrow">Next step</p>
           <h2>Request an estimate for this service.</h2>
           <p>
-            Send the city, project type, and photos if you have them. These service pages are built to support stronger local SEO and clearer lead capture.
+            Send your city, service type, measurements and photos if you have them. This service page is built to support local SEO and clearer lead capture.
           </p>
+          <div class="contact-block">
+            <a href="${business.phoneHref}">${business.phoneDisplay}</a>
+            <a href="mailto:${business.email}">${business.email}</a>
+            <a class="text-link" href="/">Back to Homepage</a>
+          </div>
         </div>
-        <div class="contact-block">
-          <a href="tel:7473249008">747-324-9008</a>
-          <a href="mailto:info@solcrestfilm.com">info@solcrestfilm.com</a>
-          <a class="text-link" href="/">Back to Homepage</a>
-        </div>
+        <form
+          id="contact-form"
+          class="contact-card"
+          action="${business.estimateFormAction}"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <input type="hidden" name="_subject" value="Solcrest Film Co website estimate request" />
+          <input type="hidden" name="_replyto" value="" />
+          <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" />
+
+          <div class="form-grid two-column-form">
+            <label>
+              Name
+              <input type="text" name="Name" autocomplete="name" required />
+            </label>
+            <label>
+              Phone
+              <input type="tel" name="Phone" autocomplete="tel" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="Email" autocomplete="email" required />
+            </label>
+            <label>
+              City
+              <input type="text" name="City" autocomplete="address-level2" required />
+            </label>
+          </div>
+
+          <label>
+            Service
+            <select name="Service" required>
+              <option value="" disabled selected>Select a service</option>
+              ${serviceSelectOptions}
+            </select>
+          </label>
+
+          <label>
+            Message / Notes
+            <textarea name="Message / Notes" rows="5" placeholder="Tell us about the glass, goals, square footage, or timeline." required></textarea>
+          </label>
+
+          <label>
+            Photo upload (optional)
+            <input type="file" name="Photo Upload" accept="image/*" />
+          </label>
+
+          <button class="button button-primary submit-button" type="submit">Send Estimate Request</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
       </section>
     </main>
   </div>
 `
 
 const topbar = document.querySelector('.topbar')
+const menuToggle = document.querySelector('.menu-toggle')
+const navShell = document.querySelector('.nav-shell')
+const dropdownToggle = document.querySelector('.nav-dropdown-toggle')
+const contactForm = document.querySelector('#contact-form')
+const formStatus = document.querySelector('#form-status')
+const replyToField = contactForm?.querySelector('input[name="_replyto"]')
+
 let lastScrollY = window.scrollY
+let menuOpen = false
+let servicesOpen = false
+
+const setMenuState = (open) => {
+  menuOpen = open
+  if (!menuToggle || !navShell) return
+  menuToggle.setAttribute('aria-expanded', String(open))
+  navShell.classList.toggle('nav-shell-open', open)
+  topbar?.classList.toggle('topbar-menu-open', open)
+}
+
+const setServicesState = (open) => {
+  servicesOpen = open
+  if (!dropdownToggle) return
+  dropdownToggle.setAttribute('aria-expanded', String(open))
+  dropdownToggle.parentElement?.classList.toggle('nav-dropdown-open', open)
+}
+
 window.addEventListener('scroll', () => {
   if (!topbar) return
   const currentY = window.scrollY
-  if (currentY > 120 && currentY > lastScrollY) {
+  if (!menuOpen && currentY > 120 && currentY > lastScrollY) {
     topbar.classList.add('topbar-hidden')
   } else {
     topbar.classList.remove('topbar-hidden')
   }
   lastScrollY = currentY
+})
+
+menuToggle?.addEventListener('click', () => {
+  setMenuState(!menuOpen)
+})
+
+dropdownToggle?.addEventListener('click', () => {
+  setServicesState(!servicesOpen)
+})
+
+navShell?.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', () => {
+    setMenuState(false)
+    setServicesState(false)
+  })
+})
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 860) {
+    setMenuState(false)
+  }
+})
+
+contactForm?.addEventListener('submit', async (event) => {
+  event.preventDefault()
+
+  if (!formStatus) return
+  const submitButton = contactForm.querySelector('.submit-button')
+  const emailValue = contactForm.querySelector('input[name="Email"]')?.value ?? ''
+  if (replyToField) replyToField.value = emailValue
+
+  const formData = new FormData(contactForm)
+  formStatus.textContent = 'Sending your request...'
+  submitButton?.setAttribute('disabled', 'disabled')
+
+  try {
+    const response = await fetch(contactForm.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        Accept: 'application/json',
+      },
+    })
+
+    if (!response.ok) {
+      throw new Error('Form submission failed')
+    }
+
+    contactForm.reset()
+    if (replyToField) replyToField.value = ''
+    formStatus.textContent = "Thank you! We'll get back to you within 24 hours."
+  } catch (error) {
+    formStatus.textContent = 'Something went wrong. Please call or text us and we will help you directly.'
+  } finally {
+    submitButton?.removeAttribute('disabled')
+  }
 })

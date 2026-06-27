@@ -1,22 +1,118 @@
 import './style.css'
 
+const business = {
+  phoneDisplay: '747-324-9008',
+  phoneHref: 'tel:7473249008',
+  textHref: 'sms:7473249008',
+  email: 'info@solcrestfilm.com',
+  estimateFormAction: 'https://formspree.io/f/xzzvrjwe',
+}
+
+const serviceMenuItems = [
+  { label: 'Solar Control', href: '/residential-window-film-los-angeles.html' },
+  { label: 'Safety & Security', href: '/safety-security-window-film-los-angeles.html' },
+  { label: 'Anti-Graffiti', href: '/anti-graffiti-window-film-los-angeles.html' },
+  { label: 'Decorative & Privacy', href: '/decorative-privacy-window-film-los-angeles.html' },
+  { label: 'Smart Film', href: '/smart-film-installation-los-angeles.html' },
+]
+
+const serviceOptions = [
+  'Solar Control',
+  'Safety & Security',
+  'Anti-Graffiti',
+  'Decorative & Privacy',
+  'Smart Film',
+  'Not Sure',
+]
+
+const servicesDropdown = serviceMenuItems
+  .map((item) => `<a href="${item.href}">${item.label}</a>`)
+  .join('')
+
+const serviceSelectOptions = serviceOptions
+  .map((option) => `<option value="${option}">${option}</option>`)
+  .join('')
+
+const projectCards = [
+  {
+    kicker: 'Before / After',
+    title: 'Residential heat and glare control',
+    text: 'Example of a Los Angeles home using solar control film to reduce afternoon heat and screen glare.',
+    alt: 'Residential window film Los Angeles solar control film installation on sun exposed home glass',
+    tone: 'portfolio-dark',
+  },
+  {
+    kicker: 'Storefront protection',
+    title: 'Commercial anti-graffiti protection',
+    text: 'Storefront window protection with sacrificial anti-graffiti film for a high-traffic retail frontage in LA.',
+    alt: 'Storefront window film Los Angeles anti graffiti film on commercial glass storefront',
+    tone: 'portfolio-gold',
+  },
+  {
+    kicker: 'Interior privacy',
+    title: 'Decorative and smart privacy film',
+    text: 'Architectural privacy film for offices, clinics and luxury interiors without replacing existing glass.',
+    alt: 'Decorative privacy window film Los Angeles smart film office glass installation',
+    tone: 'portfolio-silver',
+  },
+]
+
+const renderProjectCards = () =>
+  projectCards
+    .map(
+      (card) => `
+        <article class="portfolio-card ${card.tone}">
+          <div class="portfolio-image-frame">
+            <img
+              class="portfolio-image"
+              src="/solcrest-logo-dark-final.jpg"
+              alt="${card.alt}"
+              loading="lazy"
+            />
+          </div>
+          <p class="card-kicker">${card.kicker}</p>
+          <h3>${card.title}</h3>
+          <p>${card.text}</p>
+        </article>
+      `,
+    )
+    .join('')
+
 document.querySelector('#app').innerHTML = `
   <div class="site-shell">
-    <header class="topbar">
+    <header class="topbar" id="topbar">
       <a class="brand" href="#hero" aria-label="Solcrest Film Co home">
-        <img class="brand-logo" src="/solcrest-logo-dark-final.jpg" alt="Solcrest Film Co logo" />
+        <img
+          class="brand-logo"
+          src="/solcrest-logo-dark-final.jpg"
+          alt="Solcrest Film Co premium window film Los Angeles logo"
+        />
       </a>
-      <nav class="nav">
-        <a href="#services">Services</a>
-        <a href="#residential">Residential</a>
-        <a href="#commercial">Commercial</a>
-        <a href="#projects">Projects</a>
-        <a href="#areas">Areas</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-      <div class="nav-actions">
-        <a class="nav-cta nav-cta-secondary" href="tel:7473249008">Call / Text</a>
-        <a class="nav-cta" href="#contact">Get Estimate</a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-shell" id="mobile-nav">
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#hero">Home</a>
+          <div class="nav-dropdown">
+            <button class="nav-dropdown-toggle" type="button" aria-expanded="false">Services</button>
+            <div class="nav-dropdown-menu">
+              ${servicesDropdown}
+            </div>
+          </div>
+          <a href="#residential">Residential</a>
+          <a href="#commercial">Commercial</a>
+          <a href="#why-solcrest">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="nav-cta nav-cta-secondary" href="${business.phoneHref}">Call / Text Now</a>
+          <a class="nav-cta" href="#contact">Get Estimate</a>
+        </div>
       </div>
     </header>
 
@@ -35,10 +131,12 @@ document.querySelector('#app').innerHTML = `
             </p>
             <div class="hero-actions">
               <a class="button button-primary" href="#contact">Get a Free Estimate</a>
-              <a class="button button-secondary" href="tel:7473249008">Call / Text Now</a>
+              <a class="button button-secondary" href="${business.phoneHref}">Call / Text Now</a>
             </div>
             <div class="contact-inline">
-              <a href="mailto:info@solcrestfilm.com">info@solcrestfilm.com</a>
+              <a href="${business.phoneHref}">${business.phoneDisplay}</a>
+              <span>•</span>
+              <a href="mailto:${business.email}">${business.email}</a>
               <span>•</span>
               <span>Los Angeles Based</span>
             </div>
@@ -186,25 +284,11 @@ document.querySelector('#app').innerHTML = `
           </p>
         </div>
         <div class="portfolio-grid">
-          <article class="portfolio-card portfolio-dark">
-            <p class="card-kicker">Before / After</p>
-            <h3>Sun-heavy residential glass</h3>
-            <p>Heat reduction, glare control and a cleaner final look.</p>
-          </article>
-          <article class="portfolio-card portfolio-gold">
-            <p class="card-kicker">Storefront protection</p>
-            <h3>Retail glass with anti-graffiti or safety film</h3>
-            <p>Protection for high-traffic commercial environments.</p>
-          </article>
-          <article class="portfolio-card portfolio-silver">
-            <p class="card-kicker">Interior privacy</p>
-            <h3>Decorative and smart film for offices and luxury interiors</h3>
-            <p>Elegant privacy solutions without replacing the glass.</p>
-          </article>
+          ${renderProjectCards()}
         </div>
         <div class="cta-row">
           <a class="button button-primary" href="#contact">Send Photos for Estimate</a>
-          <a class="button button-secondary" href="tel:7473249008">Call Now</a>
+          <a class="button button-secondary" href="${business.phoneHref}">Call Now</a>
         </div>
       </section>
 
@@ -278,18 +362,72 @@ document.querySelector('#app').innerHTML = `
       </section>
 
       <section class="section final-cta" id="contact">
-        <div class="section-heading narrow-center">
-          <p class="eyebrow">Final CTA</p>
-          <h2>Get a Free Estimate Today</h2>
-          <p>
-            If you send photos, rough measurements, and the city, we can help move faster with a relevant estimate.
-          </p>
-        </div>
-        <div class="cta-row center-cta-row">
-          <a class="button button-primary" href="mailto:info@solcrestfilm.com">Get a Free Estimate</a>
-          <a class="button button-secondary" href="tel:7473249008">Call Now</a>
-          <a class="button button-secondary" href="sms:7473249008">Text Us</a>
-          <a class="button button-secondary" href="mailto:info@solcrestfilm.com">Send Photos for Estimate</a>
+        <div class="contact-section contact-section-form">
+          <div>
+            <div class="section-heading narrow-center left-align-heading">
+              <p class="eyebrow">Request an Estimate</p>
+              <h2>Get a Free Estimate Today</h2>
+              <p>
+                Send your city, service type, and photos if available. We will review the details and get back to you with the next step.
+              </p>
+            </div>
+            <div class="cta-row cta-row-wrap">
+              <a class="button button-secondary" href="${business.phoneHref}">Call Now</a>
+              <a class="button button-secondary" href="${business.textHref}">Text Us</a>
+              <a class="button button-secondary" href="#contact-form">Send Photos for Estimate</a>
+            </div>
+          </div>
+          <form
+            id="contact-form"
+            class="contact-card"
+            action="${business.estimateFormAction}"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <input type="hidden" name="_subject" value="Solcrest Film Co website estimate request" />
+            <input type="hidden" name="_replyto" value="" />
+            <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" />
+
+            <div class="form-grid two-column-form">
+              <label>
+                Name
+                <input type="text" name="Name" autocomplete="name" required />
+              </label>
+              <label>
+                Phone
+                <input type="tel" name="Phone" autocomplete="tel" required />
+              </label>
+              <label>
+                Email
+                <input type="email" name="Email" autocomplete="email" required />
+              </label>
+              <label>
+                City
+                <input type="text" name="City" autocomplete="address-level2" required />
+              </label>
+            </div>
+
+            <label>
+              Service
+              <select name="Service" required>
+                <option value="" disabled selected>Select a service</option>
+                ${serviceSelectOptions}
+              </select>
+            </label>
+
+            <label>
+              Message / Notes
+              <textarea name="Message / Notes" rows="5" placeholder="Tell us about the glass, goals, square footage, or timeline." required></textarea>
+            </label>
+
+            <label>
+              Photo upload (optional)
+              <input type="file" name="Photo Upload" accept="image/*" />
+            </label>
+
+            <button class="button button-primary submit-button" type="submit">Send Estimate Request</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
         </div>
       </section>
     </main>
@@ -298,8 +436,8 @@ document.querySelector('#app').innerHTML = `
       <div>
         <strong>SOLCREST FILM CO</strong>
         <p>Premium Architectural Window Film Installation in Los Angeles.</p>
-        <p><a href="mailto:info@solcrestfilm.com">info@solcrestfilm.com</a></p>
-        <p><a href="tel:7473249008">747-324-9008</a></p>
+        <p><a href="mailto:${business.email}">${business.email}</a></p>
+        <p><a href="${business.phoneHref}">${business.phoneDisplay}</a></p>
       </div>
       <div class="footer-links">
         <a href="#services">Services</a>
@@ -312,14 +450,95 @@ document.querySelector('#app').innerHTML = `
 `
 
 const topbar = document.querySelector('.topbar')
+const menuToggle = document.querySelector('.menu-toggle')
+const navShell = document.querySelector('.nav-shell')
+const dropdownToggle = document.querySelector('.nav-dropdown-toggle')
+const contactForm = document.querySelector('#contact-form')
+const formStatus = document.querySelector('#form-status')
+const replyToField = contactForm?.querySelector('input[name="_replyto"]')
+
 let lastScrollY = window.scrollY
+let menuOpen = false
+let servicesOpen = false
+
+const setMenuState = (open) => {
+  menuOpen = open
+  if (!menuToggle || !navShell) return
+  menuToggle.setAttribute('aria-expanded', String(open))
+  navShell.classList.toggle('nav-shell-open', open)
+  topbar?.classList.toggle('topbar-menu-open', open)
+}
+
+const setServicesState = (open) => {
+  servicesOpen = open
+  if (!dropdownToggle) return
+  dropdownToggle.setAttribute('aria-expanded', String(open))
+  dropdownToggle.parentElement?.classList.toggle('nav-dropdown-open', open)
+}
+
 window.addEventListener('scroll', () => {
   if (!topbar) return
   const currentY = window.scrollY
-  if (currentY > 120 && currentY > lastScrollY) {
+  if (!menuOpen && currentY > 120 && currentY > lastScrollY) {
     topbar.classList.add('topbar-hidden')
   } else {
     topbar.classList.remove('topbar-hidden')
   }
   lastScrollY = currentY
+})
+
+menuToggle?.addEventListener('click', () => {
+  setMenuState(!menuOpen)
+})
+
+dropdownToggle?.addEventListener('click', () => {
+  setServicesState(!servicesOpen)
+})
+
+navShell?.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', () => {
+    setMenuState(false)
+    setServicesState(false)
+  })
+})
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 860) {
+    setMenuState(false)
+  }
+})
+
+contactForm?.addEventListener('submit', async (event) => {
+  event.preventDefault()
+
+  if (!formStatus) return
+  const submitButton = contactForm.querySelector('.submit-button')
+  const emailValue = contactForm.querySelector('input[name="Email"]')?.value ?? ''
+  if (replyToField) replyToField.value = emailValue
+
+  const formData = new FormData(contactForm)
+  formStatus.textContent = 'Sending your request...'
+  submitButton?.setAttribute('disabled', 'disabled')
+
+  try {
+    const response = await fetch(contactForm.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        Accept: 'application/json',
+      },
+    })
+
+    if (!response.ok) {
+      throw new Error('Form submission failed')
+    }
+
+    contactForm.reset()
+    if (replyToField) replyToField.value = ''
+    formStatus.textContent = "Thank you! We'll get back to you within 24 hours."
+  } catch (error) {
+    formStatus.textContent = 'Something went wrong. Please call or text us and we will help you directly.'
+  } finally {
+    submitButton?.removeAttribute('disabled')
+  }
 })
