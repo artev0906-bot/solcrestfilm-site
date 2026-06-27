@@ -379,6 +379,22 @@ h3 {
   min-height: 340px;
 }
 
+.panel-brand-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  padding: 26px;
+}
+
+.hero-brand-image {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
 .feature-list {
   display: grid;
   gap: 18px;

@@ -41,6 +41,9 @@ document.querySelector('#app').innerHTML = `
           </div>
 
           <div class="hero-side">
+            <article class="feature-panel panel-accent panel-brand-art">
+              <img class="hero-brand-image" src="/solcrest-logo-final.jpg" alt="Solcrest Film Co brand graphic" />
+            </article>
             <article class="feature-panel panel-tall">
               <p class="panel-label">Why clients call Solcrest</p>
               <div class="feature-list">
@@ -57,11 +60,6 @@ document.querySelector('#app').innerHTML = `
                   <span>Film that improves the visual character of the glass without heavy coverings.</span>
                 </div>
               </div>
-            </article>
-            <article class="feature-panel panel-accent">
-              <p class="panel-label">Fast quote workflow</p>
-              <h3>Send the project type, city, and photos if you have them.</h3>
-              <p>We can later connect this directly to GoHighLevel or a proper lead form once the final intake flow is ready.</p>
             </article>
           </div>
         </div>
