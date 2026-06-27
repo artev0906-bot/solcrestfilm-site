@@ -78,6 +78,15 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: 14px;
+  flex: 0 0 auto;
+}
+
+.brand-logo {
+  display: block;
+  width: 220px;
+  max-width: 220px;
+  height: auto;
+  object-fit: contain;
 }
 
 .brand-mark {
