@@ -4,20 +4,7 @@ document.querySelector('#app').innerHTML = `
   <div class="site-shell">
     <header class="topbar">
       <a class="brand" href="#hero" aria-label="Solcrest Film Co home">
-        <div class="brand-mark" aria-hidden="true">
-          <div class="sun-core"></div>
-          <div class="sun-rays">
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <div class="roof-line"></div>
-          <div class="panel-stack">
-            <span></span><span></span><span></span>
-          </div>
-        </div>
-        <div class="brand-text">
-          <strong>SOLCR<span class="brand-e">E</span>ST</strong>
-          <span>FILM CO</span>
-        </div>
+        <img class="brand-logo" src="/solcrest-logo.jpg" alt="Solcrest Film Co logo" />
       </a>
       <nav class="nav">
         <a href="#services">Services</a>
@@ -106,15 +93,16 @@ document.querySelector('#app').innerHTML = `
           <p class="eyebrow">Services</p>
           <h2>Window film solutions designed for comfort, privacy, and architectural polish.</h2>
           <p>
-            This homepage is now aligned with the Solcrest identity and still structured so we can grow it into a
-            stronger multi-page SEO site with service pages, city pages, and a premium portfolio section.
+            This homepage is now aligned with the Solcrest identity and structured so we can grow it into a stronger
+            multi-page SEO site with service pages, city pages, and a premium portfolio section.
           </p>
         </div>
         <div class="card-grid four-up">
-          <article class="service-card">
+          <article class="service-card service-card-featured">
             <span class="service-number">01</span>
             <h3>Residential Window Film</h3>
             <p>Reduce harsh sun, improve room comfort, and protect interiors while keeping the space bright and clean.</p>
+            <a class="text-link" href="/residential-window-film">View Residential Page</a>
           </article>
           <article class="service-card">
             <span class="service-number">02</span>
