@@ -5,7 +5,10 @@ document.querySelector('#app').innerHTML = `
     <header class="topbar">
       <a class="brand" href="#hero" aria-label="Solcrest Film Co home">
         <div class="brand-mark" aria-hidden="true">
-          <div class="sunburst"></div>
+          <div class="sun-core"></div>
+          <div class="sun-rays">
+            <span></span><span></span><span></span><span></span>
+          </div>
           <div class="roof-line"></div>
           <div class="panel-stack">
             <span></span><span></span><span></span>
@@ -18,161 +21,210 @@ document.querySelector('#app').innerHTML = `
       </a>
       <nav class="nav">
         <a href="#services">Services</a>
+        <a href="#advantages">Advantages</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#process">Process</a>
-        <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="nav-cta" href="#contact">Book a Consultation</a>
+      <a class="nav-cta" href="#contact">Request Quote</a>
     </header>
 
     <main>
       <section class="hero section" id="hero">
-        <div class="hero-backdrop"></div>
-        <div class="hero-copy">
-          <p class="eyebrow">Luxury window film for Los Angeles properties</p>
-          <h1>Modern heat control, privacy, and glare reduction with a premium finish.</h1>
-          <p class="hero-text">
-            Solcrest Film Co helps homeowners, storefronts, offices, and interior spaces feel cooler, look sharper,
-            and stay more protected. We install premium window film with a clean luxury aesthetic built for modern
-            California spaces.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#contact">Request a Quote</a>
-            <a class="button button-secondary" href="tel:7473249008">Call 747-324-9008</a>
-          </div>
-          <div class="contact-inline">
-            <a href="mailto:info@solcrestfilm.com">info@solcrestfilm.com</a>
-            <span>•</span>
-            <span>Serving Los Angeles County & nearby cities</span>
-          </div>
-        </div>
-
-        <div class="hero-panels">
-          <article class="glass-panel panel-featured">
-            <p class="panel-label">Signature benefits</p>
-            <h3>Refined protection for residential and commercial glass.</h3>
-            <ul>
-              <li>Reduce heat and harsh sun exposure</li>
-              <li>Improve privacy without heavy window treatments</li>
-              <li>Elevate the look of homes, offices, and storefronts</li>
-            </ul>
-          </article>
-          <article class="glass-panel panel-mini">
-            <p class="panel-label">Ideal for</p>
-            <div class="mini-grid">
-              <span>Luxury homes</span>
-              <span>Storefront glass</span>
-              <span>Office partitions</span>
-              <span>Bathrooms & entries</span>
+        <div class="hero-overlay"></div>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Premium window film for Los Angeles properties</p>
+            <h1>Luxury comfort, privacy, and glare control for modern glass.</h1>
+            <p class="hero-text">
+              Solcrest Film Co installs premium window film for homes, storefronts, offices, and interior glass across
+              Los Angeles County. We help you reduce heat, improve privacy, control glare, and create a cleaner,
+              more elevated finish without sacrificing natural light.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#contact">Get a Private Quote</a>
+              <a class="button button-secondary" href="tel:7473249008">Call 747-324-9008</a>
             </div>
-          </article>
+            <div class="contact-inline">
+              <a href="mailto:info@solcrestfilm.com">info@solcrestfilm.com</a>
+              <span>•</span>
+              <span>Serving Los Angeles County & nearby cities</span>
+            </div>
+            <div class="hero-stat-row">
+              <div>
+                <strong>Residential</strong>
+                <span>Heat, glare, UV, privacy</span>
+              </div>
+              <div>
+                <strong>Commercial</strong>
+                <span>Storefronts, offices, interior glass</span>
+              </div>
+              <div>
+                <strong>Luxury finish</strong>
+                <span>Clean visual integration with modern spaces</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-side">
+            <article class="feature-panel panel-tall">
+              <p class="panel-label">Why clients call Solcrest</p>
+              <div class="feature-list">
+                <div>
+                  <strong>Too much sun</strong>
+                  <span>Rooms and storefronts that overheat or get washed out during the day.</span>
+                </div>
+                <div>
+                  <strong>Need more privacy</strong>
+                  <span>Street-facing glass, bathrooms, offices, and entry zones that need cleaner separation.</span>
+                </div>
+                <div>
+                  <strong>Want a better look</strong>
+                  <span>Film that improves the visual character of the glass without heavy coverings.</span>
+                </div>
+              </div>
+            </article>
+            <article class="feature-panel panel-accent">
+              <p class="panel-label">Fast quote workflow</p>
+              <h3>Send the project type, city, and photos if you have them.</h3>
+              <p>We can later connect this directly to GoHighLevel or a proper lead form once the final intake flow is ready.</p>
+            </article>
+          </div>
         </div>
       </section>
 
       <section class="section benefit-strip" aria-label="Core benefits">
         <div>Heat reduction</div>
-        <div>Glare control</div>
         <div>Privacy film</div>
+        <div>Glare control</div>
         <div>UV protection</div>
-        <div>Security options</div>
+        <div>Security film</div>
       </section>
 
       <section class="section" id="services">
         <div class="section-heading">
           <p class="eyebrow">Services</p>
-          <h2>Window film solutions designed around comfort, privacy, and visual impact.</h2>
+          <h2>Window film solutions designed for comfort, privacy, and architectural polish.</h2>
           <p>
-            This site is now visually aligned with the Solcrest brand and still structured for future expansion into
-            service-specific and city-specific SEO pages.
+            This homepage is now aligned with the Solcrest identity and still structured so we can grow it into a
+            stronger multi-page SEO site with service pages, city pages, and a premium portfolio section.
           </p>
         </div>
         <div class="card-grid four-up">
           <article class="service-card">
             <span class="service-number">01</span>
             <h3>Residential Window Film</h3>
-            <p>For living rooms, bedrooms, and sun-heavy areas that need cooler temperatures and cleaner light.</p>
+            <p>Reduce harsh sun, improve room comfort, and protect interiors while keeping the space bright and clean.</p>
           </article>
           <article class="service-card">
             <span class="service-number">02</span>
             <h3>Commercial Window Film</h3>
-            <p>For offices, retail storefronts, and customer-facing glass that need comfort and consistency.</p>
+            <p>Upgrade offices, storefronts, and work environments with better comfort, consistency, and presentation.</p>
           </article>
           <article class="service-card">
             <span class="service-number">03</span>
             <h3>Privacy & Decorative Film</h3>
-            <p>For entry glass, bathrooms, conference rooms, and partitions where elegance and privacy matter.</p>
+            <p>Create elegant separation for bathrooms, conference rooms, entries, and interior partitions.</p>
           </article>
           <article class="service-card">
             <span class="service-number">04</span>
             <h3>Safety & Security Film</h3>
-            <p>For spaces that need another layer of protection while preserving a polished architectural look.</p>
+            <p>Add another layer of protection to vulnerable glass while keeping a polished architectural look.</p>
           </article>
         </div>
       </section>
 
-      <section class="section split-section" id="portfolio">
+      <section class="section split-section" id="advantages">
         <div>
-          <p class="eyebrow">Brand direction</p>
-          <h2>Built to feel more premium, cinematic, and architectural — like the Solcrest identity.</h2>
+          <p class="eyebrow">Advantages</p>
+          <h2>The value is not just functional — it is visual, practical, and long-term.</h2>
           <p>
-            The visual language now leans into black, metallic silver, and muted gold, with sharper structure,
-            thinner lines, and a more elevated presentation that matches the logo you sent.
+            Premium window film can make a property feel more refined while solving real daily problems: heat, glare,
+            privacy, and overexposure. For both residential and commercial spaces, it creates a cleaner experience and
+            a more intentional finish.
           </p>
         </div>
-        <div class="check-list luxury-list">
-          <div>Dark luxury color palette</div>
-          <div>Gold accent rules and highlights</div>
-          <div>Clean geometric card system</div>
-          <div>High-end visual tone instead of generic local-service styling</div>
+        <div class="luxury-list">
+          <div>Reduce heat and hot spots in sun-heavy rooms</div>
+          <div>Cut glare on TVs, desks, displays, and work surfaces</div>
+          <div>Protect interiors from UV exposure and fading</div>
+          <div>Improve privacy without fully blocking natural light</div>
+          <div>Give the glass a cleaner, more premium visual tone</div>
+        </div>
+      </section>
+
+      <section class="section portfolio-section" id="portfolio">
+        <div class="section-heading">
+          <p class="eyebrow">Portfolio direction</p>
+          <h2>A more premium foundation for future photos, before/afters, and case studies.</h2>
+          <p>
+            Once you send real project images, I can turn these into a strong luxury portfolio section that actually sells the brand.
+          </p>
+        </div>
+        <div class="portfolio-grid">
+          <article class="portfolio-card portfolio-dark">
+            <p class="card-kicker">Residential</p>
+            <h3>Sun-heavy living rooms and bedrooms</h3>
+            <p>Perfect for spaces that get too bright, too hot, or uncomfortable in the afternoon.</p>
+          </article>
+          <article class="portfolio-card portfolio-gold">
+            <p class="card-kicker">Commercial</p>
+            <h3>Storefronts, offices, and customer-facing glass</h3>
+            <p>Clean up the look of the space while making it more comfortable for staff and guests.</p>
+          </article>
+          <article class="portfolio-card portfolio-silver">
+            <p class="card-kicker">Interior glass</p>
+            <h3>Bathrooms, entries, partitions, and private work areas</h3>
+            <p>Create privacy and visual structure without replacing the existing glass.</p>
+          </article>
         </div>
       </section>
 
       <section class="section" id="process">
         <div class="section-heading">
           <p class="eyebrow">Process</p>
-          <h2>A polished process from first inquiry to final installation.</h2>
+          <h2>A clean experience from first conversation to final installation.</h2>
         </div>
         <div class="steps">
           <article>
             <span>01</span>
             <h3>Reach out</h3>
-            <p>Tell us the type of property, your city, and the main issue you want to solve.</p>
+            <p>Tell us what type of project you have, where it is, and what issue you want to solve.</p>
           </article>
           <article>
             <span>02</span>
             <h3>Review options</h3>
-            <p>We recommend the right film based on heat, privacy, glare, and the visual style of the space.</p>
+            <p>We guide you toward the right film based on comfort, privacy, glare, and appearance.</p>
           </article>
           <article>
             <span>03</span>
             <h3>Confirm scope</h3>
-            <p>We lock in the project direction, quote, and next step for installation.</p>
+            <p>We align on the right solution, project scope, and best next step for installation.</p>
           </article>
           <article>
             <span>04</span>
             <h3>Install cleanly</h3>
-            <p>Your space gets a cleaner, more comfortable, and more refined glass finish.</p>
+            <p>Your space gets a more polished, comfortable, and elevated glass finish.</p>
           </article>
         </div>
       </section>
 
       <section class="section testimonials">
         <div class="section-heading">
-          <p class="eyebrow">Proof & positioning</p>
-          <h2>Ready for real project photography, case studies, and reviews.</h2>
+          <p class="eyebrow">Trust & proof</p>
+          <h2>Ready for real reviews, project images, and high-trust proof blocks.</h2>
           <p>
-            Once you send real photos and client feedback, I can replace these styled placeholders with much stronger
-            proof blocks that match the same luxury visual language.
+            Right now this section is styled to match the brand. Next we should replace these placeholders with real photos,
+            Google reviews, and project-specific proof.
           </p>
         </div>
         <div class="card-grid two-up">
           <article class="quote-card">
-            <p>“The rooms stayed more comfortable, the glare dropped, and the windows still looked clean and elegant.”</p>
+            <p>“The room felt noticeably cooler, the glare dropped, and the windows still looked elegant.”</p>
             <strong>Residential review slot</strong>
           </article>
           <article class="quote-card">
-            <p>“The storefront felt more polished and more comfortable for both the team and our customers.”</p>
+            <p>“The storefront looked cleaner and the space felt more comfortable for both customers and staff.”</p>
             <strong>Commercial review slot</strong>
           </article>
         </div>
@@ -181,24 +233,24 @@ document.querySelector('#app').innerHTML = `
       <section class="section faq" id="faq">
         <div class="section-heading">
           <p class="eyebrow">FAQ</p>
-          <h2>Questions people ask before choosing the right film.</h2>
+          <h2>Common questions before choosing the right film.</h2>
         </div>
         <div class="faq-list">
           <details>
-            <summary>What kinds of spaces do you work on?</summary>
-            <p>Homes, offices, storefronts, entry glass, bathrooms, partitions, and other residential or commercial glass areas.</p>
+            <summary>What types of properties do you work on?</summary>
+            <p>Homes, offices, storefronts, entry glass, bathrooms, interior partitions, and other residential or commercial spaces.</p>
           </details>
           <details>
-            <summary>Can this site grow into a full SEO website?</summary>
-            <p>Yes. The structure is already built so we can add service pages, city pages, gallery pages, and more content later.</p>
+            <summary>Can this website become a full SEO site later?</summary>
+            <p>Yes. It is already structured so we can add service pages, city pages, gallery pages, and stronger local SEO content.</p>
           </details>
           <details>
             <summary>What helps speed up the quote process?</summary>
-            <p>The project type, city, a few photos if available, and the main goal such as heat reduction or privacy.</p>
+            <p>The project type, city, a short description of the problem, and photos if available.</p>
           </details>
           <details>
-            <summary>Do you only serve Los Angeles?</summary>
-            <p>The brand is positioned for Los Angeles County and nearby cities, and we can expand the site by area as needed.</p>
+            <summary>Do you only work in Los Angeles?</summary>
+            <p>The brand is positioned for Los Angeles County and nearby cities, and we can expand location coverage as we build city pages.</p>
           </details>
         </div>
       </section>
@@ -208,8 +260,8 @@ document.querySelector('#app').innerHTML = `
           <p class="eyebrow">Request a quote</p>
           <h2>Tell us what you want to get done.</h2>
           <p>
-            This section can later connect directly to GoHighLevel, a real form backend, or a more advanced estimator.
-            For now it gives the brand a clean conversion point on the live site.
+            This gives the live site a clean conversion point right now. Next we can replace the temporary mailto flow with a real lead form,
+            CRM integration, or direct GoHighLevel intake.
           </p>
           <div class="contact-block">
             <a href="tel:7473249008">747-324-9008</a>
@@ -247,7 +299,7 @@ document.querySelector('#app').innerHTML = `
     <footer class="footer">
       <div>
         <strong>SOLCREST FILM CO</strong>
-        <p>Luxury window film for comfort, privacy, and modern glass design.</p>
+        <p>Luxury window film for comfort, privacy, and a more refined architectural finish.</p>
         <p><a href="mailto:info@solcrestfilm.com">info@solcrestfilm.com</a></p>
         <p><a href="tel:7473249008">747-324-9008</a></p>
       </div>
