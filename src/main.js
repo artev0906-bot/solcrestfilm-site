@@ -23,6 +23,7 @@ document.querySelector('#app').innerHTML = `
           <div class="hero-copy">
             <p class="eyebrow">Premium window film for Los Angeles properties</p>
             <h1>Built to Protect. Designed to Impress.</h1>
+            <div class="hero-tagline">Solar Control · Safety & Security · Anti-Graffiti · Decorative · Smart Film</div>
             <p class="hero-text">
               Solcrest Film Co installs premium window film for homes, storefronts, offices, and interior glass across
               Los Angeles County. We help you reduce heat, improve privacy, protect vulnerable glass, and create a
@@ -37,7 +38,6 @@ document.querySelector('#app').innerHTML = `
               <span>•</span>
               <span>Serving Los Angeles County & nearby cities</span>
             </div>
-            <div class="hero-tagline">Solar Control · Safety & Security · Anti-Graffiti · Decorative · Smart Film</div>
           </div>
 
           <div class="hero-side">
