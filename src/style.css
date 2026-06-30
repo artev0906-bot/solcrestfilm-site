@@ -790,7 +790,7 @@ h3 {
   }
 
   .nav-actions {
-    flex-direction: column;
+    display: none;
   }
 
   .nav-cta {
