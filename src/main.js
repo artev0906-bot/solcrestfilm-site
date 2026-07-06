@@ -394,16 +394,16 @@ document.querySelector('#app').innerHTML = `
                 <input type="text" name="Name" autocomplete="name" required />
               </label>
               <label>
-                Phone
-                <input type="tel" name="Phone" autocomplete="tel" required />
+                Phone (optional)
+                <input type="tel" name="Phone" autocomplete="tel" />
               </label>
               <label>
-                Email
-                <input type="email" name="Email" autocomplete="email" required />
+                Email (optional)
+                <input type="email" name="Email" autocomplete="email" />
               </label>
               <label>
-                City
-                <input type="text" name="City" autocomplete="address-level2" required />
+                ZIP Code
+                <input type="text" name="ZIP" autocomplete="postal-code" required />
               </label>
             </div>
 
@@ -513,8 +513,17 @@ contactForm?.addEventListener('submit', async (event) => {
 
   if (!formStatus) return
   const submitButton = contactForm.querySelector('.submit-button')
-  const emailValue = contactForm.querySelector('input[name="Email"]')?.value ?? ''
+  const emailField = contactForm.querySelector('input[name="Email"]')
+  const phoneField = contactForm.querySelector('input[name="Phone"]')
+  const emailValue = emailField?.value?.trim() ?? ''
+  const phoneValue = phoneField?.value?.trim() ?? ''
   if (replyToField) replyToField.value = emailValue
+
+  if (!emailValue && !phoneValue) {
+    formStatus.textContent = 'Please leave either a phone number or an email so we can get back to you.'
+    emailField?.focus()
+    return
+  }
 
   const formData = new FormData(contactForm)
   formStatus.textContent = 'Sending your request...'
