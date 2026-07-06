@@ -310,7 +310,7 @@ document.querySelector('#app').innerHTML = `
           <p class="eyebrow">Next step</p>
           <h2>Request an estimate for this service.</h2>
           <p>
-            Send your city, service type, measurements and photos if you have them. This service page is built to support local SEO and clearer lead capture.
+            Send your ZIP, service type, measurements and photos if you have them. Leave either a phone number or an email so we can get back to you.
           </p>
           <div class="contact-block">
             <a href="${business.phoneHref}">${business.phoneDisplay}</a>
@@ -344,7 +344,7 @@ document.querySelector('#app').innerHTML = `
             </label>
             <label>
               ZIP Code
-              <input type="text" name="ZIP" autocomplete="postal-code" required />
+              <input type="text" name="ZIP" autocomplete="postal-code" />
             </label>
           </div>
 

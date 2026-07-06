@@ -368,7 +368,7 @@ document.querySelector('#app').innerHTML = `
               <p class="eyebrow">Request an Estimate</p>
               <h2>Get a Free Estimate Today</h2>
               <p>
-                Send your city, service type, and photos if available. We will review the details and get back to you with the next step.
+                Send your ZIP, service type, measurements and photos if you have them. Leave either a phone number or an email so we can get back to you.
               </p>
             </div>
             <div class="cta-row cta-row-wrap">
@@ -403,7 +403,7 @@ document.querySelector('#app').innerHTML = `
               </label>
               <label>
                 ZIP Code
-                <input type="text" name="ZIP" autocomplete="postal-code" required />
+                <input type="text" name="ZIP" autocomplete="postal-code" />
               </label>
             </div>
 
