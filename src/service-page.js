@@ -485,20 +485,9 @@ contactForm?.addEventListener('submit', async (event) => {
   formStatus.textContent = 'Sending your request...'
   submitButton?.setAttribute('disabled', 'disabled')
 
-  const n8nPayload = {
-    name: formData.get('Name') || '',
-    phone: phoneValue,
-    email: emailValue,
-    zip: formData.get('ZIP') || '',
-    service: formData.get('Service') || '',
-    message: formData.get('Message / Notes') || '',
-    source: 'website',
-  }
-
   fetch(business.n8nWebhook, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(n8nPayload),
+    body: formData,
   }).catch(() => {})
 
   try {
