@@ -423,7 +423,7 @@ document.querySelector('#app').innerHTML = `
 
             <label>
               Photo upload (optional)
-              <input type="file" name="Photo Upload" accept="image/*" />
+              <input type="file" name="Photo Upload" accept="image/*" multiple />
             </label>
 
             <button class="button button-primary submit-button" type="submit">Send Estimate Request</button>
@@ -526,7 +526,22 @@ contactForm?.addEventListener('submit', async (event) => {
     return
   }
 
+  const photoInput = contactForm.querySelector('input[name="Photo Upload"]')
+  const selectedFiles = Array.from(photoInput?.files ?? [])
+
+  if (selectedFiles.length > 10) {
+    formStatus.textContent = 'Please upload up to 10 photos only.'
+    photoInput?.focus()
+    return
+  }
+
   const formData = new FormData(contactForm)
+  if (selectedFiles.length > 1) {
+    formData.delete('Photo Upload')
+    selectedFiles.forEach((file) => {
+      formData.append('Photo Upload', file)
+    })
+  }
   formStatus.textContent = 'Sending your request...'
   submitButton?.setAttribute('disabled', 'disabled')
 
