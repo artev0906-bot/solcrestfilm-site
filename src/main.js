@@ -6,6 +6,7 @@ const business = {
   textHref: 'sms:7473249008',
   email: 'info@solcrestfilm.com',
   estimateFormAction: 'https://formspree.io/f/xdargbee',
+  n8nWebhook: 'https://artev0906.app.n8n.cloud/webhook/solcrest-website-lead',
 }
 
 const serviceMenuItems = [
@@ -528,6 +529,22 @@ contactForm?.addEventListener('submit', async (event) => {
   const formData = new FormData(contactForm)
   formStatus.textContent = 'Sending your request...'
   submitButton?.setAttribute('disabled', 'disabled')
+
+  const n8nPayload = {
+    name: formData.get('Name') || '',
+    phone: phoneValue,
+    email: emailValue,
+    zip: formData.get('ZIP') || '',
+    service: formData.get('Service') || '',
+    message: formData.get('Message / Notes') || '',
+    source: 'website',
+  }
+
+  fetch(business.n8nWebhook, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(n8nPayload),
+  }).catch(() => {})
 
   try {
     const response = await fetch(contactForm.action, {
