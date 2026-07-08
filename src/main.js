@@ -536,12 +536,14 @@ contactForm?.addEventListener('submit', async (event) => {
   }
 
   const formData = new FormData(contactForm)
-  if (selectedFiles.length > 1) {
-    formData.delete('Photo Upload')
-    selectedFiles.forEach((file) => {
-      formData.append('Photo Upload', file)
-    })
-  }
+if (selectedFiles.length > 1) {
+  formData.delete('Photo Upload')
+  selectedFiles.forEach((file) => {
+    formData.append('Photo Upload', file)
+  })
+} else if (selectedFiles.length === 0) {
+  formData.delete('Photo Upload')
+}
   formStatus.textContent = 'Sending your request...'
   submitButton?.setAttribute('disabled', 'disabled')
 
