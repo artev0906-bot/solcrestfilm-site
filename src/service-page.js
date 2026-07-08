@@ -345,7 +345,7 @@ document.querySelector('#app').innerHTML = `
             </label>
             <label>
               ZIP Code
-              <input type="text" name="ZIP" autocomplete="postal-code" />
+              <input type="text" name="ZIP" autocomplete="postal-code" required />
             </label>
           </div>
 
@@ -476,14 +476,14 @@ contactForm?.addEventListener('submit', async (event) => {
   }
 
   const formData = new FormData(contactForm)
-if (selectedFiles.length > 1) {
-  formData.delete('Photo Upload')
-  selectedFiles.forEach((file) => {
-    formData.append('Photo Upload', file)
-  })
-} else if (selectedFiles.length === 0) {
-  formData.delete('Photo Upload')
-}
+  if (selectedFiles.length > 1) {
+    formData.delete('Photo Upload')
+    selectedFiles.forEach((file) => {
+      formData.append('Photo Upload', file)
+    })
+  } else if (selectedFiles.length === 0) {
+    formData.delete('Photo Upload')
+  }
   formStatus.textContent = 'Sending your request...'
   submitButton?.setAttribute('disabled', 'disabled')
 
