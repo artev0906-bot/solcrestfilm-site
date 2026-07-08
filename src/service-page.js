@@ -487,18 +487,10 @@ if (selectedFiles.length > 1) {
   formStatus.textContent = 'Sending your request...'
   submitButton?.setAttribute('disabled', 'disabled')
 
-  fetch(business.n8nWebhook, {
-    method: 'POST',
-    body: formData,
-  }).catch(() => {})
-
   try {
-    const response = await fetch(contactForm.action, {
+    const response = await fetch(business.n8nWebhook, {
       method: 'POST',
       body: formData,
-      headers: {
-        Accept: 'application/json',
-      },
     })
 
     if (!response.ok) {
