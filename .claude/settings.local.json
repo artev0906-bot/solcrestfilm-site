@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import PIL; print\\(PIL.__version__\\)\")",
+      "Bash(python -c ' *)",
+      "Bash(find /c/Users/artev/AppData/Local/Temp -maxdepth 4 -iname \"*.png\" -o -iname \"*.jpg\" -newer /c/Users/artev/AppData/Local/Temp -mmin -60 2>/dev/null | head -50)",
+      "Bash(find /c/Users/artev/Downloads /c/Users/artev/Pictures /c/Users/artev/OneDrive/Pictures -maxdepth 2 \\\\\\( -iname \"*.jpg\" -o -iname \"*.png\" -o -iname \"*.jpeg\" -o -iname \"*.webp\" \\\\\\) -newermt \"2026-07-09\" 2>/dev/null | head -30)",
+      "Bash(powershell -NoProfile -Command 'Get-ChildItem -Path '\\\\''C:\\\\Users\\\\artev\\\\AppData\\\\Local\\\\Temp'\\\\'','\\\\''C:\\\\Users\\\\artev\\\\AppData\\\\Roaming'\\\\'' -Recurse -Include *.jpg,*.jpeg,*.png,*.webp -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -gt \\(Get-Date\\).AddMinutes\\(-20\\) } | Select-Object FullName, LastWriteTime, Length')",
+      "Bash(python3 \"C:\\\\Users\\\\artev\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-artev-OneDrive-Documents-solcrestfilm-site\\\\0a8ea7fe-f778-430c-864e-e747f6161298\\\\scratchpad\\\\make_logo_transparent.py\")",
+      "Bash(python3 -c ' *)",
+      "Bash(grep -A5 \"services-photo\\\\\"\" /tmp/main-rendered.js | head -20; echo \"...\"; grep -B1 -A6 \"service-card-photo\\\\\" style\" /tmp/main-rendered.js | head -40)",
+      "Bash(node -e ' *)",
+      "Bash(node --check /tmp/main-rendered.js)",
+      "Bash(npm run *)",
+      "Bash(pkill -f \"vite\")",
+      "Bash(powershell -NoProfile -Command 'Get-ChildItem -Path '\\\\''C:\\\\Users\\\\artev\\\\AppData\\\\Local\\\\Temp'\\\\'','\\\\''C:\\\\Users\\\\artev\\\\AppData\\\\Roaming'\\\\'' -Recurse -Include *.jpg,*.jpeg,*.png,*.webp -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -gt \\(Get-Date\\).AddMinutes\\(-15\\) } | Select-Object FullName, LastWriteTime, Length')",
+      "mcp__claude-in-chrome__tabs_context_mcp"
+    ]
+  }
+}

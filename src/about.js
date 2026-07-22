@@ -1,4 +1,6 @@
 import './style.css'
+import { icon } from './icons.js'
+import { mountChatWidget } from './chat-widget.js'
 
 const business = {
   phoneDisplay: '747-324-9008',
@@ -26,7 +28,7 @@ document.querySelector('#app').innerHTML = `
       <a class="brand" href="/" aria-label="Solcrest Film Co home">
         <img
           class="brand-logo"
-          src="/solcrest-logo-dark-final.jpg"
+          src="/solcrest-logo-light.png"
           alt="Solcrest Film Co premium window film Los Angeles logo"
         />
       </a>
@@ -69,7 +71,7 @@ document.querySelector('#app').innerHTML = `
           We handle solar control, safety and security, anti-graffiti, decorative and smart film projects of any size.
         </p>
         <div class="hero-actions">
-          <a class="button button-primary" href="/#contact">Get a Free Estimate</a>
+          <a class="button button-primary" href="/#contact">Get a Fast Estimate</a>
           <a class="button button-secondary" href="${business.phoneHref}">Call / Text Now</a>
         </div>
       </section>
@@ -85,18 +87,18 @@ document.querySelector('#app').innerHTML = `
           <div>Premium materials only</div>
           <div>Clean and precise installation</div>
           <div>Residential and commercial</div>
-          <div>Free estimates</div>
+          <div>Fast estimates</div>
         </div>
       </section>
 
       <section class="section final-cta">
         <div class="section-heading narrow-center">
           <p class="eyebrow">Ready to talk?</p>
-          <h2>Get a Free Estimate</h2>
+          <h2>Get a Fast Estimate</h2>
           <p>Send your project details, city, and photos through the estimate form on the homepage.</p>
         </div>
         <div class="cta-row center-cta-row">
-          <a class="button button-primary" href="/#contact">Get a Free Estimate</a>
+          <a class="button button-primary" href="/#contact">Get a Fast Estimate</a>
           <a class="button button-secondary" href="${business.textHref}">Text Us</a>
         </div>
       </section>
@@ -116,6 +118,11 @@ document.querySelector('#app').innerHTML = `
         <a href="/#contact">Estimate</a>
       </div>
     </footer>
+
+    <div class="sticky-cta-bar">
+      <a class="sticky-cta-call" href="${business.phoneHref}">${icon('smartphone')}<span>Call</span></a>
+      <a class="sticky-cta-request" href="/#contact">${icon('badgeCheck')}<span>Get Estimate</span></a>
+    </div>
   </div>
 `
 
@@ -162,6 +169,21 @@ dropdownToggle?.addEventListener('click', () => {
   setServicesState(!servicesOpen)
 })
 
+document.addEventListener('click', (event) => {
+  if (!servicesOpen) return
+  const dropdown = dropdownToggle?.parentElement
+  if (dropdown && !dropdown.contains(event.target)) {
+    setServicesState(false)
+  }
+})
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && servicesOpen) {
+    setServicesState(false)
+    dropdownToggle?.focus()
+  }
+})
+
 navShell?.querySelectorAll('a').forEach((link) => {
   link.addEventListener('click', () => {
     setMenuState(false)
@@ -174,3 +196,5 @@ window.addEventListener('resize', () => {
     setMenuState(false)
   }
 })
+
+mountChatWidget()

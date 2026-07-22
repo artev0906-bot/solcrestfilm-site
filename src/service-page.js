@@ -1,4 +1,6 @@
 import './style.css'
+import { icon } from './icons.js'
+import { mountChatWidget } from './chat-widget.js'
 
 const business = {
   phoneDisplay: '747-324-9008',
@@ -226,7 +228,7 @@ document.querySelector('#app').innerHTML = `
       <a class="brand" href="/" aria-label="Solcrest Film Co home">
         <img
           class="brand-logo"
-          src="/solcrest-logo-dark-final.jpg"
+          src="/solcrest-logo-light.png"
           alt="Solcrest Film Co premium window film Los Angeles logo"
         />
       </a>
@@ -264,7 +266,7 @@ document.querySelector('#app').innerHTML = `
         <h1>${page.title}</h1>
         <p class="hero-text service-hero-text">${page.description}</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="/#contact">Get a Free Estimate</a>
+          <a class="button button-primary" href="/#contact">Get a Fast Estimate</a>
           <a class="button button-secondary" href="${business.phoneHref}">Call / Text Now</a>
         </div>
       </section>
@@ -306,7 +308,7 @@ document.querySelector('#app').innerHTML = `
         </div>
       </section>
 
-      <section class="section contact-section contact-section-form">
+      <section class="section contact-section contact-section-form" id="contact">
         <div>
           <p class="eyebrow">Next step</p>
           <h2>Request an estimate for this service.</h2>
@@ -358,16 +360,20 @@ document.querySelector('#app').innerHTML = `
           </label>
 
           <label>
-            Message / Notes
-            <textarea name="Message / Notes" rows="5" placeholder="Tell us about the glass, goals, square footage, or timeline." required></textarea>
+            Message / Notes (optional)
+            <textarea name="Message / Notes" rows="5" placeholder="Tell us about the glass, goals, square footage, or timeline."></textarea>
           </label>
 
           <label>
             Photo upload (optional)
-            <input type="file" name="Photo Upload" accept="image/*" multiple />
+            <span class="file-upload-field">
+              <input type="file" name="Photo Upload" accept="image/*" multiple class="file-upload-input" />
+              <button type="button" class="file-upload-button">Choose Files</button>
+              <span class="file-upload-filename">No file chosen</span>
+            </span>
           </label>
 
-          <button class="button button-primary submit-button" type="submit">Send Estimate Request</button>
+          <button class="button button-primary submit-button" type="submit">Get My Estimate</button>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
       </section>
@@ -387,6 +393,11 @@ document.querySelector('#app').innerHTML = `
         <a href="/#contact">Estimate</a>
       </div>
     </footer>
+
+    <div class="sticky-cta-bar">
+      <a class="sticky-cta-call" href="${business.phoneHref}">${icon('smartphone')}<span>Call</span></a>
+      <a class="sticky-cta-request" href="#contact">${icon('badgeCheck')}<span>Get Estimate</span></a>
+    </div>
   </div>
 `
 
@@ -397,6 +408,25 @@ const dropdownToggle = document.querySelector('.nav-dropdown-toggle')
 const contactForm = document.querySelector('#contact-form')
 const formStatus = document.querySelector('#form-status')
 const replyToField = contactForm?.querySelector('input[name="_replyto"]')
+const fileUploadInput = contactForm?.querySelector('.file-upload-input')
+const fileUploadButton = contactForm?.querySelector('.file-upload-button')
+const fileUploadFilename = contactForm?.querySelector('.file-upload-filename')
+
+fileUploadButton?.addEventListener('click', () => {
+  fileUploadInput?.click()
+})
+
+fileUploadInput?.addEventListener('change', () => {
+  if (!fileUploadFilename) return
+  const files = fileUploadInput.files
+  if (!files || files.length === 0) {
+    fileUploadFilename.textContent = 'No file chosen'
+  } else if (files.length === 1) {
+    fileUploadFilename.textContent = files[0].name
+  } else {
+    fileUploadFilename.textContent = `${files.length} files selected`
+  }
+})
 
 let lastScrollY = window.scrollY
 let menuOpen = false
@@ -434,6 +464,21 @@ menuToggle?.addEventListener('click', () => {
 
 dropdownToggle?.addEventListener('click', () => {
   setServicesState(!servicesOpen)
+})
+
+document.addEventListener('click', (event) => {
+  if (!servicesOpen) return
+  const dropdown = dropdownToggle?.parentElement
+  if (dropdown && !dropdown.contains(event.target)) {
+    setServicesState(false)
+  }
+})
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && servicesOpen) {
+    setServicesState(false)
+    dropdownToggle?.focus()
+  }
 })
 
 navShell?.querySelectorAll('a').forEach((link) => {
@@ -506,3 +551,5 @@ contactForm?.addEventListener('submit', async (event) => {
     submitButton?.removeAttribute('disabled')
   }
 })
+
+mountChatWidget()
