@@ -159,9 +159,56 @@ const lbIgLink = document.getElementById('ow-lb-ig')
 const lbClose = document.getElementById('ow-lb-close')
 const lbBackdrop = document.getElementById('ow-lb-backdrop')
 
+let carouselSlides = []
+let carouselIndex = 0
+
+function renderCarouselSlide(idx) {
+  const slide = carouselSlides[idx]
+  const total = carouselSlides.length
+  lbMedia.innerHTML = `
+    <img src="${slide}" alt="Project photo ${idx + 1} of ${total}" />
+    ${total > 1 ? `
+    <div class="ow-carousel-nav">
+      <button class="ow-carousel-btn ow-carousel-prev" aria-label="Previous photo">&#8249;</button>
+      <span class="ow-carousel-count">${idx + 1} / ${total}</span>
+      <button class="ow-carousel-btn ow-carousel-next" aria-label="Next photo">&#8250;</button>
+    </div>` : ''}
+  `
+  if (total > 1) {
+    lbMedia.querySelector('.ow-carousel-prev')?.addEventListener('click', (e) => {
+      e.stopPropagation()
+      carouselIndex = (carouselIndex - 1 + total) % total
+      renderCarouselSlide(carouselIndex)
+    })
+    lbMedia.querySelector('.ow-carousel-next')?.addEventListener('click', (e) => {
+      e.stopPropagation()
+      carouselIndex = (carouselIndex + 1) % total
+      renderCarouselSlide(carouselIndex)
+    })
+  }
+}
+
 function openLightbox(post) {
-  const imgUrl = post.sizes?.large?.mediaUrl || post.sizes?.medium?.mediaUrl || post.thumbnailUrl || post.mediaUrl
-  lbMedia.innerHTML = `<img src="${imgUrl}" alt="Project photo" />`
+  const isVideo = post.isReel || post.mediaType === 'VIDEO'
+  const isCarousel = post.mediaType === 'CAROUSEL_ALBUM'
+
+  if (isVideo && post.mediaUrl) {
+    lbMedia.innerHTML = `
+      <video src="${post.mediaUrl}" poster="${post.thumbnailUrl || ''}"
+        controls autoplay muted playsinline loop
+        style="width:100%;height:100%;object-fit:cover;display:block;">
+      </video>`
+  } else if (isCarousel && post.children?.length) {
+    carouselSlides = post.children.map(
+      (c) => c.sizes?.large?.mediaUrl || c.sizes?.medium?.mediaUrl || c.mediaUrl || ''
+    )
+    carouselIndex = 0
+    renderCarouselSlide(0)
+  } else {
+    const imgUrl = post.sizes?.large?.mediaUrl || post.sizes?.medium?.mediaUrl || post.thumbnailUrl || post.mediaUrl || ''
+    lbMedia.innerHTML = `<img src="${imgUrl}" alt="Project photo" />`
+  }
+
   lbCaption.textContent = post.prunedCaption || post.caption || ''
   lbIgLink.href = post.permalink
   lightbox.hidden = false
@@ -170,15 +217,27 @@ function openLightbox(post) {
 }
 
 function closeLightbox() {
+  // Stop video if playing
+  const vid = lbMedia.querySelector('video')
+  if (vid) { vid.pause(); vid.src = '' }
   lightbox.hidden = true
   document.body.style.overflow = ''
   lbMedia.innerHTML = ''
+  carouselSlides = []
 }
 
 lbClose?.addEventListener('click', closeLightbox)
 lbBackdrop?.addEventListener('click', closeLightbox)
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && !lightbox.hidden) closeLightbox()
+  if (e.key === 'ArrowLeft' && !lightbox.hidden && carouselSlides.length > 1) {
+    carouselIndex = (carouselIndex - 1 + carouselSlides.length) % carouselSlides.length
+    renderCarouselSlide(carouselIndex)
+  }
+  if (e.key === 'ArrowRight' && !lightbox.hidden && carouselSlides.length > 1) {
+    carouselIndex = (carouselIndex + 1) % carouselSlides.length
+    renderCarouselSlide(carouselIndex)
+  }
 })
 
 // ── Fetch feed ────────────────────────────────────────────

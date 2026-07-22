@@ -252,6 +252,7 @@
 .ow-lb-media {
   flex: 0 0 auto;
   background: #1a1714;
+  position: relative;
 }
 
 @media (max-width: 639px) {
@@ -317,6 +318,49 @@
 
 .ow-lb-ig-link:hover {
   text-decoration: underline;
+}
+
+/* ── Carousel nav ─────────────────────── */
+.ow-carousel-nav {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.ow-carousel-btn {
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  backdrop-filter: blur(4px);
+}
+
+.ow-carousel-btn:hover {
+  background: rgba(169,130,79,0.85);
+}
+
+.ow-carousel-count {
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(0,0,0,0.5);
+  padding: 3px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
 }
 
 /* ── CTA section ──────────────────────── */
