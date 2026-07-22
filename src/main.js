@@ -292,7 +292,7 @@ document.querySelector('#app').innerHTML = `
               ${servicesDropdown}
             </div>
           </div>
-          <a href="#projects">Projects</a>
+          <a href="/our-work.html">Our Work</a>
           <a href="/about.html">About</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -371,7 +371,8 @@ document.querySelector('#app').innerHTML = `
           <div class="ig-feed-grid" id="instagram-feed-grid">
             ${igSkeletons}
           </div>
-          <div class="cta-row center-cta-row" style="margin-top:2rem;">
+          <div class="cta-row center-cta-row" style="margin-top:2rem;gap:12px;flex-wrap:wrap;justify-content:center;">
+            <a class="button button-primary" href="/our-work.html">${icon('sparkles')}&nbsp;View All Projects</a>
             <a class="button button-secondary" href="https://www.instagram.com/solcrestfilmco/" target="_blank" rel="noopener noreferrer">${icon('instagram')}&nbsp;Follow @solcrestfilmco</a>
           </div>
         </div>

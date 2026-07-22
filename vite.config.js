@@ -17,6 +17,7 @@ export default defineConfig({
         decorative: 'decorative-privacy-window-film-los-angeles.html',
         smartfilm: 'smart-film-installation-los-angeles.html',
         storefront: 'storefront-window-protection-los-angeles.html',
+        ourwork: 'our-work.html',
       },
     },
   },
