@@ -43,6 +43,54 @@
   margin-bottom: 1.75rem;
 }
 
+/* ── Category filter tabs ─────────────── */
+.ow-tabs-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(61,43,31,0.12);
+}
+
+.ow-tab {
+  background: transparent;
+  border: 1.5px solid rgba(61,43,31,0.18);
+  border-radius: 24px;
+  padding: 8px 18px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(61,43,31,0.65);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.ow-tab:hover {
+  border-color: #A9824F;
+  color: #A9824F;
+  background: rgba(169,130,79,0.06);
+}
+
+.ow-tab.ow-tab-active {
+  background: #A9824F;
+  border-color: #A9824F;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(169,130,79,0.3);
+}
+
+@media (max-width: 560px) {
+  .ow-tabs-bar {
+    gap: 6px;
+  }
+  .ow-tab {
+    padding: 7px 14px;
+    font-size: 0.78rem;
+  }
+}
+
 /* ── Gallery section ──────────────────── */
 .ow-gallery-section {
   background: #F6F2E9;

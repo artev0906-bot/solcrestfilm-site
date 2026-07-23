@@ -2,13 +2,24 @@ import './style.css'
 import './our-work.css'
 import { icon } from './icons.js'
 
-const IG_API = '/api/instagram?limit=50'
+const IG_API     = '/api/instagram?limit=50'
+const CURATED_API = '/api/curated'
 const IG_PROFILE = 'https://www.instagram.com/solcrestfilmco/'
 
 const escAttr = (s) =>
-  s.replace(/[<>&"]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]))
+  (s || '').replace(/[<>&"]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]))
 
-// ── Header ──────────────────────────────────────────────
+const CATEGORIES = [
+  { id: 'all',          label: 'All Work' },
+  { id: 'solar',        label: 'Solar Control' },
+  { id: 'privacy',      label: 'Privacy' },
+  { id: 'safety',       label: 'Safety & Security' },
+  { id: 'antigraffiti', label: 'Anti-Graffiti' },
+  { id: 'decorative',   label: 'Decorative' },
+  { id: 'smartfilm',    label: 'Smart Film' },
+]
+
+// ── Header ──────────────────────────────
 const headerHTML = `
   <header class="topbar topbar-on-photo" id="topbar">
     <a class="brand" href="/" aria-label="Solcrest Film Co home">
@@ -33,7 +44,7 @@ const headerHTML = `
   </header>
 `
 
-// ── Hero ─────────────────────────────────────────────────
+// ── Hero ─────────────────────────────────
 const heroHTML = `
   <section class="ow-hero">
     <div class="ow-hero-overlay"></div>
@@ -46,10 +57,25 @@ const heroHTML = `
   </section>
 `
 
-// ── Gallery ───────────────────────────────────────────────
+// ── Category tabs ─────────────────────────
+const tabsHTML = `
+  <div class="ow-tabs-bar" id="ow-tabs-bar" role="tablist" aria-label="Filter by service type">
+    ${CATEGORIES.map((cat) => `
+      <button
+        class="ow-tab ${cat.id === 'all' ? 'ow-tab-active' : ''}"
+        role="tab"
+        aria-selected="${cat.id === 'all' ? 'true' : 'false'}"
+        data-cat="${cat.id}"
+      >${cat.label}</button>
+    `).join('')}
+  </div>
+`
+
+// ── Gallery ───────────────────────────────
 const galleryHTML = `
   <section class="ow-gallery-section">
     <div class="ow-gallery-inner">
+      ${tabsHTML}
       <div class="ow-gallery-grid" id="ow-grid">
         ${Array(12).fill('<div class="ow-skeleton"></div>').join('')}
       </div>
@@ -62,7 +88,7 @@ const galleryHTML = `
   </section>
 `
 
-// ── CTA ───────────────────────────────────────────────────
+// ── CTA ───────────────────────────────────
 const ctaHTML = `
   <section class="ow-cta">
     <div class="ow-cta-inner">
@@ -77,7 +103,7 @@ const ctaHTML = `
   </section>
 `
 
-// ── Footer ────────────────────────────────────────────────
+// ── Footer ────────────────────────────────
 const footerHTML = `
   <footer class="footer footer-premium">
     <div class="footer-premium-inner">
@@ -106,7 +132,7 @@ const footerHTML = `
   </footer>
 `
 
-// ── Lightbox ──────────────────────────────────────────────
+// ── Lightbox ──────────────────────────────
 const lightboxHTML = `
   <div class="ow-lightbox" id="ow-lightbox" role="dialog" aria-modal="true" aria-label="Project photo" hidden>
     <div class="ow-lightbox-backdrop" id="ow-lb-backdrop"></div>
@@ -126,14 +152,14 @@ const lightboxHTML = `
   </div>
 `
 
-// ── Render ────────────────────────────────────────────────
+// ── Render page ───────────────────────────
 document.querySelector('#app').innerHTML =
   headerHTML + heroHTML + galleryHTML + ctaHTML + footerHTML + lightboxHTML
 
-// ── Header scroll behaviour ───────────────────────────────
-const topbar = document.querySelector('.topbar')
+// ── Header behaviour ──────────────────────
+const topbar    = document.querySelector('.topbar')
 const menuToggle = document.querySelector('.menu-toggle')
-const navShell = document.querySelector('.nav-shell')
+const navShell  = document.querySelector('.nav-shell')
 let lastY = window.scrollY
 let menuOpen = false
 
@@ -151,16 +177,16 @@ window.addEventListener('scroll', () => {
   lastY = y
 })
 
-// ── Lightbox logic ────────────────────────────────────────
-const lightbox = document.getElementById('ow-lightbox')
-const lbMedia = document.getElementById('ow-lb-media')
+// ── Lightbox ──────────────────────────────
+const lightbox  = document.getElementById('ow-lightbox')
+const lbMedia   = document.getElementById('ow-lb-media')
 const lbCaption = document.getElementById('ow-lb-caption')
-const lbIgLink = document.getElementById('ow-lb-ig')
-const lbClose = document.getElementById('ow-lb-close')
+const lbIgLink  = document.getElementById('ow-lb-ig')
+const lbClose   = document.getElementById('ow-lb-close')
 const lbBackdrop = document.getElementById('ow-lb-backdrop')
 
 let carouselSlides = []
-let carouselIndex = 0
+let carouselIndex  = 0
 
 function renderCarouselSlide(idx) {
   const slide = carouselSlides[idx]
@@ -169,9 +195,9 @@ function renderCarouselSlide(idx) {
     <img src="${slide}" alt="Project photo ${idx + 1} of ${total}" />
     ${total > 1 ? `
     <div class="ow-carousel-nav">
-      <button class="ow-carousel-btn ow-carousel-prev" aria-label="Previous photo">&#8249;</button>
+      <button class="ow-carousel-btn ow-carousel-prev" aria-label="Previous">&#8249;</button>
       <span class="ow-carousel-count">${idx + 1} / ${total}</span>
-      <button class="ow-carousel-btn ow-carousel-next" aria-label="Next photo">&#8250;</button>
+      <button class="ow-carousel-btn ow-carousel-next" aria-label="Next">&#8250;</button>
     </div>` : ''}
   `
   if (total > 1) {
@@ -189,27 +215,22 @@ function renderCarouselSlide(idx) {
 }
 
 function openLightbox(post) {
-  const isVideo = post.media_type === 'VIDEO'
+  const isVideo    = post.media_type === 'VIDEO'
   const isCarousel = post.media_type === 'CAROUSEL_ALBUM'
 
   if (isVideo && post.media_url) {
-    lbMedia.innerHTML = `
-      <video src="${post.media_url}" poster="${post.thumbnail_url || ''}"
-        controls autoplay muted playsinline loop
-        style="width:100%;height:100%;object-fit:cover;display:block;">
-      </video>`
+    lbMedia.innerHTML = `<video src="${post.media_url}" poster="${post.thumbnail_url || ''}"
+      controls autoplay muted playsinline loop
+      style="width:100%;height:100%;object-fit:cover;display:block;"></video>`
   } else if (isCarousel && post.children?.data?.length) {
-    carouselSlides = post.children.data.map(
-      (c) => c.media_url || c.thumbnail_url || ''
-    )
-    carouselIndex = 0
+    carouselSlides = post.children.data.map((c) => c.media_url || c.thumbnail_url || '')
+    carouselIndex  = 0
     renderCarouselSlide(0)
   } else {
-    const imgUrl = post.media_url || post.thumbnail_url || ''
-    lbMedia.innerHTML = `<img src="${imgUrl}" alt="Project photo" />`
+    lbMedia.innerHTML = `<img src="${post.media_url || post.thumbnail_url || ''}" alt="Project photo" />`
   }
 
-  lbCaption.textContent = post.caption || ''
+  lbCaption.textContent = post.siteCaption || post.caption || ''
   lbIgLink.href = post.permalink
   lightbox.hidden = false
   document.body.style.overflow = 'hidden'
@@ -217,7 +238,6 @@ function openLightbox(post) {
 }
 
 function closeLightbox() {
-  // Stop video if playing
   const vid = lbMedia.querySelector('video')
   if (vid) { vid.pause(); vid.src = '' }
   lightbox.hidden = true
@@ -230,7 +250,7 @@ lbClose?.addEventListener('click', closeLightbox)
 lbBackdrop?.addEventListener('click', closeLightbox)
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && !lightbox.hidden) closeLightbox()
-  if (e.key === 'ArrowLeft' && !lightbox.hidden && carouselSlides.length > 1) {
+  if (e.key === 'ArrowLeft'  && !lightbox.hidden && carouselSlides.length > 1) {
     carouselIndex = (carouselIndex - 1 + carouselSlides.length) % carouselSlides.length
     renderCarouselSlide(carouselIndex)
   }
@@ -240,43 +260,48 @@ document.addEventListener('keydown', (e) => {
   }
 })
 
-// ── Fetch feed ────────────────────────────────────────────
+// ── Gallery ───────────────────────────────
+let allPosts = []   // merged posts for display
+let activeFilter = 'all'
+
 async function loadGallery() {
   const grid = document.getElementById('ow-grid')
   if (!grid) return
+
   try {
-    const res = await fetch(IG_API)
-    if (!res.ok) throw new Error('Feed error')
-    const data = await res.json()
-    const posts = (data.data || []).filter((p) => p.media_type === 'VIDEO' ? p.thumbnail_url : (p.media_url || p.thumbnail_url))
+    // Fetch IG posts + curated config in parallel
+    const [igData, curatedData] = await Promise.all([
+      fetch('/api/instagram?limit=100').then((r) => r.json()),
+      fetch(CURATED_API).then((r) => r.json()).catch(() => ({ posts: [] })),
+    ])
 
-    grid.innerHTML = posts
-      .map((post) => {
-        const thumb = post.thumbnail_url || post.media_url || ''
-        const rawCaption = (post.caption || '').trim()
-        const shortCaption = escAttr(rawCaption.length > 80 ? rawCaption.slice(0, 80) + '…' : rawCaption)
-        const isVideo = post.media_type === 'VIDEO'
-        return `
-          <button class="ow-grid-item" data-post-id="${post.id}" aria-label="View project: ${shortCaption || 'Window film project'}">
-            <img src="${thumb}" alt="${shortCaption || 'Window film project'}" loading="lazy" decoding="async" />
-            ${isVideo ? '<span class="ow-reel-badge">&#9654; Reel</span>' : ''}
-            <div class="ow-grid-overlay">
-              <p>${shortCaption}</p>
-              <span class="ow-view-btn">View Project</span>
-            </div>
-          </button>
-        `
-      })
-      .join('')
+    const igPosts    = igData.data || []
+    const curated    = curatedData.posts || []
 
-    // Store posts for lightbox
-    const postMap = Object.fromEntries(posts.map((p) => [p.id, p]))
-    grid.addEventListener('click', (e) => {
-      const btn = e.target.closest('.ow-grid-item')
-      if (!btn) return
-      const post = postMap[btn.dataset.postId]
-      if (post) openLightbox(post)
-    })
+    if (curated.length > 0) {
+      // Curated mode: show only visible curated posts, in curated order
+      const igMap = Object.fromEntries(igPosts.map((p) => [p.id, p]))
+      allPosts = curated
+        .filter((c) => c.visible)
+        .map((c) => {
+          const ig = igMap[c.id]
+          if (!ig) return null
+          return {
+            ...ig,
+            siteCaption: c.caption || ig.caption || '',
+            category:    c.category || '',
+          }
+        })
+        .filter(Boolean)
+    } else {
+      // Fallback: show all IG posts (no curated config yet)
+      allPosts = igPosts
+        .filter((p) => p.media_type === 'VIDEO' ? p.thumbnail_url : (p.media_url || p.thumbnail_url))
+        .map((p) => ({ ...p, siteCaption: p.caption || '', category: '' }))
+    }
+
+    renderGallery()
+    bindTabs()
   } catch (_) {
     grid.innerHTML = `
       <p style="grid-column:1/-1;text-align:center;color:#3D2B1F;padding:3rem;">
@@ -285,6 +310,72 @@ async function loadGallery() {
         </a>
       </p>`
   }
+}
+
+function renderGallery() {
+  const grid = document.getElementById('ow-grid')
+  if (!grid) return
+
+  const filtered = activeFilter === 'all'
+    ? allPosts
+    : allPosts.filter((p) => p.category === activeFilter)
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;padding:3rem;color:rgba(61,43,31,0.55)">No projects in this category yet.</p>`
+    return
+  }
+
+  grid.innerHTML = filtered.map((post) => {
+    const thumb   = post.thumbnail_url || post.media_url || ''
+    const raw     = (post.siteCaption || '').trim()
+    const caption = escAttr(raw.length > 80 ? raw.slice(0, 80) + '…' : raw)
+    const isVideo = post.media_type === 'VIDEO'
+
+    return `
+      <button class="ow-grid-item" data-post-id="${post.id}" aria-label="View project: ${caption || 'Window film project'}">
+        <img src="${thumb}" alt="${caption || 'Window film project'}" loading="lazy" decoding="async" />
+        ${isVideo ? '<span class="ow-reel-badge">&#9654; Reel</span>' : ''}
+        <div class="ow-grid-overlay">
+          <p>${caption}</p>
+          <span class="ow-view-btn">View Project</span>
+        </div>
+      </button>
+    `
+  }).join('')
+
+  // Store posts for lightbox
+  const postMap = Object.fromEntries(filtered.map((p) => [p.id, p]))
+  grid.addEventListener('click', (e) => {
+    const btn = e.target.closest('.ow-grid-item')
+    if (!btn) return
+    const post = postMap[btn.dataset.postId]
+    if (post) openLightbox(post)
+  })
+}
+
+function bindTabs() {
+  const bar = document.getElementById('ow-tabs-bar')
+  if (!bar) return
+
+  // Hide tabs that have no posts (except 'all')
+  const usedCats = new Set(allPosts.map((p) => p.category).filter(Boolean))
+  bar.querySelectorAll('.ow-tab[data-cat]').forEach((tab) => {
+    const cat = tab.dataset.cat
+    if (cat !== 'all' && !usedCats.has(cat)) {
+      tab.style.display = 'none'
+    }
+  })
+
+  bar.querySelectorAll('.ow-tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      activeFilter = tab.dataset.cat
+      bar.querySelectorAll('.ow-tab').forEach((t) => {
+        t.classList.toggle('ow-tab-active', t === tab)
+        t.setAttribute('aria-selected', t === tab ? 'true' : 'false')
+      })
+      renderGallery()
+    })
+  })
 }
 
 loadGallery()

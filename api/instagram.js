@@ -1,6 +1,6 @@
 /**
  * Vercel Serverless Function — Instagram Graph API proxy
- * GET /api/instagram?limit=50
+ * GET /api/instagram?limit=50&cursor=xxx
  *
  * Environment variables required (set in Vercel dashboard):
  *   INSTAGRAM_USER_ID   — numeric Instagram Business account ID
@@ -16,6 +16,8 @@ export default async function handler(req, res) {
   }
 
   const limit = Math.min(Number(req.query?.limit) || 50, 100)
+  const cursor = req.query?.cursor || ''
+
   const fields = [
     'id',
     'caption',
@@ -24,10 +26,11 @@ export default async function handler(req, res) {
     'thumbnail_url',
     'permalink',
     'timestamp',
-    'children{id,media_url,thumbnail_url}',
+    'children{id,media_url,thumbnail_url,media_type}',
   ].join(',')
 
-  const url = `https://graph.facebook.com/v19.0/${igUserId}/media?fields=${fields}&limit=${limit}&access_token=${token}`
+  let url = `https://graph.facebook.com/v19.0/${igUserId}/media?fields=${fields}&limit=${limit}&access_token=${token}`
+  if (cursor) url += `&after=${encodeURIComponent(cursor)}`
 
   try {
     const igRes = await fetch(url)
@@ -38,7 +41,6 @@ export default async function handler(req, res) {
       return res.status(502).json({ error: data.error.message })
     }
 
-    // Cache for 1 hour on CDN, serve stale for 2 hours while revalidating
     res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=7200')
     res.setHeader('Content-Type', 'application/json')
     return res.status(200).json(data)
