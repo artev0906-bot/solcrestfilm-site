@@ -8,8 +8,8 @@
  */
 
 export default async function handler(req, res) {
-  const token = process.env.INSTAGRAM_TOKEN
-  const igUserId = process.env.INSTAGRAM_USER_ID
+  const token = (process.env.INSTAGRAM_TOKEN || '').trim()
+  const igUserId = (process.env.INSTAGRAM_USER_ID || '').trim()
 
   if (!token || !igUserId) {
     return res.status(500).json({ error: 'Instagram credentials not configured' })
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
     'children{id,media_url,thumbnail_url,media_type}',
   ].join(',')
 
-  let url = `https://graph.facebook.com/v19.0/${igUserId}/media?fields=${fields}&limit=${limit}&access_token=${token}`
+  let url = `https://graph.facebook.com/v19.0/${igUserId}/media?fields=${fields}&limit=${limit}&access_token=${encodeURIComponent(token)}`
   if (cursor) url += `&after=${encodeURIComponent(cursor)}`
 
   try {
