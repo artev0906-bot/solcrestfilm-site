@@ -116,10 +116,189 @@ function renderShell() {
     </main>
 
     <div class="admin-toast" id="a-toast"></div>
+
+    <!-- ── Preview Modal ── -->
+    <div class="admin-pv-modal" id="a-pv" hidden>
+      <div class="admin-pv-bd" id="a-pv-bd"></div>
+      <div class="admin-pv-wrap">
+        <button class="admin-pv-close" id="a-pv-close" title="Close (Esc)">×</button>
+        <button class="admin-pv-postnav prev" id="a-pv-prev" title="Previous post">‹</button>
+        <button class="admin-pv-postnav next" id="a-pv-next" title="Next post">›</button>
+        <div class="admin-pv-card">
+          <div class="admin-pv-media-wrap">
+            <div class="admin-pv-media" id="a-pv-media"></div>
+            <div class="admin-pv-slides" id="a-pv-slides" style="display:none">
+              <button id="a-pv-slide-prev">‹</button>
+              <span id="a-pv-slide-count"></span>
+              <button id="a-pv-slide-next">›</button>
+            </div>
+          </div>
+          <div class="admin-pv-sidebar">
+            <p class="admin-pv-cap" id="a-pv-cap"></p>
+            <p class="admin-pv-date" id="a-pv-date"></p>
+            <hr class="admin-pv-hr" />
+            <div class="admin-pv-controls">
+              <label class="admin-pv-label">Category</label>
+              <select class="admin-card-category" id="a-pv-cat"></select>
+              <button class="admin-pv-vis-btn" id="a-pv-vis"></button>
+              <a class="admin-pv-ig-link" id="a-pv-ig-link" href="" target="_blank" rel="noopener noreferrer">View on Instagram ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   `
 
   document.getElementById('a-save-btn').addEventListener('click', saveAll)
   document.getElementById('a-logout-btn').addEventListener('click', logout)
+
+  // Preview modal controls
+  document.getElementById('a-pv-close').addEventListener('click', closePreview)
+  document.getElementById('a-pv-bd').addEventListener('click', closePreview)
+  document.getElementById('a-pv-prev').addEventListener('click', () => navigatePost(-1))
+  document.getElementById('a-pv-next').addEventListener('click', () => navigatePost(1))
+  document.getElementById('a-pv-slide-prev').addEventListener('click', () => navigateSlide(-1))
+  document.getElementById('a-pv-slide-next').addEventListener('click', () => navigateSlide(1))
+
+  document.addEventListener('keydown', handlePreviewKey)
+}
+
+// ── Preview state ────────────────────────
+let previewPostId  = null
+let previewSlideIdx = 0
+
+function getFilteredPosts() {
+  return igPosts.filter((p) => {
+    const state = localState[p.id]
+    if (filterMode === 'visible') return state?.visible
+    if (filterMode === 'hidden')  return !state?.visible
+    if (filterMode !== 'all')     return state?.category === filterMode
+    return true
+  })
+}
+
+function openPreview(postId) {
+  previewPostId  = postId
+  previewSlideIdx = 0
+  document.getElementById('a-pv').removeAttribute('hidden')
+  document.body.style.overflow = 'hidden'
+  updatePreviewContent()
+}
+
+function closePreview() {
+  document.getElementById('a-pv').setAttribute('hidden', '')
+  document.body.style.overflow = ''
+  previewPostId = null
+}
+
+function navigatePost(dir) {
+  const list = getFilteredPosts()
+  const idx  = list.findIndex((p) => p.id === previewPostId)
+  const next = list[idx + dir]
+  if (next) { previewPostId = next.id; previewSlideIdx = 0; updatePreviewContent() }
+}
+
+function navigateSlide(dir) {
+  const post = igPosts.find((p) => p.id === previewPostId)
+  if (!post) return
+  const slides = post.children?.data || []
+  previewSlideIdx = Math.max(0, Math.min(slides.length - 1, previewSlideIdx + dir))
+  updatePreviewContent()
+}
+
+function handlePreviewKey(e) {
+  const modal = document.getElementById('a-pv')
+  if (!modal || modal.hidden) return
+  if (e.key === 'Escape')      { e.preventDefault(); closePreview() }
+  if (e.key === 'ArrowLeft')   { e.preventDefault(); navigatePost(-1) }
+  if (e.key === 'ArrowRight')  { e.preventDefault(); navigatePost(1) }
+}
+
+function updatePreviewContent() {
+  const post = igPosts.find((p) => p.id === previewPostId)
+  if (!post) return
+  const state      = localState[post.id] || { visible: false, caption: '', category: '', pinned: false }
+  const isCarousel = post.media_type === 'CAROUSEL_ALBUM'
+  const slides     = isCarousel ? (post.children?.data || []) : [post]
+  const current    = slides[previewSlideIdx] || post
+
+  // Media
+  const mediaEl = document.getElementById('a-pv-media')
+  if (current.media_type === 'VIDEO') {
+    const poster = current.thumbnail_url || post.thumbnail_url || ''
+    mediaEl.innerHTML = `<video src="${current.media_url}" poster="${poster}" controls playsinline></video>`
+  } else {
+    const src = current.media_url || current.thumbnail_url || post.media_url || post.thumbnail_url
+    mediaEl.innerHTML = `<img src="${src}" alt="" />`
+  }
+
+  // Carousel nav
+  const slidesNav = document.getElementById('a-pv-slides')
+  if (isCarousel && slides.length > 1) {
+    slidesNav.style.display = 'flex'
+    document.getElementById('a-pv-slide-count').textContent = `${previewSlideIdx + 1} / ${slides.length}`
+    document.getElementById('a-pv-slide-prev').disabled = previewSlideIdx === 0
+    document.getElementById('a-pv-slide-next').disabled = previewSlideIdx === slides.length - 1
+  } else {
+    slidesNav.style.display = 'none'
+  }
+
+  // Post nav arrows
+  const list = getFilteredPosts()
+  const idx  = list.findIndex((p) => p.id === previewPostId)
+  document.getElementById('a-pv-prev').disabled = idx <= 0
+  document.getElementById('a-pv-next').disabled = idx >= list.length - 1
+
+  // Caption
+  document.getElementById('a-pv-cap').textContent = post.caption || '(no caption)'
+
+  // Date
+  const date = post.timestamp
+    ? new Date(post.timestamp).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+    : ''
+  document.getElementById('a-pv-date').textContent = date
+
+  // Category selector
+  const catEl = document.getElementById('a-pv-cat')
+  catEl.innerHTML = CATEGORIES.map((c) =>
+    `<option value="${c.id}" ${state.category === c.id ? 'selected' : ''}>${c.label}</option>`
+  ).join('')
+  catEl.onchange = () => {
+    if (!localState[post.id]) localState[post.id] = { visible: false, caption: '', category: '', pinned: false }
+    localState[post.id].category = catEl.value
+    markUnsaved()
+    renderStats()
+    // Sync with grid card
+    const gridSel = document.querySelector(`.admin-card-category[data-id="${post.id}"]`)
+    if (gridSel) gridSel.value = catEl.value
+  }
+
+  // Visibility toggle
+  const visBtn = document.getElementById('a-pv-vis')
+  const refreshVis = () => {
+    const v = localState[post.id]?.visible
+    visBtn.textContent = v ? '👁  Visible on site' : '🚫  Hidden from site'
+    visBtn.classList.toggle('is-on', !!v)
+  }
+  refreshVis()
+  visBtn.onclick = () => {
+    if (!localState[post.id]) localState[post.id] = { visible: false, caption: '', category: '', pinned: false }
+    localState[post.id].visible = !localState[post.id].visible
+    markUnsaved()
+    renderStats()
+    refreshVis()
+    // Sync grid card
+    const card = document.querySelector(`.admin-toggle-btn[data-id="${post.id}"]`)?.closest('.admin-card')
+    if (card) {
+      card.classList.toggle('is-visible', localState[post.id].visible)
+      const toggleIcon = card.querySelector('.admin-toggle-btn')
+      if (toggleIcon) toggleIcon.innerHTML = eyeIcon(localState[post.id].visible)
+    }
+  }
+
+  // Instagram link
+  const igLink = document.getElementById('a-pv-ig-link')
+  igLink.href = post.permalink || `https://instagram.com/solcrestfilmco`
 }
 
 // ── Load data ───────────────────────────
@@ -259,9 +438,15 @@ function renderGrid() {
 
   grid.innerHTML = filtered.map((post) => renderCard(post)).join('')
 
+  // Thumbnail click → open preview
+  grid.querySelectorAll('.admin-card-thumb-click').forEach((thumb) => {
+    thumb.addEventListener('click', () => openPreview(thumb.dataset.id))
+  })
+
   // Pin button
   grid.querySelectorAll('.admin-pin-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation()
       const id = btn.dataset.id
       if (!localState[id]) localState[id] = { visible: false, caption: '', category: '', pinned: false }
       const cat = localState[id].category
@@ -280,7 +465,8 @@ function renderGrid() {
 
   // Wire up events
   grid.querySelectorAll('.admin-toggle-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation()
       const id = btn.dataset.id
       if (!localState[id]) localState[id] = { visible: false, caption: '', category: '' }
       localState[id].visible = !localState[id].visible
@@ -330,8 +516,9 @@ function renderCard(post) {
 
   return `
     <div class="admin-card ${isVisible ? 'is-visible' : ''}">
-      <div class="admin-card-thumb">
+      <div class="admin-card-thumb admin-card-thumb-click" data-id="${post.id}" title="Click to preview">
         <img src="${thumb}" alt="" loading="lazy" decoding="async" />
+        <div class="admin-thumb-expand">⤢</div>
         ${typeLabel ? `<span class="admin-type-badge">${typeLabel}</span>` : ''}
         <button class="admin-toggle-btn" data-id="${post.id}" title="${isVisible ? 'Hide from site' : 'Show on site'}">
           ${eyeIcon(isVisible)}
