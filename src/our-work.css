@@ -238,7 +238,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 0;
 }
 
 .ow-lightbox[hidden] {
@@ -248,90 +248,121 @@
 .ow-lightbox-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(20, 17, 14, 0.85);
-  backdrop-filter: blur(6px);
+  background: rgba(14, 12, 10, 0.92);
+  backdrop-filter: blur(8px);
 }
 
+/* ── Mobile: full-screen стек ── */
 .ow-lightbox-card {
   position: relative;
   z-index: 1;
-  background: #fff;
-  border-radius: 18px;
+  background: #111;
+  border-radius: 0;
   overflow: hidden;
-  max-width: 780px;
   width: 100%;
-  max-height: 90vh;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+  box-shadow: none;
 }
 
+/* ── Desktop: боковой лейаут ── */
 @media (min-width: 640px) {
+  .ow-lightbox {
+    padding: 24px;
+  }
   .ow-lightbox-card {
     flex-direction: row;
-    max-height: 80vh;
+    border-radius: 20px;
+    max-width: 900px;
+    width: 100%;
+    height: auto;
+    max-height: 88vh;
+    background: #fff;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6);
   }
 }
 
 .ow-lb-close {
   position: absolute;
-  top: 12px;
+  top: 14px;
   right: 14px;
   z-index: 10;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.6);
   color: #fff;
   border: none;
   border-radius: 50%;
-  width: 34px;
-  height: 34px;
-  font-size: 1.3rem;
+  width: 38px;
+  height: 38px;
+  font-size: 1.4rem;
   line-height: 1;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background 0.15s;
+  backdrop-filter: blur(4px);
 }
 
 .ow-lb-close:hover {
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.9);
 }
 
+/* ── Media area ── */
 .ow-lb-media {
-  flex: 0 0 auto;
+  flex: 1 1 auto;
   background: #1a1714;
   position: relative;
+  overflow: hidden;
+  /* Mobile: берёт всё свободное пространство */
+  min-height: 0;
 }
 
 @media (max-width: 639px) {
   .ow-lb-media {
-    max-height: 55vw;
-    overflow: hidden;
+    flex: 1 1 auto;
   }
 }
 
 @media (min-width: 640px) {
   .ow-lb-media {
-    width: 420px;
-    max-height: 80vh;
+    flex: 0 0 56%;
+    max-height: 88vh;
   }
 }
 
-.ow-lb-media img {
+.ow-lb-media img,
+.ow-lb-media video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
+/* ── Caption panel ── */
 .ow-lb-body {
-  padding: 24px 22px;
+  flex: 0 0 auto;
+  padding: 20px 20px 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 18px;
+  gap: 14px;
   overflow-y: auto;
   min-width: 0;
+  background: #fff;
+  /* Mobile: фиксированная высота снизу */
+  max-height: 38vh;
+}
+
+@media (min-width: 640px) {
+  .ow-lb-body {
+    flex: 1 1 0;
+    max-height: 88vh;
+    padding: 28px 26px;
+    gap: 18px;
+  }
 }
 
 .ow-lb-caption {
