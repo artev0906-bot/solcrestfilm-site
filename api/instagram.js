@@ -29,7 +29,7 @@ export default async function handler(req, res) {
     'children{id,media_url,thumbnail_url,media_type}',
   ].join(',')
 
-  let url = `https://graph.facebook.com/v21.0/me/media?fields=${fields}&limit=${limit}&access_token=${encodeURIComponent(token)}`
+  let url = `https://graph.instagram.com/v21.0/me/media?fields=${fields}&limit=${limit}&access_token=${encodeURIComponent(token)}`
   if (cursor) url += `&after=${encodeURIComponent(cursor)}`
 
   try {
