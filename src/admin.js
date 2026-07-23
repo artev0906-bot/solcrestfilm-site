@@ -71,7 +71,10 @@ function renderLogin() {
         return
       }
     } catch {
-      // Network error — proceed anyway (API will catch it on save)
+      err.textContent = 'Network error. Check your connection and try again.'
+      btn.disabled = false
+      btn.textContent = 'Sign In'
+      return
     }
 
     password = val
@@ -434,5 +437,5 @@ function showToast(msg, type = '') {
 
 // ── Utils ────────────────────────────────
 function escAttr(s) {
-  return (s || '').replace(/[<>&"]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]))
+  return (s || '').replace(/[<>&"']/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&#39;' }[c]))
 }

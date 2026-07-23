@@ -8,6 +8,10 @@
  */
 
 export default async function handler(req, res) {
+  if (req.method !== 'GET') {
+    return res.status(405).json({ error: 'Method not allowed' })
+  }
+
   const token = (process.env.INSTAGRAM_TOKEN || '').replace(/\s+/g, '')
   const igUserId = (process.env.INSTAGRAM_USER_ID || '').trim()
 
@@ -38,7 +42,7 @@ export default async function handler(req, res) {
 
     if (data.error) {
       console.error('Instagram API error:', data.error)
-      return res.status(502).json({ error: data.error.message })
+      return res.status(502).json({ error: 'Upstream API error' })
     }
 
     res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=7200')
