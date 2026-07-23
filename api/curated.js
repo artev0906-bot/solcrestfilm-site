@@ -41,6 +41,11 @@ export default async function handler(req, res) {
       return res.status(401).json({ error: 'Unauthorized' })
     }
 
+    // Password-only check (no save needed)
+    if (body._check) {
+      return res.status(200).json({ ok: true })
+    }
+
     try {
       await redis.set('curated', body.posts ?? [])
       return res.status(200).json({ ok: true })

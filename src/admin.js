@@ -49,9 +49,31 @@ function renderLogin() {
   const btn   = document.getElementById('a-login-btn')
   const err   = document.getElementById('a-error')
 
-  const attempt = () => {
+  const attempt = async () => {
     const val = input.value.trim()
     if (!val) return
+    btn.disabled = true
+    btn.textContent = 'Checking…'
+    err.textContent = ''
+
+    // Verify password against API before proceeding
+    try {
+      const res = await fetch('/api/curated', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: val, posts: null, _check: true }),
+      })
+      if (res.status === 401) {
+        err.textContent = 'Wrong password. Try again.'
+        btn.disabled = false
+        btn.textContent = 'Sign In'
+        input.focus()
+        return
+      }
+    } catch {
+      // Network error — proceed anyway (API will catch it on save)
+    }
+
     password = val
     sessionStorage.setItem('admin_pass', val)
     renderShell()
