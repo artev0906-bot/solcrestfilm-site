@@ -358,7 +358,7 @@ button {
   inset: 0;
   z-index: 0;
   background-color: var(--accent-graphite);
-  background-image: url('/estimate-bg2.png');
+  background-image: url('/estimate-bg2.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -918,7 +918,7 @@ h3 {
   inset: 0;
   z-index: 0;
   background-color: var(--accent-graphite);
-  background-image: linear-gradient(135deg, rgba(20, 17, 14, 0.32), rgba(15, 13, 10, 0.42)), url('/services-bg2.png');
+  background-image: linear-gradient(135deg, rgba(20, 17, 14, 0.32), rgba(15, 13, 10, 0.42)), url('/services-bg2.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -953,7 +953,7 @@ h3 {
   inset: 0;
   z-index: 0;
   background-color: var(--accent-graphite);
-  background-image: url('/why-solcrest-bg.png');
+  background-image: url('/why-solcrest-bg.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -999,7 +999,7 @@ h3 {
   inset: 0;
   z-index: 0;
   background-color: var(--accent-graphite);
-  background-image: url('/residential-bg.png');
+  background-image: url('/residential-bg.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -1064,7 +1064,7 @@ h3 {
   inset: 0;
   z-index: 0;
   background-color: var(--accent-graphite);
-  background-image: url('/commercial-bg.png');
+  background-image: url('/commercial-bg.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -1154,7 +1154,7 @@ h3 {
   inset: 0;
   z-index: 0;
   background-color: var(--accent-graphite);
-  background-image: linear-gradient(135deg, rgba(20, 17, 14, 0.32), rgba(15, 13, 10, 0.42)), url('/projects-bg.png');
+  background-image: linear-gradient(135deg, rgba(20, 17, 14, 0.32), rgba(15, 13, 10, 0.42)), url('/projects-bg.jpg');
   background-size: cover, 100%;
   background-repeat: no-repeat, no-repeat;
   background-position: center, center;
@@ -1418,7 +1418,7 @@ h3 {
   inset: 0;
   z-index: 0;
   background-color: var(--accent-graphite);
-  background-image: url('/areas-bg.png');
+  background-image: url('/areas-bg.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -1496,7 +1496,7 @@ h3 {
   inset: 0;
   z-index: 0;
   background-color: #1c1a17;
-  background-image: url('/process-bg.png');
+  background-image: url('/process-bg.jpg');
   background-size: cover;
   background-position: center top;
 }
@@ -1555,7 +1555,7 @@ h3 {
   inset: 0;
   z-index: 0;
   background-color: #06090c;
-  background-image: url('/faq-bg.png');
+  background-image: url('/faq-bg.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -1613,7 +1613,7 @@ h3 {
   inset: 0;
   z-index: 0;
   background-color: #212226;
-  background-image: url('/final-cta-bg.png');
+  background-image: url('/final-cta-bg.jpg');
   background-size: cover;
   background-position: center;
 }

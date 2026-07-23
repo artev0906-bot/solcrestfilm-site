@@ -396,7 +396,7 @@ document.querySelector('#app').innerHTML = `
 
     <div class="sticky-cta-bar">
       <a class="sticky-cta-call" href="${business.phoneHref}">${icon('smartphone')}<span>Call</span></a>
-      <a class="sticky-cta-request" href="#contact">${icon('badgeCheck')}<span>Get Estimate</span></a>
+      <a class="sticky-cta-request" href="/#contact">${icon('badgeCheck')}<span>Get Estimate</span></a>
     </div>
   </div>
 `

@@ -199,7 +199,7 @@ const renderEstimateSteps = () =>
     .map(
       (step, index) => `
         <article class="estimate-step">
-          <img class="estimate-step-icon" src="${step.iconSrc}" alt="${step.title}" width="100" height="100" />
+          <img class="estimate-step-icon" src="${step.iconSrc}" alt="${step.title}" width="100" height="100" loading="lazy" decoding="async" />
           <span class="estimate-step-number">${index + 1}</span>
           <h3>${step.title}</h3>
           <p>${step.text}</p>
@@ -437,23 +437,23 @@ document.querySelector('#app').innerHTML = `
           </div>
           <div class="luxury-list">
             <article class="luxury-item">
-              <img class="luxury-icon" src="/icon-ruler.png" alt="" width="88" height="88" />
+              <img class="luxury-icon" src="/icon-ruler.png" alt="" width="88" height="88" loading="lazy" decoding="async" />
               <div>Precise measurements and cleaner final fit</div>
             </article>
             <article class="luxury-item">
-              <img class="luxury-icon" src="/icon-materials.png" alt="" width="88" height="88" />
+              <img class="luxury-icon" src="/icon-materials.png" alt="" width="88" height="88" loading="lazy" decoding="async" />
               <div>Premium materials matched to the use case</div>
             </article>
             <article class="luxury-item">
-              <img class="luxury-icon" src="/icon-finish.png" alt="" width="88" height="88" />
+              <img class="luxury-icon" src="/icon-finish.png" alt="" width="88" height="88" loading="lazy" decoding="async" />
               <div>Professional finish for high-visibility spaces</div>
             </article>
             <article class="luxury-item">
-              <img class="luxury-icon" src="/icon-solutions.png" alt="" width="88" height="88" />
+              <img class="luxury-icon" src="/icon-solutions.png" alt="" width="88" height="88" loading="lazy" decoding="async" />
               <div>Solutions for heat, privacy, security, vandalism and smart glass needs</div>
             </article>
             <article class="luxury-item">
-              <img class="luxury-icon" src="/icon-property.png" alt="" width="88" height="88" />
+              <img class="luxury-icon" src="/icon-property.png" alt="" width="88" height="88" loading="lazy" decoding="async" />
               <div>Residential and commercial project experience</div>
             </article>
           </div>
