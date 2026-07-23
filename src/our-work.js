@@ -2,7 +2,7 @@ import './style.css'
 import './our-work.css'
 import { icon } from './icons.js'
 
-const BEHOLD_FEED = 'https://feeds.behold.so/NKKpEhT1FhdvHVI9zW6F'
+const IG_API = '/api/instagram?limit=50'
 const IG_PROFILE = 'https://www.instagram.com/solcrestfilmco/'
 
 const escAttr = (s) =>
@@ -189,27 +189,27 @@ function renderCarouselSlide(idx) {
 }
 
 function openLightbox(post) {
-  const isVideo = post.isReel || post.mediaType === 'VIDEO'
-  const isCarousel = post.mediaType === 'CAROUSEL_ALBUM'
+  const isVideo = post.media_type === 'VIDEO'
+  const isCarousel = post.media_type === 'CAROUSEL_ALBUM'
 
-  if (isVideo && post.mediaUrl) {
+  if (isVideo && post.media_url) {
     lbMedia.innerHTML = `
-      <video src="${post.mediaUrl}" poster="${post.thumbnailUrl || ''}"
+      <video src="${post.media_url}" poster="${post.thumbnail_url || ''}"
         controls autoplay muted playsinline loop
         style="width:100%;height:100%;object-fit:cover;display:block;">
       </video>`
-  } else if (isCarousel && post.children?.length) {
-    carouselSlides = post.children.map(
-      (c) => c.sizes?.large?.mediaUrl || c.sizes?.medium?.mediaUrl || c.mediaUrl || ''
+  } else if (isCarousel && post.children?.data?.length) {
+    carouselSlides = post.children.data.map(
+      (c) => c.media_url || c.thumbnail_url || ''
     )
     carouselIndex = 0
     renderCarouselSlide(0)
   } else {
-    const imgUrl = post.sizes?.large?.mediaUrl || post.sizes?.medium?.mediaUrl || post.thumbnailUrl || post.mediaUrl || ''
+    const imgUrl = post.media_url || post.thumbnail_url || ''
     lbMedia.innerHTML = `<img src="${imgUrl}" alt="Project photo" />`
   }
 
-  lbCaption.textContent = post.prunedCaption || post.caption || ''
+  lbCaption.textContent = post.caption || ''
   lbIgLink.href = post.permalink
   lightbox.hidden = false
   document.body.style.overflow = 'hidden'
@@ -245,17 +245,17 @@ async function loadGallery() {
   const grid = document.getElementById('ow-grid')
   if (!grid) return
   try {
-    const res = await fetch(BEHOLD_FEED)
+    const res = await fetch(IG_API)
     if (!res.ok) throw new Error('Feed error')
     const data = await res.json()
-    const posts = (data.posts || []).filter((p) => p.visibility === 'visible')
+    const posts = (data.data || []).filter((p) => p.media_type === 'VIDEO' ? p.thumbnail_url : (p.media_url || p.thumbnail_url))
 
     grid.innerHTML = posts
       .map((post) => {
-        const thumb = post.sizes?.medium?.mediaUrl || post.thumbnailUrl || post.mediaUrl || ''
-        const rawCaption = (post.prunedCaption || post.caption || '').trim()
+        const thumb = post.thumbnail_url || post.media_url || ''
+        const rawCaption = (post.caption || '').trim()
         const shortCaption = escAttr(rawCaption.length > 80 ? rawCaption.slice(0, 80) + '…' : rawCaption)
-        const isVideo = post.isReel || post.mediaType === 'VIDEO'
+        const isVideo = post.media_type === 'VIDEO'
         return `
           <button class="ow-grid-item" data-post-id="${post.id}" aria-label="View project: ${shortCaption || 'Window film project'}">
             <img src="${thumb}" alt="${shortCaption || 'Window film project'}" loading="lazy" decoding="async" />

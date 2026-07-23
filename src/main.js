@@ -837,22 +837,24 @@ contactForm?.addEventListener('submit', async (event) => {
   }
 })
 
-// --- Instagram feed via Behold.so ---
+// --- Instagram feed via Instagram Graph API ---
 async function loadInstagramFeed() {
   const grid = document.getElementById('instagram-feed-grid')
   if (!grid) return
   const escAttr = (s) => s.replace(/[<>&"]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]))
   try {
-    const res = await fetch('https://feeds.behold.so/NKKpEhT1FhdvHVI9zW6F')
+    const res = await fetch('/api/instagram?limit=18')
     if (!res.ok) throw new Error('Feed error')
     const data = await res.json()
-    const posts = (data.posts || []).filter((p) => p.visibility === 'visible').slice(0, 11)
+    const posts = (data.data || [])
+      .filter((p) => p.media_type === 'VIDEO' ? p.thumbnail_url : (p.media_url || p.thumbnail_url))
+      .slice(0, 11)
     const items = posts
       .map((post) => {
-        const thumb = post.sizes?.medium?.mediaUrl || post.thumbnailUrl || post.mediaUrl || ''
-        const raw = (post.prunedCaption || post.caption || '').trim()
+        const thumb = post.thumbnail_url || post.media_url || ''
+        const raw = (post.caption || '').trim()
         const caption = escAttr(raw.length > 90 ? raw.slice(0, 90) + '…' : raw)
-        const isVideo = post.isReel || post.mediaType === 'VIDEO'
+        const isVideo = post.media_type === 'VIDEO'
         return `<a class="ig-feed-item" href="${post.permalink}" target="_blank" rel="noopener noreferrer" aria-label="${caption || 'View on Instagram'}">
           <img src="${thumb}" alt="${caption || 'Solcrest Film Co project'}" loading="lazy" decoding="async" />
           ${isVideo ? '<span class="ig-reel-badge">&#9654; Reel</span>' : ''}
