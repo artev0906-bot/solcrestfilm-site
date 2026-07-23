@@ -1334,6 +1334,42 @@ h3 {
   background: rgba(169, 130, 79, 0.25);
 }
 
+/* Category showcase cards */
+.ig-cat-card {
+  cursor: pointer;
+}
+
+.ig-cat-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(20,14,10,0.88) 0%, rgba(0,0,0,0.1) 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 14px 12px;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.ig-cat-card:hover .ig-cat-overlay {
+  opacity: 1;
+}
+
+.ig-cat-label {
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.ig-cat-cta {
+  color: #A9824F;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
 /* Loading skeleton */
 .ig-feed-skeleton {
   aspect-ratio: 1 / 1;
@@ -2622,6 +2658,7 @@ h3 {
   }
 
   .projects-panel {
+    width: auto;
     margin: 16px;
     padding: 24px 20px;
   }
@@ -2909,6 +2946,7 @@ h3 {
   }
 
   .projects-panel {
+    width: auto;
     margin: 12px;
     padding: 24px 16px;
   }

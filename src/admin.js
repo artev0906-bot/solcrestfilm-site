@@ -139,6 +139,7 @@ async function loadData() {
         visible:  saved.visible  ?? false,
         caption:  saved.caption  ?? '',
         category: saved.category ?? '',
+        pinned:   saved.pinned   ?? false,
       }
     }
 
@@ -255,6 +256,25 @@ function renderGrid() {
 
   grid.innerHTML = filtered.map((post) => renderCard(post)).join('')
 
+  // Pin button
+  grid.querySelectorAll('.admin-pin-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.id
+      if (!localState[id]) localState[id] = { visible: false, caption: '', category: '', pinned: false }
+      const cat = localState[id].category
+      if (!cat) { showToast('Set a category first, then pin.', 'error'); return }
+      const wasPinned = localState[id].pinned
+      // Unpin all others in same category
+      for (const [otherId, st] of Object.entries(localState)) {
+        if (otherId !== id && st.category === cat) st.pinned = false
+      }
+      localState[id].pinned = !wasPinned
+      markUnsaved()
+      renderGrid()
+      renderStats()
+    })
+  })
+
   // Wire up events
   grid.querySelectorAll('.admin-toggle-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -291,9 +311,10 @@ function renderGrid() {
 }
 
 function renderCard(post) {
-  const state    = localState[post.id] || { visible: false, caption: '', category: '' }
+  const state    = localState[post.id] || { visible: false, caption: '', category: '', pinned: false }
   const thumb    = post.thumbnail_url || post.media_url || ''
   const isVisible = !!state.visible
+  const isPinned  = !!state.pinned
   const isVideo   = post.media_type === 'VIDEO'
   const isCarousel = post.media_type === 'CAROUSEL_ALBUM'
   const typeLabel = isVideo ? '▶ Reel' : isCarousel ? '⧉ Album' : ''
@@ -311,6 +332,9 @@ function renderCard(post) {
         ${typeLabel ? `<span class="admin-type-badge">${typeLabel}</span>` : ''}
         <button class="admin-toggle-btn" data-id="${post.id}" title="${isVisible ? 'Hide from site' : 'Show on site'}">
           ${eyeIcon(isVisible)}
+        </button>
+        <button class="admin-pin-btn ${isPinned ? 'is-pinned' : ''}" data-id="${post.id}" title="${isPinned ? 'Unpin from homepage' : 'Pin to homepage'}">
+          📌
         </button>
       </div>
       <div class="admin-card-body">
@@ -349,6 +373,7 @@ async function saveAll() {
       visible:   localState[p.id]?.visible   ?? false,
       caption:   localState[p.id]?.caption   ?? '',
       category:  localState[p.id]?.category  ?? '',
+      pinned:    localState[p.id]?.pinned    ?? false,
       permalink: p.permalink || '',
       thumb:     p.thumbnail_url || p.media_url || '',
       media_type: p.media_type || 'IMAGE',

@@ -362,6 +362,40 @@ body {
   fill: #fff;
 }
 
+/* Pin to homepage button */
+.admin-pin-btn {
+  position: absolute;
+  top: 8px;
+  left: 48px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: all 0.15s;
+  backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.6);
+  opacity: 0.5;
+  filter: grayscale(1);
+}
+
+.admin-pin-btn:hover {
+  transform: scale(1.1);
+  opacity: 1;
+  filter: grayscale(0);
+}
+
+.admin-pin-btn.is-pinned {
+  background: rgba(169,130,79,0.9);
+  opacity: 1;
+  filter: grayscale(0);
+  box-shadow: 0 0 0 2px #A9824F;
+}
+
 /* Card body */
 .admin-card-body {
   padding: 12px;

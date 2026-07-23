@@ -837,20 +837,68 @@ contactForm?.addEventListener('submit', async (event) => {
   }
 })
 
-// --- Instagram feed via Instagram Graph API ---
+// --- Instagram feed + pinned category showcase ---
+const CAT_LABELS = {
+  solar:        'Solar Control',
+  privacy:      'Privacy',
+  safety:       'Safety & Security',
+  antigraffiti: 'Anti-Graffiti',
+  decorative:   'Decorative',
+  smartfilm:    'Smart Film',
+}
+const CAT_ORDER = ['solar', 'privacy', 'safety', 'antigraffiti', 'decorative', 'smartfilm']
+
 async function loadInstagramFeed() {
   const grid = document.getElementById('instagram-feed-grid')
   if (!grid) return
-  const escAttr = (s) => s.replace(/[<>&"]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]))
+  const escAttr = (s) => (s || '').replace(/[<>&"]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]))
+
   try {
-    const res = await fetch('/api/instagram?limit=18')
-    if (!res.ok) throw new Error('Feed error')
-    const data = await res.json()
-    const posts = (data.data || [])
-      .filter((p) => p.media_type === 'VIDEO' ? p.thumbnail_url : (p.media_url || p.thumbnail_url))
-      .slice(0, 11)
-    const items = posts
-      .map((post) => {
+    const [igRes, curatedRes] = await Promise.all([
+      fetch('/api/instagram?limit=18'),
+      fetch('/api/curated').catch(() => ({ json: () => ({ posts: [] }) })),
+    ])
+    if (!igRes.ok) throw new Error('Feed error')
+    const [igData, curatedData] = await Promise.all([igRes.json(), curatedRes.json()])
+
+    const curated = curatedData.posts || []
+    const pinnedByCategory = {}
+    for (const p of curated) {
+      if (p.pinned && p.category) pinnedByCategory[p.category] = p
+    }
+    const hasPinned = Object.keys(pinnedByCategory).length > 0
+
+    if (hasPinned) {
+      // Show pinned category showcase
+      const cards = CAT_ORDER.map((cat) => {
+        const p = pinnedByCategory[cat]
+        if (!p) return ''
+        const thumb = p.thumb || ''
+        const label = CAT_LABELS[cat] || cat
+        const caption = escAttr(p.caption || label)
+        const href = `/our-work.html`
+        return `
+          <a class="ig-feed-item ig-cat-card" href="${href}" aria-label="${label}">
+            <img src="${thumb}" alt="${caption}" loading="lazy" decoding="async" />
+            <div class="ig-cat-overlay">
+              <span class="ig-cat-label">${label}</span>
+              <span class="ig-cat-cta">View Projects →</span>
+            </div>
+          </a>`
+      }).filter(Boolean).join('')
+
+      grid.innerHTML = cards
+      // Update heading
+      const h2 = grid.closest('.projects-panel')?.querySelector('h2')
+      const eyebrow = grid.closest('.projects-panel')?.querySelector('.eyebrow')
+      if (h2) h2.textContent = 'Our Work — By Service Type'
+      if (eyebrow) eyebrow.textContent = 'Featured Projects'
+    } else {
+      // Fallback: regular Instagram feed
+      const posts = (igData.data || [])
+        .filter((p) => p.media_type === 'VIDEO' ? p.thumbnail_url : (p.media_url || p.thumbnail_url))
+        .slice(0, 11)
+      const items = posts.map((post) => {
         const thumb = post.thumbnail_url || post.media_url || ''
         const raw = (post.caption || '').trim()
         const caption = escAttr(raw.length > 90 ? raw.slice(0, 90) + '…' : raw)
@@ -860,12 +908,12 @@ async function loadInstagramFeed() {
           ${isVideo ? '<span class="ig-reel-badge">&#9654; Reel</span>' : ''}
           <div class="ig-feed-overlay"><p>${caption}</p></div>
         </a>`
-      })
-      .join('')
-    const follow = `<a class="ig-feed-item ig-feed-follow" href="https://www.instagram.com/solcrestfilmco/" target="_blank" rel="noopener noreferrer" aria-label="Follow Solcrest Film Co on Instagram">
-      ${icon('instagram')}<span>@solcrestfilmco</span><small>Follow for more</small>
-    </a>`
-    grid.innerHTML = items + follow
+      }).join('')
+      const follow = `<a class="ig-feed-item ig-feed-follow" href="https://www.instagram.com/solcrestfilmco/" target="_blank" rel="noopener noreferrer" aria-label="Follow Solcrest Film Co on Instagram">
+        ${icon('instagram')}<span>@solcrestfilmco</span><small>Follow for more</small>
+      </a>`
+      grid.innerHTML = items + follow
+    }
   } catch (_) {
     grid.innerHTML = `<p class="ig-feed-error"><a href="https://www.instagram.com/solcrestfilmco/" target="_blank" rel="noopener noreferrer">View our latest projects on Instagram →</a></p>`
   }
