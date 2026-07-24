@@ -959,7 +959,7 @@ function animateCounters() {
   if (!items.length) return
   items.forEach((el) => {
     const target = parseInt(el.dataset.target, 10)
-    const duration = 1800
+    const duration = 2500
     const start = performance.now()
     const step = (now) => {
       const progress = Math.min((now - start) / duration, 1)
