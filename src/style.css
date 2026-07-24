@@ -2145,6 +2145,31 @@ h3 {
   object-fit: cover;
 }
 
+.areas-map-embed {
+  margin-top: 24px;
+}
+
+.areas-map-embed iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 450px;
+  border: 0;
+  border-radius: 18px;
+}
+
+.areas-map-caption {
+  margin: 12px 0 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .areas-map-embed iframe {
+    height: 340px;
+  }
+}
+
 .areas-grid span {
   display: flex;
   align-items: center;
