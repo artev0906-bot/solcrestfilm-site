@@ -546,7 +546,6 @@ document.querySelector('#app').innerHTML = `
               allowfullscreen
               title="Solcrest Film Co service area map"
             ></iframe>
-            <p class="areas-map-caption">Serving Los Angeles and surrounding areas</p>
           </div>
         </div>
       </section>
