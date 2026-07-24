@@ -269,32 +269,30 @@ async function loadGallery() {
   if (!grid) return
 
   try {
-    // Fetch IG posts + curated config in parallel
-    const [igData, curatedData] = await Promise.all([
-      fetch('/api/instagram?limit=100').then((r) => r.json()),
-      fetch(CURATED_API).then((r) => r.json()).catch(() => ({ posts: [] })),
-    ])
-
-    const igPosts    = igData.data || []
-    const curated    = curatedData.posts || []
+    // Single request to our own Redis cache — no Instagram API needed
+    const curatedData = await fetch(CURATED_API).then((r) => r.json()).catch(() => ({ posts: [] }))
+    const curated = curatedData.posts || []
 
     if (curated.length > 0) {
-      // Curated mode: show only visible curated posts, in curated order
-      const igMap = Object.fromEntries(igPosts.map((p) => [p.id, p]))
+      // Use stored media data directly from Redis
       allPosts = curated
-        .filter((c) => c.visible)
-        .map((c) => {
-          const ig = igMap[c.id]
-          if (!ig) return null
-          return {
-            ...ig,
-            siteCaption: c.caption || ig.caption || '',
-            category:    c.category || '',
-          }
-        })
-        .filter(Boolean)
+        .filter((c) => c.visible && c.thumb)
+        .map((c) => ({
+          id:           c.id,
+          media_url:    c.videoUrl || c.thumb,
+          thumbnail_url: c.thumb,
+          media_type:   c.media_type || 'IMAGE',
+          permalink:    c.permalink || '',
+          children:     c.children?.length
+            ? { data: c.children }
+            : null,
+          siteCaption:  c.caption || '',
+          category:     c.category || '',
+        }))
     } else {
-      // Fallback: show all IG posts (no curated config yet)
+      // Fallback: no curated data yet — fetch first page from Instagram
+      const igData = await fetch('/api/instagram?limit=100').then((r) => r.json())
+      const igPosts = igData.data || []
       allPosts = igPosts
         .filter((p) => p.media_type === 'VIDEO' ? p.thumbnail_url : (p.media_url || p.thumbnail_url))
         .map((p) => ({ ...p, siteCaption: p.caption || '', category: '' }))

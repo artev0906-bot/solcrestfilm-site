@@ -567,6 +567,12 @@ async function saveAll() {
       permalink: p.permalink || '',
       thumb:     p.thumbnail_url || p.media_url || '',
       media_type: p.media_type || 'IMAGE',
+      videoUrl:  p.media_type === 'VIDEO' ? (p.media_url || '') : '',
+      children:  p.children?.data?.map((c) => ({
+        id:         c.id,
+        media_url:  c.media_url || c.thumbnail_url || '',
+        media_type: c.media_type || 'IMAGE',
+      })) || [],
     }))
 
   try {
