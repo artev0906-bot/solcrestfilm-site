@@ -336,8 +336,8 @@ document.querySelector('#app').innerHTML = `
               <span class="hero-trust-label">Years in the Trade</span>
             </div>
             <div class="hero-trust-item">
-              <span class="hero-trust-value">LA</span>
-              <span class="hero-trust-label">Local Experts</span>
+              <span class="hero-trust-value">1,000+</span>
+              <span class="hero-trust-label">Installations Done</span>
             </div>
             <div class="hero-trust-item">
               <span class="hero-trust-value">200+</span>
@@ -374,6 +374,30 @@ document.querySelector('#app').innerHTML = `
           <div class="cta-row center-cta-row" style="margin-top:2rem;gap:12px;flex-wrap:wrap;justify-content:center;">
             <a class="button button-primary" href="/our-work.html">${icon('sparkles')}&nbsp;View All Projects</a>
             <a class="button button-secondary" href="https://www.instagram.com/solcrestfilmco/" target="_blank" rel="noopener noreferrer">${icon('instagram')}&nbsp;Follow @solcrestfilmco</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-section" aria-label="By the numbers">
+        <div class="stats-inner">
+          <div class="stats-item">
+            <span class="stats-value" data-target="1000">0</span><span class="stats-plus">+</span>
+            <span class="stats-label">Installations Completed</span>
+          </div>
+          <div class="stats-divider"></div>
+          <div class="stats-item">
+            <span class="stats-value" data-target="15">0</span><span class="stats-plus">+</span>
+            <span class="stats-label">Years of Experience</span>
+          </div>
+          <div class="stats-divider"></div>
+          <div class="stats-item">
+            <span class="stats-value" data-target="200">0</span><span class="stats-plus">+</span>
+            <span class="stats-label">Film Options Available</span>
+          </div>
+          <div class="stats-divider"></div>
+          <div class="stats-item">
+            <span class="stats-value" data-target="100">0</span><span class="stats-plus">%</span>
+            <span class="stats-label">Licensed &amp; Insured</span>
           </div>
         </div>
       </section>
@@ -928,5 +952,35 @@ async function loadInstagramFeed() {
   }
 }
 loadInstagramFeed()
+
+// ── Animated counters ───────────────────────────
+function animateCounters() {
+  const items = document.querySelectorAll('.stats-value[data-target]')
+  if (!items.length) return
+  items.forEach((el) => {
+    const target = parseInt(el.dataset.target, 10)
+    const duration = 1800
+    const start = performance.now()
+    const step = (now) => {
+      const progress = Math.min((now - start) / duration, 1)
+      const ease = 1 - Math.pow(1 - progress, 3)
+      el.textContent = Math.floor(ease * target).toLocaleString()
+      if (progress < 1) requestAnimationFrame(step)
+      else el.textContent = target.toLocaleString()
+    }
+    requestAnimationFrame(step)
+  })
+}
+
+const statsSection = document.querySelector('.stats-section')
+if (statsSection) {
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      animateCounters()
+      observer.disconnect()
+    }
+  }, { threshold: 0.3 })
+  observer.observe(statsSection)
+}
 
 mountChatWidget()
