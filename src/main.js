@@ -1000,6 +1000,7 @@ loadInstagramFeed()
     { before: '/before-partition.jpg', after: '/after-partition.jpg' },
     { before: '/before-3.jpg',         after: '/after-3.jpg' },
     { before: '/before-4.jpg',         after: '/after-4.jpg' },
+    { before: '/before-5.jpg',         after: '/after-5.jpg' },
   ]
   let current = 0
   let dragging = false
