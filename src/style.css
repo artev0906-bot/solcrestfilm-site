@@ -1396,6 +1396,108 @@ h3 {
   text-decoration: underline;
 }
 
+/* ── Before / After slider ─────────────────────── */
+.before-after-section {
+  background: #F6F2E9;
+  padding: 80px 24px;
+}
+
+.ba-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.ba-slider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: col-resize;
+  user-select: none;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+}
+
+.ba-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.ba-before-wrap {
+  position: absolute;
+  inset: 0;
+  width: 50%;
+  overflow: hidden;
+}
+
+.ba-before-wrap .ba-img {
+  width: auto;
+  min-width: 100%;
+  max-width: none;
+}
+
+.ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.ba-handle-line {
+  flex: 1;
+  width: 2px;
+  background: #fff;
+}
+
+.ba-handle-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  color: #3D2B1F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  flex-shrink: 0;
+}
+
+.ba-label {
+  position: absolute;
+  bottom: 16px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.ba-label-before {
+  left: 16px;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+}
+
+.ba-label-after {
+  right: 16px;
+  background: rgba(169,130,79,0.9);
+  color: #fff;
+}
+
 /* ── Stats section ──────────────────────────────── */
 .stats-section {
   background: #1a1510;

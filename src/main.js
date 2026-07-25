@@ -378,6 +378,31 @@ document.querySelector('#app').innerHTML = `
         </div>
       </section>
 
+      <section class="before-after-section" aria-label="Before and after">
+        <div class="ba-inner">
+          <div class="section-heading" style="text-align:center;margin-bottom:2.5rem;">
+            <p class="eyebrow">Transformation</p>
+            <h2>See the difference window film makes.</h2>
+            <p>Drag the slider to compare before and after installation.</p>
+          </div>
+          <div class="ba-slider" id="ba-slider">
+            <img class="ba-img ba-after" src="/after-tinting.jpg" alt="After window film installation" draggable="false" />
+            <div class="ba-before-wrap" id="ba-before-wrap">
+              <img class="ba-img ba-before" src="/before-tinting.jpg" alt="Before window film installation" draggable="false" />
+            </div>
+            <div class="ba-handle" id="ba-handle">
+              <div class="ba-handle-line"></div>
+              <div class="ba-handle-circle">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 10l-4 0M6 10L3 7M6 10L3 13M14 10l4 0M14 10l3-3M14 10l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </div>
+              <div class="ba-handle-line"></div>
+            </div>
+            <span class="ba-label ba-label-before">Before</span>
+            <span class="ba-label ba-label-after">After</span>
+          </div>
+        </div>
+      </section>
+
       <section class="stats-section" aria-label="By the numbers">
         <div class="stats-inner">
           <div class="stats-item">
@@ -952,6 +977,30 @@ async function loadInstagramFeed() {
   }
 }
 loadInstagramFeed()
+
+// ── Before / After slider ───────────────────────
+;(function () {
+  const slider = document.getElementById('ba-slider')
+  const wrap   = document.getElementById('ba-before-wrap')
+  const handle = document.getElementById('ba-handle')
+  if (!slider || !wrap || !handle) return
+
+  let dragging = false
+
+  function setPos(x) {
+    const rect = slider.getBoundingClientRect()
+    let pct = Math.min(Math.max((x - rect.left) / rect.width, 0.02), 0.98)
+    wrap.style.width   = (pct * 100) + '%'
+    handle.style.left  = (pct * 100) + '%'
+  }
+
+  slider.addEventListener('mousedown',  (e) => { dragging = true; setPos(e.clientX) })
+  slider.addEventListener('touchstart', (e) => { dragging = true; setPos(e.touches[0].clientX) }, { passive: true })
+  window.addEventListener('mousemove',  (e) => { if (dragging) setPos(e.clientX) })
+  window.addEventListener('touchmove',  (e) => { if (dragging) setPos(e.touches[0].clientX) }, { passive: true })
+  window.addEventListener('mouseup',    () => { dragging = false })
+  window.addEventListener('touchend',   () => { dragging = false })
+})()
 
 // ── Animated counters ───────────────────────────
 function animateCounters() {
