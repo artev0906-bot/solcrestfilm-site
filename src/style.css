@@ -1498,6 +1498,43 @@ h3 {
   color: #fff;
 }
 
+.ba-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.ba-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #3D2B1F;
+  background: transparent;
+  color: #3D2B1F;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+.ba-nav-btn:hover {
+  background: #3D2B1F;
+  color: #fff;
+}
+
+.ba-counter {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(61,43,31,0.55);
+  letter-spacing: 0.05em;
+  min-width: 40px;
+  text-align: center;
+}
+
 /* ── Stats section ──────────────────────────────── */
 .stats-section {
   background: #1a1510;

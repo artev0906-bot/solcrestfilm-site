@@ -75,6 +75,7 @@ const tabsHTML = `
 const galleryHTML = `
   <section class="ow-gallery-section">
     <div class="ow-gallery-inner">
+      <p class="ow-gallery-label">A selection of our recent projects</p>
       ${tabsHTML}
       <div class="ow-gallery-grid" id="ow-grid">
         ${Array(12).fill('<div class="ow-skeleton"></div>').join('')}

@@ -383,12 +383,12 @@ document.querySelector('#app').innerHTML = `
           <div class="section-heading" style="text-align:center;margin-bottom:2.5rem;">
             <p class="eyebrow">Transformation</p>
             <h2>See the difference window film makes.</h2>
-            <p>Drag the slider to compare before and after installation.</p>
+            <p>Drag the slider to compare. Use arrows to see more projects.</p>
           </div>
           <div class="ba-slider" id="ba-slider">
-            <img class="ba-img ba-after" src="/after-tinting.jpg" alt="After window film installation" draggable="false" />
+            <img class="ba-img ba-after" id="ba-after-img" src="/after-tinting.jpg" alt="After window film installation" draggable="false" />
             <div class="ba-before-wrap" id="ba-before-wrap">
-              <img class="ba-img ba-before" src="/before-tinting.jpg" alt="Before window film installation" draggable="false" />
+              <img class="ba-img ba-before" id="ba-before-img" src="/before-tinting.jpg" alt="Before window film installation" draggable="false" />
             </div>
             <div class="ba-handle" id="ba-handle">
               <div class="ba-handle-line"></div>
@@ -399,6 +399,11 @@ document.querySelector('#app').innerHTML = `
             </div>
             <span class="ba-label ba-label-before">Before</span>
             <span class="ba-label ba-label-after">After</span>
+          </div>
+          <div class="ba-nav">
+            <button class="ba-nav-btn" id="ba-prev" aria-label="Previous">&#8592;</button>
+            <span class="ba-counter" id="ba-counter">1 / 2</span>
+            <button class="ba-nav-btn" id="ba-next" aria-label="Next">&#8594;</button>
           </div>
         </div>
       </section>
@@ -980,19 +985,41 @@ loadInstagramFeed()
 
 // ── Before / After slider ───────────────────────
 ;(function () {
-  const slider = document.getElementById('ba-slider')
-  const wrap   = document.getElementById('ba-before-wrap')
-  const handle = document.getElementById('ba-handle')
+  const slider    = document.getElementById('ba-slider')
+  const wrap      = document.getElementById('ba-before-wrap')
+  const handle    = document.getElementById('ba-handle')
+  const beforeImg = document.getElementById('ba-before-img')
+  const afterImg  = document.getElementById('ba-after-img')
+  const prevBtn   = document.getElementById('ba-prev')
+  const nextBtn   = document.getElementById('ba-next')
+  const counter   = document.getElementById('ba-counter')
   if (!slider || !wrap || !handle) return
 
+  const pairs = [
+    { before: '/before-tinting.jpg',   after: '/after-tinting.jpg' },
+    { before: '/before-partition.jpg', after: '/after-partition.jpg' },
+  ]
+  let current = 0
   let dragging = false
 
   function setPos(x) {
     const rect = slider.getBoundingClientRect()
-    let pct = Math.min(Math.max((x - rect.left) / rect.width, 0.02), 0.98)
-    wrap.style.width   = (pct * 100) + '%'
-    handle.style.left  = (pct * 100) + '%'
+    const pct = Math.min(Math.max((x - rect.left) / rect.width, 0.02), 0.98)
+    wrap.style.width  = (pct * 100) + '%'
+    handle.style.left = (pct * 100) + '%'
   }
+
+  function loadPair(idx) {
+    current = idx
+    beforeImg.src = pairs[idx].before
+    afterImg.src  = pairs[idx].after
+    wrap.style.width  = '50%'
+    handle.style.left = '50%'
+    counter.textContent = `${idx + 1} / ${pairs.length}`
+  }
+
+  prevBtn.addEventListener('click', () => loadPair((current - 1 + pairs.length) % pairs.length))
+  nextBtn.addEventListener('click', () => loadPair((current + 1) % pairs.length))
 
   slider.addEventListener('mousedown',  (e) => { dragging = true; setPos(e.clientX) })
   slider.addEventListener('touchstart', (e) => { dragging = true; setPos(e.touches[0].clientX) }, { passive: true })
