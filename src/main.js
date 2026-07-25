@@ -1011,10 +1011,16 @@ loadInstagramFeed()
   beforeImg.src = pairs[0].before
   afterImg.src  = pairs[0].after
 
-  // Preload all images so switching is instant
-  pairs.forEach(({ before, after }) => {
-    ;[before, after].forEach((src) => { const img = new Image(); img.src = src })
-  })
+  // Preload only the next pair up front; rest load lazily as the user navigates
+  const preloaded = new Set()
+  function preloadPair(idx) {
+    const key = ((idx % pairs.length) + pairs.length) % pairs.length
+    if (preloaded.has(key)) return
+    preloaded.add(key)
+    ;[pairs[key].before, pairs[key].after].forEach((src) => { const img = new Image(); img.src = src })
+  }
+  preloadPair(0)
+  preloadPair(1)
 
   function setPos(x) {
     const rect = slider.getBoundingClientRect()
@@ -1036,8 +1042,16 @@ loadInstagramFeed()
     }, 150)
   }
 
-  prevBtn.addEventListener('click', () => loadPair((current - 1 + pairs.length) % pairs.length))
-  nextBtn.addEventListener('click', () => loadPair((current + 1) % pairs.length))
+  prevBtn.addEventListener('click', () => {
+    const idx = (current - 1 + pairs.length) % pairs.length
+    loadPair(idx)
+    preloadPair(idx - 1)
+  })
+  nextBtn.addEventListener('click', () => {
+    const idx = (current + 1) % pairs.length
+    loadPair(idx)
+    preloadPair(idx + 1)
+  })
 
   slider.addEventListener('mousedown',  (e) => { dragging = true; setPos(e.clientX) })
   slider.addEventListener('touchstart', (e) => { dragging = true; setPos(e.touches[0].clientX) }, { passive: true })
