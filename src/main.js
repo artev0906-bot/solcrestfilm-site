@@ -911,6 +911,20 @@ const CAT_LABELS = {
 }
 const CAT_ORDER = ['solar', 'privacy', 'safety', 'antigraffiti', 'decorative', 'smartfilm']
 
+// Instagram/Facebook CDN photos come back at full resolution (often 1000px+)
+// but the feed grid only ever displays them at ~170px — route through Vercel's
+// image optimizer so we don't ship 20x more pixels than we render.
+function igThumb(url) {
+  if (!url) return ''
+  try {
+    const u = new URL(url)
+    if (/\.(cdninstagram\.com|fbcdn\.net)$/.test(u.hostname)) {
+      return `/_vercel/image?url=${encodeURIComponent(url)}&w=384&q=75`
+    }
+  } catch {}
+  return url
+}
+
 async function loadInstagramFeed() {
   const grid = document.getElementById('instagram-feed-grid')
   if (!grid) return
@@ -936,7 +950,7 @@ async function loadInstagramFeed() {
       const cards = CAT_ORDER.map((cat) => {
         const p = pinnedByCategory[cat]
         if (!p) return ''
-        const thumb = p.thumb || ''
+        const thumb = igThumb(p.thumb || '')
         const label = CAT_LABELS[cat] || cat
         const caption = escAttr(p.caption || label)
         const href = `/our-work.html`
@@ -962,7 +976,7 @@ async function loadInstagramFeed() {
         .filter((p) => p.media_type === 'VIDEO' ? p.thumbnail_url : (p.media_url || p.thumbnail_url))
         .slice(0, 11)
       const items = posts.map((post) => {
-        const thumb = post.thumbnail_url || post.media_url || ''
+        const thumb = igThumb(post.thumbnail_url || post.media_url || '')
         const raw = (post.caption || '').trim()
         const caption = escAttr(raw.length > 90 ? raw.slice(0, 90) + '…' : raw)
         const isVideo = post.media_type === 'VIDEO'
