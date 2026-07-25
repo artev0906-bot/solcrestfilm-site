@@ -881,9 +881,11 @@ contactForm?.addEventListener('submit', async (event) => {
   submitButton?.setAttribute('disabled', 'disabled')
 
   try {
-    const response = await fetch(business.n8nWebhook, {
+    const formObj = Object.fromEntries(formData.entries())
+    const response = await fetch('/api/contact', {
       method: 'POST',
-      body: formData,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formObj),
     })
 
     if (!response.ok) {
