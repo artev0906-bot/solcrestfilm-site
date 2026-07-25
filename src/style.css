@@ -1398,13 +1398,19 @@ h3 {
 
 /* ── Before / After slider ─────────────────────── */
 .before-after-section {
-  background: #F6F2E9;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.75), transparent 42%),
+    linear-gradient(135deg, #F7F2E9 0%, #E9DFD0 100%);
   padding: 80px 24px;
 }
 
 .ba-inner {
   max-width: 900px;
   margin: 0 auto;
+  padding: 40px 32px;
+  background: rgba(250, 246, 238, 0.94);
+  border: 1px solid rgba(170, 133, 72, 0.28);
+  box-shadow: 0 24px 60px rgba(37, 27, 17, 0.16);
 }
 
 .ba-slider {
