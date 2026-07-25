@@ -1006,6 +1006,11 @@ loadInstagramFeed()
   let current = 0
   let dragging = false
 
+  // Preload all images so switching is instant
+  pairs.forEach(({ before, after }) => {
+    ;[before, after].forEach((src) => { const img = new Image(); img.src = src })
+  })
+
   function setPos(x) {
     const rect = slider.getBoundingClientRect()
     const pct = Math.min(Math.max((x - rect.left) / rect.width, 0.02), 0.98)
@@ -1015,11 +1020,15 @@ loadInstagramFeed()
 
   function loadPair(idx) {
     current = idx
-    beforeImg.src = pairs[idx].before
-    afterImg.src  = pairs[idx].after
-    wrap.style.width  = '50%'
-    handle.style.left = '50%'
-    counter.textContent = `${idx + 1} / ${pairs.length}`
+    slider.style.opacity = '0'
+    setTimeout(() => {
+      beforeImg.src = pairs[idx].before
+      afterImg.src  = pairs[idx].after
+      wrap.style.width  = '50%'
+      handle.style.left = '50%'
+      counter.textContent = `${idx + 1} / ${pairs.length}`
+      slider.style.opacity = '1'
+    }, 150)
   }
 
   prevBtn.addEventListener('click', () => loadPair((current - 1 + pairs.length) % pairs.length))

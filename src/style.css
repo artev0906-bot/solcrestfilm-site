@@ -1416,6 +1416,7 @@ h3 {
   cursor: col-resize;
   user-select: none;
   box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+  transition: opacity 0.15s ease;
 }
 
 .ba-img {
