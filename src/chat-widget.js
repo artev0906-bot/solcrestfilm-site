@@ -229,11 +229,23 @@ export function mountChatWidget() {
     }
 
     const data = Object.fromEntries(new FormData(leadForm).entries())
-    // TODO: wire up to the real intake endpoint once n8n is configured for the chat widget.
-    console.log('[chat-widget] lead submitted (stub, not sent anywhere yet):', data)
+    data.source = 'chat-widget'
 
     leadForm.reset()
-    leadFormStatus.textContent = "Thanks! We'll get back to you soon."
-    addBubble("Thanks — we'll get back to you soon!", 'assistant')
+    leadFormStatus.textContent = "Sending…"
+
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then((r) => {
+        if (!r.ok) throw new Error('Failed')
+        leadFormStatus.textContent = "Thanks! We'll get back to you soon."
+        addBubble("Thanks — we'll get back to you soon!", 'assistant')
+      })
+      .catch(() => {
+        leadFormStatus.textContent = 'Something went wrong. Please call or text us directly.'
+      })
   })
 }

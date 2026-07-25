@@ -264,6 +264,7 @@ document.addEventListener('keydown', (e) => {
 // ── Gallery ───────────────────────────────
 let allPosts = []   // merged posts for display
 let activeFilter = 'all'
+let postMap = {}    // id → post, updated on each render
 
 async function loadGallery() {
   const grid = document.getElementById('ow-grid')
@@ -342,14 +343,8 @@ function renderGallery() {
     `
   }).join('')
 
-  // Store posts for lightbox
-  const postMap = Object.fromEntries(filtered.map((p) => [p.id, p]))
-  grid.addEventListener('click', (e) => {
-    const btn = e.target.closest('.ow-grid-item')
-    if (!btn) return
-    const post = postMap[btn.dataset.postId]
-    if (post) openLightbox(post)
-  })
+  // Update post lookup map for the lightbox click handler
+  postMap = Object.fromEntries(filtered.map((p) => [p.id, p]))
 }
 
 function bindTabs() {
@@ -374,6 +369,17 @@ function bindTabs() {
       })
       renderGallery()
     })
+  })
+}
+
+// Single delegated click listener — attached once, uses the shared postMap
+const grid = document.getElementById('ow-grid')
+if (grid) {
+  grid.addEventListener('click', (e) => {
+    const btn = e.target.closest('.ow-grid-item')
+    if (!btn) return
+    const post = postMap[btn.dataset.postId]
+    if (post) openLightbox(post)
   })
 }
 
