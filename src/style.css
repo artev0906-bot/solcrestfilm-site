@@ -1842,6 +1842,12 @@ h3 {
 
 /* Serve smaller section-background images on mobile — same crop, ~800px wide instead of ~1800px */
 @media (max-width: 768px) {
+  /* Center 60% crop of the hero — the sides are never visible under
+     background-size: cover at mobile widths, so this is pure byte savings */
+  .hero-block {
+    background-image: url('/hero-building-sunset-mobile.jpg');
+  }
+
   .fast-estimate-bg {
     background-image: url('/estimate-bg2-mobile.jpg');
   }

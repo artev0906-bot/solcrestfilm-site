@@ -144,7 +144,7 @@ const certifications = [
   { iconName: 'mapPin', label: 'Los Angeles Local' },
 ]
 
-const pinIcon = '<img class="pin-icon" src="/pin-gold.png" alt="" />'
+const pinIcon = '<img class="pin-icon" src="/pin-gold.png" alt="" width="190" height="697" />'
 
 const renderCertifications = () =>
   certifications
@@ -274,6 +274,8 @@ document.querySelector('#app').innerHTML = `
           class="brand-logo"
           src="/solcrest-logo-header-dark.png"
           alt="Solcrest Film Co premium window film Los Angeles logo"
+          width="573"
+          height="202"
         />
       </a>
 
@@ -582,7 +584,7 @@ document.querySelector('#app').innerHTML = `
               <p class="eyebrow">Service Areas</p>
               <h2>Serving Los Angeles and surrounding premium residential and commercial markets.</h2>
             </div>
-            <img class="areas-heading-icon" src="/areas-diamond-icon.png" alt="" />
+            <img class="areas-heading-icon" src="/areas-diamond-icon.png" alt="" width="400" height="272" />
           </div>
           <div class="areas-layout">
             <div class="areas-map-slot">
@@ -714,6 +716,8 @@ document.querySelector('#app').innerHTML = `
             class="footer-logo"
             src="/solcrest-logo-header-dark.png"
             alt="Solcrest Film Co premium window film Los Angeles logo"
+            width="573"
+            height="202"
           />
           <p class="footer-tagline">Premium Architectural Window Film Installation in Los Angeles</p>
         </div>
