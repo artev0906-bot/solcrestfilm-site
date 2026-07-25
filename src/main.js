@@ -998,6 +998,7 @@ loadInstagramFeed()
   const pairs = [
     { before: '/before-tinting.jpg',   after: '/after-tinting.jpg' },
     { before: '/before-partition.jpg', after: '/after-partition.jpg' },
+    { before: '/before-3.jpg',         after: '/after-3.jpg' },
   ]
   let current = 0
   let dragging = false
