@@ -2827,6 +2827,10 @@ h3 {
     background: var(--bg-surface-alt);
   }
 
+  .nav-dropdown-toggle {
+    width: 100%;
+  }
+
   .topbar-on-photo .nav a,
   .topbar-on-photo .nav-dropdown-toggle,
   .topbar-on-photo .nav-dropdown-menu a {
