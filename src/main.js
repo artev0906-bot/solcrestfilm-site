@@ -942,7 +942,7 @@ async function loadInstagramFeed() {
         const href = `/our-work.html`
         return `
           <a class="ig-feed-item ig-cat-card" href="${href}" aria-label="${label}">
-            <img src="${thumb}" alt="${caption}" loading="lazy" decoding="async" />
+            <img src="${thumb}" alt="${caption}" decoding="async" />
             <div class="ig-cat-overlay">
               <span class="ig-cat-label">${label}</span>
               <span class="ig-cat-cta">View Projects →</span>
@@ -967,7 +967,7 @@ async function loadInstagramFeed() {
         const caption = escAttr(raw.length > 90 ? raw.slice(0, 90) + '…' : raw)
         const isVideo = post.media_type === 'VIDEO'
         return `<a class="ig-feed-item" href="${post.permalink}" target="_blank" rel="noopener noreferrer" aria-label="${caption || 'View on Instagram'}">
-          <img src="${thumb}" alt="${caption || 'Solcrest Film Co project'}" loading="lazy" decoding="async" />
+          <img src="${thumb}" alt="${caption || 'Solcrest Film Co project'}" decoding="async" />
           ${isVideo ? '<span class="ig-reel-badge">&#9654; Reel</span>' : ''}
           <div class="ig-feed-overlay"><p>${caption}</p></div>
         </a>`
