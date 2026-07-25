@@ -656,7 +656,7 @@ document.querySelector('#app').innerHTML = `
           >
             <input type="hidden" name="_subject" value="Solcrest Film Co website estimate request" />
             <input type="hidden" name="_replyto" value="" />
-            <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" />
+            <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
             <div class="form-grid two-column-form">
               <label>
@@ -881,11 +881,9 @@ contactForm?.addEventListener('submit', async (event) => {
   submitButton?.setAttribute('disabled', 'disabled')
 
   try {
-    const formObj = Object.fromEntries(formData.entries())
     const response = await fetch('/api/contact', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formObj),
+      body: formData,
     })
 
     if (!response.ok) {
@@ -1007,6 +1005,11 @@ loadInstagramFeed()
   ]
   let current = 0
   let dragging = false
+
+  // Initialize counter and first pair
+  counter.textContent = `1 / ${pairs.length}`
+  beforeImg.src = pairs[0].before
+  afterImg.src  = pairs[0].after
 
   // Preload all images so switching is instant
   pairs.forEach(({ before, after }) => {

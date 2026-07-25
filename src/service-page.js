@@ -330,7 +330,7 @@ document.querySelector('#app').innerHTML = `
         >
           <input type="hidden" name="_subject" value="Solcrest Film Co website estimate request" />
           <input type="hidden" name="_replyto" value="" />
-          <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" />
+          <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <div class="form-grid two-column-form">
             <label>
@@ -533,7 +533,7 @@ contactForm?.addEventListener('submit', async (event) => {
   submitButton?.setAttribute('disabled', 'disabled')
 
   try {
-    const response = await fetch(business.n8nWebhook, {
+    const response = await fetch('/api/contact', {
       method: 'POST',
       body: formData,
     })
