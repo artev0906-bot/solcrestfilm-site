@@ -31,10 +31,14 @@ const serviceOptions = [
 const servicePages = [
   {
     file: 'residential-window-film-los-angeles.html',
-    eyebrow: 'Residential Window Film',
-    title: 'Premium Residential Window Film in Los Angeles',
+    eyebrow: 'Premium Residential Window Film',
+    title: 'Residential Window Film in Los Angeles',
     description:
       'Reduce heat, glare, UV exposure and privacy issues for homes, bedrooms, bathrooms and living spaces across Los Angeles.',
+    heroImage: {
+      src: '/residential-hero.jpg',
+      alt: 'Solar control window film installed on the glass of a Los Angeles home',
+    },
     problemsTitle: 'Most residential film projects start with comfort and privacy problems.',
     problems: [
       'Rooms that overheat in the afternoon',
@@ -42,12 +46,78 @@ const servicePages = [
       'Too much visibility from the outside',
       'UV exposure affecting floors, furniture and finishes',
     ],
+    filmTypesTitle: 'Types of residential window film we install',
+    filmTypes: [
+      ['Heat Control Film', 'Nano-ceramic and solar-control films that cut heat and glare while keeping rooms bright and views clear.'],
+      ['Clear UV Film', 'Nearly invisible protection that blocks the UV exposure behind faded floors, furniture and artwork.'],
+      ['Daytime Privacy Film', 'Reflective films that make it hard to see in from the street during the day without blocking your view out.'],
+      ['Frosted & Decorative Film', 'Frosted, gradient and patterned finishes for bathrooms, entry glass, sidelites and interior doors.'],
+      ['Safety Film for Doors & Ground-Floor Windows', 'Thicker film that helps hold shattered glass together on sliding doors and accessible windows.'],
+      ['Exterior Film for Difficult Glass', 'Exterior-rated films for skylights and glass that cannot be treated from the inside, where the glass type allows it.'],
+    ],
+    chooserTitle: 'Which residential window film is right for your home?',
+    chooser: [
+      ['Reduce heat while keeping natural light', 'Light nano-ceramic film'],
+      ['Cut glare as much as possible', 'Darker solar-control film'],
+      ['Privacy during the day', 'Reflective privacy film'],
+      ['Privacy day and night', 'Frosted or decorative film'],
+      ['Protect interiors from UV fading', 'Clear or lightly tinted UV film'],
+      ['Hold broken glass together', 'Safety and security film'],
+    ],
     solutionsTitle: 'What residential film can solve',
     solutions: [
       ['Reduce heat and glare', 'Help sun-heavy rooms feel more balanced and more usable during the brightest parts of the day.'],
       ['Improve privacy', 'Create a more protected feel for street-facing windows, bathrooms, and exposed glass areas.'],
       ['Protect interiors', 'Reduce UV exposure that can contribute to fading on floors, furniture, and interior finishes.'],
       ['Keep a clean finish', 'Maintain a premium look without bulky window treatments.'],
+    ],
+    projectsTitle: 'Recent residential projects',
+    projects: [
+      {
+        img: '/residential-project-1.jpg',
+        alt: 'Solar control film on west-facing living room windows in Woodland Hills',
+        area: 'Woodland Hills',
+        tag: 'Heat Reduction',
+        body: 'Light nano-ceramic film installed on west-facing living-room windows to reduce afternoon heat without heavily darkening the room.',
+      },
+      {
+        img: '/residential-project-2.jpg',
+        alt: 'Exterior heat reduction film on overhead glazing in Beverly Hills',
+        area: 'Beverly Hills',
+        tag: 'Skylight Film',
+        body: 'Exterior film installed to reduce heat and glare from overhead glazing. Skylight installs depend on access and glass type — we confirm limitations and warranty coverage before any work starts.',
+      },
+    ],
+    processTitle: 'How a residential installation works',
+    processSteps: [
+      ['Send photos & goals', 'Share photos, rough measurements, your ZIP and what you want to fix — heat, privacy, fading or safety.'],
+      ['Get a recommendation', 'We suggest specific films based on your glass type, sun exposure and the look you want.'],
+      ['Clean installation', 'Most homes are completed in a few hours to one day, with furniture and floors protected.'],
+      ['Curing & aftercare', 'Film fully cures over days to a few weeks; we explain what to expect and how to care for it.'],
+    ],
+    faqTitle: 'Residential window film questions',
+    faq: [
+      ['Will residential window film make my home dark?', 'Not necessarily. Light nano-ceramic films reduce heat and UV with very little visible darkening. Darker films are available when maximum glare control is the goal — we help you pick the light level that fits each room.'],
+      ['Does privacy film work at night?', 'Daytime reflective privacy film depends on it being brighter outside than inside, so its effect reverses at night with interior lights on. For privacy day and night, frosted or decorative film is the more reliable choice.'],
+      ['Can window film damage dual-pane glass?', 'The wrong film on dual-pane (insulated) glass can create thermal stress. We check your glass type first and only install films rated for it, which is one of the main reasons to use a professional installer.'],
+      ['What film works best for heat reduction?', 'Nano-ceramic films offer the best balance of heat rejection and natural light. If glare is the bigger problem, a darker solar-control film cuts more visible light as well as heat.'],
+      ['How long does installation take?', 'Most homes take from a few hours to one day depending on the number and size of windows and access. We confirm the timeline after seeing photos and measurements.'],
+      ['Can film be installed on skylights?', 'Often yes, usually with exterior-rated film. It depends on access, the glass type and its condition — we confirm what is possible, along with any limitations and warranty coverage, before work starts.'],
+      ['How long does residential window film last?', 'Quality architectural films typically last 10–15+ years on interior surfaces. Exterior films have shorter lifespans, which we explain up front for skylight and exterior projects.'],
+      ['Can the film be removed later?', 'Yes. Professionally installed film can be removed without damaging the glass, and old or failing film can be replaced with a newer product.'],
+    ],
+    areasNote:
+      'We install residential window film throughout Los Angeles and surrounding areas, including Beverly Hills, Glendale, Burbank, Woodland Hills, West Hills, Porter Ranch and nearby communities.',
+    formIntro:
+      'Send photos, approximate measurements and your ZIP code. We’ll recommend suitable options based on heat, privacy, appearance and glass type.',
+    serviceOptions: [
+      'Heat Control',
+      'UV Protection',
+      'Privacy',
+      'Decorative Film',
+      'Safety Film',
+      'Skylight Film',
+      'Not Sure',
     ],
   },
   {
@@ -182,12 +252,12 @@ const servicesDropdown = serviceMenuItems
   .map((item) => `<a href="${item.href}">${item.label}</a>`)
   .join('')
 
-const serviceSelectOptions = serviceOptions
-  .map((option) => `<option value="${option}">${option}</option>`)
-  .join('')
-
 const route = window.location.pathname.split('/').pop() || 'residential-window-film-los-angeles.html'
 const page = servicePages.find((item) => item.file === route) ?? servicePages[0]
+
+const serviceSelectOptions = (page.serviceOptions ?? serviceOptions)
+  .map((option) => `<option value="${option}">${option}</option>`)
+  .join('')
 
 const projectImageByPage = {
   'residential-window-film-los-angeles.html': {
@@ -221,6 +291,170 @@ const projectImageByPage = {
 }
 
 const pageImage = projectImageByPage[page.file]
+
+// Optional deep-content sections (rendered only when the page config provides them)
+const filmTypesSection = page.filmTypes
+  ? `
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Film types</p>
+          <h2>${page.filmTypesTitle}</h2>
+        </div>
+        <div class="card-grid two-up">
+          ${page.filmTypes
+            .map(
+              ([title, body]) => `
+                <article class="service-card">
+                  <h3>${title}</h3>
+                  <p>${body}</p>
+                </article>
+              `,
+            )
+            .join('')}
+        </div>
+      </section>
+    `
+  : ''
+
+const chooserSection = page.chooser
+  ? `
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Choosing a film</p>
+          <h2>${page.chooserTitle}</h2>
+        </div>
+        <div class="chooser-table-wrap">
+          <table class="chooser-table">
+            <thead>
+              <tr><th scope="col">Your goal</th><th scope="col">Recommended film</th></tr>
+            </thead>
+            <tbody>
+              ${page.chooser
+                .map(([goal, film]) => `<tr><td>${goal}</td><td>${film}</td></tr>`)
+                .join('')}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    `
+  : ''
+
+const projectsSection = page.projects
+  ? `
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Real projects</p>
+          <h2>${page.projectsTitle}</h2>
+        </div>
+        <div class="card-grid two-up project-mini-grid">
+          ${page.projects
+            .map(
+              (project) => `
+                <article class="service-card project-mini">
+                  <img src="${project.img}" alt="${project.alt}" decoding="async" width="800" height="600" />
+                  <div class="project-mini-body">
+                    <p class="project-mini-meta"><strong>${project.area}</strong> — ${project.tag}</p>
+                    <p>${project.body}</p>
+                  </div>
+                </article>
+              `,
+            )
+            .join('')}
+        </div>
+      </section>
+    `
+  : ''
+
+const processSection = page.processSteps
+  ? `
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Process</p>
+          <h2>${page.processTitle}</h2>
+        </div>
+        <div class="card-grid two-up">
+          ${page.processSteps
+            .map(
+              ([title, body], index) => `
+                <article class="service-card">
+                  <h3><span class="process-step-num">${index + 1}.</span> ${title}</h3>
+                  <p>${body}</p>
+                </article>
+              `,
+            )
+            .join('')}
+        </div>
+      </section>
+    `
+  : ''
+
+const faqSection = page.faq
+  ? `
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">FAQ</p>
+          <h2>${page.faqTitle}</h2>
+        </div>
+        <div class="faq-list">
+          ${page.faq
+            .map(
+              ([question, answer], index) => `
+                <details${index === 0 ? ' open' : ''}><summary>${question}</summary><p>${answer}</p></details>
+              `,
+            )
+            .join('')}
+        </div>
+      </section>
+    `
+  : ''
+
+const areasSection = page.areasNote
+  ? `
+      <section class="section service-areas-note">
+        <p>${page.areasNote}</p>
+      </section>
+    `
+  : ''
+
+// Legacy filler section only for pages without the deeper content
+const proofSection = page.filmTypes
+  ? ''
+  : `
+      <section class="section service-proof-section">
+        <div class="section-heading">
+          <p class="eyebrow">Project fit</p>
+          <h2>How this service supports premium Los Angeles properties.</h2>
+          <p>${pageImage.text}</p>
+        </div>
+      </section>
+    `
+
+const heroSection = page.heroImage
+  ? `
+      <section class="section service-hero service-hero-split">
+        <div class="service-hero-copy">
+          <p class="eyebrow">${page.eyebrow}</p>
+          <h1>${page.title}</h1>
+          <p class="hero-text service-hero-text">${page.description}</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contact">Get a Fast Estimate</a>
+            <a class="button button-secondary" href="${business.phoneHref}">Call / Text Now</a>
+          </div>
+        </div>
+        <img class="service-hero-photo" src="${page.heroImage.src}" alt="${page.heroImage.alt}" fetchpriority="high" width="900" height="1125" />
+      </section>
+    `
+  : `
+      <section class="section service-hero">
+        <p class="eyebrow">${page.eyebrow}</p>
+        <h1>${page.title}</h1>
+        <p class="hero-text service-hero-text">${page.description}</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="/#contact">Get a Fast Estimate</a>
+          <a class="button button-secondary" href="${business.phoneHref}">Call / Text Now</a>
+        </div>
+      </section>
+    `
 
 document.querySelector('#app').innerHTML = `
   <div class="site-shell service-page-shell">
@@ -261,15 +495,13 @@ document.querySelector('#app').innerHTML = `
     </header>
 
     <main>
-      <section class="section service-hero">
-        <p class="eyebrow">${page.eyebrow}</p>
-        <h1>${page.title}</h1>
-        <p class="hero-text service-hero-text">${page.description}</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="/#contact">Get a Fast Estimate</a>
-          <a class="button button-secondary" href="${business.phoneHref}">Call / Text Now</a>
-        </div>
-      </section>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">→</span>
+        <span aria-current="page">${page.eyebrow}</span>
+      </nav>
+
+      ${heroSection}
 
       <section class="section split-section">
         <div>
@@ -280,6 +512,10 @@ document.querySelector('#app').innerHTML = `
           ${page.problems.map((item) => `<div>${item}</div>`).join('')}
         </div>
       </section>
+
+      ${filmTypesSection}
+
+      ${chooserSection}
 
       <section class="section">
         <div class="section-heading">
@@ -300,20 +536,22 @@ document.querySelector('#app').innerHTML = `
         </div>
       </section>
 
-      <section class="section service-proof-section">
-        <div class="section-heading">
-          <p class="eyebrow">Project fit</p>
-          <h2>How this service supports premium Los Angeles properties.</h2>
-          <p>${pageImage.text}</p>
-        </div>
-      </section>
+      ${projectsSection}
+
+      ${processSection}
+
+      ${faqSection}
+
+      ${areasSection}
+
+      ${proofSection}
 
       <section class="section contact-section contact-section-form" id="contact">
         <div>
           <p class="eyebrow">Next step</p>
-          <h2>Request an estimate for this service.</h2>
+          <h2>${page.formIntro ? 'Not sure which film you need?' : 'Request an estimate for this service.'}</h2>
           <p>
-            Send your ZIP, service type, measurements and photos if you have them. Leave either a phone number or an email so we can get back to you.
+            ${page.formIntro ?? 'Send your ZIP, service type, measurements and photos if you have them. Leave either a phone number or an email so we can get back to you.'}
           </p>
           <div class="contact-block">
             <a href="${business.phoneHref}">${business.phoneDisplay}</a>
@@ -338,11 +576,11 @@ document.querySelector('#app').innerHTML = `
               <input type="text" name="Name" autocomplete="name" required />
             </label>
             <label>
-              Phone (optional)
+              Phone
               <input type="tel" name="Phone" autocomplete="tel" />
             </label>
             <label>
-              Email (optional)
+              Email
               <input type="email" name="Email" autocomplete="email" />
             </label>
             <label>
@@ -350,6 +588,8 @@ document.querySelector('#app').innerHTML = `
               <input type="text" name="ZIP" autocomplete="postal-code" required />
             </label>
           </div>
+
+          <p class="form-hint">Please leave at least one way to reach you — a phone number or an email.</p>
 
           <label>
             Service
@@ -551,5 +791,22 @@ contactForm?.addEventListener('submit', async (event) => {
     submitButton?.removeAttribute('disabled')
   }
 })
+
+// FAQ structured data for pages that define their own FAQ
+if (page.faq) {
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: page.faq.map(([question, answer]) => ({
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: { '@type': 'Answer', text: answer },
+    })),
+  }
+  const schemaScript = document.createElement('script')
+  schemaScript.type = 'application/ld+json'
+  schemaScript.textContent = JSON.stringify(faqSchema)
+  document.head.appendChild(schemaScript)
+}
 
 mountChatWidget()
