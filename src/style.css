@@ -267,6 +267,18 @@ button {
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
+/* Invisible hover bridge across the 12px gap between the toggle and the
+   menu, so moving the cursor down into the menu doesn't close it */
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -22px;
+  left: 0;
+  right: 0;
+  height: 22px;
+  pointer-events: auto;
+}
+
 .nav-dropdown-menu a {
   min-height: 48px;
   display: flex;
@@ -2860,6 +2872,12 @@ h3 {
     display: none;
     box-shadow: none;
     background: transparent;
+  }
+
+  /* The hover bridge is desktop-only; in the stacked mobile menu it
+     would overlap the item above */
+  .nav-dropdown-menu::before {
+    display: none;
   }
 
   .nav-dropdown-open .nav-dropdown-menu {
