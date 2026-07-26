@@ -75,8 +75,8 @@ const servicePages = [
     projects: [
       {
         img: '/residential-project-1.jpg',
-        w: 900,
-        h: 1124,
+        w: 1000,
+        h: 714,
         alt: 'Protective solar control film installed on the sliding glass doors of a Los Angeles home',
         area: 'Modern hillside home, Los Angeles',
         tag: 'Heat + Safety',
