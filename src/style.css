@@ -2525,6 +2525,54 @@ h3 {
   background: var(--accent-gold);
 }
 
+.info-block-intro {
+  max-width: 78ch;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.info-block-list {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  max-width: 78ch;
+}
+
+.info-block-list li {
+  position: relative;
+  padding-left: 26px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.info-block-list li::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 11px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+}
+
+.info-block-link {
+  margin: 18px 0 0;
+}
+
+.info-block-link a {
+  font-weight: 600;
+  color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.info-block-link a:hover {
+  text-decoration: underline;
+}
+
 .attachment-intro {
   margin-top: 14px;
   max-width: 46ch;

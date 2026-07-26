@@ -422,20 +422,142 @@ const servicePages = [
     eyebrow: 'Storefront Window Protection',
     title: 'Storefront Window Protection in Los Angeles',
     description:
-      'Protection-oriented film solutions for storefront glass, including anti-graffiti, solar control and security-focused applications.',
-    problemsTitle: 'Storefront projects usually combine visibility, comfort and protection issues.',
+      'Anti-graffiti, solar-control and safety film solutions for storefront glass, entry doors and customer-facing commercial spaces.',
+    layout: ['problems', 'filmTypes', 'chooser', 'info', 'benefits', 'projects', 'process', 'faq', 'areas'],
+    heroImage: {
+      src: '/storefront-hero.jpg',
+      w: 1000,
+      h: 1250,
+      alt: 'Solar control film installed on the storefront glass of a Los Angeles retail business',
+    },
+    problemsTitle: 'Storefront projects usually combine several problems at once.',
     problems: [
       'Scratches, vandalism or graffiti on exterior glass',
-      'Heat gain and glare in customer-facing spaces',
+      'Heat and glare in customer-facing spaces',
       'Security concerns on exposed entry glass',
-      'Need for a cleaner premium storefront finish',
+      'Storefront appearance and presentation',
     ],
-    solutionsTitle: 'What storefront protection can solve',
-    solutions: [
-      ['Defend against surface damage', 'Use anti-graffiti film as a sacrificial layer.'],
-      ['Improve storefront comfort', 'Reduce heat and glare for staff and visitors.'],
-      ['Support safer glass response', 'Layer in safety/security film where appropriate.'],
-      ['Upgrade street presence', 'Cleaner glass and a more intentional retail presentation.'],
+    filmTypesTitle: 'Storefront Film Solutions',
+    filmTypes: [
+      ['Anti-Graffiti Film', 'A replaceable sacrificial layer that protects storefront glass from scratches, acid etching and vandalism.'],
+      ['Solar Control Film', 'Reduces heat and glare in customer-facing spaces while helping protect displays and interior finishes.'],
+      ['Safety & Security Film', 'Helps hold shattered glass together and increases the time and effort required to create an opening.'],
+      ['Clear UV Film', 'Provides nearly invisible UV protection for merchandise, displays and interior finishes.'],
+      ['Decorative & Branded Film', 'Adds privacy, logos, patterns or visual separation to storefront and interior commercial glass.'],
+      ['Combined Film Packages', 'Combines compatible film solutions when the storefront needs heat control, glass protection and security support.'],
+    ],
+    chooserTitle: 'Choose a Storefront Film by Goal',
+    chooser: [
+      ['Protect against scratches and vandalism', 'Anti-graffiti film'],
+      ['Reduce heat and glare', 'Solar-control film'],
+      ['Delay forced-entry attempts', 'Safety & security film'],
+      ['Protect merchandise from UV', 'Clear UV film'],
+      ['Add privacy or branding', 'Decorative or branded film'],
+      ['Address multiple issues', 'Combined film package'],
+    ],
+    infoBlocks: [
+      {
+        eyebrow: 'Vandalism',
+        title: 'Anti-Graffiti Film for Storefront Glass',
+        intro:
+          'Anti-graffiti film acts as a replaceable sacrificial layer over the glass. When the film takes scratching, tagging or etching, it can usually be removed and replaced without replacing the original glass — which is normally the cheaper and far less disruptive path for a working storefront.',
+        points: [
+          '4 mil is a practical standard option for everyday storefront exposure.',
+          '7 mil provides more material thickness and is generally preferred where deeper scratches or heavier damage are a concern.',
+          'It reduces the cost and disruption of damage — it does not prevent vandalism from happening.',
+          'Final suitability depends on the glass condition, access and the goals for the project.',
+        ],
+      },
+      {
+        eyebrow: 'Security',
+        title: 'Storefront Safety Film',
+        intro:
+          'Safety and security film helps hold broken glass together and can meaningfully increase the time and effort required to penetrate a damaged storefront opening. 8 mil is a practical entry-level option, while 12 mil, 16 mil and thicker systems provide progressively greater resistance to repeated impact. Overall performance depends on the glass, frame and attachment system.',
+        link: {
+          href: '/safety-security-window-film-los-angeles.html',
+          label: 'See the full Safety & Security Film page →',
+        },
+      },
+      {
+        eyebrow: 'Comfort',
+        title: 'Solar Control for Storefronts',
+        intro:
+          'Solar-control film addresses the heat and light side of a storefront, which matters most where staff work all day next to the glass and where merchandise sits in direct sun.',
+        points: [
+          'Reduces heat build-up in customer-facing space.',
+          'Reduces glare on displays, screens and counters.',
+          'Improves day-to-day comfort for staff and visitors.',
+          'Helps protect merchandise and interior finishes from UV exposure.',
+          'Keeps visibility through the storefront, depending on the film selected.',
+        ],
+      },
+    ],
+    benefitsTitle: 'Benefits of Storefront Window Film',
+    benefits: [
+      'Lower glass-replacement risk',
+      'Easier removal of vandalism damage',
+      'Improved staff and customer comfort',
+      'Added delay against forced entry',
+      'Cleaner storefront appearance',
+      'Flexible solutions for different glass areas',
+    ],
+    projectsTitle: 'Recent Storefront Protection Projects',
+    projects: [
+      {
+        img: '/storefront-project-1.jpg',
+        w: 1000,
+        h: 752,
+        alt: 'Anti-graffiti film installed on the entry glass of a Los Angeles commercial storefront',
+        title: 'Retail Storefront Protection',
+        area: 'Los Angeles',
+        tag: 'Anti-Graffiti Film',
+        body: 'Replaceable protective film installed across customer-facing glass to reduce the cost and disruption caused by scratches and vandalism.',
+      },
+      {
+        img: '/storefront-project-2.jpg',
+        w: 1000,
+        h: 752,
+        alt: 'Solar control film installed on the glass entrance doors of a Los Angeles retail business',
+        title: 'Retail Entry Doors',
+        area: 'Los Angeles',
+        tag: 'Solar Control Film',
+        body: 'Colored solar-control film installed on the entrance doors and front glass to cut heat and glare in the customer-facing space.',
+      },
+    ],
+    processTitle: 'How a storefront project works',
+    processSteps: [
+      ['Send photos and rough measurements', 'Share photos of the storefront, panel count, approximate sizes and the problems you want to solve.'],
+      ['Review glass and exposure', 'We review the glass type, existing damage, sun exposure, access and security concerns.'],
+      ['Select the film system', 'Choose anti-graffiti, solar-control, safety film or a compatible combined approach.'],
+      ['Professional installation', 'The glass is prepared and the selected film is installed with attention to storefront access and business operations.'],
+      ['Future replacement or aftercare', 'Sacrificial anti-graffiti film can be replaced later if damaged, while other films receive care and curing instructions.'],
+    ],
+    faqTitle: 'Storefront window film questions',
+    faq: [
+      ['What is the best film for storefront vandalism?', 'Anti-graffiti film, because it is designed to be sacrificial — the film takes the scratching or etching instead of the glass, and the film is what gets replaced. It does not prevent vandalism from happening; it changes what the damage costs you.'],
+      ['What is the difference between 4 mil and 7 mil anti-graffiti film?', 'Material thickness. 4 mil is a practical standard for everyday storefront exposure, while 7 mil gives more material to absorb deeper scratches and heavier damage. Which one suits a given storefront depends on how exposed the glass is and how often it has been hit before.'],
+      ['Can anti-graffiti film be replaced without replacing the glass?', 'That is the point of it. In most cases the damaged film is removed and a new layer applied, leaving the original glass in place — normally far cheaper and quicker than replacing a storefront panel. If the damage went through to the glass itself, the glass still needs attention.'],
+      ['Can storefront film reduce heat and glare?', 'Yes. Solar-control film reduces heat build-up and glare in the customer-facing space and helps limit UV exposure to merchandise and finishes. How much depends on the specific film selected and the glass it goes on, so we confirm the product before quoting numbers.'],
+      ['Can solar-control and safety film be combined?', 'Often yes — some films carry both a solar-control layer and a safety interlayer, and in other cases products can be layered. Compatibility has to be confirmed for the specific glass and products first, since the wrong combination can create thermal stress on the glass.'],
+      ['Does security film stop a break-in?', 'No film guarantees that entry is impossible. What safety film does is hold the broken glass together so the opening does not clear in one hit, which increases the time, effort and noise involved. Standard architectural film is also not bullet-resistant glazing.'],
+      ['Is storefront film visible?', 'It depends on the film. Clear safety and clear UV films are close to invisible and leave the storefront looking unchanged. Solar-control and decorative films are visible by design, since the tint or finish is doing the work.'],
+      ['How long does storefront installation take?', 'Many storefronts are completed within a day, depending on the number and size of panels, the film type and access. Thicker security films are slower to work with. We confirm the timeline once we have seen photos and panel counts.'],
+      ['Can installation be completed outside business hours?', 'Yes, and it is a common request for retail and restaurants. Scheduling evenings or early mornings keeps the storefront clear during trading hours — tell us your hours when you send photos and we will work around them.'],
+      ['How long does storefront film last?', 'It varies by product, how exposed the glass is, whether the film is interior or exterior and how it is maintained. Anti-graffiti film is intended to be replaced periodically by design. We confirm the manufacturer warranty for the specific film used on your project.'],
+    ],
+    areasTitle: 'Storefront Window Film Service Areas',
+    areasNote:
+      'We install storefront window film throughout Los Angeles and surrounding areas for retail stores, offices, restaurants, commercial entries and customer-facing glass.',
+    formIntro:
+      'Send photos of the storefront, panel count, approximate measurements and your ZIP code. We’ll recommend a film system based on the problems you want to solve.',
+    serviceOptions: [
+      'Anti-Graffiti Film',
+      'Solar Control Film',
+      'Safety & Security Film',
+      'Clear UV Film',
+      'Decorative & Branded Film',
+      'Combined Film Package',
+      'Not Sure',
     ],
   },
 ]
@@ -623,6 +745,30 @@ const chooserSection = page.chooser
     `
   : ''
 
+// Compact explainer blocks (storefront uses three of them). Each is an
+// intro paragraph, optional bullets and an optional internal link.
+const infoSection = page.infoBlocks
+  ? page.infoBlocks
+      .map(
+        (block) => `
+      <section class="section info-block-section">
+        <div class="section-heading">
+          <p class="eyebrow">${block.eyebrow}</p>
+          <h2>${block.title}</h2>
+        </div>
+        <p class="info-block-intro">${block.intro}</p>
+        ${
+          block.points
+            ? `<ul class="info-block-list">${block.points.map((p) => `<li>${p}</li>`).join('')}</ul>`
+            : ''
+        }
+        ${block.link ? `<p class="info-block-link"><a href="${block.link.href}">${block.link.label}</a></p>` : ''}
+      </section>
+    `,
+      )
+      .join('')
+  : ''
+
 const projectsSection = page.projects
   ? `
       <section class="section">
@@ -746,6 +892,57 @@ const heroSection = page.heroImage
       </section>
     `
 
+const problemsSection = `
+      <section class="section split-section">
+        <div>
+          <p class="eyebrow">Common reasons clients reach out</p>
+          <h2>${page.problemsTitle}</h2>
+        </div>
+        <div class="luxury-list">
+          ${page.problems.map((item) => `<div>${item}</div>`).join('')}
+        </div>
+      </section>
+    `
+
+// Section order. Pages keep the historical order unless they declare their
+// own `layout`, so existing pages render byte-identically.
+const SECTIONS = {
+  problems: problemsSection,
+  filmTypes: filmTypesSection,
+  attachment: attachmentSection,
+  whereBest: whereBestSection,
+  doesDoesNot: doesDoesNotSection,
+  benefits: benefitsSection,
+  solutions: solutionsSection,
+  chooser: chooserSection,
+  info: infoSection,
+  projects: projectsSection,
+  process: processSection,
+  faq: faqSection,
+  areas: areasSection,
+  proof: proofSection,
+}
+
+const DEFAULT_LAYOUT = [
+  'problems',
+  'filmTypes',
+  'attachment',
+  'whereBest',
+  'doesDoesNot',
+  'benefits',
+  'solutions',
+  'chooser',
+  'projects',
+  'process',
+  'faq',
+  'areas',
+  'proof',
+]
+
+const bodySections = (page.layout ?? DEFAULT_LAYOUT)
+  .map((key) => SECTIONS[key] ?? '')
+  .join('\n')
+
 document.querySelector('#app').innerHTML = `
   <div class="site-shell service-page-shell">
     <header class="topbar" id="topbar">
@@ -793,39 +990,7 @@ document.querySelector('#app').innerHTML = `
 
       ${heroSection}
 
-      <section class="section split-section">
-        <div>
-          <p class="eyebrow">Common reasons clients reach out</p>
-          <h2>${page.problemsTitle}</h2>
-        </div>
-        <div class="luxury-list">
-          ${page.problems.map((item) => `<div>${item}</div>`).join('')}
-        </div>
-      </section>
-
-      ${filmTypesSection}
-
-      ${attachmentSection}
-
-      ${whereBestSection}
-
-      ${doesDoesNotSection}
-
-      ${benefitsSection}
-
-      ${solutionsSection}
-
-      ${chooserSection}
-
-      ${projectsSection}
-
-      ${processSection}
-
-      ${faqSection}
-
-      ${areasSection}
-
-      ${proofSection}
+      ${bodySections}
 
       <section class="section contact-section contact-section-form" id="contact">
         <div>
