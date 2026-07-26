@@ -275,7 +275,7 @@ const servicePages = [
     ],
     faqTitle: 'Decorative & privacy film questions',
     faq: [
-      ['Does frosted privacy film work at night?', 'Yes. Unlike reflective daytime privacy film, frosted and other opaque decorative films diffuse the glass itself, so they block the view in both directions regardless of the lighting.'],
+      ['Does frosted privacy film work at night?', 'Yes. Unlike reflective daytime privacy film, frosted and other opaque decorative films diffuse the glass itself, so they obscure the view in both directions regardless of the lighting.'],
       ['Will frosted film make the room dark?', 'No. Frosted film scatters light rather than blocking it, so rooms stay bright while the view through the glass is obscured. Blackout and whiteout films are the ones that stop light.'],
       ['Can I still see out through decorative film?', 'Not with frosted, whiteout or blackout film — they obscure the view both ways. Gradient film keeps part of the glass clear, so you keep a view above or below the frosted band.'],
       ['Can you cut a logo or custom design into the film?', 'Yes. Logos, lettering, bands and patterns can be cut from frosted or coloured film, and full-colour graphics can be printed. Send artwork and we will confirm what works at your glass size.'],
@@ -710,7 +710,8 @@ document.querySelector('#app').innerHTML = `
           method="POST"
           enctype="multipart/form-data"
         >
-          <input type="hidden" name="_subject" value="Solcrest Film Co website estimate request" />
+          <input type="hidden" name="_subject" value="Solcrest Film Co — ${page.eyebrow} estimate request" />
+          <input type="hidden" name="Service Category" value="${page.eyebrow}" />
           <input type="hidden" name="_replyto" value="" />
           <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 

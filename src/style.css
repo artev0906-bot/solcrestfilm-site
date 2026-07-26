@@ -2395,6 +2395,11 @@ h3 {
   align-items: center;
 }
 
+/* Even out the hero headline instead of leaving a one-word last line */
+.service-hero h1 {
+  text-wrap: balance;
+}
+
 .service-hero-photo {
   width: 100%;
   height: auto;
