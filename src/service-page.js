@@ -17,6 +17,7 @@ const serviceMenuItems = [
   { label: 'Anti-Graffiti', href: '/anti-graffiti-window-film-los-angeles.html' },
   { label: 'Decorative & Privacy', href: '/decorative-privacy-window-film-los-angeles.html' },
   { label: 'Smart Film', href: '/smart-film-installation-los-angeles.html' },
+  { label: 'Storefront Window Protection', href: '/storefront-window-protection-los-angeles.html' },
 ]
 
 const serviceOptions = [
@@ -1098,6 +1099,7 @@ document.querySelector('#app').innerHTML = `
             <a href="/anti-graffiti-window-film-los-angeles.html">Anti-Graffiti Film</a>
             <a href="/decorative-privacy-window-film-los-angeles.html">Decorative &amp; Privacy Film</a>
             <a href="/smart-film-installation-los-angeles.html">Smart Film</a>
+            <a href="/storefront-window-protection-los-angeles.html">Storefront Window Protection</a>
           </div>
         </div>
         <div class="footer-col footer-col-areas">
