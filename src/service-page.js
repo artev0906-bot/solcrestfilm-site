@@ -218,8 +218,8 @@ const servicePages = [
     filmTypesTitle: 'Types of Decorative & Privacy Film',
     filmTypes: [
       ['Frosted Privacy Film', 'The most common choice — an even etched-glass look that blocks the view while still letting daylight through, day and night.'],
-      ['Blackout Film', 'Fully opaque film that stops light and visibility completely, for rooms that need to stay dark or fully separated.'],
-      ['Whiteout Film', 'Solid white opaque film that hides storage, equipment or work areas while keeping the space feeling bright.'],
+      ['Blackout Film', 'Fully opaque film designed to block visibility and significantly reduce light transmission.'],
+      ['Whiteout Film', 'Opaque white film that conceals storage, equipment and work areas while maintaining a clean, bright appearance.'],
       ['Gradient Film', 'A graded fade from frosted to clear, used to cover sightlines at seated height while leaving the upper glass open.'],
       ['Patterned Decorative Film', 'Bands, geometric patterns and textured finishes that add design to plain glass and mark it as visible.'],
       ['Custom Printed / Branded Film', 'Cut logos, lettering and printed graphics applied to glass for storefronts, offices and interior branding.'],
@@ -238,7 +238,7 @@ const servicePages = [
     benefits: [
       'Privacy without losing daylight',
       'No curtains, blinds or hardware',
-      'Cheaper than replacing glass',
+      'More cost-effective than replacing glass',
       'Defines and zones open spaces',
       'Makes clear glass visible and safer',
       'Removable and replaceable later',
@@ -259,11 +259,11 @@ const servicePages = [
         img: '/decorative-project-2.jpg',
         w: 1000,
         h: 752,
-        alt: 'White matte privacy film installed on glass court panels at a Los Angeles tennis club',
-        title: 'Tennis Club Glass',
+        alt: 'White opaque privacy film installed on glass panels at a Los Angeles tennis club',
+        title: 'Tennis Club Service Area Screening',
         area: 'Los Angeles',
-        tag: 'Whiteout Film',
-        body: 'White matte film installed on glass panels to screen the service area from the court while keeping the glass bright.',
+        tag: 'Whiteout Privacy Film',
+        body: 'White opaque film installed on glass panels to conceal the service area while maintaining a clean appearance from the court.',
       },
     ],
     processTitle: 'How a decorative film installation works',
@@ -284,6 +284,9 @@ const servicePages = [
       ['How long does decorative film last?', 'Interior decorative films typically last many years, since they are not exposed to weather or direct sun the way exterior applications are. We confirm the manufacturer warranty for the specific film used.'],
       ['Can the film be removed or changed later?', 'Yes. Decorative film can be removed without damaging the glass, which makes it practical for leased spaces, rebrands or changing a design.'],
     ],
+    areasTitle: 'Decorative & Privacy Film Service Areas',
+    areasNote:
+      'We install decorative and privacy window film throughout Los Angeles and surrounding areas for homes, offices, clinics, retail spaces and interior glass partitions.',
     formIntro:
       'Send photos of the glass, approximate measurements and your ZIP code. We’ll recommend suitable finishes and show samples before anything is ordered.',
     serviceOptions: [

@@ -2363,22 +2363,29 @@ h3 {
 }
 
 /* ── Service page deep-content sections ─────────────────── */
+/* Breadcrumbs sit on the dark page background, not inside a cream card,
+   so they need light type rather than the default dark body colour. */
 .breadcrumbs {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 18px 0 0;
+  padding: 18px 0 6px;
   font-size: 14px;
-  color: var(--text-secondary);
+  color: rgba(246, 242, 234, 0.75);
 }
 
 .breadcrumbs a {
-  color: var(--text-secondary);
+  color: #f6f2ea;
   text-decoration: none;
 }
 
 .breadcrumbs a:hover {
-  color: var(--text-primary);
+  color: var(--accent-gold-light);
+  text-decoration: underline;
+}
+
+.breadcrumbs [aria-hidden='true'] {
+  color: var(--accent-gold-light);
 }
 
 .service-hero-split {
