@@ -75,6 +75,8 @@ const servicePages = [
     projects: [
       {
         img: '/residential-project-1.jpg',
+        w: 900,
+        h: 1124,
         alt: 'Protective solar control film installed on the sliding glass doors of a Los Angeles home',
         area: 'Modern hillside home, Los Angeles',
         tag: 'Heat + Safety',
@@ -82,7 +84,9 @@ const servicePages = [
       },
       {
         img: '/residential-project-2.jpg',
-        alt: 'Sun protection film installed on a rooftop skylight of a hillside Los Angeles home',
+        w: 1000,
+        h: 750,
+        alt: 'Two rooftop skylights with sun protection film installed on a Los Angeles hillside home',
         area: 'Ocean-view hillside estate, Los Angeles',
         tag: 'Skylight & Roof Glazing',
         body: 'Sun-protective film installed on rooftop skylights to cut the heat coming in from overhead glass. Skylight work depends on roof access, glass type and condition — we confirm limitations and warranty coverage before any work starts.',
@@ -351,7 +355,7 @@ const projectsSection = page.projects
             .map(
               (project) => `
                 <article class="service-card project-mini">
-                  <img src="${project.img}" alt="${project.alt}" decoding="async" width="900" height="1125" />
+                  <img src="${project.img}" alt="${project.alt}" decoding="async" width="${project.w}" height="${project.h}" />
                   <div class="project-mini-body">
                     <p class="project-mini-meta"><strong>${project.area}</strong> — ${project.tag}</p>
                     <p>${project.body}</p>
