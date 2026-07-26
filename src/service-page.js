@@ -18,6 +18,7 @@ const serviceMenuItems = [
   { label: 'Decorative & Privacy', href: '/decorative-privacy-window-film-los-angeles.html' },
   { label: 'Smart Film', href: '/smart-film-installation-los-angeles.html' },
   { label: 'Storefront Window Protection', href: '/storefront-window-protection-los-angeles.html' },
+  { label: 'Commercial Window Film', href: '/commercial-window-film-los-angeles.html' },
 ]
 
 const serviceOptions = [
@@ -137,22 +138,167 @@ const servicePages = [
   {
     file: 'commercial-window-film-los-angeles.html',
     eyebrow: 'Commercial Window Film',
-    title: 'Commercial Window Film for Offices, Storefronts and Buildings in Los Angeles',
+    title: 'Commercial Window Film in Los Angeles',
     description:
-      'Improve comfort, privacy, anti-graffiti protection, glare control and overall presentation for commercial glass across Los Angeles.',
-    problemsTitle: 'Commercial projects usually start with customer-facing glass problems.',
+      'Window film for offices, retail, restaurants, schools, clinics and industrial buildings — solar control, privacy, safety and surface protection across commercial glazing.',
+    layout: ['problems', 'filmTypes', 'chooser', 'info', 'benefits', 'projects', 'process', 'faq', 'areas'],
+    heroImage: {
+      src: '/commercial-hero.jpg',
+      w: 900,
+      h: 675,
+      alt: 'Solar control film installed on the glass frontage of a Los Angeles commercial building',
+    },
+    problemsTitle: 'Commercial projects usually start with one of these.',
     problems: [
-      'Overheating storefront and office glass',
-      'Privacy concerns in work areas and meeting rooms',
-      'Glare on screens and interior workspaces',
-      'A need for cleaner, more premium presentation',
+      'Staff working next to hot, glaring glass all day',
+      'Meeting rooms and work areas that need privacy',
+      'Customer-facing glass that has to look maintained',
+      'Exposed ground-floor glazing and entry doors',
+      'Repeated surface damage on street-level glass',
+      'Large glazed areas that are expensive to replace',
     ],
-    solutionsTitle: 'What commercial film can solve',
-    solutions: [
-      ['Reduce heat and glare', 'Improve day-to-day comfort for teams and visitors.'],
-      ['Upgrade privacy', 'Add privacy solutions for offices, conference rooms and glass partitions.'],
-      ['Improve presentation', 'Create a more polished appearance for client-facing properties.'],
-      ['Support protection needs', 'Layer in safety, anti-graffiti or decorative solutions where needed.'],
+    filmTypesTitle: 'Commercial Property Types We Work With',
+    filmTypes: [
+      [
+        'Offices',
+        'Glare on screens, overheated desks near the glass, and meeting rooms that need privacy without losing daylight. Usually solar control on the perimeter, frosted or switchable film on interior partitions.',
+        { href: '/decorative-privacy-window-film-los-angeles.html', label: 'Decorative & Privacy Film →' },
+      ],
+      [
+        'Retail Stores',
+        'Customer-facing glass that has to stay presentable while taking street-level wear. Solar control for comfort and merchandise, plus a sacrificial layer where the glass gets hit.',
+        { href: '/storefront-window-protection-los-angeles.html', label: 'Storefront Protection →' },
+      ],
+      [
+        'Restaurants',
+        'Afternoon sun on dining areas, glare at window seats, and entry glass in constant use. Work is usually scheduled outside service hours.',
+        { href: '/residential-window-film-los-angeles.html', label: 'Solar Control Film →' },
+      ],
+      [
+        'Schools',
+        'Ground-floor classroom glass, corridors and entry doors, where safety, heat control and privacy may all be important. Work can be scheduled after hours or around the school calendar.',
+        { href: '/safety-security-window-film-los-angeles.html', label: 'Safety & Security Film →' },
+      ],
+      [
+        'Clinics & Medical Offices',
+        'Reception, consult rooms and interior glazing that need daytime privacy and a clean, non-clinical finish. Frosted and decorative finishes are the usual answer.',
+        { href: '/decorative-privacy-window-film-los-angeles.html', label: 'Decorative & Privacy Film →' },
+      ],
+      [
+        'Warehouses & Industrial',
+        'Large glazed areas, roof glazing and attached office spaces where heat, glare and accessible glass may require different film solutions.',
+        { href: '/safety-security-window-film-los-angeles.html', label: 'Safety & Security Film →' },
+      ],
+    ],
+    chooserTitle: 'Which service fits the problem',
+    chooserHeadLeft: 'Your problem',
+    chooserHeadRight: 'Where to go next',
+    chooser: [
+      ['Heat and glare on staff and customers', 'Solar control film'],
+      ['Privacy in offices, clinics and meeting rooms', 'Decorative & privacy film'],
+      ['Privacy that switches on demand', 'Smart film'],
+      ['Broken glass and forced-entry concerns', 'Safety & security film'],
+      ['Scratching and tagging on street-level glass', 'Anti-graffiti film'],
+      ['Customer-facing frontage as a whole', 'Storefront protection'],
+    ],
+    infoBlocks: [
+      {
+        eyebrow: 'Scheduling',
+        title: 'Working around your hours',
+        intro:
+          'We can install outside your operating hours — evenings, early mornings or closed days. For retail, restaurants and schools that is the normal arrangement rather than the exception. Tell us your hours when you send photos and we will plan around them.',
+      },
+      {
+        eyebrow: 'Paperwork',
+        title: 'Paperwork for business accounts',
+        intro:
+          'Commercial jobs are invoiced properly, and we can supply the documents your accounts team needs to set us up as a vendor.',
+        points: [
+          'An official invoice is issued to the business.',
+          'A W-9 is provided on request.',
+          'Scope and line items are agreed in the estimate before work starts.',
+          'Leased premises may need landlord approval — worth confirming early.',
+        ],
+      },
+      {
+        eyebrow: 'Larger sites',
+        title: 'Phased rollout on larger sites',
+        intro:
+          'A large building does not have to be done in one visit. Glazing can be split by floor, wing or elevation so the site keeps operating. Send photos and a glazing count and we will propose an order of work.',
+      },
+    ],
+    benefitsEyebrow: 'Key benefits',
+    benefitsTitle: 'Benefits of Commercial Window Film',
+    benefits: [
+      'Improved comfort near sun-exposed glass',
+      'Less glare on screens and counters',
+      'Privacy without rebuilding walls',
+      'Protection on accessible glass',
+      'More cost-effective than replacing glazing',
+      'Work scheduled around operations',
+    ],
+    projectsTitle: 'Recent Commercial Projects',
+    projects: [
+      {
+        img: '/commercial-project-1.jpg',
+        srcset: '/commercial-project-1-560.jpg 560w, /commercial-project-1.jpg 1000w',
+        sizes: '(max-width: 640px) 71vw, (max-width: 900px) 85vw, 44vw',
+        w: 1000,
+        h: 752,
+        alt: 'Solar control film on the overhead atrium glazing of a Los Angeles shopping centre',
+        title: 'Shopping Centre Roof Glazing',
+        area: 'Los Angeles',
+        tag: 'Solar Control Film',
+        body: 'Old film was stripped from the overhead atrium glazing before new solar-control film went on across the roof glass.',
+      },
+      {
+        img: '/commercial-project-2.jpg',
+        srcset: '/commercial-project-2-560.jpg 560w, /commercial-project-2.jpg 1000w',
+        sizes: '(max-width: 640px) 71vw, (max-width: 900px) 85vw, 44vw',
+        w: 1000,
+        h: 752,
+        alt: 'Sun protection film installed on the office windows of a Los Angeles church building',
+        title: 'Church Offices',
+        area: 'Los Angeles',
+        tag: 'Solar Control Film',
+        body: 'Sun protection film installed across the office windows to cut heat and glare in the working rooms.',
+      },
+    ],
+    processTitle: 'How a commercial project works',
+    processSteps: [
+      ['Send photos and a glazing count', 'Share photos of the frontage and interior glass, rough sizes and what the building is used for.'],
+      ['Site review', 'We look at glass type, sun exposure, access, and which glazing is yours versus the landlord’s.'],
+      ['Match film to each area', 'Different areas usually need different answers — perimeter glass, partitions, entry doors and ground-floor glazing.'],
+      ['Schedule around operations', 'Outside trading hours where needed, and split into phases on larger sites.'],
+      ['Installation, curing and paperwork', 'Film is installed, curing guidance is given, and the invoice — plus a W-9 on request — follows.'],
+    ],
+    faqTitle: 'Commercial window film questions',
+    faq: [
+      ['Can you work outside business hours?', 'Yes. Evenings, early mornings and closed days are all workable, and for retail, restaurants and schools that is usually how it is done. Tell us your operating hours when you send photos and we will schedule around them.'],
+      ['Do you provide an invoice and W-9?', 'Yes. Commercial work is invoiced to the business, and a W-9 is provided on request so your accounts team can set us up as a vendor. Scope and line items are agreed in the estimate before anything starts.'],
+      ['Do we need landlord approval?', 'For leased premises, often yes — many leases cover alterations to the glazing. It is worth checking early, because approval can take longer than the installation. We can supply product details for the request.'],
+      ['Can film be installed on dual-pane commercial glass?', 'Often, but not with every film. The wrong film on insulated glass can create thermal stress, and it may affect the glazing warranty. We confirm the glass type first and use films rated for it.'],
+      ['How long does a commercial installation take?', 'It depends on the glazing count, panel sizes and access — a small office suite is very different from a full frontage or roof glazing. We give a timeline once we have seen photos and a count.'],
+      ['Can a large building be done in phases?', 'Yes, and on bigger sites it is usually the sensible approach. Work can be split by floor, wing or elevation so the building stays in use. We propose an order of work based on the glazing plan.'],
+      ['Which film is right for an office versus a storefront?', 'Offices usually combine solar control on the perimeter with frosted or switchable film on interior partitions. Storefronts lean toward solar control plus a sacrificial anti-graffiti layer on the glass that gets hit. The property-type section above points to each one.'],
+      ['Does window film reduce cooling costs?', 'Solar-control film reduces the heat coming through the glass, which is why glazed areas feel more comfortable. Whether that shows up as a measurable saving depends on the building, the HVAC and how much of the load comes through glass — we do not quote a figure without a specific product spec and a calculation.'],
+      ['Is the film visible from outside?', 'It depends on the film. Clear safety and UV films leave the glass looking essentially unchanged. Solar-control and decorative films are visible by design, and on a commercial frontage that is often the point — we show samples before anything is ordered.'],
+      ['Do you work with schools and clinics?', 'Yes. Both come with their own constraints — term calendars and after-hours access for schools, privacy and a clean finish in reception and consult rooms for clinics — and we plan the work around them.'],
+    ],
+    areasTitle: 'Commercial Window Film Service Areas',
+    areasNote:
+      'We install commercial window film throughout Los Angeles and surrounding areas for offices, retail, restaurants, schools, clinics, and warehouse and industrial buildings.',
+    formIntro:
+      'Send photos of the glazing, a rough panel count and your ZIP code. Tell us the property type and your operating hours, and we will recommend a film for each area.',
+    serviceOptions: [
+      'Solar Control',
+      'Privacy & Decorative',
+      'Safety & Security',
+      'Anti-Graffiti',
+      'Smart Film',
+      'Storefront Protection',
+      'Multiple Areas',
+      'Not Sure',
     ],
   },
   {
@@ -736,10 +882,11 @@ const filmTypesSection = page.filmTypes
         <div class="card-grid two-up">
           ${page.filmTypes
             .map(
-              ([title, body]) => `
+              ([title, body, link]) => `
                 <article class="service-card">
                   <h3>${title}</h3>
                   <p>${body}</p>
+                  ${link ? `<p class="card-link"><a href="${link.href}">${link.label}</a></p>` : ''}
                 </article>
               `,
             )

@@ -126,6 +126,7 @@ const footerHTML = `
         <a href="/decorative-privacy-window-film-los-angeles.html">Decorative &amp; Privacy</a>
         <a href="/smart-film-installation-los-angeles.html">Smart Film</a>
         <a href="/storefront-window-protection-los-angeles.html">Storefront Window Protection</a>
+        <a href="/commercial-window-film-los-angeles.html">Commercial Window Film</a>
       </div>
     </div>
     <div class="footer-bottom">

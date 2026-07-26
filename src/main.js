@@ -18,6 +18,7 @@ const serviceMenuItems = [
   { label: 'Decorative & Privacy', href: '/decorative-privacy-window-film-los-angeles.html' },
   { label: 'Smart Film', href: '/smart-film-installation-los-angeles.html' },
   { label: 'Storefront Window Protection', href: '/storefront-window-protection-los-angeles.html' },
+  { label: 'Commercial Window Film', href: '/commercial-window-film-los-angeles.html' },
 ]
 
 const serviceOptions = [

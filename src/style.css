@@ -2575,6 +2575,21 @@ h3 {
   background: var(--accent-gold);
 }
 
+.card-link {
+  margin: 14px 0 0;
+  font-size: 15px;
+}
+
+.card-link a {
+  font-weight: 600;
+  color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.card-link a:hover {
+  text-decoration: underline;
+}
+
 .info-block-link {
   margin: 18px 0 0;
 }
