@@ -428,9 +428,9 @@ const servicePages = [
     layout: ['problems', 'info', 'filmTypes', 'chooser', 'benefits', 'projects', 'process', 'faq', 'areas'],
     heroImage: {
       src: '/antigraffiti-hero.jpg',
-      w: 1000,
-      h: 1250,
-      alt: 'Anti-graffiti film protecting the entry glass of a Los Angeles commercial storefront',
+      w: 1141,
+      h: 707,
+      alt: 'Full-height glass frontage and entry doors of a Los Angeles commercial storefront',
     },
     problemsTitle: 'Anti-graffiti projects usually start with exposed storefront glass.',
     problems: [
