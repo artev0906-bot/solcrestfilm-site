@@ -157,9 +157,15 @@ const servicePages = [
   {
     file: 'safety-security-window-film-los-angeles.html',
     eyebrow: 'Safety & Security Film',
-    title: 'Safety & Security Window Film Installation in Los Angeles',
+    title: 'Safety & Security Window Film in Los Angeles',
     description:
-      'Help strengthen vulnerable glass and hold shattered glass together after impact with safety and security film solutions.',
+      'Strengthen vulnerable glass, help hold shattered glass together and add resistance against impact and forced-entry attempts.',
+    heroImage: {
+      src: '/safety-hero.jpg',
+      w: 1000,
+      h: 1250,
+      alt: 'Safety film installed on a full-height sliding glass wall in a Los Angeles home',
+    },
     problemsTitle: 'Security-focused projects usually start with vulnerable glass.',
     problems: [
       'Concern about shattered glass after impact',
@@ -167,12 +173,103 @@ const servicePages = [
       'Need for a stronger hold on damaged glass',
       'Safety upgrades for residential or commercial properties',
     ],
-    solutionsTitle: 'What safety film can solve',
-    solutions: [
-      ['Hold shattered glass together', 'Reduce dangerous fallout after impact or breakage.'],
-      ['Add another protection layer', 'Create a stronger response on vulnerable glass areas.'],
-      ['Support commercial safety planning', 'Useful for storefronts, entries and high-traffic glass.'],
-      ['Work cleanly with existing glass', 'A more practical protection layer than full replacement in many cases.'],
+    filmTypesTitle: 'Safety Film Thickness Options',
+    filmTypes: [
+      ['8 Mil Safety Film', 'The entry level. Holds broken glass to the interlayer and reduces flying shards — aimed at accidental impact and glass-fallout safety rather than forced entry.'],
+      ['12 Mil Safety Film', 'The usual starting point when forced-entry deterrence is the goal. Thicker interlayer takes more repeated impact before the glazing gives way.'],
+      ['16 Mil Safety Film', 'A higher level of impact resistance for exposed entry points and glass that has already been targeted.'],
+      ['21–24 Mil Security Film', 'The heaviest architectural films, for projects with elevated requirements. Frame condition and an attachment system matter more at this level.'],
+      ['Clear Safety Film', 'Optically clear at any of the above thicknesses — the glass keeps its appearance and light level, with no tint or visible change.'],
+      ['Safety + Solar Control Film', 'Combines the safety interlayer with a solar-control layer, so one install handles both heat and glare and the protection goal.'],
+    ],
+    attachmentTitle: 'Wet Glaze Attachment System',
+    attachmentIntro:
+      'Structural silicone connects the filmed glass to the frame, helping the glazing system remain together longer after impact. Without it, film holds the glass together but the pane itself can still be pushed out of the frame.',
+    attachmentPoints: [
+      'Whether it is needed depends on the frame, the glass and the protection goal.',
+      'It is applied after the film has fully dried, so it is a second visit on most projects.',
+      'It is not required on every project — plenty of safety installs do not call for it.',
+      'The final decision comes after we inspect the glass and frame in person.',
+    ],
+    whereBestTitle: 'Where safety film works best',
+    whereBest: [
+      'Storefront windows',
+      'Entry doors and sidelights',
+      'Ground-floor residential windows',
+      'Schools and offices',
+      'Retail and commercial glass',
+      'High-traffic interior glazing',
+    ],
+    doesTitle: 'What safety film does — and does not do',
+    doesList: [
+      'Helps hold shattered glass together after breakage',
+      'Increases the time and effort needed to get through the glass',
+      'Reduces flying shards and dangerous fallout',
+      'Reinforces the glazing you already have, without replacing it',
+    ],
+    doesNotList: [
+      'Does not make glass bulletproof or bullet-resistant',
+      'Does not guarantee that entry is impossible',
+      'Does not replace an alarm, cameras or locks',
+      'Results depend on the glass, the frame, the film thickness and the attachment system',
+    ],
+    projectsTitle: 'Recent Safety & Security Film Projects',
+    projects: [
+      {
+        img: '/safety-project-1.jpg',
+        w: 1000,
+        h: 752,
+        alt: 'Clear safety film installed on a residential entry door and its glass sidelights in Los Angeles',
+        title: 'Residential Entry Door & Sidelights',
+        area: 'Los Angeles',
+        tag: 'Clear Safety Film',
+        body: 'Clear safety film applied to the door glass and both sidelights — the most accessible glass on the house — with no change to how the entry looks.',
+      },
+      {
+        img: '/safety-project-2.jpg',
+        w: 1000,
+        h: 752,
+        alt: 'Protective anti-vandal solar film installed on residential sliding glass doors in Los Angeles',
+        title: 'Sliding Doors, Heat + Safety',
+        area: 'Los Angeles',
+        tag: 'Safety + Solar Control Film',
+        body: 'Protective anti-vandal film on the sliding doors with solar control film across the rest of the home — heat and glare handled in the same install as the protection layer.',
+      },
+    ],
+    processTitle: 'How a safety film installation works',
+    processSteps: [
+      ['Send photos & measurements', 'Share photos of the glass and frames, rough sizes and what you are protecting against — accidental breakage, storm debris or forced entry.'],
+      ['Review glass, frame and risk', 'We check the glass type, the frame depth and how exposed each opening is. Dual-pane and older frames change what is appropriate.'],
+      ['Select thickness and attachment', 'Pick the film thickness for the risk level, and decide whether a wet glaze attachment system is worth adding.'],
+      ['Installation and curing', 'Film is installed and then cures over days to a few weeks depending on thickness and weather. Some haze during curing is normal.'],
+      ['Optional structural silicone', 'If an attachment system was specified, the structural silicone is applied on a return visit once the film has fully dried.'],
+    ],
+    faqTitle: 'Safety & security film questions',
+    faq: [
+      ['Does security film stop a break-in?', 'No film guarantees that. What it does is make the glass much harder to get through quickly — an intruder who expects one hit to clear the pane instead has to keep working at it, in the open, making noise. Deterrence and delay are the realistic goals, not prevention.'],
+      ['What thickness is best for forced-entry protection?', '12 mil is the usual starting point when deterring forced entry is the goal, with 16 mil and up for higher-risk or previously targeted openings. 8 mil is aimed at glass-fallout safety rather than break-in resistance.'],
+      ['What is the difference between 8 mil, 12 mil and 16 mil?', 'Thickness of the film interlayer, which is what holds the broken glass together. Thicker film absorbs more repeated impact before the glazing fails, so it buys more time. It also gets stiffer, which affects how it can be installed on curved or small panes.'],
+      ['Does safety film need structural silicone?', 'Not always. Film keeps the glass together, but on a hard enough hit the whole pane can still leave the frame. A wet glaze attachment system bonds the filmed glass to the frame to resist that. Whether it is worth adding depends on the frame, the glass and your protection goal — we advise after seeing them.'],
+      ['Can safety film be installed on dual-pane glass?', 'Often yes, but not with every film. The wrong film on insulated glass can create thermal stress, so we confirm the glass type first and use films rated for it. This is one of the main reasons to have it installed professionally.'],
+      ['Is security film visible?', 'Clear safety film is optically clear — the glass keeps its appearance and light level, and most people cannot tell it is there. If you also want heat or glare control, a tinted or solar-control version is available.'],
+      ['How long does installation take?', 'Most homes and small storefronts take from a few hours to one day, depending on the number and size of openings and access. Thicker security films are slower to work with than standard film.'],
+      ['How long does the film take to cure?', 'Installation moisture takes days to a few weeks to fully evaporate, longer for thicker films and in cooler weather. Slight haze or small water pockets during that period are normal and clear on their own.'],
+      ['Can safety film also reduce heat?', 'Yes. Safety film is available with a solar-control layer, so a single install can handle heat and glare alongside the protection goal — that is the Safety + Solar Control option above.'],
+      ['Does it protect against bullets?', 'No. Standard architectural safety and security film is not bullet-resistant glazing and should never be treated as such. Bullet resistance requires purpose-built laminated or ballistic glazing systems, which are a different product entirely.'],
+    ],
+    areasTitle: 'Safety & Security Film Service Areas',
+    areasNote:
+      'We install safety and security window film throughout Los Angeles and surrounding areas for homes, storefronts, offices, schools and commercial glazing.',
+    formIntro:
+      'Send photos of the glass and frames, approximate measurements and your ZIP code. We’ll recommend a film thickness and let you know whether an attachment system is worth adding.',
+    serviceOptions: [
+      '8 Mil Safety Film',
+      '12 Mil Safety Film',
+      '16 Mil Safety Film',
+      '21–24 Mil Security Film',
+      'Clear Safety Film',
+      'Safety + Solar Control Film',
+      'Not Sure',
     ],
   },
   {
@@ -406,6 +503,42 @@ const filmTypesSection = page.filmTypes
               `,
             )
             .join('')}
+        </div>
+      </section>
+    `
+  : ''
+
+const attachmentSection = page.attachmentPoints
+  ? `
+      <section class="section split-section attachment-section">
+        <div>
+          <p class="eyebrow">Film + frame</p>
+          <h2>${page.attachmentTitle}</h2>
+          <p class="attachment-intro">${page.attachmentIntro}</p>
+        </div>
+        <div class="luxury-list">
+          ${page.attachmentPoints.map((item) => `<div>${item}</div>`).join('')}
+        </div>
+      </section>
+    `
+  : ''
+
+const doesDoesNotSection = page.doesList
+  ? `
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Setting expectations</p>
+          <h2>${page.doesTitle}</h2>
+        </div>
+        <div class="does-grid">
+          <div class="does-col does-col-yes">
+            <h3>What it does</h3>
+            <ul>${page.doesList.map((item) => `<li>${item}</li>`).join('')}</ul>
+          </div>
+          <div class="does-col does-col-no">
+            <h3>What it does not do</h3>
+            <ul>${page.doesNotList.map((item) => `<li>${item}</li>`).join('')}</ul>
+          </div>
         </div>
       </section>
     `
@@ -672,7 +805,11 @@ document.querySelector('#app').innerHTML = `
 
       ${filmTypesSection}
 
+      ${attachmentSection}
+
       ${whereBestSection}
+
+      ${doesDoesNotSection}
 
       ${benefitsSection}
 
