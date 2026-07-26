@@ -508,16 +508,20 @@ const servicePages = [
         img: '/storefront-project-1.jpg',
         w: 1000,
         h: 752,
-        alt: 'Polished storefront glass with new anti-graffiti film installed on a Hollywood retail frontage',
+        srcset: '/storefront-project-1-560.jpg 560w, /storefront-project-1.jpg 1000w',
+        sizes: '(max-width: 640px) 71vw, (max-width: 900px) 85vw, 44vw',
+        alt: 'Glass polishing and anti-graffiti film installation on a retail storefront in Hollywood, Los Angeles',
         title: 'Retail Storefront Protection',
         area: 'Hollywood',
         tag: 'Glass Polishing + Anti-Graffiti Film',
-        body: 'The existing storefront glass was polished to take out surface damage, then a fresh layer of anti-graffiti film was installed as a replaceable sacrificial coat.',
+        body: 'The existing storefront glass was polished to remove surface damage, then protected with a new replaceable layer of anti-graffiti film.',
       },
       {
         img: '/storefront-project-2.jpg',
         w: 1000,
         h: 752,
+        srcset: '/storefront-project-2-560.jpg 560w, /storefront-project-2.jpg 1000w',
+        sizes: '(max-width: 640px) 71vw, (max-width: 900px) 85vw, 44vw',
         alt: 'Dark solar control film installed across the storefront glass of a Los Angeles commercial unit',
         title: 'Commercial Storefront Tint',
         area: 'Los Angeles',
@@ -782,7 +786,15 @@ const projectsSection = page.projects
             .map(
               (project) => `
                 <article class="service-card project-mini">
-                  <img src="${project.img}" alt="${project.alt}" decoding="async" width="${project.w}" height="${project.h}" />
+                  <img
+                    src="${project.img}"
+                    ${project.srcset ? `srcset="${project.srcset}" sizes="${project.sizes}"` : ''}
+                    alt="${project.alt}"
+                    ${project.lazy ? 'loading="lazy"' : ''}
+                    decoding="async"
+                    width="${project.w}"
+                    height="${project.h}"
+                  />
                   <div class="project-mini-body">
                     <h3 class="project-mini-title">${project.title}</h3>
                     <p class="project-mini-meta">${project.area} · ${project.tag}</p>
