@@ -37,7 +37,9 @@ const servicePages = [
       'Reduce heat, glare, UV exposure and privacy issues for homes, bedrooms, bathrooms and living spaces across Los Angeles.',
     heroImage: {
       src: '/residential-hero.jpg',
-      alt: 'Sun protection film installed on the front windows and garage glass of a Los Angeles home',
+      w: 1000,
+      h: 1250,
+      alt: 'Solar control film on floor-to-ceiling living room windows of a Los Angeles home',
     },
     problemsTitle: 'Most residential film projects start with comfort and privacy problems.',
     problems: [
@@ -49,7 +51,7 @@ const servicePages = [
     filmTypesTitle: 'Types of residential window film we install',
     filmTypes: [
       ['Heat Control Film', 'Nano-ceramic and solar-control films that cut heat and glare while keeping rooms bright and views clear.'],
-      ['Clear UV Film', 'Nearly invisible protection that blocks the UV exposure behind faded floors, furniture and artwork.'],
+      ['Clear UV Film', 'Nearly invisible film that reduces UV exposure to help protect floors, furniture and artwork from fading.'],
       ['Daytime Privacy Film', 'Reflective films that make it hard to see in from the street during the day without blocking your view out.'],
       ['Frosted & Decorative Film', 'Frosted, gradient and patterned finishes for bathrooms, entry glass, sidelites and interior doors.'],
       ['Safety Film for Doors & Ground-Floor Windows', 'Thicker film that helps hold shattered glass together on sliding doors and accessible windows.'],
@@ -62,36 +64,40 @@ const servicePages = [
       ['Privacy during the day', 'Reflective privacy film'],
       ['Privacy day and night', 'Frosted or decorative film'],
       ['Protect interiors from UV fading', 'Clear or lightly tinted UV film'],
-      ['Hold broken glass together', 'Safety and security film'],
+      ['Add protection for doors and accessible windows', 'Safety and security film'],
     ],
-    solutionsTitle: 'What residential film can solve',
-    solutions: [
-      ['Reduce heat and glare', 'Help sun-heavy rooms feel more balanced and more usable during the brightest parts of the day.'],
-      ['Improve privacy', 'Create a more protected feel for street-facing windows, bathrooms, and exposed glass areas.'],
-      ['Protect interiors', 'Reduce UV exposure that can contribute to fading on floors, furniture, and interior finishes.'],
-      ['Keep a clean finish', 'Maintain a premium look without bulky window treatments.'],
+    benefitsTitle: 'Benefits of residential window film',
+    benefits: [
+      'More comfortable rooms',
+      'Less glare on screens',
+      'Reduced UV exposure',
+      'Improved daytime privacy',
+      'Cleaner appearance than curtains',
+      'Additional glass protection',
     ],
-    projectsTitle: 'Recent residential projects',
+    projectsTitle: 'Recent Residential Window Film Projects',
     projects: [
       {
         img: '/residential-project-1.jpg',
         w: 1000,
         h: 714,
         alt: 'Protective solar control film installed on the sliding glass doors of a Los Angeles home',
-        area: 'Modern hillside home, Los Angeles',
-        tag: 'Heat + Safety',
-        body: 'Protective anti-vandal solar film on the sliding doors, with standard solar control film on the rest of the home’s windows — heat and glare control plus an added protection layer on the most accessible glass.',
+        area: 'Modern hillside home — Los Angeles',
+        tag: 'Heat Control + Safety Film',
+        body: 'Solar-control film installed across the home, with safety film added to accessible doors and windows.',
       },
       {
         img: '/residential-project-2.jpg',
         w: 1000,
         h: 750,
         alt: 'Two rooftop skylights with sun protection film installed on a Los Angeles hillside home',
-        area: 'Ocean-view hillside estate, Los Angeles',
-        tag: 'Skylight & Roof Glazing',
-        body: 'Sun-protective film installed on rooftop skylights to cut the heat coming in from overhead glass. Skylight work depends on roof access, glass type and condition — we confirm limitations and warranty coverage before any work starts.',
+        area: 'Residential skylight project — Los Angeles',
+        tag: 'Exterior Solar-Control Film',
+        body: 'Exterior-rated film installed on rooftop skylights to reduce overhead heat and glare.',
       },
     ],
+    projectsNote:
+      'Skylight and exterior work depends on roof access, glass type and condition. We confirm what is possible, along with any limitations and warranty coverage, before work starts.',
     processTitle: 'How a residential installation works',
     processSteps: [
       ['Send photos & goals', 'Share photos, rough measurements, your ZIP and what you want to fix — heat, privacy, fading or safety.'],
@@ -110,6 +116,7 @@ const servicePages = [
       ['How long does residential window film last?', 'Quality architectural films typically last 10–15+ years on interior surfaces. Exterior films have shorter lifespans, which we explain up front for skylight and exterior projects.'],
       ['Can the film be removed later?', 'Yes. Professionally installed film can be removed without damaging the glass, and old or failing film can be replaced with a newer product.'],
     ],
+    areasTitle: 'Residential Window Film Service Areas',
     areasNote:
       'We install residential window film throughout Los Angeles and surrounding areas, including Beverly Hills, Glendale, Burbank, Woodland Hills, West Hills, Porter Ranch and nearby communities.',
     formIntro:
@@ -320,6 +327,45 @@ const filmTypesSection = page.filmTypes
     `
   : ''
 
+const benefitsSection = page.benefits
+  ? `
+      <section class="section section-plain benefits-section">
+        <div class="section-heading">
+          <p class="eyebrow">Why homeowners install it</p>
+          <h2>${page.benefitsTitle}</h2>
+        </div>
+        <ul class="benefits-list">
+          ${page.benefits.map((item) => `<li>${item}</li>`).join('')}
+        </ul>
+      </section>
+    `
+  : ''
+
+// Older pages still use the title+body "solutions" cards; residential replaced
+// them with the shorter benefits list above.
+const solutionsSection = page.solutions
+  ? `
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">What this service solves</p>
+          <h2>${page.solutionsTitle}</h2>
+        </div>
+        <div class="card-grid two-up">
+          ${page.solutions
+            .map(
+              ([title, body]) => `
+                <article class="service-card">
+                  <h3>${title}</h3>
+                  <p>${body}</p>
+                </article>
+              `,
+            )
+            .join('')}
+        </div>
+      </section>
+    `
+  : ''
+
 const chooserSection = page.chooser
   ? `
       <section class="section">
@@ -334,7 +380,10 @@ const chooserSection = page.chooser
             </thead>
             <tbody>
               ${page.chooser
-                .map(([goal, film]) => `<tr><td>${goal}</td><td>${film}</td></tr>`)
+                .map(
+                  ([goal, film]) =>
+                    `<tr><td>${goal}</td><td><span class="chooser-pick">${film}</span></td></tr>`,
+                )
                 .join('')}
             </tbody>
           </table>
@@ -365,6 +414,7 @@ const projectsSection = page.projects
             )
             .join('')}
         </div>
+        ${page.projectsNote ? `<p class="projects-note">${page.projectsNote}</p>` : ''}
       </section>
     `
   : ''
@@ -394,12 +444,12 @@ const processSection = page.processSteps
 
 const faqSection = page.faq
   ? `
-      <section class="section">
+      <section class="section service-faq-section">
         <div class="section-heading">
           <p class="eyebrow">FAQ</p>
           <h2>${page.faqTitle}</h2>
         </div>
-        <div class="faq-list">
+        <div class="faq-list service-faq-list">
           ${page.faq
             .map(
               ([question, answer], index) => `
@@ -414,7 +464,11 @@ const faqSection = page.faq
 
 const areasSection = page.areasNote
   ? `
-      <section class="section service-areas-note">
+      <section class="section section-plain service-areas-note">
+        <div class="section-heading">
+          <p class="eyebrow">Where we work</p>
+          <h2>${page.areasTitle ?? 'Service Areas'}</h2>
+        </div>
         <p>${page.areasNote}</p>
       </section>
     `
@@ -445,7 +499,7 @@ const heroSection = page.heroImage
             <a class="button button-secondary" href="${business.phoneHref}">Call / Text Now</a>
           </div>
         </div>
-        <img class="service-hero-photo" src="${page.heroImage.src}" alt="${page.heroImage.alt}" fetchpriority="high" width="1000" height="1201" />
+        <img class="service-hero-photo" src="${page.heroImage.src}" alt="${page.heroImage.alt}" fetchpriority="high" width="${page.heroImage.w}" height="${page.heroImage.h}" />
       </section>
     `
   : `
@@ -519,26 +573,11 @@ document.querySelector('#app').innerHTML = `
 
       ${filmTypesSection}
 
-      ${chooserSection}
+      ${benefitsSection}
 
-      <section class="section">
-        <div class="section-heading">
-          <p class="eyebrow">What this service solves</p>
-          <h2>${page.solutionsTitle}</h2>
-        </div>
-        <div class="card-grid two-up">
-          ${page.solutions
-            .map(
-              ([title, body]) => `
-                <article class="service-card">
-                  <h3>${title}</h3>
-                  <p>${body}</p>
-                </article>
-              `,
-            )
-            .join('')}
-        </div>
-      </section>
+      ${solutionsSection}
+
+      ${chooserSection}
 
       ${projectsSection}
 
@@ -580,11 +619,11 @@ document.querySelector('#app').innerHTML = `
               <input type="text" name="Name" autocomplete="name" required />
             </label>
             <label>
-              Phone
+              Phone <span class="label-note">one required</span>
               <input type="tel" name="Phone" autocomplete="tel" />
             </label>
             <label>
-              Email
+              Email <span class="label-note">one required</span>
               <input type="email" name="Email" autocomplete="email" />
             </label>
             <label>
@@ -592,8 +631,6 @@ document.querySelector('#app').innerHTML = `
               <input type="text" name="ZIP" autocomplete="postal-code" required />
             </label>
           </div>
-
-          <p class="form-hint">Please leave at least one way to reach you — a phone number or an email.</p>
 
           <label>
             Service
@@ -617,24 +654,60 @@ document.querySelector('#app').innerHTML = `
             </span>
           </label>
 
-          <button class="button button-primary submit-button" type="submit">Get My Estimate</button>
+          <button class="button button-primary submit-button" type="submit">Request My Free Estimate</button>
+          <p class="form-promise">We typically reply within one business day.</p>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
       </section>
     </main>
 
-    <footer class="footer">
-      <div>
-        <strong>SOLCREST FILM CO</strong>
-        <p>Premium Architectural Window Film Installation in Los Angeles.</p>
-        <p><a href="mailto:${business.email}">${business.email}</a></p>
-        <p><a href="${business.phoneHref}">${business.phoneDisplay}</a></p>
+    <footer class="footer footer-premium">
+      <div class="footer-premium-inner footer-premium-inner-service">
+        <div class="footer-col footer-col-brand">
+          <img
+            class="footer-logo"
+            src="/solcrest-logo-header-dark.png"
+            alt="Solcrest Film Co premium window film Los Angeles logo"
+            width="573"
+            height="202"
+          />
+          <p class="footer-tagline">Premium Architectural Window Film Installation in Los Angeles</p>
+        </div>
+        <div class="footer-col footer-col-contact">
+          <h3 class="footer-col-title">Contact</h3>
+          <p><a href="${business.phoneHref}">${business.phoneDisplay}</a></p>
+          <p><a href="mailto:${business.email}">${business.email}</a></p>
+          <div class="social-links footer-premium-social">
+            <a href="https://www.instagram.com/solcrestfilmco/" target="_blank" rel="noopener noreferrer" aria-label="Solcrest Film Co on Instagram">${icon('instagram')}</a>
+            <a href="https://www.facebook.com/solcrestfilm/" target="_blank" rel="noopener noreferrer" aria-label="Solcrest Film Co on Facebook">${icon('facebook')}</a>
+            <a href="https://share.google/TTXOlBBFKuizqpQMi" target="_blank" rel="noopener noreferrer" aria-label="Solcrest Film Co on Google Business Profile">${icon('google')}</a>
+          </div>
+        </div>
+        <div class="footer-col footer-col-links">
+          <h3 class="footer-col-title">Services</h3>
+          <div class="footer-quick-links">
+            <a href="/residential-window-film-los-angeles.html">Residential Window Film</a>
+            <a href="/commercial-window-film-los-angeles.html">Commercial Window Film</a>
+            <a href="/safety-security-window-film-los-angeles.html">Safety &amp; Security Film</a>
+            <a href="/anti-graffiti-window-film-los-angeles.html">Anti-Graffiti Film</a>
+            <a href="/decorative-privacy-window-film-los-angeles.html">Decorative &amp; Privacy Film</a>
+            <a href="/smart-film-installation-los-angeles.html">Smart Film</a>
+          </div>
+        </div>
+        <div class="footer-col footer-col-areas">
+          <h3 class="footer-col-title">Service Areas</h3>
+          <p class="footer-areas-text">
+            Los Angeles, Beverly Hills, Glendale, Burbank, Woodland Hills, West Hills, Porter Ranch and nearby communities.
+          </p>
+          <div class="footer-quick-links footer-quick-links-tight">
+            <a href="/our-work.html">Our Work</a>
+            <a href="/about.html">About</a>
+            <a href="#contact">Request an Estimate</a>
+          </div>
+        </div>
       </div>
-      <div class="footer-links">
-        <a href="/">Home</a>
-        <a href="/residential-window-film-los-angeles.html">Residential</a>
-        <a href="/commercial-window-film-los-angeles.html">Commercial</a>
-        <a href="/#contact">Estimate</a>
+      <div class="footer-premium-bottom">
+        <p>&copy; ${new Date().getFullYear()} Solcrest Film Co. All rights reserved.</p>
       </div>
     </footer>
 
