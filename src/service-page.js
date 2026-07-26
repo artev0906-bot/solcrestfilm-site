@@ -198,10 +198,16 @@ const servicePages = [
   },
   {
     file: 'decorative-privacy-window-film-los-angeles.html',
-    eyebrow: 'Decorative / Privacy Film',
-    title: 'Decorative and Privacy Window Film Installation in Los Angeles',
+    eyebrow: 'Decorative & Privacy Film',
+    title: 'Decorative & Privacy Window Film in Los Angeles',
     description:
-      'Frosted, blackout, gradient and custom privacy film solutions for offices, homes, bathrooms and luxury interiors.',
+      'Frosted, blackout, gradient and custom decorative films for offices, bathrooms, conference rooms, entry glass and interior partitions.',
+    heroImage: {
+      src: '/decorative-hero.jpg',
+      w: 900,
+      h: 1342,
+      alt: 'Frosted privacy film installed on a floor-to-ceiling office glass partition in Los Angeles',
+    },
     problemsTitle: 'Decorative and privacy projects usually start with exposed interior glass.',
     problems: [
       'Bathrooms and entries that need privacy',
@@ -209,12 +215,85 @@ const servicePages = [
       'Luxury interiors needing a cleaner design statement',
       'Need for decorative or branding-oriented glass treatments',
     ],
-    solutionsTitle: 'What decorative film can solve',
-    solutions: [
-      ['Create privacy', 'Frosted, blackout and custom privacy solutions for residential or commercial use.'],
-      ['Improve design', 'Give plain glass a stronger architectural presence.'],
-      ['Control visibility', 'Segment spaces without replacing the glass.'],
-      ['Support custom looks', 'Gradient and tailored patterns for more refined interiors.'],
+    filmTypesTitle: 'Types of Decorative & Privacy Film',
+    filmTypes: [
+      ['Frosted Privacy Film', 'The most common choice — an even etched-glass look that blocks the view while still letting daylight through, day and night.'],
+      ['Blackout Film', 'Fully opaque film that stops light and visibility completely, for rooms that need to stay dark or fully separated.'],
+      ['Whiteout Film', 'Solid white opaque film that hides storage, equipment or work areas while keeping the space feeling bright.'],
+      ['Gradient Film', 'A graded fade from frosted to clear, used to cover sightlines at seated height while leaving the upper glass open.'],
+      ['Patterned Decorative Film', 'Bands, geometric patterns and textured finishes that add design to plain glass and mark it as visible.'],
+      ['Custom Printed / Branded Film', 'Cut logos, lettering and printed graphics applied to glass for storefronts, offices and interior branding.'],
+    ],
+    whereBestTitle: 'Where decorative and privacy film works best',
+    whereBest: [
+      'Bathrooms and shower glass',
+      'Office partitions',
+      'Conference rooms',
+      'Entry doors and sidelights',
+      'Medical and professional offices',
+      'Storefront branding',
+      'Interior glass walls',
+    ],
+    benefitsTitle: 'Benefits of Decorative & Privacy Film',
+    benefits: [
+      'Privacy without losing daylight',
+      'No curtains, blinds or hardware',
+      'Cheaper than replacing glass',
+      'Defines and zones open spaces',
+      'Makes clear glass visible and safer',
+      'Removable and replaceable later',
+    ],
+    projectsTitle: 'Recent Decorative & Privacy Film Projects',
+    projects: [
+      {
+        img: '/decorative-project-1.jpg',
+        w: 1000,
+        h: 752,
+        alt: 'Blackout film installed on a full-height interior glass wall in a Los Angeles studio space',
+        title: 'Studio Glass Wall',
+        area: 'Los Angeles',
+        tag: 'Blackout Film',
+        body: 'Opaque black film applied across a full-height glass wall to block light and separate the room without building a partition.',
+      },
+      {
+        img: '/decorative-project-2.jpg',
+        w: 1000,
+        h: 752,
+        alt: 'White matte privacy film installed on glass court panels at a Los Angeles tennis club',
+        title: 'Tennis Club Glass',
+        area: 'Los Angeles',
+        tag: 'Whiteout Film',
+        body: 'White matte film installed on glass panels to screen the service area from the court while keeping the glass bright.',
+      },
+    ],
+    processTitle: 'How a decorative film installation works',
+    processSteps: [
+      ['Send photos & goals', 'Share photos of the glass, rough measurements and what you need — privacy, blackout, branding or a design finish.'],
+      ['Pick the finish', 'We show samples so you can compare frosted, whiteout, gradient and patterned options against your glass and lighting.'],
+      ['Template & cut', 'Panels are measured and cut to fit each pane, including any logos, bands or custom patterns.'],
+      ['Clean installation', 'Glass is cleaned and the film applied wet, then squeegeed out. Most interior jobs finish within a day.'],
+    ],
+    faqTitle: 'Decorative & privacy film questions',
+    faq: [
+      ['Does frosted privacy film work at night?', 'Yes. Unlike reflective daytime privacy film, frosted and other opaque decorative films diffuse the glass itself, so they block the view in both directions regardless of the lighting.'],
+      ['Will frosted film make the room dark?', 'No. Frosted film scatters light rather than blocking it, so rooms stay bright while the view through the glass is obscured. Blackout and whiteout films are the ones that stop light.'],
+      ['Can I still see out through decorative film?', 'Not with frosted, whiteout or blackout film — they obscure the view both ways. Gradient film keeps part of the glass clear, so you keep a view above or below the frosted band.'],
+      ['Can you cut a logo or custom design into the film?', 'Yes. Logos, lettering, bands and patterns can be cut from frosted or coloured film, and full-colour graphics can be printed. Send artwork and we will confirm what works at your glass size.'],
+      ['Can decorative film go on shower glass?', 'Yes, and it is a common request. We use films suited to wet areas and apply them to the dry outer face of the glass where the layout allows.'],
+      ['Is it cheaper than replacing the glass with frosted glass?', 'In most cases yes, and it is far less disruptive — the existing glass stays in place and there is no removal, disposal or refitting.'],
+      ['How long does decorative film last?', 'Interior decorative films typically last many years, since they are not exposed to weather or direct sun the way exterior applications are. We confirm the manufacturer warranty for the specific film used.'],
+      ['Can the film be removed or changed later?', 'Yes. Decorative film can be removed without damaging the glass, which makes it practical for leased spaces, rebrands or changing a design.'],
+    ],
+    formIntro:
+      'Send photos of the glass, approximate measurements and your ZIP code. We’ll recommend suitable finishes and show samples before anything is ordered.',
+    serviceOptions: [
+      'Frosted Privacy Film',
+      'Blackout Film',
+      'Whiteout Film',
+      'Gradient Film',
+      'Patterned Decorative Film',
+      'Custom Printed / Branded Film',
+      'Not Sure',
     ],
   },
   {
@@ -325,6 +404,20 @@ const filmTypesSection = page.filmTypes
             )
             .join('')}
         </div>
+      </section>
+    `
+  : ''
+
+const whereBestSection = page.whereBest
+  ? `
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Best applications</p>
+          <h2>${page.whereBestTitle}</h2>
+        </div>
+        <ul class="benefits-list where-best-list">
+          ${page.whereBest.map((item) => `<li>${item}</li>`).join('')}
+        </ul>
       </section>
     `
   : ''
@@ -575,6 +668,8 @@ document.querySelector('#app').innerHTML = `
       </section>
 
       ${filmTypesSection}
+
+      ${whereBestSection}
 
       ${benefitsSection}
 
