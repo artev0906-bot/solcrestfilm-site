@@ -2922,6 +2922,16 @@ h3 {
   margin: 12px 0 0;
 }
 
+/* Don't rely on the UA hiding a closed <details> — some engines render the
+   answer anyway, so it spills over the item below. Enforce it explicitly. */
+.faq-list details > *:not(summary) {
+  display: none;
+}
+
+.faq-list details[open] > *:not(summary) {
+  display: block;
+}
+
 .contact-block {
   display: grid;
   gap: 10px;

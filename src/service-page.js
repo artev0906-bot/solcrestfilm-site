@@ -276,9 +276,9 @@ const servicePages = [
   {
     file: 'anti-graffiti-window-film-los-angeles.html',
     eyebrow: 'Anti-Graffiti Film',
-    title: 'Anti-Graffiti Window Film for Storefront Protection in Los Angeles',
+    title: 'Anti-Graffiti Film in Los Angeles',
     description:
-      'Protect storefront glass from scratches, vandalism and costly replacement with sacrificial anti-graffiti film.',
+      'Protect storefront glass from scratches, tagging and costly replacement with a sacrificial anti-graffiti layer.',
     layout: ['problems', 'info', 'filmTypes', 'chooser', 'benefits', 'projects', 'process', 'faq', 'areas'],
     heroImage: {
       src: '/antigraffiti-hero.jpg',
@@ -327,6 +327,8 @@ const servicePages = [
       ['When the glass is already damaged', 'If the pane itself is scratched or etched, we assess polishing and restoration before any new film goes on. Some deeper damage cannot be removed completely — we say so before quoting.'],
     ],
     chooserTitle: 'Scratches, Tagging and Acid Etching',
+    chooserHeadLeft: 'Type of damage',
+    chooserHeadRight: 'How the film helps',
     chooser: [
       ['Key marks, tool damage and street-level abrasion', 'Lands in the sacrificial layer, not the pane'],
       ['Spray paint and marker tagging', 'Sits on the film; the layer is replaced if cleaning falls short'],
@@ -334,6 +336,7 @@ const servicePages = [
       ['Hazing and general wear on the layer', 'Replaced when it becomes noticeable'],
       ['Damage that reached the glass itself', 'Polishing assessed first; some depths cannot be fully removed'],
     ],
+    benefitsEyebrow: 'Key benefits',
     benefitsTitle: 'Benefits of Anti-Graffiti Film',
     benefits: [
       'Damage lands on film, not glass',
@@ -355,7 +358,7 @@ const servicePages = [
         title: 'Commercial Storefront Entry',
         area: 'Los Angeles',
         tag: 'Anti-Graffiti Film',
-        body: 'A replaceable protective layer installed across street-facing entry glass that had been repeatedly tagged.',
+        body: 'A replaceable protective layer installed across street-facing entry glass to help reduce the cost of future graffiti and surface damage.',
       },
       {
         img: '/storefront-project-1.jpg',
@@ -388,8 +391,8 @@ const servicePages = [
       ['Can the film be replaced without replacing the glass?', 'Yes, and that is the whole point of it. The damaged layer comes off, the glass is cleaned and prepared, and a new layer goes on. The original pane stays in place.'],
       ['How often does the film need replacing?', 'There is no fixed interval. It is replaced when it needs to be — when scratches, graffiti, etching or hazing have become noticeable enough to matter. Some storefronts go years; heavily targeted ones go sooner.'],
       ['What if the glass underneath is already damaged?', 'We assess whether polishing or restoration can bring it back before any new film goes on. Some deeper scratches and etching cannot be removed completely, and we tell you that up front rather than after the fact.'],
-      ['Is anti-graffiti film visible?', 'Clear anti-graffiti film leaves the storefront looking essentially unchanged — the glass keeps its appearance and light level. Most people cannot tell it is there.'],
-      ['How long does installation take?', 'Most storefronts are done within a day, depending on the number and size of panels and access. If polishing or removal of old film is involved, that adds time — we confirm the timeline once we have seen photos and a panel count.'],
+      ['Is anti-graffiti film visible?', 'Clear anti-graffiti film leaves the storefront looking essentially unchanged — the glass keeps its appearance and light level. In most applications it is difficult to notice during normal viewing, though edges, reflections or certain lighting can still reveal it.'],
+      ['How long does installation take?', 'Many storefront installations can be completed within one day, depending on the number and size of panels, access and whether removal or polishing is required. We confirm the timeline once we have seen photos and a panel count.'],
       ['Can it be installed outside business hours?', 'Yes, and it is a common request for retail and restaurants. Tell us your trading hours when you send photos and we will schedule around them.'],
     ],
     areasTitle: 'Anti-Graffiti Film Service Areas',
@@ -800,7 +803,7 @@ const benefitsSection = page.benefits
   ? `
       <section class="section benefits-section">
         <div class="section-heading">
-          <p class="eyebrow">Why homeowners install it</p>
+          <p class="eyebrow">${page.benefitsEyebrow ?? 'Why homeowners install it'}</p>
           <h2>${page.benefitsTitle}</h2>
         </div>
         <ul class="benefits-list">
@@ -845,7 +848,7 @@ const chooserSection = page.chooser
         <div class="chooser-table-wrap">
           <table class="chooser-table">
             <thead>
-              <tr><th scope="col">Your goal</th><th scope="col">Recommended film</th></tr>
+              <tr><th scope="col">${page.chooserHeadLeft ?? 'Your goal'}</th><th scope="col">${page.chooserHeadRight ?? 'Recommended film'}</th></tr>
             </thead>
             <tbody>
               ${page.chooser
