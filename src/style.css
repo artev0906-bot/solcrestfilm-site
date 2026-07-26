@@ -50,6 +50,11 @@ body {
    propagates to the viewport unless html also opts out. */
 html,
 body {
+  /* No `overflow-x: hidden` fallback on purpose: it creates a scroll
+     container and breaks the sticky topbar (measured). Engines without
+     `clip` support are Safari/iOS < 16, which run on overlay-scrollbar
+     platforms where 100vw equals the client width and the 8px overflow
+     this rule guards against never occurs. They safely keep `visible`. */
   overflow-x: clip;
 }
 
