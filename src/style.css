@@ -2475,6 +2475,12 @@ h3 {
   color: var(--accent-gold);
 }
 
+/* An odd final step would sit alone in the left column — let it span the
+   row instead. Single-column layouts (mobile) are unaffected. */
+.process-grid > article:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .service-areas-note p {
   max-width: 860px;
   color: var(--text-secondary);

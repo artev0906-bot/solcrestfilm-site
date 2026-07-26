@@ -175,19 +175,19 @@ const servicePages = [
     ],
     filmTypesTitle: 'Safety Film Thickness Options',
     filmTypes: [
-      ['8 Mil Safety Film', 'The entry level. Holds broken glass to the interlayer and reduces flying shards — aimed at accidental impact and glass-fallout safety rather than forced entry.'],
-      ['12 Mil Safety Film', 'The usual starting point when forced-entry deterrence is the goal. Thicker interlayer takes more repeated impact before the glazing gives way.'],
-      ['16 Mil Safety Film', 'A higher level of impact resistance for exposed entry points and glass that has already been targeted.'],
-      ['21–24 Mil Security Film', 'The heaviest architectural films, for projects with elevated requirements. Frame condition and an attachment system matter more at this level.'],
+      ['8 Mil Safety Film', 'A strong entry-level security film that holds shattered glass together and significantly increases the time and effort needed to break through the opening. A practical option for residential doors, accessible windows and lower-risk storefront applications.'],
+      ['12 Mil Safety Film', 'A heavier security film that provides greater resistance to repeated impact and is commonly recommended when forced-entry deterrence is the main goal. Suitable for storefronts, entry doors and exposed ground-floor glazing.'],
+      ['16 Mil Safety Film', 'A high-strength security film designed for projects that need more resistance to sustained impact and repeated forced-entry attempts. Often selected for higher-risk storefronts, commercial entries and vulnerable residential glass.'],
+      ['21–24 Mil Security Film', 'The heaviest architectural security-film options for elevated protection requirements. These films provide the greatest resistance within the film system, but final performance depends heavily on the glass, frame condition and attachment system.'],
       ['Clear Safety Film', 'Optically clear at any of the above thicknesses — the glass keeps its appearance and light level, with no tint or visible change.'],
       ['Safety + Solar Control Film', 'Combines the safety interlayer with a solar-control layer, so one install handles both heat and glare and the protection goal.'],
     ],
     attachmentTitle: 'Wet Glaze Attachment System',
     attachmentIntro:
-      'Structural silicone connects the filmed glass to the frame, helping the glazing system remain together longer after impact. Without it, film holds the glass together but the pane itself can still be pushed out of the frame.',
+      'Structural silicone connects the filmed glass to the frame, helping the glazing system remain together longer after impact. This applies at any film thickness: film holds the glass together, but without attachment the pane itself can still be pushed out of the frame, so a heavier film is not a substitute for proper frame attachment.',
     attachmentPoints: [
       'Whether it is needed depends on the frame, the glass and the protection goal.',
-      'It is applied after the film has fully dried, so it is a second visit on most projects.',
+      'When specified, structural silicone is typically installed on a return visit after the film has cured. Timing depends on the film thickness, weather, glass size and site conditions.',
       'It is not required on every project — plenty of safety installs do not call for it.',
       'The final decision comes after we inspect the glass and frame in person.',
     ],
@@ -208,7 +208,7 @@ const servicePages = [
       'Reinforces the glazing you already have, without replacing it',
     ],
     doesNotList: [
-      'Does not make glass bulletproof or bullet-resistant',
+      'Does not make glass unbreakable, bulletproof or bullet-resistant',
       'Does not guarantee that entry is impossible',
       'Does not replace an alarm, cameras or locks',
       'Results depend on the glass, the frame, the film thickness and the attachment system',
@@ -232,7 +232,7 @@ const servicePages = [
         alt: 'Protective anti-vandal solar film installed on residential sliding glass doors in Los Angeles',
         title: 'Sliding Doors, Heat + Safety',
         area: 'Los Angeles',
-        tag: 'Safety + Solar Control Film',
+        tag: 'Solar Control + Safety Film',
         body: 'Protective anti-vandal film on the sliding doors with solar control film across the rest of the home — heat and glare handled in the same install as the protection layer.',
       },
     ],
@@ -242,13 +242,13 @@ const servicePages = [
       ['Review glass, frame and risk', 'We check the glass type, the frame depth and how exposed each opening is. Dual-pane and older frames change what is appropriate.'],
       ['Select thickness and attachment', 'Pick the film thickness for the risk level, and decide whether a wet glaze attachment system is worth adding.'],
       ['Installation and curing', 'Film is installed and then cures over days to a few weeks depending on thickness and weather. Some haze during curing is normal.'],
-      ['Optional structural silicone', 'If an attachment system was specified, the structural silicone is applied on a return visit once the film has fully dried.'],
+      ['Optional structural silicone', 'When specified, structural silicone is typically installed on a return visit after the film has cured. Timing depends on the film thickness, weather, glass size and site conditions.'],
     ],
     faqTitle: 'Safety & security film questions',
     faq: [
       ['Does security film stop a break-in?', 'No film guarantees that. What it does is make the glass much harder to get through quickly — an intruder who expects one hit to clear the pane instead has to keep working at it, in the open, making noise. Deterrence and delay are the realistic goals, not prevention.'],
-      ['What thickness is best for forced-entry protection?', '12 mil is the usual starting point when deterring forced entry is the goal, with 16 mil and up for higher-risk or previously targeted openings. 8 mil is aimed at glass-fallout safety rather than break-in resistance.'],
-      ['What is the difference between 8 mil, 12 mil and 16 mil?', 'Thickness of the film interlayer, which is what holds the broken glass together. Thicker film absorbs more repeated impact before the glazing fails, so it buys more time. It also gets stiffer, which affects how it can be installed on curved or small panes.'],
+      ['What thickness is best for forced-entry protection?', '8 mil can already provide meaningful forced-entry deterrence by holding broken glass together and increasing the time and effort required to create an opening. 12 mil is a common choice when stronger resistance to repeated impact is the main goal, while 16 mil and thicker options may be recommended for higher-risk or more demanding applications. The final recommendation depends on the glass, frame, opening size and whether an attachment system is used.'],
+      ['What is the difference between 8 mil, 12 mil and 16 mil?', '8 mil already adds meaningful resistance to break-through attempts while holding shattered glass together. 12 mil and 16 mil provide progressively greater resistance to repeated impact and sustained forced-entry attempts. Thicker film is generally stiffer and more difficult to penetrate, but overall performance also depends on the glass, frame and attachment system.'],
       ['Does safety film need structural silicone?', 'Not always. Film keeps the glass together, but on a hard enough hit the whole pane can still leave the frame. A wet glaze attachment system bonds the filmed glass to the frame to resist that. Whether it is worth adding depends on the frame, the glass and your protection goal — we advise after seeing them.'],
       ['Can safety film be installed on dual-pane glass?', 'Often yes, but not with every film. The wrong film on insulated glass can create thermal stress, so we confirm the glass type first and use films rated for it. This is one of the main reasons to have it installed professionally.'],
       ['Is security film visible?', 'Clear safety film is optically clear — the glass keeps its appearance and light level, and most people cannot tell it is there. If you also want heat or glare control, a tinted or solar-control version is available.'],
@@ -658,7 +658,7 @@ const processSection = page.processSteps
           <p class="eyebrow">Process</p>
           <h2>${page.processTitle}</h2>
         </div>
-        <div class="card-grid two-up">
+        <div class="card-grid two-up process-grid">
           ${page.processSteps
             .map(
               ([title, body], index) => `
