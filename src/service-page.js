@@ -82,7 +82,8 @@ const servicePages = [
         w: 1000,
         h: 714,
         alt: 'Protective solar control film installed on the sliding glass doors of a Los Angeles home',
-        area: 'Modern hillside home — Los Angeles',
+        title: 'Modern Hillside Home',
+        area: 'Los Angeles',
         tag: 'Heat Control + Safety Film',
         body: 'Solar-control film installed across the home, with safety film added to accessible doors and windows.',
       },
@@ -91,7 +92,8 @@ const servicePages = [
         w: 1000,
         h: 750,
         alt: 'Two rooftop skylights with sun protection film installed on a Los Angeles hillside home',
-        area: 'Residential skylight project — Los Angeles',
+        title: 'Residential Skylight Project',
+        area: 'Los Angeles',
         tag: 'Exterior Solar-Control Film',
         body: 'Exterior-rated film installed on rooftop skylights to reduce overhead heat and glare.',
       },
@@ -118,7 +120,7 @@ const servicePages = [
     ],
     areasTitle: 'Residential Window Film Service Areas',
     areasNote:
-      'We install residential window film throughout Los Angeles and surrounding areas, including Beverly Hills, Glendale, Burbank, Woodland Hills, West Hills, Porter Ranch and nearby communities.',
+      'We serve Los Angeles and surrounding communities, including Beverly Hills, Glendale, Burbank, Woodland Hills, West Hills and Porter Ranch.',
     formIntro:
       'Send photos, approximate measurements and your ZIP code. We’ll recommend suitable options based on heat, privacy, appearance and glass type.',
     serviceOptions: [
@@ -329,7 +331,7 @@ const filmTypesSection = page.filmTypes
 
 const benefitsSection = page.benefits
   ? `
-      <section class="section section-plain benefits-section">
+      <section class="section benefits-section">
         <div class="section-heading">
           <p class="eyebrow">Why homeowners install it</p>
           <h2>${page.benefitsTitle}</h2>
@@ -406,7 +408,8 @@ const projectsSection = page.projects
                 <article class="service-card project-mini">
                   <img src="${project.img}" alt="${project.alt}" decoding="async" width="${project.w}" height="${project.h}" />
                   <div class="project-mini-body">
-                    <p class="project-mini-meta"><strong>${project.area}</strong> — ${project.tag}</p>
+                    <h3 class="project-mini-title">${project.title}</h3>
+                    <p class="project-mini-meta">${project.area} · ${project.tag}</p>
                     <p>${project.body}</p>
                   </div>
                 </article>
@@ -464,7 +467,7 @@ const faqSection = page.faq
 
 const areasSection = page.areasNote
   ? `
-      <section class="section section-plain service-areas-note">
+      <section class="section service-areas-note">
         <div class="section-heading">
           <p class="eyebrow">Where we work</p>
           <h2>${page.areasTitle ?? 'Service Areas'}</h2>
@@ -613,17 +616,19 @@ document.querySelector('#app').innerHTML = `
           <input type="hidden" name="_replyto" value="" />
           <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
+          <p class="form-contact-hint">Please provide either a phone number or email.</p>
+
           <div class="form-grid two-column-form">
             <label>
               Name
               <input type="text" name="Name" autocomplete="name" required />
             </label>
             <label>
-              Phone <span class="label-note">one required</span>
+              Phone
               <input type="tel" name="Phone" autocomplete="tel" />
             </label>
             <label>
-              Email <span class="label-note">one required</span>
+              Email
               <input type="email" name="Email" autocomplete="email" />
             </label>
             <label>

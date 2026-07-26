@@ -2452,9 +2452,11 @@ h3 {
 }
 
 .project-mini-meta {
-  margin-bottom: 8px;
-  color: var(--accent-gold);
+  margin-bottom: 10px;
+  font-size: 14px;
   letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
 }
 
 .process-step-num {
@@ -2468,13 +2470,10 @@ h3 {
   line-height: 1.75;
 }
 
-/* Sections that break the run of cream cards, so the page has some rhythm */
-.section-plain {
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  padding-left: 0;
-  padding-right: 0;
+/* Service pages sit on a dark backdrop, so every section keeps the cream
+   card — the gap between them is tightened instead of dropping the card. */
+.service-page-shell .section {
+  margin-bottom: 22px;
 }
 
 .benefits-list {
@@ -2491,7 +2490,7 @@ h3 {
   padding: 18px 20px 18px 46px;
   border: 1px solid var(--border);
   border-radius: 16px;
-  background: var(--bg-surface);
+  background: var(--bg-surface-alt);
   font-size: 17px;
   line-height: 1.45;
 }
@@ -2545,13 +2544,16 @@ h3 {
   max-width: 90ch;
 }
 
-.label-note {
-  margin-left: 6px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--accent-gold);
+.form-contact-hint {
+  margin: 0 0 -4px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.project-mini-title {
+  margin: 0 0 4px;
+  font-size: 20px;
+  line-height: 1.25;
 }
 
 .form-promise {
