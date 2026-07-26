@@ -104,8 +104,9 @@ document.querySelector('#app').innerHTML = `
         </div>
       </section>
     </main>
+  </div>
 
-    <footer class="footer">
+  <footer class="footer">
       <div>
         <strong>SOLCREST FILM CO</strong>
         <p>Premium Architectural Window Film Installation in Los Angeles.</p>
@@ -120,10 +121,9 @@ document.querySelector('#app').innerHTML = `
       </div>
     </footer>
 
-    <div class="sticky-cta-bar">
-      <a class="sticky-cta-call" href="${business.phoneHref}">${icon('smartphone')}<span>Call</span></a>
-      <a class="sticky-cta-request" href="/#contact">${icon('badgeCheck')}<span>Get Estimate</span></a>
-    </div>
+  <div class="sticky-cta-bar">
+    <a class="sticky-cta-call" href="${business.phoneHref}">${icon('smartphone')}<span>Call</span></a>
+    <a class="sticky-cta-request" href="/#contact">${icon('badgeCheck')}<span>Get Estimate</span></a>
   </div>
 `
 

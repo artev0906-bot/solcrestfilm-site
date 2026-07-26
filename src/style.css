@@ -2010,7 +2010,7 @@ h3 {
 .footer-premium-inner {
   max-width: 1212px;
   margin: 0 auto;
-  padding: 48px max(24px, calc((100vw - 1260px) / 2 + 24px)) 32px;
+  padding: 48px max(24px, calc((100% - 1260px) / 2 + 24px)) 32px;
   display: grid;
   grid-template-columns: 1.2fr 1fr 1fr;
   gap: 72px;
@@ -2075,7 +2075,7 @@ h3 {
 
 .footer-premium-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 18px max(24px, calc((100vw - 1260px) / 2 + 24px));
+  padding: 18px max(24px, calc((100% - 1260px) / 2 + 24px));
 }
 
 .footer-premium-bottom p {
@@ -3067,15 +3067,15 @@ h3 {
 }
 
 .footer {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  /* The footer is a direct child of #app (full client width), so plain 100%
+     spans the viewport without the 100vw+translate hack that overflowed by
+     the scrollbar width on classic-scrollbar platforms. */
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 28px max(24px, calc((100vw - 1260px) / 2 + 24px)) 44px;
+  padding: 28px max(24px, calc((100% - 1260px) / 2 + 24px)) 44px;
   background: linear-gradient(180deg, #232528 0%, #1e1e24 100%);
 }
 

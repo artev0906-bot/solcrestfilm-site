@@ -1193,8 +1193,9 @@ document.querySelector('#app').innerHTML = `
         </form>
       </section>
     </main>
+  </div>
 
-    <footer class="footer footer-premium">
+  <footer class="footer footer-premium">
       <div class="footer-premium-inner footer-premium-inner-service">
         <div class="footer-col footer-col-brand">
           <img
@@ -1245,10 +1246,9 @@ document.querySelector('#app').innerHTML = `
       </div>
     </footer>
 
-    <div class="sticky-cta-bar">
-      <a class="sticky-cta-call" href="${business.phoneHref}">${icon('smartphone')}<span>Call</span></a>
-      <a class="sticky-cta-request" href="/#contact">${icon('badgeCheck')}<span>Get Estimate</span></a>
-    </div>
+  <div class="sticky-cta-bar">
+    <a class="sticky-cta-call" href="${business.phoneHref}">${icon('smartphone')}<span>Call</span></a>
+    <a class="sticky-cta-request" href="/#contact">${icon('badgeCheck')}<span>Get Estimate</span></a>
   </div>
 `
 
