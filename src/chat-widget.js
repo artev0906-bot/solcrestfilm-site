@@ -27,7 +27,7 @@ const faqItems = [
   },
   {
     q: 'Can smart film be installed on existing glass?',
-    a: 'In many cases, yes. Smart film can be applied to existing glass to create switchable privacy, turning the glass from clear to private when powered. The final recommendation depends on the glass condition, size, wiring access, controller location, and whether the project is residential, office, clinic, conference room, or commercial space.',
+    a: 'In many cases, yes. Smart film switches between transparent and private modes using electrical power. The operating sequence depends on the selected film system. The final recommendation depends on the glass condition, size, wiring access, controller location, and whether the project is residential, office, clinic, conference room, or commercial space.',
   },
   {
     q: 'Do I need photos and measurements for an estimate?',
