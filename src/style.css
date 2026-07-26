@@ -2676,6 +2676,17 @@ h3 {
   white-space: nowrap;
 }
 
+a.chooser-pick {
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+a.chooser-pick:hover,
+a.chooser-pick:focus-visible {
+  background: rgba(169, 130, 79, 0.22);
+  border-color: rgba(169, 130, 79, 0.6);
+}
+
 .projects-note {
   margin: 18px 0 0;
   font-size: 15px;

@@ -1001,8 +1001,12 @@ const chooserSection = page.chooser
             <tbody>
               ${page.chooser
                 .map(
-                  ([goal, film]) =>
-                    `<tr><td>${goal}</td><td><span class="chooser-pick">${film}</span></td></tr>`,
+                  ([goal, film, href]) =>
+                    `<tr><td>${goal}</td><td>${
+                      href
+                        ? `<a class="chooser-pick" href="${href}">${film}</a>`
+                        : `<span class="chooser-pick">${film}</span>`
+                    }</td></tr>`,
                 )
                 .join('')}
             </tbody>
@@ -1014,9 +1018,9 @@ const chooserSection = page.chooser
 
 // Compact explainer blocks (storefront uses three of them). Each is an
 // intro paragraph, optional bullets and an optional internal link.
-const infoSection = page.infoBlocks
-  ? page.infoBlocks
-      .map(
+// `info` in a layout renders them all together; `info:0`, `info:1` … place a
+// single block, so a page can interleave them with other sections.
+const infoBlockSections = (page.infoBlocks ?? []).map(
         (block) => `
       <section class="section info-block-section">
         <div class="section-heading">
@@ -1032,9 +1036,9 @@ const infoSection = page.infoBlocks
         ${block.link ? `<p class="info-block-link"><a href="${block.link.href}">${block.link.label}</a></p>` : ''}
       </section>
     `,
-      )
-      .join('')
-  : ''
+)
+
+const infoSection = infoBlockSections.join('')
 
 const projectsSection = page.projects
   ? `
@@ -1161,7 +1165,7 @@ const heroSection = page.heroImage
         <h1>${page.title}</h1>
         <p class="hero-text service-hero-text">${page.description}</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="/#contact">Get a Fast Estimate</a>
+          <a class="button button-primary" href="#contact">Get a Fast Estimate</a>
           <a class="button button-secondary" href="${business.phoneHref}">Call / Text Now</a>
         </div>
       </section>
@@ -1215,7 +1219,10 @@ const DEFAULT_LAYOUT = [
 ]
 
 const bodySections = (page.layout ?? DEFAULT_LAYOUT)
-  .map((key) => SECTIONS[key] ?? '')
+  .map((key) => {
+    if (key.startsWith('info:')) return infoBlockSections[Number(key.slice(5))] ?? ''
+    return SECTIONS[key] ?? ''
+  })
   .join('\n')
 
 document.querySelector('#app').innerHTML = `
