@@ -430,7 +430,7 @@ const servicePages = [
       src: '/antigraffiti-hero.jpg',
       w: 1141,
       h: 707,
-      alt: 'Full-height glass frontage and entry doors of a Los Angeles commercial storefront',
+      alt: 'Combined solar control and anti-graffiti film on the glass frontage of a Los Angeles commercial storefront',
     },
     problemsTitle: 'Anti-graffiti projects usually start with exposed storefront glass.',
     problems: [
