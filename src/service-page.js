@@ -76,14 +76,14 @@ const servicePages = [
       {
         img: '/residential-project-1.jpg',
         alt: 'Protective solar control film installed on the sliding glass doors of a Los Angeles home',
-        area: 'Private residence',
+        area: 'Modern hillside home, Los Angeles',
         tag: 'Heat + Safety',
         body: 'Protective anti-vandal solar film on the sliding doors, with standard solar control film on the rest of the home’s windows — heat and glare control plus an added protection layer on the most accessible glass.',
       },
       {
         img: '/residential-project-2.jpg',
         alt: 'Sun protection film installed on a rooftop skylight of a hillside Los Angeles home',
-        area: 'Hillside home',
+        area: 'Ocean-view hillside estate, Los Angeles',
         tag: 'Skylight & Roof Glazing',
         body: 'Sun-protective film installed on rooftop skylights to cut the heat coming in from overhead glass. Skylight work depends on roof access, glass type and condition — we confirm limitations and warranty coverage before any work starts.',
       },
