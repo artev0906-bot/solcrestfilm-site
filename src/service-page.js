@@ -196,7 +196,7 @@ const servicePages = [
     chooser: [
       ['Heat and glare on staff and customers', 'Solar control film'],
       ['Privacy in offices, clinics and meeting rooms', 'Decorative & privacy film'],
-      ['Privacy that switches on demand', 'Smart film'],
+      ['Privacy that switches on demand', 'Smart film', '/smart-film-installation-los-angeles.html'],
       ['Broken glass and forced-entry concerns', 'Safety & security film'],
       ['Scratching and tagging on street-level glass', 'Anti-graffiti film'],
       ['Customer-facing frontage as a whole', 'Storefront protection'],
@@ -663,20 +663,205 @@ const servicePages = [
     eyebrow: 'Smart Film',
     title: 'Smart Film Installation in Los Angeles',
     description:
-      'Switchable privacy film for offices, clinics, conference rooms and luxury interiors that want instant privacy control.',
-    problemsTitle: 'Smart film projects usually start with a need for flexible privacy.',
-    problems: [
-      'Glass that needs privacy on demand',
-      'Conference rooms and clinics needing fast visibility control',
-      'Luxury interiors that want a more advanced privacy system',
-      'Spaces where fixed frosting is too limiting',
+      'PDLC switchable film that changes between transparent and private modes using electrical power — for offices, conference rooms, clinics and homes across Los Angeles.',
+    // Real projects are not published yet; the section returns once we have
+    // confirmed photos of a job in both transparent and private modes.
+    layout: [
+      'problems',
+      'info:0',
+      'filmTypes',
+      'chooser',
+      'solutions',
+      'info:1',
+      'info:2',
+      'info:3',
+      'info:4',
+      'doesDoesNot',
+      'benefits',
+      'process',
+      'faq',
+      'areas',
     ],
-    solutionsTitle: 'What smart film can solve',
+    problemsTitle: 'Smart film projects usually start with glass that needs privacy only part of the time.',
+    problems: [
+      'Meeting rooms that are open one hour and confidential the next',
+      'Consult rooms that need privacy without losing daylight',
+      'Glass walls where frosted film would make the change permanent',
+      'Interiors where blinds and curtains do not suit the design',
+      'Spaces where the privacy requirement changes through the day',
+    ],
+    infoBlocks: [
+      {
+        eyebrow: 'The basics',
+        title: 'Transparent and Private Modes',
+        intro:
+          'Switchable film can change between transparent and private modes using electrical power. The default state and powered state depend on the selected film system: standard PDLC is typically private when unpowered and clearer when powered, while reverse configurations can operate in the opposite way.',
+        points: [
+          'In private mode the glass is translucent — daylight still passes through, but the view through it is obscured.',
+          'In transparent mode the glass returns to a clear or near-clear view, depending on the film system.',
+          'Switching is immediate and can be repeated as often as the room needs.',
+          'The right system depends on which state the glass should hold when nothing is switched on, including if the power is interrupted.',
+        ],
+      },
+      {
+        eyebrow: 'Power',
+        title: 'Transformer, Controller and Power Supply',
+        intro:
+          'Smart film is an electrical system, not only a film. It requires power, a transformer or power supply unit, and a control method, and that side of the project is planned before installation rather than after.',
+        points: [
+          'Every panel is connected, so the equipment locations are part of the design rather than an afterthought.',
+          'The transformer or power supply and the controller need a position that stays accessible for service and is close enough to the glass for the cable run.',
+          'The control method for the room is agreed at the same time as the equipment locations.',
+          'Equipment positions and cable routing are confirmed before material is ordered.',
+        ],
+      },
+      {
+        eyebrow: 'Electrical',
+        title: 'Wiring and Electrical Work',
+        intro:
+          'The film has to be connected to power, and that work is planned around the building rather than around the glass. Cable routing, the position of the equipment and the switch, and who carries out the connection are all settled before installation starts.',
+        points: [
+          'Cable routing is simplest when the wall or ceiling is still open, so new builds and remodels are the easiest case.',
+          'On existing partitions the cable has to reach the frame or mullion without becoming visible, and that is usually what decides the layout.',
+          'Electrical connection may need to be completed or coordinated with a qualified electrician, depending on the project.',
+          'Electrical work is estimated separately from the film and its installation.',
+        ],
+      },
+      {
+        eyebrow: 'Limitations',
+        title: 'Glass and Installation Limitations',
+        intro:
+          'Smart film is more constrained than standard architectural film, and the limits are worth knowing before the design is fixed. Panel size, seams, glass compatibility and installation conditions depend on the selected smart film system and are confirmed before material is ordered.',
+        points: [
+          'Wider glass can require more than one piece, so where a seam would fall is reviewed against the panel layout.',
+          'The glass has to be clean, flat and in sound condition, which is checked before anything is ordered.',
+          'The electrical connection sits at the edge of the film, so the frame or mullion has to be able to conceal it.',
+          'Where a room does not suit a switchable system, a fixed privacy finish is often the better answer.',
+        ],
+        link: {
+          href: '/decorative-privacy-window-film-los-angeles.html',
+          label: 'Permanent privacy instead? See Decorative & Privacy Film →',
+        },
+      },
+      {
+        eyebrow: 'Cost',
+        title: 'What Smart Film Costs',
+        intro:
+          'Smart film installation starts from $60 per sq ft. Electrical work is not included. It sits in a different price bracket from standard architectural film because it is an electrical product rather than a film alone.',
+        points: [
+          'The final cost depends on the panel sizes, the system selected, the number of panels, the control method and the electrical work involved.',
+          'Electrical work is estimated separately, because it depends on the building rather than on the glass.',
+          'We confirm the figure for a specific project after seeing photos and panel sizes.',
+        ],
+      },
+    ],
+    filmTypesTitle: 'Standard and Reverse Switchable Systems',
+    filmTypes: [
+      [
+        'Standard PDLC Film',
+        'Private when unpowered, clearer when powered. The glass holds its private state by default and is switched toward transparent when the room needs to open up, which suits spaces that are private most of the time.',
+      ],
+      [
+        'Reverse Switchable Film',
+        'Transparent when unpowered, private when powered. The glass stays clear by default and is switched to private on demand, which suits spaces that are open most of the day and need privacy only for part of it.',
+      ],
+      [
+        'Choosing between them',
+        'The practical question is which state the glass should hold when nothing is switched on, including what happens if power is interrupted. Neither sequence suits every project, so we confirm it for the specific system before anything is ordered.',
+      ],
+      [
+        'What both have in common',
+        'Both change between transparent and private modes electrically, and both need a power supply and a control method at every panel. The default state is what separates them.',
+      ],
+    ],
+    chooserTitle: 'Which operating sequence fits the space',
+    chooserHeadLeft: 'How the space is used',
+    chooserHeadRight: 'Usual system',
+    chooser: [
+      ['Open most of the day, private occasionally', 'Reverse switchable'],
+      ['Private most of the time, opened when needed', 'Standard PDLC'],
+      ['Glass should stay clear if the power is off', 'Reverse switchable'],
+      ['Glass should stay private if the power is off', 'Standard PDLC'],
+      ['Bathroom, ensuite or permanently private glass', 'Standard PDLC'],
+      ['Not sure which state should be the default', 'Decided from how the room is used'],
+    ],
+    solutionsTitle: 'What smart film solves in each space',
     solutions: [
-      ['Switch privacy instantly', 'Move from clear to private without physical coverings.'],
-      ['Support modern interiors', 'A high-end solution for offices and luxury environments.'],
-      ['Preserve clean design', 'Avoid cluttering glass with heavier treatments.'],
-      ['Fit flexible spaces', 'Useful where privacy needs change throughout the day.'],
+      [
+        'Offices',
+        'Interior partitions and perimeter offices that need to look open most of the time and close down for part of it. The film goes onto the partition glass, so the layout of the office does not change.',
+      ],
+      [
+        'Conference Rooms',
+        'The most common request. The glass stays clear in normal use and switches to private for confidential meetings and presentations — no blinds to pull and nothing added to the design.',
+      ],
+      [
+        'Clinics and Medical Offices',
+        'Consult rooms, reception glazing and interior windows that need privacy at specific moments while keeping daylight and a clean, non-clinical finish.',
+      ],
+      [
+        'Residential',
+        'Bathrooms, ensuites, street-facing glass and interior glass walls in homes where fixed frosting would be permanent and blinds would not suit the space.',
+      ],
+    ],
+    doesTitle: 'What smart film does — and does not do',
+    doesList: [
+      'Switches between transparent and private modes on demand',
+      'Keeps daylight in the room in both modes',
+      'Replaces blinds, curtains and fixed frosted film',
+      'Leaves the existing glass and layout in place',
+    ],
+    doesNotList: [
+      'Does not black the room out — private mode is translucent, not opaque',
+      'Does not operate without power and a working control system',
+      'Is not a solar-control or heat-rejection product on its own',
+      'Does not add sound insulation between rooms',
+      'Does not change its default state after the system is selected',
+    ],
+    benefitsEyebrow: 'Key benefits',
+    benefitsTitle: 'Benefits of Smart Film',
+    benefits: [
+      'Privacy on demand',
+      'Daylight kept in both modes',
+      'No blinds, curtains or hardware',
+      'Existing glass and layout unchanged',
+      'Clean, minimal finish',
+      'Switched as often as the room needs',
+    ],
+    processTitle: 'How a smart film project works',
+    processSteps: [
+      ['Send photos, sizes and how the room is used', 'Share the glass or partition, rough width and height per panel, and what the space is used for. How the room is used is what decides the operating sequence.'],
+      ['Choose the system and operating sequence', 'Standard PDLC or a reverse configuration, based on which state the glass should hold by default and what should happen if power is interrupted.'],
+      ['Plan power and controls', 'Equipment locations, cable routing and the control method for the room are agreed before anything is ordered.'],
+      ['Arrange the electrical connection', 'Electrical connection may need to be completed or coordinated with a qualified electrician, depending on the project. It is estimated separately from the film.'],
+      ['Order the film', 'Smart film is made to the panel sizes for the project, so it is ordered for the job rather than taken from stock.'],
+      ['Installation and handover', 'Panels are installed, connected and checked in both modes, and the controls are handed over with care instructions.'],
+    ],
+    faqTitle: 'Smart film questions',
+    faq: [
+      ['How does smart film switch between transparent and private?', 'Switchable film can change between transparent and private modes using electrical power. The default state and powered state depend on the selected film system: standard PDLC is typically private when unpowered and clearer when powered, while reverse configurations can operate in the opposite way. The switch itself is immediate and can be repeated as often as the room needs.'],
+      ['What is the difference between standard PDLC and reverse switchable film?', 'The default state. Standard PDLC is typically private when unpowered and clearer when powered, so the glass holds its private state unless it is switched. A reverse configuration works the other way — transparent when unpowered, private when powered. Neither suits every project, so which one is right depends on how the room is used and which state the glass should hold by default.'],
+      ['What happens if the power goes out?', 'The film returns to its unpowered state, and which state that is depends on the system: standard PDLC goes to its private state, while a reverse configuration goes to its transparent state. That is one of the main reasons the operating sequence is decided before anything is ordered.'],
+      ['Does private mode make the room dark?', 'No. Private mode is translucent rather than opaque — the view through the glass is obscured while daylight still passes through. If the goal is to block light or black a room out, that is a decorative or blackout film rather than smart film.'],
+      ['Can smart film be installed on existing glass?', 'In many cases, yes. The final recommendation depends on the glass condition, size, wiring access, controller location, and whether the project is residential, office, clinic, conference room or commercial space. Panel size, seams, glass compatibility and installation conditions depend on the selected smart film system and are confirmed before material is ordered.'],
+      ['Is smart film a heat or glare product?', 'No. Smart film is a privacy product — it changes what can be seen through the glass, not how much heat comes through it. Where heat and glare are the problem, solar-control film is the right answer, and the two are specified separately.'],
+      ['Where is smart film normally used?', 'Offices and interior partitions, conference rooms, clinics and medical offices, and residential glass such as bathrooms, ensuites and interior glass walls. The common thread is glass that needs privacy for part of the time rather than all of it.'],
+      ['How much does smart film cost?', 'Smart film installation starts from $60 per sq ft. Electrical work is not included. The final cost depends on the panel sizes, the system selected, the number of panels, the control method and the electrical work involved, so we confirm the figure after seeing photos and sizes.'],
+      ['Do I need an electrician?', 'Smart film requires power, a transformer or power supply unit and a control method, so there is an electrical side to every project. Electrical connection may need to be completed or coordinated with a qualified electrician, depending on the project. We confirm what is involved once the equipment locations and cable routing are agreed.'],
+    ],
+    areasTitle: 'Smart Film Service Areas',
+    areasNote:
+      'We install smart film throughout Los Angeles and surrounding areas for offices, conference rooms, clinics, medical offices and homes.',
+    formIntro:
+      'Send photos of the glass or partition, rough sizes per panel and your ZIP code. Tell us how the room is used and we’ll recommend an operating sequence and confirm what the power and control side involves.',
+    serviceOptions: [
+      'Office / Conference Room',
+      'Clinic or Medical Office',
+      'Residential',
+      'Standard PDLC',
+      'Reverse Switchable',
+      'Repair or Replace Existing Smart Film',
+      'Not Sure',
     ],
   },
   {
