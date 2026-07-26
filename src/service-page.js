@@ -37,7 +37,7 @@ const servicePages = [
       'Reduce heat, glare, UV exposure and privacy issues for homes, bedrooms, bathrooms and living spaces across Los Angeles.',
     heroImage: {
       src: '/residential-hero.jpg',
-      alt: 'Solar control window film installed on the glass of a Los Angeles home',
+      alt: 'Sun protection film installed on the front windows and garage glass of a Los Angeles home',
     },
     problemsTitle: 'Most residential film projects start with comfort and privacy problems.',
     problems: [
@@ -75,17 +75,17 @@ const servicePages = [
     projects: [
       {
         img: '/residential-project-1.jpg',
-        alt: 'Solar control film on west-facing living room windows in Woodland Hills',
-        area: 'Woodland Hills',
-        tag: 'Heat Reduction',
-        body: 'Light nano-ceramic film installed on west-facing living-room windows to reduce afternoon heat without heavily darkening the room.',
+        alt: 'Protective solar control film installed on the sliding glass doors of a Los Angeles home',
+        area: 'Private residence',
+        tag: 'Heat + Safety',
+        body: 'Protective anti-vandal solar film on the sliding doors, with standard solar control film on the rest of the home’s windows — heat and glare control plus an added protection layer on the most accessible glass.',
       },
       {
         img: '/residential-project-2.jpg',
-        alt: 'Exterior heat reduction film on overhead glazing in Beverly Hills',
-        area: 'Beverly Hills',
-        tag: 'Skylight Film',
-        body: 'Exterior film installed to reduce heat and glare from overhead glazing. Skylight installs depend on access and glass type — we confirm limitations and warranty coverage before any work starts.',
+        alt: 'Sun protection film installed on a rooftop skylight of a hillside Los Angeles home',
+        area: 'Hillside home',
+        tag: 'Skylight & Roof Glazing',
+        body: 'Sun-protective film installed on rooftop skylights to cut the heat coming in from overhead glass. Skylight work depends on roof access, glass type and condition — we confirm limitations and warranty coverage before any work starts.',
       },
     ],
     processTitle: 'How a residential installation works',
@@ -351,7 +351,7 @@ const projectsSection = page.projects
             .map(
               (project) => `
                 <article class="service-card project-mini">
-                  <img src="${project.img}" alt="${project.alt}" decoding="async" width="800" height="600" />
+                  <img src="${project.img}" alt="${project.alt}" decoding="async" width="900" height="1125" />
                   <div class="project-mini-body">
                     <p class="project-mini-meta"><strong>${project.area}</strong> — ${project.tag}</p>
                     <p>${project.body}</p>
@@ -441,7 +441,7 @@ const heroSection = page.heroImage
             <a class="button button-secondary" href="${business.phoneHref}">Call / Text Now</a>
           </div>
         </div>
-        <img class="service-hero-photo" src="${page.heroImage.src}" alt="${page.heroImage.alt}" fetchpriority="high" width="900" height="1125" />
+        <img class="service-hero-photo" src="${page.heroImage.src}" alt="${page.heroImage.alt}" fetchpriority="high" width="1000" height="1201" />
       </section>
     `
   : `
