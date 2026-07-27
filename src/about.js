@@ -67,7 +67,7 @@ document.querySelector('#app').innerHTML = `
         <p class="eyebrow">About Solcrest Film Co</p>
         <h1>About Solcrest Film Co</h1>
         <p class="hero-text service-hero-text">
-          Solcrest Film Co is a premium window film installation company based in Los Angeles with over 11 years of hands-on experience.
+          Solcrest Film Co is a premium window film installation company based in Los Angeles with over 15 years of hands-on experience.
           We work with homeowners, property managers, business owners and commercial developers across Los Angeles and surrounding areas.
           Every installation is done with precision, clean technique and premium materials — no shortcuts, no subcontractors.
           We handle solar control, safety and security, anti-graffiti, decorative and smart film projects of any size.
@@ -84,7 +84,7 @@ document.querySelector('#app').innerHTML = `
           <h2>Built around clean execution, premium materials and direct accountability.</h2>
         </div>
         <div class="luxury-list">
-          <div>11+ years experience</div>
+          <div>15+ years experience</div>
           <div>Owner-operated</div>
           <div>Premium materials only</div>
           <div>Clean and precise installation</div>

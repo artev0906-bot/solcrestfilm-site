@@ -567,6 +567,22 @@ button {
   color: #ffffff;
 }
 
+/* Stands in for a number in the fourth column. Keeps the line box of the
+   figures beside it so the row height does not change. */
+.hero-trust-value-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.5;
+  min-height: 1.5em;
+}
+
+.hero-trust-value-icon .icon {
+  width: 1.55rem;
+  height: 1.55rem;
+  color: #ffffff;
+}
+
 .hero-trust-label {
   font-size: 0.82rem;
   font-weight: 500;
@@ -1585,72 +1601,6 @@ h3 {
   letter-spacing: 0.05em;
   min-width: 40px;
   text-align: center;
-}
-
-/* ── Stats section ──────────────────────────────── */
-.stats-section {
-  background: #1a1510;
-  padding: 64px 24px;
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.stats-inner {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
-  align-items: center;
-  gap: 0;
-}
-
-.stats-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding: 0 24px;
-  text-align: center;
-}
-
-.stats-value {
-  font-family: var(--font-serif);
-  font-size: 3.2rem;
-  font-weight: 700;
-  color: #A9824F;
-  line-height: 1;
-}
-
-.stats-plus {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  color: #A9824F;
-  vertical-align: super;
-  line-height: 1;
-}
-
-.stats-label {
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(246, 242, 234, 0.6);
-}
-
-.stats-divider {
-  width: 1px;
-  height: 60px;
-  background: rgba(255,255,255,0.12);
-}
-
-@media (max-width: 768px) {
-  .stats-inner {
-    grid-template-columns: 1fr 1fr;
-    gap: 40px 0;
-  }
-  .stats-divider { display: none; }
 }
 
 @media (max-width: 600px) {

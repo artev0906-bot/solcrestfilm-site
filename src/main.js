@@ -348,7 +348,7 @@ document.querySelector('#app').innerHTML = `
               <span class="hero-trust-label">Film Options</span>
             </div>
             <div class="hero-trust-item">
-              <span class="hero-trust-value">100%</span>
+              <span class="hero-trust-value hero-trust-value-icon">${icon('shieldCheck')}</span>
               <span class="hero-trust-label">Licensed &amp; Insured</span>
             </div>
           </div>
@@ -408,30 +408,6 @@ document.querySelector('#app').innerHTML = `
             <button class="ba-nav-btn" id="ba-prev" aria-label="Previous">&#8592;</button>
             <span class="ba-counter" id="ba-counter">1 / 2</span>
             <button class="ba-nav-btn" id="ba-next" aria-label="Next">&#8594;</button>
-          </div>
-        </div>
-      </section>
-
-      <section class="stats-section" aria-label="By the numbers">
-        <div class="stats-inner">
-          <div class="stats-item">
-            <span class="stats-value" data-target="1000">0</span><span class="stats-plus">+</span>
-            <span class="stats-label">Installations Completed</span>
-          </div>
-          <div class="stats-divider"></div>
-          <div class="stats-item">
-            <span class="stats-value" data-target="15">0</span><span class="stats-plus">+</span>
-            <span class="stats-label">Years of Experience</span>
-          </div>
-          <div class="stats-divider"></div>
-          <div class="stats-item">
-            <span class="stats-value" data-target="200">0</span><span class="stats-plus">+</span>
-            <span class="stats-label">Film Options Available</span>
-          </div>
-          <div class="stats-divider"></div>
-          <div class="stats-item">
-            <span class="stats-value" data-target="100">0</span><span class="stats-plus">%</span>
-            <span class="stats-label">Licensed &amp; Insured</span>
           </div>
         </div>
       </section>
@@ -1080,35 +1056,5 @@ loadInstagramFeed()
   window.addEventListener('mouseup',    () => { dragging = false })
   window.addEventListener('touchend',   () => { dragging = false })
 })()
-
-// ── Animated counters ───────────────────────────
-function animateCounters() {
-  const items = document.querySelectorAll('.stats-value[data-target]')
-  if (!items.length) return
-  items.forEach((el) => {
-    const target = parseInt(el.dataset.target, 10)
-    const duration = 2500
-    const start = performance.now()
-    const step = (now) => {
-      const progress = Math.min((now - start) / duration, 1)
-      const ease = 1 - Math.pow(1 - progress, 3)
-      el.textContent = Math.floor(ease * target).toLocaleString()
-      if (progress < 1) requestAnimationFrame(step)
-      else el.textContent = target.toLocaleString()
-    }
-    requestAnimationFrame(step)
-  })
-}
-
-const statsSection = document.querySelector('.stats-section')
-if (statsSection) {
-  const observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-      animateCounters()
-      observer.disconnect()
-    }
-  }, { threshold: 0.3 })
-  observer.observe(statsSection)
-}
 
 mountChatWidget()
