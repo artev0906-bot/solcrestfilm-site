@@ -20,6 +20,11 @@ const serviceMenuItems = [
   { label: 'Commercial Window Film', href: '/commercial-window-film-los-angeles.html' },
 ]
 
+// The hero photo shares the split grid with the copy; the content photos below
+// take the wider of the two columns.
+const HERO_SIZES = '(max-width: 900px) 92vw, 40vw'
+const CONTENT_SIZES = '(max-width: 900px) 92vw, 42vw'
+
 // Every service page linked from the body copy, not just from the nav
 const serviceCards = [
   [
@@ -188,9 +193,12 @@ document.querySelector('#app').innerHTML = `
         </div>
         <img
           class="service-hero-photo"
-          src="/hero-building-sunset.jpg"
+          src="/hero-building-sunset-960.jpg"
+          srcset="/hero-building-sunset-560.jpg 560w, /hero-building-sunset-960.jpg 960w, /hero-building-sunset-1440.jpg 1440w, /hero-building-sunset.jpg 2400w"
+          sizes="${HERO_SIZES}"
           alt="Sunlit glass frontage of a Los Angeles building at dusk"
           fetchpriority="high"
+          decoding="async"
           width="2400"
           height="1350"
         />
@@ -244,6 +252,8 @@ document.querySelector('#app').innerHTML = `
         <img
           class="about-photo"
           src="/residential-project-1.jpg"
+          srcset="/residential-project-1-560.jpg 560w, /residential-project-1.jpg 1000w"
+          sizes="${CONTENT_SIZES}"
           alt="Solar control film installed on the sliding glass doors of a Los Angeles home"
           loading="lazy"
           decoding="async"
@@ -264,6 +274,8 @@ document.querySelector('#app').innerHTML = `
         <img
           class="about-photo"
           src="/commercial-project-1.jpg"
+          srcset="/commercial-project-1-560.jpg 560w, /commercial-project-1.jpg 1000w"
+          sizes="${CONTENT_SIZES}"
           alt="Solar control film on overhead atrium glazing at a Los Angeles shopping center"
           loading="lazy"
           decoding="async"
@@ -292,6 +304,8 @@ document.querySelector('#app').innerHTML = `
         <img
           class="about-photo"
           src="/antigraffiti-project-1.jpg"
+          srcset="/antigraffiti-project-1-560.jpg 560w, /antigraffiti-project-1.jpg 1000w"
+          sizes="${CONTENT_SIZES}"
           alt="Installer applying protective film to commercial storefront glass in Los Angeles"
           loading="lazy"
           decoding="async"
