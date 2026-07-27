@@ -141,6 +141,18 @@ const renderValueStrip = () =>
     )
     .join('')
 
+// The before/after slider is a fixed 4/3 box that spans the content column.
+const BA_SIZES = '(max-width: 900px) 92vw, 860px'
+
+// Each pair ships a 560w variant alongside the original; the widths differ
+// because these are unretouched job photos.
+const baPair = (slug, beforeW, afterW = beforeW) => ({
+  before: `/before-${slug}.jpg`,
+  beforeSrcset: `/before-${slug}-560.jpg 560w, /before-${slug}.jpg ${beforeW}w`,
+  after: `/after-${slug}.jpg`,
+  afterSrcset: `/after-${slug}-560.jpg 560w, /after-${slug}.jpg ${afterW}w`,
+})
+
 const certifications = [
   { iconName: 'shieldCheck', label: 'Licensed & Insured' },
   { iconName: 'mapPin', label: 'Los Angeles Local' },
@@ -390,9 +402,9 @@ document.querySelector('#app').innerHTML = `
             <p>Drag the slider to compare. Use arrows to see more projects.</p>
           </div>
           <div class="ba-slider" id="ba-slider">
-            <img class="ba-img ba-after" id="ba-after-img" src="/after-tinting.jpg" alt="After window film installation" draggable="false" />
+            <img class="ba-img ba-after" id="ba-after-img" src="/after-tinting.jpg" srcset="/after-tinting-560.jpg 560w, /after-tinting.jpg 900w" sizes="${BA_SIZES}" alt="After window film installation" loading="lazy" decoding="async" draggable="false" />
             <div class="ba-before-wrap" id="ba-before-wrap">
-              <img class="ba-img ba-before" id="ba-before-img" src="/before-tinting.jpg" alt="Before window film installation" draggable="false" />
+              <img class="ba-img ba-before" id="ba-before-img" src="/before-tinting.jpg" srcset="/before-tinting-560.jpg 560w, /before-tinting.jpg 900w" sizes="${BA_SIZES}" alt="Before window film installation" loading="lazy" decoding="async" draggable="false" />
             </div>
             <div class="ba-handle" id="ba-handle">
               <div class="ba-handle-line"></div>
@@ -992,31 +1004,36 @@ loadInstagramFeed()
   if (!slider || !wrap || !handle) return
 
   const pairs = [
-    { before: '/before-tinting.jpg',   after: '/after-tinting.jpg' },
-    { before: '/before-partition.jpg', after: '/after-partition.jpg' },
-    { before: '/before-3.jpg',         after: '/after-3.jpg' },
-    { before: '/before-4.jpg',         after: '/after-4.jpg' },
-    { before: '/before-5.jpg',         after: '/after-5.jpg' },
-    { before: '/before-6.jpg',         after: '/after-6.jpg' },
+    baPair('tinting', 900),
+    baPair('partition', 783, 900),
+    baPair('3', 900),
+    baPair('4', 900),
+    baPair('5', 900),
+    baPair('6', 675),
   ]
   let current = 0
   let dragging = false
 
   // Initialize counter and first pair
   counter.textContent = `1 / ${pairs.length}`
-  beforeImg.src = pairs[0].before
-  afterImg.src  = pairs[0].after
+  setPairSrc(beforeImg, pairs[0].before, pairs[0].beforeSrcset)
+  setPairSrc(afterImg, pairs[0].after, pairs[0].afterSrcset)
 
-  // Preload only the next pair up front; rest load lazily as the user navigates
-  const preloaded = new Set()
+  // Nothing is preloaded up front — the slider sits well below the fold and the
+  // second pair alone cost 181KB on every homepage load. Neighbours are fetched
+  // once the user actually moves through the set.
+  const preloaded = new Set([0])
   function preloadPair(idx) {
     const key = ((idx % pairs.length) + pairs.length) % pairs.length
     if (preloaded.has(key)) return
     preloaded.add(key)
-    ;[pairs[key].before, pairs[key].after].forEach((src) => { const img = new Image(); img.src = src })
+    ;[[pairs[key].before, pairs[key].beforeSrcset], [pairs[key].after, pairs[key].afterSrcset]].forEach(([src, srcset]) => {
+      const img = new Image()
+      img.sizes = BA_SIZES
+      img.srcset = srcset
+      img.src = src
+    })
   }
-  preloadPair(0)
-  preloadPair(1)
 
   function setPos(x) {
     const rect = slider.getBoundingClientRect()
@@ -1025,12 +1042,18 @@ loadInstagramFeed()
     handle.style.left = (pct * 100) + '%'
   }
 
+  function setPairSrc(img, src, srcset) {
+    img.sizes = BA_SIZES
+    img.srcset = srcset
+    img.src = src
+  }
+
   function loadPair(idx) {
     current = idx
     slider.style.opacity = '0'
     setTimeout(() => {
-      beforeImg.src = pairs[idx].before
-      afterImg.src  = pairs[idx].after
+      setPairSrc(beforeImg, pairs[idx].before, pairs[idx].beforeSrcset)
+      setPairSrc(afterImg, pairs[idx].after, pairs[idx].afterSrcset)
       wrap.style.width  = '50%'
       handle.style.left = '50%'
       counter.textContent = `${idx + 1} / ${pairs.length}`
