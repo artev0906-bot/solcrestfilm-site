@@ -141,6 +141,19 @@ const renderValueStrip = () =>
     )
     .join('')
 
+// Single source for the FAQ block and its FAQPage markup, so the two cannot
+// drift apart.
+const homeFaq = [
+  ['How much does window film cost?', 'Most residential solar, privacy, frosted, and decorative films start around $7–$10 per sq ft depending on the film type, window size, access, and total project scope. Safety, security, anti-graffiti, exterior, and specialty films are priced based on material thickness, installation difficulty, and whether extra preparation is needed. The fastest way to get an accurate estimate is to send photos, rough measurements, and your main goal.'],
+  ['How long does installation take?', 'Small residential projects can often be completed in a few hours. Larger homes, storefronts, commercial glass, exterior installations, safety film, or smart film projects may take longer depending on glass size, access, preparation, and scheduling. After we review photos and measurements, we can give you a more accurate timeline.'],
+  ['Can window film reduce heat?', 'Yes. Solar control window film can help reduce heat, glare, and UV exposure, making rooms more comfortable during the day. It can also help protect floors, furniture, artwork, and interior finishes from sun damage. The best film depends on how much heat reduction, light, privacy, and appearance you want.'],
+  ['Does privacy film work at night?', 'Privacy film depends on lighting. Some reflective privacy films work best during the day when it is brighter outside than inside. At night, if the lights are on inside, visibility can change. For stronger privacy, we may recommend frosted, blackout, decorative, or specialty privacy film depending on the location and your goal.'],
+  ['What is safety film?', 'Safety and security film is a thicker protective film designed to help hold shattered glass together after impact. It can add another layer of protection for glass doors, storefronts, windows, and vulnerable entry points. It does not make glass unbreakable, but it can make break-ins, impact, and glass failure more difficult and less dangerous.'],
+  ['Is anti-graffiti film replaceable?', 'Yes. Anti-graffiti film is designed as a sacrificial protective layer for glass. If the surface gets scratched, tagged, etched, or damaged, the film can often be removed and replaced without replacing the actual glass. This is especially useful for storefronts, elevators, commercial glass, and high-traffic areas.'],
+  ['Can smart film be installed on existing glass?', 'In many cases, yes. Smart film switches between transparent and private modes using electrical power. The operating sequence depends on the selected film system. The final recommendation depends on the glass condition, size, wiring access, controller location, and whether the project is residential, office, clinic, conference room, or commercial space.'],
+  ['Do I need photos and measurements for an estimate?', 'Yes. Photos and rough measurements help us provide a faster and more accurate estimate. Clear photos of the glass, approximate width and height, location, and your main goal — heat reduction, privacy, safety, anti-graffiti, decorative, or smart film — are usually enough to start. For larger or more complex projects, we may recommend an in-person visit.'],
+]
+
 // The before/after slider is a fixed 4/3 box that spans the content column.
 const BA_SIZES = '(max-width: 900px) 92vw, 860px'
 
@@ -604,14 +617,12 @@ document.querySelector('#app').innerHTML = `
           <h2>Questions people ask before requesting an estimate.</h2>
         </div>
         <div class="faq-list">
-          <details open><summary>How much does window film cost?</summary><p>Most residential solar, privacy, frosted, and decorative films start around $7–$10 per sq ft depending on the film type, window size, access, and total project scope. Safety, security, anti-graffiti, exterior, and specialty films are priced based on material thickness, installation difficulty, and whether extra preparation is needed. The fastest way to get an accurate estimate is to send photos, rough measurements, and your main goal.</p></details>
-          <details><summary>How long does installation take?</summary><p>Small residential projects can often be completed in a few hours. Larger homes, storefronts, commercial glass, exterior installations, safety film, or smart film projects may take longer depending on glass size, access, preparation, and scheduling. After we review photos and measurements, we can give you a more accurate timeline.</p></details>
-          <details><summary>Can window film reduce heat?</summary><p>Yes. Solar control window film can help reduce heat, glare, and UV exposure, making rooms more comfortable during the day. It can also help protect floors, furniture, artwork, and interior finishes from sun damage. The best film depends on how much heat reduction, light, privacy, and appearance you want.</p></details>
-          <details><summary>Does privacy film work at night?</summary><p>Privacy film depends on lighting. Some reflective privacy films work best during the day when it is brighter outside than inside. At night, if the lights are on inside, visibility can change. For stronger privacy, we may recommend frosted, blackout, decorative, or specialty privacy film depending on the location and your goal.</p></details>
-          <details><summary>What is safety film?</summary><p>Safety and security film is a thicker protective film designed to help hold shattered glass together after impact. It can add another layer of protection for glass doors, storefronts, windows, and vulnerable entry points. It does not make glass unbreakable, but it can make break-ins, impact, and glass failure more difficult and less dangerous.</p></details>
-          <details><summary>Is anti-graffiti film replaceable?</summary><p>Yes. Anti-graffiti film is designed as a sacrificial protective layer for glass. If the surface gets scratched, tagged, etched, or damaged, the film can often be removed and replaced without replacing the actual glass. This is especially useful for storefronts, elevators, commercial glass, and high-traffic areas.</p></details>
-          <details><summary>Can smart film be installed on existing glass?</summary><p>In many cases, yes. Smart film switches between transparent and private modes using electrical power. The operating sequence depends on the selected film system. The final recommendation depends on the glass condition, size, wiring access, controller location, and whether the project is residential, office, clinic, conference room, or commercial space.</p></details>
-          <details><summary>Do I need photos and measurements for an estimate?</summary><p>Yes. Photos and rough measurements help us provide a faster and more accurate estimate. Clear photos of the glass, approximate width and height, location, and your main goal — heat reduction, privacy, safety, anti-graffiti, decorative, or smart film — are usually enough to start. For larger or more complex projects, we may recommend an in-person visit.</p></details>
+          ${homeFaq
+            .map(
+              ([question, answer], index) =>
+                `<details${index === 0 ? ' open' : ''}><summary>${question}</summary><p>${answer}</p></details>`,
+            )
+            .join('\n          ')}
         </div>
         </div>
       </section>
@@ -1079,5 +1090,20 @@ loadInstagramFeed()
   window.addEventListener('mouseup',    () => { dragging = false })
   window.addEventListener('touchend',   () => { dragging = false })
 })()
+
+// FAQ structured data, built from the same array the visible block renders from
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: homeFaq.map(([question, answer]) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: { '@type': 'Answer', text: answer },
+  })),
+}
+const faqSchemaScript = document.createElement('script')
+faqSchemaScript.type = 'application/ld+json'
+faqSchemaScript.textContent = JSON.stringify(faqSchema)
+document.head.appendChild(faqSchemaScript)
 
 mountChatWidget()
