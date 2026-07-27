@@ -2676,6 +2676,25 @@ h3 {
   white-space: nowrap;
 }
 
+.modes-figure {
+  display: block;
+  margin-top: 28px;
+}
+
+.modes-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.modes-note {
+  margin: 16px 0 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
 a.chooser-pick {
   text-decoration: none;
   transition: background 0.2s ease, border-color 0.2s ease;

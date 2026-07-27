@@ -665,10 +665,13 @@ const servicePages = [
     description:
       'PDLC switchable film that changes between transparent and private modes using electrical power — for offices, conference rooms, clinics and homes across Los Angeles.',
     // Real projects are not published yet; the section returns once we have
-    // confirmed photos of a job in both transparent and private modes.
+    // confirmed photos of a job in both transparent and private modes. Until
+    // then the hero photo is a demonstration of the system, and the modes
+    // section is a drawn diagram — neither is presented as a project of ours.
     layout: [
       'problems',
       'info:0',
+      'modes',
       'filmTypes',
       'chooser',
       'solutions',
@@ -682,6 +685,22 @@ const servicePages = [
       'faq',
       'areas',
     ],
+    heroImage: {
+      src: '/card-smartfilm.jpg',
+      srcset: '/card-smartfilm-560.jpg 560w, /card-smartfilm.jpg 900w',
+      sizes: '(max-width: 900px) 92vw, 37vw',
+      w: 900,
+      h: 600,
+      alt: 'Illustration of switchable smart film on an office conference room partition, shown in transparent and private modes',
+    },
+    modes: {
+      eyebrow: 'How it looks',
+      title: 'Transparent Mode and Private Mode',
+      desktop: { src: '/smartfilm-modes.svg', w: 1000, h: 560 },
+      mobile: { src: '/smartfilm-modes-mobile.svg', w: 600, h: 1120 },
+      alt: 'Diagram of one glazed partition drawn in transparent mode and in private mode, with a single ON/OFF switch between the two states',
+      note: 'Illustrative example — final appearance depends on the selected Smart Film system, glass and lighting conditions.',
+    },
     problemsTitle: 'Smart film projects usually start with glass that needs privacy only part of the time.',
     problems: [
       'Meeting rooms that are open one hour and confidential the next',
@@ -1225,6 +1244,31 @@ const infoBlockSections = (page.infoBlocks ?? []).map(
 
 const infoSection = infoBlockSections.join('')
 
+// Drawn diagram rather than a photograph, so it is labelled as illustrative and
+// never sits in a projects grid.
+const modesSection = page.modes
+  ? `
+      <section class="section modes-section">
+        <div class="section-heading">
+          <p class="eyebrow">${page.modes.eyebrow}</p>
+          <h2>${page.modes.title}</h2>
+        </div>
+        <picture class="modes-figure">
+          <source media="(max-width: 640px)" srcset="${page.modes.mobile.src}" width="${page.modes.mobile.w}" height="${page.modes.mobile.h}" />
+          <img
+            src="${page.modes.desktop.src}"
+            alt="${page.modes.alt}"
+            loading="lazy"
+            decoding="async"
+            width="${page.modes.desktop.w}"
+            height="${page.modes.desktop.h}"
+          />
+        </picture>
+        <p class="modes-note">${page.modes.note}</p>
+      </section>
+    `
+  : ''
+
 const projectsSection = page.projects
   ? `
       <section class="section">
@@ -1341,7 +1385,7 @@ const heroSection = page.heroImage
             <a class="button button-secondary" href="${business.phoneHref}">Call / Text Now</a>
           </div>
         </div>
-        <img class="service-hero-photo" src="${page.heroImage.src}" alt="${page.heroImage.alt}" fetchpriority="high" width="${page.heroImage.w}" height="${page.heroImage.h}" />
+        <img class="service-hero-photo" src="${page.heroImage.src}"${page.heroImage.srcset ? ` srcset="${page.heroImage.srcset}" sizes="${page.heroImage.sizes}"` : ''} alt="${page.heroImage.alt}" fetchpriority="high" width="${page.heroImage.w}" height="${page.heroImage.h}" />
       </section>
     `
   : `
@@ -1380,6 +1424,7 @@ const SECTIONS = {
   solutions: solutionsSection,
   chooser: chooserSection,
   info: infoSection,
+  modes: modesSection,
   projects: projectsSection,
   process: processSection,
   faq: faqSection,

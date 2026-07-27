@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1120" width="600" height="1120" role="img" aria-labelledby="sfm-m-title">
+  <title id="sfm-m-title">Diagram of a switchable smart film panel in transparent mode and in private mode</title>
+  <defs>
+    <filter id="sfmm-frost" x="-12%" y="-12%" width="124%" height="124%">
+      <feGaussianBlur stdDeviation="11" />
+    </filter>
+    <clipPath id="sfmm-glass-t"><rect x="69.5" y="87.5" width="461" height="313" /></clipPath>
+    <clipPath id="sfmm-glass-b"><rect x="69.5" y="661.5" width="461" height="313" /></clipPath>
+    <g id="sfmm-room">
+      <rect x="69.5" y="87.5" width="461" height="313" fill="#efe6d2" />
+      <rect x="69.5" y="313" width="461" height="87.5" fill="#e0d3ba" />
+      <rect x="69.5" y="309" width="461" height="4" fill="#3a3530" opacity="0.12" />
+      <rect x="117" y="131" width="98" height="182" fill="#f7f2e6" />
+      <rect x="117" y="131" width="98" height="182" fill="none" stroke="#3a3530" stroke-opacity="0.18" stroke-width="2" />
+      <rect x="322" y="158" width="127" height="65" fill="none" stroke="#a97835" stroke-opacity="0.45" stroke-width="3" />
+      <rect x="304" y="275" width="185" height="40" rx="3" fill="#d8c09a" />
+    </g>
+    <g id="sfmm-frame">
+      <line x1="69.5" y1="209" x2="530.5" y2="209" stroke="#3a3530" stroke-width="5" />
+      <line x1="223" y1="87.5" x2="223" y2="400.5" stroke="#3a3530" stroke-width="5" />
+      <line x1="377" y1="87.5" x2="377" y2="400.5" stroke="#3a3530" stroke-width="5" />
+      <rect x="69.5" y="87.5" width="461" height="313" fill="none" stroke="#3a3530" stroke-width="7" />
+    </g>
+  </defs>
+
+  <rect x="0.5" y="0.5" width="599" height="1119" rx="24" fill="#fffcf6" stroke="#a97835" stroke-opacity="0.18" />
+
+  <!-- Transparent mode -->
+  <text x="300" y="50" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="600" letter-spacing="2.6" fill="#a97835">TRANSPARENT MODE</text>
+  <g clip-path="url(#sfmm-glass-t)">
+    <use href="#sfmm-room" />
+    <rect x="69.5" y="87.5" width="461" height="313" fill="#dfe9ea" opacity="0.18" />
+    <polygon points="69.5,87.5 250,87.5 108,400.5 69.5,400.5" fill="#ffffff" opacity="0.16" />
+  </g>
+  <use href="#sfmm-frame" />
+  <rect x="66" y="404" width="468" height="6" rx="3" fill="#1f1b16" opacity="0.07" />
+  <text x="300" y="446" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#4f4a43">Clear view through the glass</text>
+
+  <!-- Switch between the two states -->
+  <path d="M300 480 V506 M300 480 l-6 9 M300 480 l6 9" fill="none" stroke="#a97835" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M300 620 V594 M300 620 l-6 -9 M300 620 l6 -9" fill="none" stroke="#a97835" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+  <rect x="268" y="512" width="64" height="96" rx="11" fill="#fffcf6" stroke="#3a3530" stroke-width="2" />
+  <rect x="283" y="526" width="34" height="68" rx="7" fill="#f6f2ea" stroke="#d8c09a" stroke-width="1.5" />
+  <line x1="283" y1="560" x2="317" y2="560" stroke="#d8c09a" stroke-width="1.5" />
+  <text x="300" y="547" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" letter-spacing="1.2" fill="#a97835">ON</text>
+  <text x="300" y="585" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" letter-spacing="1.2" fill="#7b746b">OFF</text>
+
+  <!-- Private mode -->
+  <text x="300" y="648" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="600" letter-spacing="2.6" fill="#a97835">PRIVATE MODE</text>
+  <g clip-path="url(#sfmm-glass-b)">
+    <g filter="url(#sfmm-frost)"><use href="#sfmm-room" y="574" /></g>
+    <rect x="69.5" y="661.5" width="461" height="313" fill="#ffffff" opacity="0.82" />
+    <polygon points="69.5,661.5 250,661.5 108,974.5 69.5,974.5" fill="#ffffff" opacity="0.3" />
+  </g>
+  <use href="#sfmm-frame" y="574" />
+  <rect x="66" y="978" width="468" height="6" rx="3" fill="#1f1b16" opacity="0.07" />
+  <text x="300" y="1020" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#4f4a43">View obscured, daylight still passes</text>
+
+  <text x="300" y="1068" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#7b746b">Which mode is powered depends on the</text>
+  <text x="300" y="1090" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#7b746b">film system — standard PDLC or reverse.</text>
+</svg>
