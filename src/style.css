@@ -444,6 +444,13 @@ button {
   padding: 72px 56px 40px;
 }
 
+/* Gold at --accent-gold is close in luminance to the photo behind it in either
+   direction — darkening the scrim alone cannot fix it, so the hero eyebrow
+   uses the light gold instead. */
+.hero-photo-content .eyebrow {
+  color: var(--accent-gold-light);
+}
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
@@ -1726,6 +1733,12 @@ h3 {
   .areas-heading-icon {
     width: 70px;
   }
+
+  /* The sticky call/estimate bar covers the bottom of this button at 390px.
+     Texting is still offered by the phone line below it and by the final CTA. */
+  .hero-actions .button-secondary {
+    display: none;
+  }
 }
 
 .process-photo {
@@ -1759,7 +1772,9 @@ h3 {
   padding: 28px;
   border-radius: 26px;
   border: 1px solid var(--border-strong);
-  background: linear-gradient(180deg, rgba(253, 246, 233, 0.4) 0%, rgba(250, 241, 224, 0.4) 55%, rgba(243, 229, 200, 0.4) 100%);
+  /* 0.9 like the residential and commercial panels. At 0.4 the dark process
+     photo read through and 16px body text sat at ~2.9:1. */
+  background: linear-gradient(180deg, rgba(253, 246, 233, 0.9) 0%, rgba(250, 241, 224, 0.9) 55%, rgba(243, 229, 200, 0.9) 100%);
   backdrop-filter: blur(16px) saturate(140%);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
   box-shadow:
