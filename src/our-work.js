@@ -51,8 +51,144 @@ const heroHTML = `
     <div class="ow-hero-content">
       <p class="eyebrow" style="color:rgba(255,255,255,0.8)">Solcrest Film Co — Los Angeles</p>
       <h1>Our Work</h1>
-      <p class="ow-hero-sub">Real window film installations — solar control, privacy, safety, anti-graffiti and decorative film across Los Angeles.</p>
+      <p class="ow-hero-sub">Window film projects completed across Los Angeles — storefronts, offices, homes and interior glass. The featured projects below show the work completed and the film systems used; the gallery underneath is updated with more of our work.</p>
       <a class="button button-primary" href="/#contact">${icon('badgeCheck')}Get Free Estimate</a>
+    </div>
+  </section>
+`
+
+// ── Featured projects ─────────────────────
+// Static, served from our own /public, and each one already published on its
+// service page. They stay on the page whether or not the Instagram gallery
+// below loads, and they are the only work here a crawler can actually read.
+const featuredProjects = [
+  {
+    img: '/storefront-project-1.jpg',
+    srcset: '/storefront-project-1-560.jpg 560w, /storefront-project-1.jpg 1000w',
+    w: 1000,
+    h: 752,
+    alt: 'Glass polishing and anti-graffiti film installation on a retail storefront in Hollywood, Los Angeles',
+    title: 'Retail Storefront Restoration',
+    area: 'Hollywood',
+    tag: 'Glass Polishing + Anti-Graffiti Film',
+    body: 'The existing storefront glass was polished to remove surface damage, then protected with a new replaceable layer of anti-graffiti film.',
+    href: '/anti-graffiti-window-film-los-angeles.html',
+    linkLabel: 'Anti-Graffiti Film →',
+  },
+  {
+    img: '/storefront-project-2.jpg',
+    srcset: '/storefront-project-2-560.jpg 560w, /storefront-project-2.jpg 1000w',
+    w: 1000,
+    h: 752,
+    alt: 'Dark solar control film installed across the storefront glass of a Los Angeles commercial unit',
+    title: 'Commercial Storefront Tint',
+    area: 'Los Angeles',
+    tag: 'Black Solar-Control Film',
+    body: 'Dark solar-control film across the full storefront glazing, cutting heat and glare and giving the frontage a uniform look from the street.',
+    href: '/storefront-window-protection-los-angeles.html',
+    linkLabel: 'Storefront Window Protection →',
+  },
+  {
+    img: '/commercial-project-1.jpg',
+    srcset: '/commercial-project-1-560.jpg 560w, /commercial-project-1.jpg 1000w',
+    w: 1000,
+    h: 752,
+    alt: 'Solar control film on overhead atrium glazing at a Los Angeles shopping center',
+    title: 'Shopping Center Roof Glazing',
+    area: 'Los Angeles',
+    tag: 'Solar Control Film',
+    body: 'Old film was stripped from the overhead atrium glazing before new solar-control film went on across the roof glass.',
+    href: '/commercial-window-film-los-angeles.html',
+    linkLabel: 'Commercial Window Film →',
+  },
+  {
+    img: '/residential-project-1.jpg',
+    srcset: '/residential-project-1-560.jpg 560w, /residential-project-1.jpg 1000w',
+    w: 1000,
+    h: 714,
+    alt: 'Protective solar control film installed on the sliding glass doors of a Los Angeles home',
+    title: 'Modern Hillside Home',
+    area: 'Los Angeles',
+    tag: 'Heat Control + Safety Film',
+    body: 'Solar-control film installed across the home, with safety film added to the accessible doors and windows.',
+    href: '/residential-window-film-los-angeles.html',
+    linkLabel: 'Residential Window Film →',
+  },
+  {
+    img: '/decorative-project-1.jpg',
+    w: 1000,
+    h: 752,
+    alt: 'Blackout film installed on a full-height interior glass wall in a Los Angeles studio space',
+    title: 'Studio Glass Wall',
+    area: 'Los Angeles',
+    tag: 'Blackout Film',
+    body: 'Opaque black film across a full-height glass wall, blocking light and separating the room without building a partition.',
+    href: '/decorative-privacy-window-film-los-angeles.html',
+    linkLabel: 'Decorative & Privacy Film →',
+  },
+  {
+    img: '/safety-project-1.jpg',
+    w: 1000,
+    h: 752,
+    alt: 'Clear safety film installed on a residential entry door and its glass sidelights in Los Angeles',
+    title: 'Residential Entry Door & Sidelights',
+    area: 'Los Angeles',
+    tag: 'Clear Safety Film',
+    body: 'Clear safety film on the door glass and both sidelights — the most accessible glass on the house — with no change to how the entry looks.',
+    href: '/safety-security-window-film-los-angeles.html',
+    linkLabel: 'Safety & Security Film →',
+  },
+]
+
+const featuredHTML = `
+  <section class="section ow-featured" id="featured">
+    <div class="section-heading">
+      <p class="eyebrow">Selected work</p>
+      <h2>Featured Projects</h2>
+    </div>
+    <div class="card-grid two-up project-mini-grid">
+      ${featuredProjects
+        .map(
+          (project) => `
+            <article class="service-card project-mini">
+              <img
+                src="${project.img}"
+                ${project.srcset ? `srcset="${project.srcset}" sizes="(max-width: 640px) 92vw, (max-width: 900px) 85vw, 44vw"` : ''}
+                alt="${project.alt}"
+                loading="lazy"
+                decoding="async"
+                width="${project.w}"
+                height="${project.h}"
+              />
+              <div class="project-mini-body">
+                <h3 class="project-mini-title">${project.title}</h3>
+                <p class="project-mini-meta">${project.area} · ${project.tag}</p>
+                <p>${project.body}</p>
+                <p class="card-link"><a href="${project.href}">${project.linkLabel}</a></p>
+              </div>
+            </article>
+          `,
+        )
+        .join('')}
+    </div>
+  </section>
+`
+
+// ── Browse by service ─────────────────────
+const browseHTML = `
+  <section class="section ow-browse">
+    <div class="section-heading">
+      <p class="eyebrow">By service</p>
+      <h2>Browse by service</h2>
+    </div>
+    <div class="footer-quick-links ow-browse-links">
+      <a href="/residential-window-film-los-angeles.html">Residential Window Film</a>
+      <a href="/commercial-window-film-los-angeles.html">Commercial Window Film</a>
+      <a href="/safety-security-window-film-los-angeles.html">Safety &amp; Security Film</a>
+      <a href="/anti-graffiti-window-film-los-angeles.html">Anti-Graffiti Film</a>
+      <a href="/decorative-privacy-window-film-los-angeles.html">Decorative &amp; Privacy Film</a>
+      <a href="/smart-film-installation-los-angeles.html">Smart Film</a>
+      <a href="/storefront-window-protection-los-angeles.html">Storefront Window Protection</a>
     </div>
   </section>
 `
@@ -107,32 +243,70 @@ const ctaHTML = `
 // ── Footer ────────────────────────────────
 const footerHTML = `
   <footer class="footer footer-premium">
-    <div class="footer-premium-inner">
+    <div class="footer-premium-inner footer-premium-inner-service">
       <div class="footer-col footer-col-brand">
-        <img class="footer-logo" src="/solcrest-logo-header-dark.png" alt="Solcrest Film Co logo" />
+        <img
+          class="footer-logo"
+          src="/solcrest-logo-header-dark.png"
+          alt="Solcrest Film Co premium window film Los Angeles logo"
+          width="573"
+          height="202"
+        />
         <p class="footer-tagline">Premium Architectural Window Film Installation in Los Angeles</p>
       </div>
       <div class="footer-col footer-col-contact">
-        <h4>Contact</h4>
+        <h3 class="footer-col-title">Contact</h3>
         <p><a href="tel:7473249008">747-324-9008</a></p>
         <p><a href="mailto:info@solcrestfilm.com">info@solcrestfilm.com</a></p>
-        <p>Los Angeles, CA</p>
+        <div class="social-links footer-premium-social">
+          <a href="https://www.instagram.com/solcrestfilmco/" target="_blank" rel="noopener noreferrer" aria-label="Solcrest Film Co on Instagram">${icon('instagram')}</a>
+          <a href="https://www.facebook.com/solcrestfilm/" target="_blank" rel="noopener noreferrer" aria-label="Solcrest Film Co on Facebook">${icon('facebook')}</a>
+          <a href="https://share.google/TTXOlBBFKuizqpQMi" target="_blank" rel="noopener noreferrer" aria-label="Solcrest Film Co on Google Business Profile">${icon('google')}</a>
+        </div>
       </div>
       <div class="footer-col footer-col-links">
-        <h4>Services</h4>
-        <a href="/residential-window-film-los-angeles.html">Solar Control</a>
-        <a href="/safety-security-window-film-los-angeles.html">Safety &amp; Security</a>
-        <a href="/anti-graffiti-window-film-los-angeles.html">Anti-Graffiti</a>
-        <a href="/decorative-privacy-window-film-los-angeles.html">Decorative &amp; Privacy</a>
-        <a href="/smart-film-installation-los-angeles.html">Smart Film</a>
-        <a href="/storefront-window-protection-los-angeles.html">Storefront Window Protection</a>
-        <a href="/commercial-window-film-los-angeles.html">Commercial Window Film</a>
+        <h3 class="footer-col-title">Services</h3>
+        <div class="footer-quick-links">
+          <a href="/residential-window-film-los-angeles.html">Residential Window Film</a>
+          <a href="/commercial-window-film-los-angeles.html">Commercial Window Film</a>
+          <a href="/safety-security-window-film-los-angeles.html">Safety &amp; Security Film</a>
+          <a href="/anti-graffiti-window-film-los-angeles.html">Anti-Graffiti Film</a>
+          <a href="/decorative-privacy-window-film-los-angeles.html">Decorative &amp; Privacy Film</a>
+          <a href="/smart-film-installation-los-angeles.html">Smart Film</a>
+          <a href="/storefront-window-protection-los-angeles.html">Storefront Window Protection</a>
+        </div>
+      </div>
+      <div class="footer-col footer-col-areas">
+        <h3 class="footer-col-title">Service Areas</h3>
+        <p class="footer-areas-text">
+          Los Angeles, Beverly Hills, Glendale, Burbank, Woodland Hills, West Hills, Porter Ranch and nearby communities.
+        </p>
+        <div class="footer-quick-links footer-quick-links-tight">
+          <a href="/our-work.html">Our Work</a>
+          <a href="/about.html">About</a>
+          <a href="/#contact">Request an Estimate</a>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Solcrest Film Co. All rights reserved.</p>
+    <div class="footer-premium-bottom">
+      <p>&copy; ${new Date().getFullYear()} Solcrest Film Co. All rights reserved.</p>
     </div>
   </footer>
+`
+
+const stickyCtaHTML = `
+  <div class="sticky-cta-bar">
+    <a class="sticky-cta-call" href="tel:7473249008">${icon('smartphone')}<span>Call</span></a>
+    <a class="sticky-cta-request" href="/#contact">${icon('badgeCheck')}<span>Get Estimate</span></a>
+  </div>
+`
+
+const breadcrumbsHTML = `
+  <nav class="breadcrumbs ow-breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span aria-hidden="true">→</span>
+    <span aria-current="page">Our Work</span>
+  </nav>
 `
 
 // ── Lightbox ──────────────────────────────
@@ -157,7 +331,16 @@ const lightboxHTML = `
 
 // ── Render page ───────────────────────────
 document.querySelector('#app').innerHTML =
-  headerHTML + heroHTML + galleryHTML + ctaHTML + footerHTML + lightboxHTML
+  headerHTML +
+  heroHTML +
+  breadcrumbsHTML +
+  featuredHTML +
+  galleryHTML +
+  browseHTML +
+  ctaHTML +
+  footerHTML +
+  stickyCtaHTML +
+  lightboxHTML
 
 // ── Header behaviour ──────────────────────
 const topbar    = document.querySelector('.topbar')
@@ -386,3 +569,42 @@ if (grid) {
 }
 
 loadGallery()
+
+// ── Structured data ───────────────────────
+// Only the featured projects are described. The Instagram tiles sit on signed
+// CDN URLs that expire, so publishing them as ImageObjects would mean shipping
+// markup that rots.
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Our Work — Window Film Projects in Los Angeles',
+  url: 'https://solcrestfilm.com/our-work.html',
+  isPartOf: { '@id': 'https://solcrestfilm.com/#business' },
+  about: { '@id': 'https://solcrestfilm.com/#business' },
+  hasPart: featuredProjects.map((project) => ({
+    '@type': 'ImageObject',
+    contentUrl: `https://solcrestfilm.com${project.img}`,
+    name: project.title,
+    caption: `${project.title} — ${project.area} · ${project.tag}`,
+    description: project.body,
+    width: project.w,
+    height: project.h,
+    contentLocation: { '@type': 'Place', name: `${project.area}, CA` },
+  })),
+}
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://solcrestfilm.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Our Work', item: 'https://solcrestfilm.com/our-work.html' },
+  ],
+}
+
+;[collectionSchema, breadcrumbSchema].forEach((schema) => {
+  const script = document.createElement('script')
+  script.type = 'application/ld+json'
+  script.textContent = JSON.stringify(schema)
+  document.head.appendChild(script)
+})

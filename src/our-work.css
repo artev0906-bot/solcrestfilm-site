@@ -3,6 +3,26 @@
    ══════════════════════════════════════ */
 
 /* ── Hero ─────────────────────────────── */
+/* Featured projects and the service links sit on the page background rather
+   than in the dark gallery band, so they carry their own cream card. */
+.ow-featured,
+.ow-browse {
+  max-width: 1200px;
+  margin: 0 auto 22px;
+}
+
+.ow-breadcrumbs {
+  max-width: 1200px;
+  margin: 22px auto 0;
+}
+
+.ow-browse-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px 24px;
+  margin-top: 18px;
+}
+
 .ow-hero {
   position: relative;
   min-height: 340px;
