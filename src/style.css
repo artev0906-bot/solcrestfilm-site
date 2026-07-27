@@ -2641,6 +2641,41 @@ h3 {
   white-space: nowrap;
 }
 
+/* About pairs copy with a project photo in the existing split grid */
+.about-split {
+  align-items: center;
+}
+
+.about-photo {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.about-process-list div {
+  display: grid;
+  gap: 6px;
+}
+
+.about-process-list strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.about-process-list span {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.about-areas-list {
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
 .modes-figure {
   display: block;
   margin-top: 28px;
