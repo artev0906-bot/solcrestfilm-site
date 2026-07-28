@@ -1,7 +1,13 @@
 /**
  * Vercel Serverless Function — Curated posts CMS
- * GET  /api/curated  → returns curated posts list
- * POST /api/curated  → saves curated posts list (requires password)
+ * GET  /api/curated           → returns the full curated posts list
+ * GET  /api/curated?view=grid → same list, tile fields only
+ * POST /api/curated           → saves curated posts list (requires password)
+ *
+ * The stored entries carry carousel slides and the original Instagram caption,
+ * which a grid of thumbnails never reads — and those two fields are most of the
+ * payload. `view=grid` drops them so a page that only renders tiles does not
+ * download the lightbox data with them. Redis is untouched either way.
  */
 
 import { Redis } from '@upstash/redis'
@@ -10,6 +16,24 @@ const redis = new Redis({
   url:   process.env.KV_REST_API_URL,
   token: process.env.KV_REST_API_TOKEN,
 })
+
+/**
+ * Fields a thumbnail grid actually reads. `pinned` is in the list because the
+ * homepage picks its category showcase from it — without the flag that section
+ * would silently fall back to a plain feed.
+ */
+function toGridEntry(post) {
+  return {
+    id: post.id,
+    visible: post.visible,
+    thumb: post.thumb,
+    permalink: post.permalink,
+    media_type: post.media_type,
+    caption: post.caption,
+    category: post.category,
+    pinned: post.pinned,
+  }
+}
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'https://solcrestfilm.com')
@@ -21,8 +45,10 @@ export default async function handler(req, res) {
   if (req.method === 'GET') {
     try {
       const posts = (await redis.get('curated')) ?? []
+      const view = String(req.query?.view || '')
+      const payload = view === 'grid' ? posts.map(toGridEntry) : posts
       res.setHeader('Cache-Control', 'public, s-maxage=30, stale-while-revalidate=120')
-      return res.status(200).json({ posts })
+      return res.status(200).json({ posts: payload })
     } catch (err) {
       console.error('Redis get error:', err)
       return res.status(200).json({ posts: [] }) // fail gracefully

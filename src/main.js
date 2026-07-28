@@ -936,19 +936,30 @@ async function loadInstagramFeed() {
   const escAttr = (s) => (s || '').replace(/[<>&"]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]))
 
   try {
-    const [igRes, curatedRes] = await Promise.all([
-      fetch('/api/instagram?limit=18'),
-      fetch('/api/curated').catch(() => ({ json: () => ({ posts: [] }) })),
-    ])
-    if (!igRes.ok) throw new Error('Feed error')
-    const [igData, curatedData] = await Promise.all([igRes.json(), curatedRes.json()])
+    // Tile fields only — the full record carries carousel slides this section
+    // never opens, and they are the bulk of the response.
+    let curated = []
+    try {
+      const curatedRes = await fetch('/api/curated?view=grid')
+      if (curatedRes.ok) curated = (await curatedRes.json()).posts || []
+    } catch (_) {
+      curated = []
+    }
 
-    const curated = curatedData.posts || []
+    const usable = curated.filter((p) => p.visible && p.thumb)
     const pinnedByCategory = {}
-    for (const p of curated) {
+    for (const p of usable) {
       if (p.pinned && p.category) pinnedByCategory[p.category] = p
     }
     const hasPinned = Object.keys(pinnedByCategory).length > 0
+
+    // Instagram is only asked when the store gave us nothing to show.
+    let igData = { data: [] }
+    if (usable.length === 0) {
+      const igRes = await fetch('/api/instagram?limit=18')
+      if (!igRes.ok) throw new Error('Feed error')
+      igData = await igRes.json()
+    }
 
     if (hasPinned) {
       // Show pinned category showcase
@@ -976,12 +987,16 @@ async function loadInstagramFeed() {
       if (h2) h2.textContent = 'Our Work — By Service Type'
       if (eyebrow) eyebrow.textContent = 'Featured Projects'
     } else {
-      // Fallback: regular Instagram feed
-      const posts = (igData.data || [])
-        .filter((p) => p.media_type === 'VIDEO' ? p.thumbnail_url : (p.media_url || p.thumbnail_url))
-        .slice(0, 11)
+      // Plain feed. Prefer what the store already gave us; the Instagram list
+      // is only populated when the store came back empty.
+      const posts = usable.length > 0
+        ? usable.slice(0, 11).map((p) => ({ thumb: p.thumb, permalink: p.permalink, caption: p.caption, media_type: p.media_type }))
+        : (igData.data || [])
+            .filter((p) => (p.media_type === 'VIDEO' ? p.thumbnail_url : p.media_url || p.thumbnail_url))
+            .slice(0, 11)
+            .map((p) => ({ thumb: p.thumbnail_url || p.media_url || '', permalink: p.permalink, caption: p.caption, media_type: p.media_type }))
       const items = posts.map((post) => {
-        const thumb = igThumb(post.thumbnail_url || post.media_url || '')
+        const thumb = igThumb(post.thumb || '')
         const raw = (post.caption || '').trim()
         const caption = escAttr(raw.length > 90 ? raw.slice(0, 90) + '…' : raw)
         const isVideo = post.media_type === 'VIDEO'
@@ -1000,7 +1015,25 @@ async function loadInstagramFeed() {
     grid.innerHTML = `<p class="ig-feed-error"><a href="https://www.instagram.com/solcrestfilmco/" target="_blank" rel="noopener noreferrer">View our latest projects on Instagram →</a></p>`
   }
 }
-loadInstagramFeed()
+// The section sits below the fold, so the request waits until the reader is
+// heading towards it rather than competing with the first paint.
+;(function scheduleInstagramFeed() {
+  const grid = document.getElementById('instagram-feed-grid')
+  if (!grid) return
+  if (!('IntersectionObserver' in window)) {
+    loadInstagramFeed()
+    return
+  }
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return
+      obs.disconnect()
+      loadInstagramFeed()
+    },
+    { rootMargin: '600px 0px' },
+  )
+  observer.observe(grid)
+})()
 
 // ── Before / After slider ───────────────────────
 ;(function () {
