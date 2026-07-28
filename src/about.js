@@ -276,11 +276,11 @@ document.querySelector('#app').innerHTML = `
           src="/commercial-project-1.jpg"
           srcset="/commercial-project-1-560.jpg 560w, /commercial-project-1.jpg 1000w"
           sizes="${CONTENT_SIZES}"
-          alt="Solar control film on overhead atrium glazing at a Los Angeles shopping center"
+          alt="Solar control film installed across the windows of a two-story office building in the Los Angeles area"
           loading="lazy"
           decoding="async"
           width="1000"
-          height="752"
+          height="750"
         />
       </section>
 
