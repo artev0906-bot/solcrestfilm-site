@@ -1,18 +1,24 @@
 /**
- * Vercel Serverless Function — Instagram Graph API proxy
+ * Vercel Serverless Function — Instagram API proxy
  * GET /api/instagram?limit=50&cursor=xxx
  *
- * Environment variables required (set in Vercel dashboard):
- *   INSTAGRAM_USER_ID   — numeric Instagram Business account ID
- *   INSTAGRAM_TOKEN     — long-lived Page Access Token
+ * Reads the long-lived Instagram User access token from Redis, where the daily
+ * cron keeps it refreshed. INSTAGRAM_TOKEN in the environment is only the seed
+ * used before the first bootstrap.
+ *
+ * Environment variables:
+ *   INSTAGRAM_USER_ID   — numeric Instagram account ID
+ *   INSTAGRAM_TOKEN     — seed long-lived Instagram User access token
  */
+
+import { readToken } from './_ig.js'
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const token = (process.env.INSTAGRAM_TOKEN || '').replace(/\s+/g, '')
+  const token = (await readToken()).replace(/\s+/g, '')
   const igUserId = (process.env.INSTAGRAM_USER_ID || '').trim()
 
   if (!token || !igUserId) {

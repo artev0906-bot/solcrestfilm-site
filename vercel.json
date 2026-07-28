@@ -2,6 +2,12 @@
   "rewrites": [
     { "source": "/admin", "destination": "/admin.html" }
   ],
+  "crons": [
+    { "path": "/api/ig-cron", "schedule": "0 9 * * *" }
+  ],
+  "functions": {
+    "api/ig-cron.js": { "maxDuration": 60 }
+  },
   "images": {
     "sizes": [384, 640],
     "minimumCacheTTL": 86400,
