@@ -377,8 +377,16 @@ let carouselIndex  = 0
 function renderCarouselSlide(idx) {
   const slide = carouselSlides[idx]
   const total = carouselSlides.length
+  // A carousel can mix stills and clips, so a slide is only an <img> when it
+  // actually is one. Video slides load their file here, on open, never in the grid.
+  const media = slide.media_type === 'VIDEO'
+    ? `<video src="${escAttr(slide.url)}" ${slide.thumb ? `poster="${escAttr(slide.thumb)}"` : ''}
+        controls playsinline preload="none"
+        style="width:100%;height:100%;object-fit:cover;display:block;"></video>`
+    : `<img src="${escAttr(slide.url)}" alt="Project photo ${idx + 1} of ${total}" />`
+
   lbMedia.innerHTML = `
-    <img src="${slide}" alt="Project photo ${idx + 1} of ${total}" />
+    ${media}
     ${total > 1 ? `
     <div class="ow-carousel-nav">
       <button class="ow-carousel-btn ow-carousel-prev" aria-label="Previous">&#8249;</button>
@@ -404,16 +412,16 @@ function openLightbox(post) {
   const isVideo    = post.media_type === 'VIDEO'
   const isCarousel = post.media_type === 'CAROUSEL_ALBUM'
 
-  if (isVideo && post.media_url) {
-    lbMedia.innerHTML = `<video src="${post.media_url}" poster="${post.thumbnail_url || ''}"
-      controls autoplay muted playsinline loop
+  if (isVideo && post.videoUrl) {
+    lbMedia.innerHTML = `<video src="${escAttr(post.videoUrl)}" poster="${escAttr(post.thumbnail_url || '')}"
+      controls autoplay muted playsinline loop preload="none"
       style="width:100%;height:100%;object-fit:cover;display:block;"></video>`
-  } else if (isCarousel && post.children?.data?.length) {
-    carouselSlides = post.children.data.map((c) => c.media_url || c.thumbnail_url || '')
+  } else if (isCarousel && post.slides?.length) {
+    carouselSlides = post.slides
     carouselIndex  = 0
     renderCarouselSlide(0)
   } else {
-    lbMedia.innerHTML = `<img src="${post.media_url || post.thumbnail_url || ''}" alt="Project photo" />`
+    lbMedia.innerHTML = `<img src="${escAttr(post.thumbnail_url || post.media_url || '')}" alt="Project photo" />`
   }
 
   lbCaption.textContent = post.siteCaption || post.caption || ''
@@ -446,6 +454,51 @@ document.addEventListener('keydown', (e) => {
   }
 })
 
+// ── Alt text ──────────────────────────────
+// Instagram captions are written for Instagram: hashtags, handles, links and
+// long runs of emoji. None of that helps a screen reader or image search, so a
+// caption is reduced to its first real sentence before it becomes alt text.
+// Nothing is invented — a post with nothing usable falls back to its confirmed
+// category, and an uncategorised one says only that it is a window film project.
+const CATEGORY_ALT = {
+  solar: 'Solar control window film project in Los Angeles',
+  privacy: 'Privacy window film project in Los Angeles',
+  safety: 'Safety and security window film project in Los Angeles',
+  antigraffiti: 'Anti-graffiti film project in Los Angeles',
+  decorative: 'Decorative window film project in Los Angeles',
+  smartfilm: 'Smart film project in Los Angeles',
+}
+const GENERIC_ALT = 'Window film project in Los Angeles'
+
+function cleanCaption(raw) {
+  const stripped = (raw || '')
+    .replace(/https?:\/\/\S+/g, ' ')
+    .replace(/@[\w.]+/g, ' ')
+    .replace(/#[\p{L}\p{N}_]+/gu, ' ')
+    .replace(/(\p{Extended_Pictographic}\s*){2,}/gu, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+
+  if (!stripped) return ''
+
+  const firstSentence = stripped.split(/(?<=[.!?])\s+/)[0].trim()
+  const text = firstSentence.length > 120
+    ? firstSentence.slice(0, 110).replace(/\s+\S*$/, '') + '…'
+    : firstSentence
+
+  // Too short to describe anything — treat as unusable rather than shipping noise.
+  return text.length < 12 ? '' : text
+}
+
+function altFor(post) {
+  return (
+    (post.siteCaption || '').trim() ||
+    cleanCaption(post.sourceCaption) ||
+    CATEGORY_ALT[post.category] ||
+    GENERIC_ALT
+  )
+}
+
 // ── Gallery ───────────────────────────────
 let allPosts = []   // merged posts for display
 let activeFilter = 'all'
@@ -466,23 +519,40 @@ async function loadGallery() {
         .filter((c) => c.visible && c.thumb)
         .map((c) => ({
           id:           c.id,
-          media_url:    c.videoUrl || c.thumb,
+          videoUrl:     c.videoUrl || '',
           thumbnail_url: c.thumb,
           media_type:   c.media_type || 'IMAGE',
           permalink:    c.permalink || '',
-          children:     c.children?.length
-            ? { data: c.children }
-            : null,
+          slides:       Array.isArray(c.children) ? c.children.filter((s) => s.url) : [],
           siteCaption:  c.caption || '',
+          sourceCaption: c.sourceCaption || '',
           category:     c.category || '',
+          pinned:       Boolean(c.pinned),
         }))
+        .sort((a, b) => Number(b.pinned) - Number(a.pinned))
     } else {
       // Fallback: no curated data yet — fetch first page from Instagram
       const igData = await fetch('/api/instagram?limit=100').then((r) => r.json())
       const igPosts = igData.data || []
       allPosts = igPosts
         .filter((p) => p.media_type === 'VIDEO' ? p.thumbnail_url : (p.media_url || p.thumbnail_url))
-        .map((p) => ({ ...p, siteCaption: p.caption || '', category: '' }))
+        .map((p) => ({
+          id: p.id,
+          videoUrl: p.media_type === 'VIDEO' ? p.media_url || '' : '',
+          thumbnail_url: p.media_type === 'VIDEO' ? p.thumbnail_url : p.media_url || p.thumbnail_url,
+          media_type: p.media_type,
+          permalink: p.permalink || '',
+          slides: (p.children?.data || []).map((child) => ({
+            id: child.id,
+            media_type: child.media_type,
+            url: child.media_url || '',
+            thumb: child.thumbnail_url || null,
+          })),
+          siteCaption: '',
+          sourceCaption: p.caption || '',
+          category: '',
+          pinned: false,
+        }))
     }
 
     renderGallery()
@@ -511,14 +581,17 @@ function renderGallery() {
   }
 
   grid.innerHTML = filtered.map((post) => {
-    const thumb   = post.thumbnail_url || post.media_url || ''
+    // Always the still, never the video file — the clip loads when the
+    // lightbox opens.
+    const thumb   = post.thumbnail_url || ''
     const raw     = (post.siteCaption || '').trim()
     const caption = escAttr(raw.length > 80 ? raw.slice(0, 80) + '…' : raw)
+    const alt     = escAttr(altFor(post))
     const isVideo = post.media_type === 'VIDEO'
 
     return `
-      <button class="ow-grid-item" data-post-id="${post.id}" aria-label="View project: ${caption || 'Window film project'}">
-        <img src="${thumb}" alt="${caption || 'Window film project'}" loading="lazy" decoding="async" />
+      <button class="ow-grid-item" data-post-id="${post.id}" aria-label="View project: ${alt}">
+        <img src="${thumb}" alt="${alt}" loading="lazy" decoding="async" />
         ${isVideo ? '<span class="ow-reel-badge">&#9654; Reel</span>' : ''}
         <div class="ow-grid-overlay">
           <p>${caption}</p>
