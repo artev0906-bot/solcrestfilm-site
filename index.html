@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="image" href="/hero-building-sunset.jpg" fetchpriority="high" media="(min-width: 769px)" />
-    <link rel="preload" as="image" href="/hero-building-sunset-mobile.jpg" fetchpriority="high" media="(max-width: 768px)" />
+    <!-- The hero background is the LCP element, so it is preloaded rather than
+         waiting on the stylesheet. `type` makes a browser skip the hint when it
+         cannot decode AVIF; those browsers pick WebP or JPEG from the CSS
+         image-set instead, so nothing is fetched twice. -->
+    <link rel="preload" as="image" type="image/avif" href="/hero-building-sunset.avif" fetchpriority="high" media="(min-width: 769px)" />
+    <link rel="preload" as="image" type="image/avif" href="/hero-building-sunset-mobile.avif" fetchpriority="high" media="(max-width: 768px)" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
     <meta

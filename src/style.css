@@ -114,7 +114,15 @@ button {
 .hero-block {
   position: relative;
   width: 100%;
+  /* The JPEG line is the fallback for engines without image-set() type()
+     support; where it is supported the second declaration wins and only the
+     chosen format is fetched. This element is the mobile LCP. */
   background-image: url('/hero-building-sunset.jpg');
+  background-image: image-set(
+    url('/hero-building-sunset.avif') type('image/avif'),
+    url('/hero-building-sunset.webp') type('image/webp'),
+    url('/hero-building-sunset.jpg') type('image/jpeg')
+  );
   background-size: cover;
   background-position: center;
 }
@@ -1839,6 +1847,11 @@ h3 {
      background-size: cover at mobile widths, so this is pure byte savings */
   .hero-block {
     background-image: url('/hero-building-sunset-mobile.jpg');
+    background-image: image-set(
+      url('/hero-building-sunset-mobile.avif') type('image/avif'),
+      url('/hero-building-sunset-mobile.webp') type('image/webp'),
+      url('/hero-building-sunset-mobile.jpg') type('image/jpeg')
+    );
   }
 
   .fast-estimate-bg {
