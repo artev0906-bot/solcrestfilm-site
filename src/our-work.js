@@ -290,6 +290,11 @@ const footerHTML = `
     </div>
     <div class="footer-premium-bottom">
       <p>&copy; ${new Date().getFullYear()} Solcrest Film Co. All rights reserved.</p>
+      <p class="footer-legal-links">
+        <a href="/privacy-policy">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+      </p>
     </div>
   </footer>
 `

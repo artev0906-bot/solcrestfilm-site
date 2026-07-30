@@ -2654,6 +2654,86 @@ h3 {
   white-space: nowrap;
 }
 
+/* SMS consent block inside the estimate forms */
+.sms-consent {
+  display: grid;
+  gap: 12px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--bg-surface-alt);
+}
+
+.sms-consent-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.sms-consent-box {
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  accent-color: var(--accent-gold);
+  flex: none;
+}
+
+.sms-consent-links {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.sms-consent-links a {
+  color: var(--accent-gold);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.sms-consent-links a:hover {
+  text-decoration: underline;
+}
+
+/* Legal pages */
+.legal-updated {
+  margin: 18px 0 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.legal-section .section-heading {
+  margin-bottom: 14px;
+}
+
+.legal-section h2 {
+  font-size: 24px;
+}
+
+.footer-legal-links {
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+.footer-legal-links a {
+  color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.footer-legal-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-legal-links span {
+  margin: 0 8px;
+  opacity: 0.5;
+}
+
 /* About pairs copy with a project photo in the existing split grid */
 .about-split {
   align-items: center;
