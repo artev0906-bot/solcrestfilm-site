@@ -38,11 +38,11 @@ const pages = {
     eyebrow: 'Legal',
     title: 'Privacy Policy',
     intro:
-      'This policy explains what Solcrest Film Co LLC collects when you contact us, why we collect it, and how it is used. It applies to solcrestfilm.com and to the estimate forms and chat widget on it.',
+      'This policy explains what Solcrest Film Co LLC collects when you contact us, why we collect it, and how it is used. It applies to solcrestfilm.com and to the estimate forms on it.',
     sections: [
       {
         title: 'Information we collect',
-        body: 'We collect the details you choose to send us through an estimate form, the chat widget, a phone call, a text message or email: your name, phone number, email address, ZIP code, the service you are asking about, any notes you write, and any photographs of your glass that you upload. We do not ask for payment card details on this website.',
+        body: 'We collect the details you choose to send us through an estimate form on this website, a phone call, a text message or email: your name, phone number, email address, ZIP code, the service you are asking about, any notes you write, and any photographs of your glass that you upload. We do not ask for payment card details on this website.',
         points: [
           'Contact details you enter yourself.',
           'Project details and photographs you send us.',
@@ -90,7 +90,7 @@ const pages = {
     eyebrow: 'Legal',
     title: 'Terms & Conditions',
     intro:
-      'These terms cover the use of solcrestfilm.com and the enquiry forms, chat widget and messaging offered through it. By using the site you accept them.',
+      'These terms cover the use of solcrestfilm.com and the estimate forms and messaging offered through it. By using the site you accept them.',
     sections: [
       {
         title: 'About us',
@@ -102,7 +102,7 @@ const pages = {
       },
       {
         title: 'SMS and calling terms',
-        body: 'By submitting a form or chat widget and opting in, the user agrees to receive calls and text messages from Solcrest Film Co. Messages may include estimate updates, appointment scheduling, service follow-ups, reminders, and promotional offers if opted in.',
+        body: 'By submitting a form on this website and opting in, the user agrees to receive calls and text messages from Solcrest Film Co. Messages may include estimate updates, appointment scheduling, service follow-ups, reminders, and promotional offers if opted in.',
         points: ['Consent is not a condition of purchase.', ...SMS_LINES],
       },
       {
