@@ -1962,12 +1962,16 @@ h3 {
   border-color: rgba(255, 255, 255, 0.18);
 }
 
-.final-cta-panel .sms-consent-links {
+.final-cta-panel .contact-card .sms-consent .sms-consent-item {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.final-cta-panel .contact-card .sms-consent .sms-consent-links {
   color: rgba(255, 255, 255, 0.55);
 }
 
 /* --accent-gold only reaches 3.7:1 on this card; the light gold clears AA */
-.final-cta-panel .sms-consent-links a {
+.final-cta-panel .contact-card .sms-consent .sms-consent-links a {
   color: var(--accent-gold-light);
 }
 
@@ -2672,47 +2676,54 @@ h3 {
    block should read as part of whichever it sits in. */
 .sms-consent {
   display: grid;
-  gap: 12px;
-  padding: 16px 18px;
+  gap: 18px;
+  padding: 20px 22px;
   border: 1px solid var(--border);
   border-radius: 18px;
   background: transparent;
 }
 
-.sms-consent-item {
+/* Scoped to .contact-card so these win over the form's own label and input
+   rules — the mobile block at 768px sets every label in the card to 1rem. */
+.contact-card .sms-consent .sms-consent-item {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  gap: 10px;
+  gap: 12px;
   align-items: start;
   margin: 0;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.45;
+  font-weight: 400;
   color: var(--text-secondary);
   cursor: pointer;
 }
 
-.sms-consent-box {
+.contact-card .sms-consent .sms-consent-box {
   width: 18px;
   height: 18px;
-  margin: 2px 0 0;
+  min-height: 0;
+  margin: 1px 0 0;
+  padding: 0;
   accent-color: var(--accent-gold);
   flex: none;
 }
 
-.sms-consent-links {
-  margin: 0;
+.contact-card .sms-consent .sms-consent-links {
+  margin: 2px 0 0;
   font-size: 13px;
+  line-height: 1.45;
   color: var(--text-muted);
 }
 
-.sms-consent-links a {
+.contact-card .sms-consent .sms-consent-links a {
   color: var(--accent-gold);
-  font-weight: 600;
-  text-decoration: none;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-.sms-consent-links a:hover {
-  text-decoration: underline;
+.contact-card .sms-consent .sms-consent-links a:hover {
+  text-decoration-thickness: 2px;
 }
 
 /* Legal pages */
