@@ -6,21 +6,24 @@
  * payload shape stable for n8n and GoHighLevel whether or not the box is
  * ticked — and means the submit handler needs no changes at all.
  *
- * Both start unchecked: consent has to be given, not withdrawn.
+ * Both start unchecked and both stay optional. Carrier A2P review requires that
+ * the form still submit when a phone number is entered and consent is not
+ * given: the lead is accepted, and "SMS Consent: No" is what tells the CRM this
+ * contact must not be messaged.
  */
 
-export const TRANSACTIONAL_CONSENT_TEXT =
-  'I agree to receive calls and text messages from Solcrest Film Co about my request, including estimate updates, appointment scheduling, and service follow-ups. Message frequency varies. Msg &amp; data rates may apply. Reply HELP for help or STOP to opt out.'
+export const INFORMATIONAL_CONSENT_TEXT =
+  'I agree to receive informational text messages from Solcrest Film Co LLC regarding estimates, appointment scheduling, installation updates, reminders, and service follow-ups. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase.'
 
 export const MARKETING_CONSENT_TEXT =
-  'I agree to receive occasional promotional text messages from Solcrest Film Co. Message frequency varies. Msg &amp; data rates may apply. Reply HELP for help or STOP to opt out.'
+  'I agree to receive occasional promotional text messages from Solcrest Film Co LLC. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase.'
 
 export const smsConsentFields = `
           <div class="sms-consent">
             <input type="hidden" name="SMS Consent" id="sms-consent-value" value="No" />
             <label class="sms-consent-item">
               <input type="checkbox" id="sms-consent" class="sms-consent-box" />
-              <span>${TRANSACTIONAL_CONSENT_TEXT}</span>
+              <span>${INFORMATIONAL_CONSENT_TEXT}</span>
             </label>
 
             <input type="hidden" name="Marketing SMS Consent" id="sms-marketing-value" value="No" />
@@ -37,8 +40,8 @@ export const smsConsentFields = `
           </div>
 `
 
-/** Mirrors each checkbox into its hidden field, and makes the transactional one
- *  required as soon as a phone number is entered. Safe to call when the block is
+/** Mirrors each checkbox into its hidden field. Neither box is ever made
+ *  required, so this never blocks a submit. Safe to call when the block is
  *  absent — every lookup is optional. */
 export function mountSmsConsent() {
   const pairs = [
@@ -56,28 +59,4 @@ export function mountSmsConsent() {
     box.addEventListener('change', sync)
     sync()
   }
-
-  // Consent is required to call or text, so it becomes required exactly when a
-  // phone number is given. Someone who leaves only an email can still submit.
-  // Constraint validation runs before the submit event fires, so the existing
-  // submit handler is never reached and never had to change.
-  const consentBox = document.querySelector('#sms-consent')
-  const phoneField = document.querySelector('#contact-form input[name="Phone"]')
-  if (!consentBox || !phoneField) return
-
-  const syncRequired = () => {
-    const wanted = phoneField.value.trim().length > 0
-    consentBox.required = wanted
-    consentBox.setAttribute('aria-required', String(wanted))
-  }
-
-  phoneField.addEventListener('input', syncRequired)
-  phoneField.addEventListener('change', syncRequired)
-  consentBox.addEventListener('invalid', () => {
-    consentBox.setCustomValidity(
-      'Please confirm you agree to receive calls and text messages, or leave an email instead of a phone number.',
-    )
-  })
-  consentBox.addEventListener('change', () => consentBox.setCustomValidity(''))
-  syncRequired()
 }
