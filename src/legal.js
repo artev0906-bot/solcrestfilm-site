@@ -9,8 +9,8 @@ import { mountChatWidget } from './chat-widget.js'
  */
 
 const business = {
-  phoneDisplay: '747-324-9008',
-  phoneHref: 'tel:7473249008',
+  phoneDisplay: '+1 (213) 214-3212',
+  phoneHref: 'tel:+12132143212',
   email: 'info@solcrestfilm.com',
   legalName: 'Solcrest Film Co LLC',
 }
@@ -55,7 +55,7 @@ const pages = {
       },
       {
         title: 'SMS and phone communication',
-        body: 'Solcrest Film Co may use SMS to respond to customer requests, send estimate updates, appointment scheduling messages, reminders, service follow-ups, and occasional promotional messages if the customer opts in.',
+        body: 'Solcrest Film Co LLC may use SMS to respond to customer requests, send estimate updates, appointment scheduling messages, reminders, service follow-ups, and occasional promotional messages if the customer opts in.',
         points: [
           ...SMS_LINES,
           'SMS consent is not sold, rented, or shared with third parties or affiliates for marketing purposes.',
@@ -80,7 +80,7 @@ const pages = {
       },
       {
         title: 'Contact',
-        body: `Solcrest Film Co LLC — Los Angeles, California. Email ${business.email} or call ${business.phoneDisplay}.`,
+        body: `${business.legalName} — Los Angeles, California. Email ${business.email} or call ${business.phoneDisplay}.`,
       },
     ],
   },
@@ -102,7 +102,7 @@ const pages = {
       },
       {
         title: 'SMS and calling terms',
-        body: 'By submitting a form on this website and opting in, the user agrees to receive calls and text messages from Solcrest Film Co. Messages may include estimate updates, appointment scheduling, service follow-ups, reminders, and promotional offers if opted in.',
+        body: 'By submitting a form on this website and opting in, the user agrees to receive calls and text messages from Solcrest Film Co LLC. Messages may include estimate updates, appointment scheduling, service follow-ups, reminders, and promotional offers if opted in.',
         points: ['Consent is not a condition of purchase.', ...SMS_LINES],
       },
       {
@@ -123,7 +123,7 @@ const pages = {
       },
       {
         title: 'Contact',
-        body: `Questions about these terms: email ${business.email} or call ${business.phoneDisplay}.`,
+        body: `${business.legalName} — Los Angeles, California. Email ${business.email} or call ${business.phoneDisplay}.`,
       },
     ],
   },

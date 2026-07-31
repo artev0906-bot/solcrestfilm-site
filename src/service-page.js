@@ -4,9 +4,9 @@ import { mountChatWidget } from './chat-widget.js'
 import { smsConsentFields, mountSmsConsent } from './sms-consent.js'
 
 const business = {
-  phoneDisplay: '747-324-9008',
-  phoneHref: 'tel:7473249008',
-  textHref: 'sms:7473249008',
+  phoneDisplay: '+1 (213) 214-3212',
+  phoneHref: 'tel:+12132143212',
+  textHref: 'sms:+12132143212',
   email: 'info@solcrestfilm.com',
   estimateFormAction: 'https://formspree.io/f/xdargbee',
   n8nWebhook: 'https://artev0906.app.n8n.cloud/webhook/solcrest-website-lead',
