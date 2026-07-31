@@ -20,6 +20,11 @@ export default defineConfig({
         ourwork: 'our-work.html',
         privacy: 'privacy-policy.html',
         terms: 'terms-and-conditions.html',
+        // Standalone, script-free pages for carrier A2P review. They carry
+        // their own inline styles and share nothing with the app bundle.
+        a2pOptIn: 'a2p-opt-in.html',
+        a2pPrivacy: 'a2p-privacy.html',
+        a2pTerms: 'a2p-terms.html',
         admin: 'admin.html',
       },
     },

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMS Opt-In | Solcrest Film Co LLC</title>
+    <meta
+      name="description"
+      content="Request an estimate from Solcrest Film Co LLC and choose whether to receive informational or promotional text messages. Consent is not a condition of purchase."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://solcrestfilm.com/a2p-opt-in" />
+    <link rel="icon" type="image/x-icon" href="/favicon-v4.ico" />
+    <!-- Self-contained on purpose: this page must render its full content from
+         the raw HTTP response, with no JavaScript, no bundle and no external
+         stylesheet. -->
+    <style>
+      :root {
+        --cream: #f7f3ea;
+        --card: #fffdf8;
+        --ink: #1a1712;
+        --muted: #554e42;
+        --gold: #8a6a1f;
+        --line: #ded4c0;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        padding: 0 20px 64px;
+        background: var(--cream);
+        color: var(--ink);
+        font: 400 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+      .wrap { max-width: 720px; margin: 0 auto; }
+      header { padding: 40px 0 8px; border-bottom: 1px solid var(--line); }
+      .company { font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin: 0 0 10px; }
+      h1 { font-size: 32px; line-height: 1.2; margin: 0 0 12px; }
+      h2 { font-size: 21px; margin: 36px 0 10px; }
+      p { margin: 0 0 16px; }
+      .lede { color: var(--muted); }
+      a { color: var(--gold); font-weight: 600; }
+      form { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 24px; margin: 24px 0 0; }
+      label { display: block; font-weight: 600; margin: 0 0 6px; }
+      input[type="text"], input[type="email"], input[type="tel"], textarea {
+        width: 100%;
+        padding: 11px 13px;
+        margin: 0 0 18px;
+        font: inherit;
+        color: var(--ink);
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+      textarea { min-height: 120px; resize: vertical; }
+      .consent { margin: 4px 0 0; padding: 18px; border: 1px solid var(--line); border-radius: 10px; background: #fffef9; }
+      .consent-item { display: flex; gap: 12px; align-items: flex-start; margin: 0 0 18px; }
+      .consent-item:last-of-type { margin-bottom: 0; }
+      .consent-item input { margin: 5px 0 0; width: 18px; height: 18px; flex: none; }
+      .consent-item label { font-weight: 400; font-size: 15px; line-height: 1.5; color: var(--muted); margin: 0; }
+      .policy-links { margin: 18px 0 0; font-size: 16px; }
+      button {
+        margin: 22px 0 0;
+        padding: 13px 26px;
+        font: 700 17px/1 inherit;
+        color: #fff;
+        background: var(--gold);
+        border: 0;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .disclosures { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px 24px; margin: 28px 0 0; }
+      .disclosures ul { margin: 0; padding-left: 20px; }
+      .disclosures li { margin: 0 0 8px; color: var(--muted); }
+      footer { margin: 44px 0 0; padding: 22px 0 0; border-top: 1px solid var(--line); font-size: 15px; color: var(--muted); }
+      @media (max-width: 520px) {
+        body { padding: 0 16px 48px; font-size: 16px; }
+        h1 { font-size: 26px; }
+        form { padding: 18px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <p class="company">Solcrest Film Co LLC</p>
+        <h1>Request an Estimate and SMS Opt-In</h1>
+        <p class="lede">
+          Solcrest Film Co LLC installs architectural window film in Los Angeles, California. Use the form below to
+          request an estimate. Choosing to receive text messages is entirely optional — consent is not a condition of
+          purchase, and you can submit this form without agreeing to either message type.
+        </p>
+      </header>
+
+      <form action="https://formspree.io/f/xdargbee" method="POST">
+        <input type="hidden" name="Lead Source" value="A2P Compliance Form" />
+
+        <label for="name">Name</label>
+        <input type="text" id="name" name="Name" autocomplete="name" />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="Email" autocomplete="email" />
+
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="Phone" autocomplete="tel" />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="Message"></textarea>
+
+        <div class="consent">
+          <div class="consent-item">
+            <input type="checkbox" id="sms-informational" name="Informational SMS Consent" value="Yes" />
+            <label for="sms-informational">
+              I agree to receive informational text messages from Solcrest Film Co LLC about estimates, appointments,
+              installation updates, reminders, and service follow-ups; message frequency varies; message and data rates
+              may apply; Reply STOP to opt out; Reply HELP for help; consent is not a condition of purchase.
+            </label>
+          </div>
+
+          <div class="consent-item">
+            <input type="checkbox" id="sms-promotional" name="Promotional SMS Consent" value="Yes" />
+            <label for="sms-promotional">
+              I agree to receive promotional text messages from Solcrest Film Co LLC about special offers, seasonal
+              promotions, and service reminders; message frequency varies; message and data rates may apply; Reply STOP
+              to opt out; Reply HELP for help; consent is not a condition of purchase.
+            </label>
+          </div>
+
+          <p class="policy-links">
+            Read our <a href="/a2p-privacy">Privacy Policy</a> and <a href="/a2p-terms">Terms &amp; Conditions</a>.
+          </p>
+        </div>
+
+        <button type="submit">Submit Request</button>
+      </form>
+
+      <h2>SMS program disclosures</h2>
+      <div class="disclosures">
+        <ul>
+          <li>Program name: Solcrest Film Co LLC window film estimates and service notifications.</li>
+          <li>
+            Informational messages may include estimates, appointments, installation updates, reminders, and service
+            follow-ups. Promotional messages may include special offers and seasonal promotions.
+          </li>
+          <li>Message frequency varies.</li>
+          <li>Message and data rates may apply.</li>
+          <li>Reply STOP to opt out at any time.</li>
+          <li>Reply HELP for help, or contact us using the details below.</li>
+          <li>Consent is not a condition of purchase.</li>
+          <li>Both checkboxes above are optional and are unchecked by default.</li>
+        </ul>
+      </div>
+
+      <h2>Contact</h2>
+      <p>
+        Solcrest Film Co LLC — Los Angeles, California. Call or text
+        <a href="tel:+12132143212">+1 (213) 214-3212</a> or email
+        <a href="mailto:info@solcrestfilm.com">info@solcrestfilm.com</a>.
+      </p>
+
+      <footer>
+        <p>
+          &copy; 2026 Solcrest Film Co LLC. All rights reserved. &middot;
+          <a href="/a2p-privacy">Privacy Policy</a> &middot;
+          <a href="/a2p-terms">Terms &amp; Conditions</a>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
