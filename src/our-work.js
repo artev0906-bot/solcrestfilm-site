@@ -37,7 +37,7 @@ const headerHTML = `
         <a href="/#contact">Contact</a>
       </nav>
       <div class="nav-actions">
-        <a class="nav-cta nav-cta-secondary" href="tel:7473249008">${icon('smartphone')}Call / Text Now</a>
+        <a class="nav-cta nav-cta-secondary" href="tel:+12132143212">${icon('smartphone')}Call / Text Now</a>
         <a class="nav-cta" href="/#contact">Get Estimate</a>
       </div>
     </div>
@@ -234,7 +234,7 @@ const ctaHTML = `
       <p>Call, text or send photos — we'll get back to you fast.</p>
       <div class="cta-row">
         <a class="button button-primary" href="/#contact">${icon('badgeCheck')}Get Free Estimate</a>
-        <a class="button button-secondary" href="sms:7473249008">${icon('smartphone')}Text Us Photos</a>
+        <a class="button button-secondary" href="sms:+12132143212">${icon('smartphone')}Text Us Photos</a>
       </div>
     </div>
   </section>
@@ -256,7 +256,7 @@ const footerHTML = `
       </div>
       <div class="footer-col footer-col-contact">
         <h3 class="footer-col-title">Contact</h3>
-        <p><a href="tel:7473249008">747-324-9008</a></p>
+        <p><a href="tel:+12132143212">+1 (213) 214-3212</a></p>
         <p><a href="mailto:info@solcrestfilm.com">info@solcrestfilm.com</a></p>
         <div class="social-links footer-premium-social">
           <a href="https://www.instagram.com/solcrestfilmco/" target="_blank" rel="noopener noreferrer" aria-label="Solcrest Film Co on Instagram">${icon('instagram')}</a>
@@ -301,7 +301,7 @@ const footerHTML = `
 
 const stickyCtaHTML = `
   <div class="sticky-cta-bar">
-    <a class="sticky-cta-call" href="tel:7473249008">${icon('smartphone')}<span>Call</span></a>
+    <a class="sticky-cta-call" href="tel:+12132143212">${icon('smartphone')}<span>Call</span></a>
     <a class="sticky-cta-request" href="/#contact">${icon('badgeCheck')}<span>Get Estimate</span></a>
   </div>
 `
