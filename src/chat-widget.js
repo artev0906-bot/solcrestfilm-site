@@ -35,14 +35,33 @@ const faqItems = [
   },
 ]
 
-const GREETING = "Hi! Happy to help — ask a question or leave your info and we'll get back to you."
+const GREETING = 'Hi! I can help with pricing, film selection, or a free estimate.'
+const GREETING_PROMPT = 'What would you like help with?'
 const MORE_QUESTIONS_PROMPT =
   "Looks like you have more questions — leave your info below and we'll get back to you personally."
 const GENERIC_ACK = "Thanks for the question — we'll make sure to cover that when we follow up with you."
 
-const renderQuickQuestions = () =>
+/**
+ * Only these three questions are offered up front — the full list read as a FAQ
+ * page rather than a conversation. The rest stay one tap away behind "More
+ * questions". Indices refer to faqItems, so the answers are unchanged.
+ */
+const FEATURED_FAQ_INDEXES = [2, 3, 4]
+
+// Index of the pricing answer, reused by the "Ask About Pricing" action so it
+// goes through exactly the same path as tapping the question itself.
+const PRICING_FAQ_INDEX = 0
+
+const questionButton = (i) =>
+  `<button type="button" class="chat-quick-question" data-faq-index="${i}">${faqItems[i].q}</button>`
+
+const renderFeaturedQuestions = () => FEATURED_FAQ_INDEXES.map(questionButton).join('')
+
+const renderRemainingQuestions = () =>
   faqItems
-    .map((item, i) => `<button type="button" class="chat-quick-question" data-faq-index="${i}">${item.q}</button>`)
+    .map((_, i) => i)
+    .filter((i) => !FEATURED_FAQ_INDEXES.includes(i))
+    .map(questionButton)
     .join('')
 
 function escapeHtml(value) {
@@ -70,15 +89,41 @@ export function mountChatWidget() {
       </div>
       <div class="chat-panel-body" id="chat-panel-body">
         <div class="chat-messages" id="chat-messages">
-          <div class="chat-bubble chat-bubble-assistant">${GREETING}</div>
+          <div class="chat-bubble chat-bubble-assistant chat-bubble-greeting">
+            <span>${GREETING}</span>
+            <span class="chat-bubble-prompt">${GREETING_PROMPT}</span>
+          </div>
+        </div>
+
+        <div class="chat-actions" id="chat-actions">
+          <button type="button" class="chat-action chat-action-primary" data-chat-action="estimate">Get a Free Estimate</button>
+          <a class="chat-action" href="/#contact">Send Photos</a>
+          <button type="button" class="chat-action" data-chat-action="pricing">Ask About Pricing</button>
         </div>
 
         <div class="chat-quick-questions" id="chat-quick-questions">
-          ${renderQuickQuestions()}
+          <div class="chat-quick-list">
+            ${renderFeaturedQuestions()}
+          </div>
+          <div class="chat-quick-list" id="chat-more-list" hidden>
+            ${renderRemainingQuestions()}
+          </div>
+          <button
+            type="button"
+            class="chat-more-questions"
+            id="chat-more-questions"
+            aria-expanded="false"
+            aria-controls="chat-more-list"
+          >More questions</button>
         </div>
 
         <form class="chat-text-form" id="chat-text-form">
-          <input type="text" id="chat-text-input" placeholder="Type your question…" aria-label="Type your question" />
+          <input
+            type="text"
+            id="chat-text-input"
+            placeholder="Ask about pricing, privacy, heat reduction..."
+            aria-label="Ask about pricing, privacy, heat reduction"
+          />
           <button type="submit" class="chat-text-send" aria-label="Send message">${icon('send')}</button>
         </form>
 
@@ -121,6 +166,9 @@ export function mountChatWidget() {
   const panelBody = widget.querySelector('#chat-panel-body')
   const messagesEl = widget.querySelector('#chat-messages')
   const quickQuestionsEl = widget.querySelector('#chat-quick-questions')
+  const actionsEl = widget.querySelector('#chat-actions')
+  const moreListEl = widget.querySelector('#chat-more-list')
+  const moreToggle = widget.querySelector('#chat-more-questions')
   const textForm = widget.querySelector('#chat-text-form')
   const textInput = widget.querySelector('#chat-text-input')
   const leadFormWrap = widget.querySelector('#chat-lead-form-wrap')
@@ -166,6 +214,10 @@ export function mountChatWidget() {
     if (!quickQuestionsEl.hidden) {
       quickQuestionsEl.hidden = true
     }
+    // The openers have served their purpose once a conversation starts.
+    if (!actionsEl.hidden) {
+      actionsEl.hidden = true
+    }
 
     addBubble(questionText, 'client')
     askedQuestions.push(questionText)
@@ -197,12 +249,34 @@ export function mountChatWidget() {
     }
   })
 
-  widget.querySelector('#chat-quick-questions').addEventListener('click', (event) => {
+  quickQuestionsEl.addEventListener('click', (event) => {
     const button = event.target.closest('.chat-quick-question')
     if (!button) return
     const faq = faqItems[Number(button.dataset.faqIndex)]
     if (!faq) return
     handleUserQuestion(faq.q, faq)
+  })
+
+  moreToggle.addEventListener('click', () => {
+    const expanded = moreToggle.getAttribute('aria-expanded') === 'true'
+    moreToggle.setAttribute('aria-expanded', String(!expanded))
+    moreListEl.hidden = expanded
+    moreToggle.textContent = expanded ? 'More questions' : 'Fewer questions'
+    if (!expanded) scrollToBottom()
+  })
+
+  // The openers reuse paths that already exist: pricing goes through the same
+  // FAQ handler as tapping the question, the estimate button opens the same
+  // lead form the conversation reveals on its own. No new reply logic.
+  actionsEl.addEventListener('click', (event) => {
+    const action = event.target.closest('[data-chat-action]')?.dataset.chatAction
+    if (action === 'pricing') {
+      handleUserQuestion(faqItems[PRICING_FAQ_INDEX].q, faqItems[PRICING_FAQ_INDEX])
+    } else if (action === 'estimate') {
+      actionsEl.hidden = true
+      quickQuestionsEl.hidden = true
+      revealLeadForm()
+    }
   })
 
   textForm.addEventListener('submit', (event) => {

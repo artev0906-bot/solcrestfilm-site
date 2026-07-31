@@ -4024,9 +4024,11 @@ a.chooser-pick:focus-visible {
   position: absolute;
   right: 0;
   bottom: 76px;
-  width: 360px;
-  max-width: calc(100vw - 40px);
-  max-height: min(600px, calc(100vh - 120px));
+  width: 380px;
+  max-width: calc(100vw - 24px);
+  /* Tall enough that the greeting, the three openers, three questions and the
+     input all land on the first screen without an internal scrollbar. */
+  max-height: min(660px, calc(100vh - 100px));
   display: flex;
   flex-direction: column;
   border: 1px solid var(--border-strong);
@@ -4041,7 +4043,7 @@ a.chooser-pick:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 16px 18px;
+  padding: 18px 18px 18px 20px;
   border-bottom: 1px solid var(--border);
   flex: 0 0 auto;
 }
@@ -4049,7 +4051,7 @@ a.chooser-pick:focus-visible {
 .chat-panel-heading {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 11px;
 }
 
 .chat-status-dot {
@@ -4061,24 +4063,27 @@ a.chooser-pick:focus-visible {
 }
 
 .chat-panel-title {
-  margin: 0;
+  margin: 0 0 1px;
   font-weight: 700;
   color: var(--text-primary);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  line-height: 1.25;
 }
 
 .chat-panel-subtitle {
   margin: 0;
-  font-size: 0.78rem;
-  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.2;
+  /* --text-muted is too faint against the header for a live status. */
+  color: var(--text-secondary);
 }
 
 .chat-close {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: var(--bg-surface-alt);
   color: var(--text-secondary);
@@ -4086,8 +4091,8 @@ a.chooser-pick:focus-visible {
 }
 
 .chat-close .icon {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
 }
 
 .chat-close:hover {
@@ -4131,23 +4136,92 @@ a.chooser-pick:focus-visible {
   border-bottom-right-radius: 4px;
 }
 
+/* Greeting carries a second, quieter line asking what the visitor needs. */
+.chat-bubble-greeting {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 100%;
+  font-size: 0.9rem;
+}
+
+.chat-bubble-prompt {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Three openers, stacked so each is a full-width target. */
+.chat-actions[hidden] {
+  display: none;
+}
+
+.chat-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chat-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 11px 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.chat-action:hover {
+  background: rgba(169, 120, 53, 0.08);
+  border-color: var(--accent-gold);
+}
+
+.chat-action-primary {
+  border-color: var(--accent-gold);
+  background: var(--accent-gold);
+  color: #ffffff;
+}
+
+.chat-action-primary:hover {
+  background: var(--accent-gold-hover);
+  border-color: var(--accent-gold-hover);
+}
+
 .chat-quick-questions[hidden] {
   display: none;
 }
 
 .chat-quick-questions {
   display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chat-quick-list {
+  display: flex;
   flex-wrap: wrap;
   gap: 6px;
 }
 
+.chat-quick-list[hidden] {
+  display: none;
+}
+
 .chat-quick-question {
+  min-height: 44px;
   border: 1px solid var(--border-strong);
   border-radius: 999px;
-  padding: 7px 12px;
+  padding: 9px 16px;
   background: var(--bg-surface);
   color: var(--text-primary);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-align: left;
   transition: background 0.2s ease, border-color 0.2s ease;
@@ -4156,6 +4230,25 @@ a.chooser-pick:focus-visible {
 .chat-quick-question:hover {
   background: rgba(169, 120, 53, 0.08);
   border-color: var(--accent-gold);
+}
+
+.chat-more-questions {
+  align-self: flex-start;
+  min-height: 44px;
+  padding: 8px 4px;
+  background: none;
+  /* The lighter gold reads at 3.87:1 on this cream panel. The darker brand
+     gold is the same family and clears AA at 6.7:1. */
+  color: var(--accent-gold-hover);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.chat-more-questions:hover {
+  text-decoration-thickness: 2px;
 }
 
 .chat-text-form[hidden] {
@@ -4171,8 +4264,10 @@ a.chooser-pick:focus-visible {
 
 .chat-text-form input {
   flex: 1 1 auto;
-  min-height: 42px;
-  padding: 10px 12px;
+  /* min-width lets the input shrink inside the row instead of forcing a wrap. */
+  min-width: 0;
+  min-height: 44px;
+  padding: 11px 14px;
   border: 1px solid var(--border-strong);
   border-radius: 12px;
   background: var(--bg-page);
@@ -4188,8 +4283,8 @@ a.chooser-pick:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 12px;
   background: var(--accent-gold);
   color: #ffffff;
@@ -4278,8 +4373,28 @@ a.chooser-pick:focus-visible {
   }
 
   .chat-panel {
-    right: -6px;
+    /* The widget sits 14px from the edge, so -2px puts the panel's own edge at
+       12px — the same clearance it gets on the left from the width below. */
+    right: -2px;
     bottom: 66px;
     width: calc(100vw - 24px);
+    max-width: 380px;
   }
+}
+
+/* Focus rings for the controls added above; the panel clips its own overflow,
+   so the ring is inset rather than outset. */
+.chat-action:focus-visible,
+.chat-quick-question:focus-visible,
+.chat-more-questions:focus-visible,
+.chat-close:focus-visible,
+.chat-text-send:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: -3px;
+}
+
+.chat-text-form input:focus-visible {
+  outline: none;
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 2px rgba(169, 120, 53, 0.35);
 }
