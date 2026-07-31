@@ -2726,6 +2726,92 @@ h3 {
   text-decoration-thickness: 2px;
 }
 
+/* Post-submit confirmation. The panel replaces the fields inside the same card,
+   so the section keeps its frame and its theme. */
+.contact-card.estimate-submitted > *:not(.estimate-success) {
+  display: none;
+}
+
+.estimate-success {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 12px 4px 4px;
+  text-align: center;
+}
+
+.estimate-success-icon {
+  color: var(--accent-gold);
+  line-height: 0;
+}
+
+.estimate-success-title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 26px;
+  color: var(--text-primary);
+}
+
+.estimate-success-title:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 6px;
+  border-radius: 6px;
+}
+
+.estimate-success-text {
+  margin: 0;
+  max-width: 44ch;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.estimate-success-secondary {
+  margin: 0;
+  max-width: 40ch;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.estimate-success-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.estimate-success-actions .button:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 3px;
+}
+
+/* Dark card on the homepage */
+.final-cta-panel .contact-card .estimate-success-title {
+  color: #ffffff;
+}
+
+.final-cta-panel .contact-card .estimate-success-text {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.final-cta-panel .contact-card .estimate-success-secondary {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.final-cta-panel .contact-card .estimate-success-icon {
+  color: var(--accent-gold-light);
+}
+
+/* The sticky call/estimate bar overlaps the bottom of the viewport on phones,
+   so the last button keeps clear of it. */
+@media (max-width: 860px) {
+  .estimate-success {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 /* Legal pages */
 .legal-updated {
   margin: 18px 0 0;
