@@ -2,7 +2,10 @@
   "rewrites": [
     { "source": "/admin", "destination": "/admin.html" },
     { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
-    { "source": "/terms-and-conditions", "destination": "/terms-and-conditions.html" }
+    { "source": "/terms-and-conditions", "destination": "/terms-and-conditions.html" },
+    { "source": "/a2p-opt-in", "destination": "/a2p-opt-in.html" },
+    { "source": "/a2p-privacy", "destination": "/a2p-privacy.html" },
+    { "source": "/a2p-terms", "destination": "/a2p-terms.html" }
   ],
   "crons": [
     { "path": "/api/ig-cron", "schedule": "0 9 * * *" }
