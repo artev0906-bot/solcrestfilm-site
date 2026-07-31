@@ -39,6 +39,18 @@ export const estimateSuccessMarkup = `
 
 export const ERROR_MESSAGE = 'Something went wrong. Please try again or start a chat with us.'
 
+/**
+ * Single point of truth for the status line: it either carries a message or it
+ * is not in the layout at all. Called with no text it clears and hides, so an
+ * empty status can never reserve a blank gap under the submit button — which is
+ * what it did on first load before.
+ */
+export function setFormStatus(status, text = '') {
+  if (!status) return
+  status.textContent = text
+  status.hidden = !text
+}
+
 /** Fires a GA event through the tag the site already loads. No form data is
  *  ever included. */
 function track(name) {
@@ -69,7 +81,7 @@ export function setupEstimateSuccess({ form, status }) {
     if (replyTo) replyTo.value = ''
     const filename = form.querySelector('.file-upload-filename')
     if (filename) filename.textContent = 'No file chosen'
-    if (status) status.textContent = ''
+    setFormStatus(status)
     if (submitButton) {
       submitButton.disabled = false
       submitButton.textContent = originalLabel
@@ -95,7 +107,7 @@ export function setupEstimateSuccess({ form, status }) {
     /** Request in flight: the form stays visible, the button stops accepting clicks. */
     setSending() {
       sending = true
-      if (status) status.textContent = ''
+      setFormStatus(status)
       if (!submitButton) return
       submitButton.disabled = true
       submitButton.textContent = 'Sending…'
@@ -116,7 +128,7 @@ export function setupEstimateSuccess({ form, status }) {
     /** Failure: the form comes back untouched, with whatever was typed still in it. */
     showError(message = ERROR_MESSAGE) {
       sending = false
-      if (status) status.textContent = message
+      setFormStatus(status, message)
       if (submitButton) {
         submitButton.disabled = false
         submitButton.textContent = originalLabel

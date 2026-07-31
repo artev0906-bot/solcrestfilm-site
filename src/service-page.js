@@ -2,7 +2,7 @@ import './style.css'
 import { icon } from './icons.js'
 import { mountChatWidget } from './chat-widget.js'
 import { smsConsentFields, mountSmsConsent } from './sms-consent.js'
-import { estimateSuccessMarkup, setupEstimateSuccess } from './estimate-success.js'
+import { estimateSuccessMarkup, setupEstimateSuccess, setFormStatus } from './estimate-success.js'
 
 const business = {
   phoneDisplay: '+1 (213) 214-3212',
@@ -1578,7 +1578,7 @@ document.querySelector('#app').innerHTML = `
 
           <button class="button button-primary submit-button" type="submit">Request My Free Estimate</button>
           <p class="form-promise">We typically reply within one business day.</p>
-          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
 ${estimateSuccessMarkup}
         </form>
       </section>
@@ -1755,7 +1755,7 @@ contactForm?.addEventListener('submit', async (event) => {
   if (replyToField) replyToField.value = emailValue
 
   if (!emailValue && !phoneValue) {
-    formStatus.textContent = 'Please leave either a phone number or an email so we can get back to you.'
+    setFormStatus(formStatus, 'Please leave either a phone number or an email so we can get back to you.')
     emailField?.focus()
     return
   }
@@ -1764,7 +1764,7 @@ contactForm?.addEventListener('submit', async (event) => {
   const selectedFiles = Array.from(photoInput?.files ?? [])
 
   if (selectedFiles.length > 10) {
-    formStatus.textContent = 'Please upload up to 10 photos only.'
+    setFormStatus(formStatus, 'Please upload up to 10 photos only.')
     photoInput?.focus()
     return
   }

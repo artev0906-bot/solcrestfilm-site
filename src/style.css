@@ -3310,6 +3310,13 @@ a.chooser-pick:focus-visible {
   margin: 0;
 }
 
+/* The status line only exists while it has something to say. Without this the
+   empty box still reserved 24px under the submit button on first load. The
+   attribute is authoritative over any display the rules above may set. */
+.form-status[hidden] {
+  display: none;
+}
+
 .cta-row {
   display: flex;
   flex-wrap: wrap;
