@@ -2,6 +2,7 @@ import './style.css'
 import { icon } from './icons.js'
 import { mountChatWidget } from './chat-widget.js'
 import { smsConsentFields, mountSmsConsent } from './sms-consent.js'
+import { estimateSuccessMarkup, setupEstimateSuccess } from './estimate-success.js'
 
 const business = {
   phoneDisplay: '+1 (213) 214-3212',
@@ -1578,6 +1579,7 @@ document.querySelector('#app').innerHTML = `
           <button class="button button-primary submit-button" type="submit">Request My Free Estimate</button>
           <p class="form-promise">We typically reply within one business day.</p>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+${estimateSuccessMarkup}
         </form>
       </section>
     </main>
@@ -1655,6 +1657,7 @@ const replyToField = contactForm?.querySelector('input[name="_replyto"]')
 const fileUploadInput = contactForm?.querySelector('.file-upload-input')
 const fileUploadButton = contactForm?.querySelector('.file-upload-button')
 const fileUploadFilename = contactForm?.querySelector('.file-upload-filename')
+const estimateSuccess = setupEstimateSuccess({ form: contactForm, status: formStatus })
 
 fileUploadButton?.addEventListener('click', () => {
   fileUploadInput?.click()
@@ -1742,6 +1745,8 @@ contactForm?.addEventListener('submit', async (event) => {
   event.preventDefault()
 
   if (!formStatus) return
+  // Enter in a field submits even while the button is disabled.
+  if (estimateSuccess.isSending()) return
   const submitButton = contactForm.querySelector('.submit-button')
   const emailField = contactForm.querySelector('input[name="Email"]')
   const phoneField = contactForm.querySelector('input[name="Phone"]')
@@ -1773,8 +1778,7 @@ contactForm?.addEventListener('submit', async (event) => {
   } else if (selectedFiles.length === 0) {
     formData.delete('Photo Upload')
   }
-  formStatus.textContent = 'Sending your request...'
-  submitButton?.setAttribute('disabled', 'disabled')
+  estimateSuccess.setSending()
 
   try {
     const response = await fetch('/api/contact', {
@@ -1786,13 +1790,9 @@ contactForm?.addEventListener('submit', async (event) => {
       throw new Error('Form submission failed')
     }
 
-    contactForm.reset()
-    if (replyToField) replyToField.value = ''
-    formStatus.textContent = "Thank you! We'll get back to you within 24 hours."
+    estimateSuccess.showSuccess()
   } catch (error) {
-    formStatus.textContent = 'Something went wrong. Please call or text us and we will help you directly.'
-  } finally {
-    submitButton?.removeAttribute('disabled')
+    estimateSuccess.showError()
   }
 })
 

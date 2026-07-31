@@ -51,6 +51,14 @@ function escapeHtml(value) {
   return div.innerHTML
 }
 
+/** Set when the widget mounts; lets other modules open the one existing panel. */
+let openPanel = null
+
+/** Opens the chat panel already on the page and focuses its input. */
+export function openChatWidget() {
+  openPanel?.()
+}
+
 export function mountChatWidget() {
   if (document.querySelector('.chat-widget')) return
 
@@ -135,6 +143,13 @@ export function mountChatWidget() {
     panel.hidden = !open
     toggleButton.setAttribute('aria-expanded', String(open))
     widget.classList.toggle('chat-widget-open', open)
+  }
+
+  // Handed to openChatWidget() so other parts of the page can open this same
+  // panel rather than standing up a second one.
+  openPanel = () => {
+    if (panel.hidden) setOpen(true)
+    textInput?.focus()
   }
 
   const scrollToBottom = () => {
