@@ -1,6 +1,7 @@
 import './style.css'
 import { icon } from './icons.js'
 import { mountChatWidget } from './chat-widget.js'
+import { smsConsentFields, mountSmsConsent } from './sms-consent.js'
 
 const business = {
   phoneDisplay: '747-324-9008',
@@ -702,6 +703,8 @@ document.querySelector('#app').innerHTML = `
               </span>
             </label>
 
+            ${smsConsentFields}
+
             <button class="button button-primary submit-button" type="submit">Get My Estimate</button>
             <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </form>
@@ -745,6 +748,11 @@ document.querySelector('#app').innerHTML = `
       </div>
       <div class="footer-premium-bottom">
         <p>&copy; 2026 Solcrest Film Co. All rights reserved.</p>
+        <p class="footer-legal-links">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <span aria-hidden="true">·</span>
+          <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+        </p>
       </div>
     </footer>
 
@@ -1139,4 +1147,5 @@ faqSchemaScript.type = 'application/ld+json'
 faqSchemaScript.textContent = JSON.stringify(faqSchema)
 document.head.appendChild(faqSchemaScript)
 
+mountSmsConsent()
 mountChatWidget()

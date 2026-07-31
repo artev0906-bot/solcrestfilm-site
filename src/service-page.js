@@ -1,6 +1,7 @@
 import './style.css'
 import { icon } from './icons.js'
 import { mountChatWidget } from './chat-widget.js'
+import { smsConsentFields, mountSmsConsent } from './sms-consent.js'
 
 const business = {
   phoneDisplay: '747-324-9008',
@@ -1572,6 +1573,8 @@ document.querySelector('#app').innerHTML = `
             </span>
           </label>
 
+          ${smsConsentFields}
+
           <button class="button button-primary submit-button" type="submit">Request My Free Estimate</button>
           <p class="form-promise">We typically reply within one business day.</p>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
@@ -1628,6 +1631,11 @@ document.querySelector('#app').innerHTML = `
       </div>
       <div class="footer-premium-bottom">
         <p>&copy; ${new Date().getFullYear()} Solcrest Film Co. All rights reserved.</p>
+        <p class="footer-legal-links">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <span aria-hidden="true">·</span>
+          <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+        </p>
       </div>
     </footer>
 
@@ -1805,4 +1813,5 @@ if (page.faq) {
   document.head.appendChild(schemaScript)
 }
 
+mountSmsConsent()
 mountChatWidget()

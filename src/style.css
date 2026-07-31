@@ -1958,6 +1958,23 @@ h3 {
   color: #1f1b16;
 }
 
+.final-cta-panel .sms-consent {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.final-cta-panel .contact-card .sms-consent .sms-consent-item {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.final-cta-panel .contact-card .sms-consent .sms-consent-links {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* --accent-gold only reaches 3.7:1 on this card; the light gold clears AA */
+.final-cta-panel .contact-card .sms-consent .sms-consent-links a {
+  color: var(--accent-gold-light);
+}
+
 .final-cta-panel .file-upload-button {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.18);
@@ -2652,6 +2669,95 @@ h3 {
   color: var(--text-primary);
   font-weight: 600;
   white-space: nowrap;
+}
+
+/* SMS consent block inside the estimate forms. No fill of its own — the form
+   card is cream on the service pages and near-black on the homepage, and the
+   block should read as part of whichever it sits in. */
+.sms-consent {
+  display: grid;
+  gap: 18px;
+  padding: 20px 22px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: transparent;
+}
+
+/* Scoped to .contact-card so these win over the form's own label and input
+   rules — the mobile block at 768px sets every label in the card to 1rem. */
+.contact-card .sms-consent .sms-consent-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 400;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.contact-card .sms-consent .sms-consent-box {
+  width: 18px;
+  height: 18px;
+  min-height: 0;
+  margin: 1px 0 0;
+  padding: 0;
+  accent-color: var(--accent-gold);
+  flex: none;
+}
+
+.contact-card .sms-consent .sms-consent-links {
+  margin: 2px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+.contact-card .sms-consent .sms-consent-links a {
+  color: var(--accent-gold);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contact-card .sms-consent .sms-consent-links a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Legal pages */
+.legal-updated {
+  margin: 18px 0 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.legal-section .section-heading {
+  margin-bottom: 14px;
+}
+
+.legal-section h2 {
+  font-size: 24px;
+}
+
+.footer-legal-links {
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+.footer-legal-links a {
+  color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.footer-legal-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-legal-links span {
+  margin: 0 8px;
+  opacity: 0.5;
 }
 
 /* About pairs copy with a project photo in the existing split grid */

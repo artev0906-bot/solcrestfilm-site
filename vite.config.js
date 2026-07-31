@@ -18,6 +18,8 @@ export default defineConfig({
         smartfilm: 'smart-film-installation-los-angeles.html',
         storefront: 'storefront-window-protection-los-angeles.html',
         ourwork: 'our-work.html',
+        privacy: 'privacy-policy.html',
+        terms: 'terms-and-conditions.html',
         admin: 'admin.html',
       },
     },
