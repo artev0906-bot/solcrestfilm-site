@@ -308,6 +308,14 @@ export function mountChatWidget() {
     const data = Object.fromEntries(new FormData(leadForm).entries())
     data.source = 'chat-widget'
 
+    // The chat collects a phone number but asks for no SMS consent, so it can
+    // never be "Yes". Sending it explicitly rather than omitting it: a CRM rule
+    // written as `SMS Consent == "No"` does not match a field that is absent,
+    // which would quietly skip the branch meant to hold these leads back.
+    // If consent is ever gathered here, this is the line that has to change.
+    data['SMS Consent'] = 'No'
+    data['Marketing SMS Consent'] = 'No'
+
     leadForm.reset()
     leadFormStatus.textContent = "Sending…"
 
