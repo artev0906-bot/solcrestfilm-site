@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fonts are served from our own origin, so these are plain same-origin
+         preloads. crossorigin is still required for font fetches. -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/playfair-display-latin.woff2" crossorigin />
     <!-- The hero background is the LCP element, so it is preloaded rather than
          waiting on the stylesheet. `type` makes a browser skip the hint when it
          cannot decode AVIF; those browsers pick WebP or JPEG from the CSS
          image-set instead, so nothing is fetched twice. -->
     <link rel="preload" as="image" type="image/avif" href="/hero-building-sunset.avif" fetchpriority="high" media="(min-width: 769px)" />
     <link rel="preload" as="image" type="image/avif" href="/hero-building-sunset-mobile.avif" fetchpriority="high" media="(max-width: 768px)" />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
     <meta
       name="description"
       content="Premium window film installation in Los Angeles by Solcrest Film Co. Solar control, safety &amp; security, anti-graffiti, decorative privacy and smart film for homes and commercial properties."

@@ -1,3 +1,30 @@
+/* Self-hosted rather than fetched from Google.
+ *
+ * The stylesheet used to be requested from fonts.googleapis.com, which cost a
+ * render-blocking round trip before a single font file was even discovered.
+ * Serving them from our own origin removes two third-party connections.
+ *
+ * Variable files: one per family covers 400-700, which is every weight the site
+ * uses (Inter 400/500/600/700, Playfair 400/600/700). Latin subset only — the
+ * site is English. No unicode-range, so the browser simply falls back per glyph
+ * for anything these files do not contain, such as the → in the breadcrumbs.
+ */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/inter-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/playfair-display-latin.woff2') format('woff2');
+}
+
 :root {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.5;
