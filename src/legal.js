@@ -1,6 +1,7 @@
 import './style.css'
 import { icon } from './icons.js'
 import { mountChatWidget } from './chat-widget.js'
+import { mountOutboundTracking } from './analytics.js'
 
 /**
  * Renderer for the two legal pages. Both share the site shell, so they live in
@@ -333,3 +334,4 @@ window.addEventListener('resize', () => {
 })
 
 mountChatWidget()
+mountOutboundTracking()

@@ -2,6 +2,7 @@ import './style.css'
 import { icon } from './icons.js'
 import { mountChatWidget } from './chat-widget.js'
 import { smsConsentFields, mountSmsConsent } from './sms-consent.js'
+import { mountOutboundTracking, trackLead } from './analytics.js'
 
 const business = {
   phoneDisplay: '+1 (213) 214-3212',
@@ -638,6 +639,7 @@ contactForm?.addEventListener('submit', async (event) => {
     contactForm.reset()
     if (replyToField) replyToField.value = ''
     formStatus.textContent = "Thank you! We'll get back to you within 24 hours."
+    trackLead('estimate_form')
   } catch (error) {
     formStatus.textContent = 'Something went wrong. Please call or text us and we will help you directly.'
   } finally {
@@ -693,3 +695,4 @@ const breadcrumbSchema = {
 
 mountSmsConsent()
 mountChatWidget()
+mountOutboundTracking()

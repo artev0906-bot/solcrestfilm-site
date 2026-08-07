@@ -1,6 +1,7 @@
 import './style.css'
 import './our-work.css'
 import { icon } from './icons.js'
+import { mountOutboundTracking } from './analytics.js'
 
 const IG_API     = '/api/instagram?limit=50'
 const CURATED_API = '/api/curated'
@@ -686,3 +687,5 @@ const breadcrumbSchema = {
   script.textContent = JSON.stringify(schema)
   document.head.appendChild(script)
 })
+
+mountOutboundTracking()

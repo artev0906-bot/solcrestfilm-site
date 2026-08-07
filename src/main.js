@@ -2,6 +2,7 @@ import './style.css'
 import { icon } from './icons.js'
 import { mountChatWidget } from './chat-widget.js'
 import { smsConsentFields, mountSmsConsent } from './sms-consent.js'
+import { mountOutboundTracking, trackLead } from './analytics.js'
 
 const business = {
   phoneDisplay: '+1 (213) 214-3212',
@@ -340,7 +341,7 @@ document.querySelector('#app').innerHTML = `
           <div class="hero-photo-content">
             <span class="hero-badge">${icon('shieldCheck')}Licensed &amp; Insured</span>
             <p class="eyebrow">Premium Window Film Installation in Los Angeles</p>
-            <h1>Window Film Solutions for Homes, Businesses &amp; Commercial Buildings</h1>
+            <h1>Window Film in Los Angeles for Homes, Businesses &amp; Commercial Buildings</h1>
             <p class="hero-photo-text">
               We install premium window films that reduce heat and glare, add privacy and security, protect your interiors, and elevate the look of your glass.
             </p>
@@ -906,6 +907,7 @@ contactForm?.addEventListener('submit', async (event) => {
     contactForm.reset()
     if (replyToField) replyToField.value = ''
     formStatus.textContent = "Thank you! We'll get back to you within 24 hours."
+    trackLead('estimate_form')
   } catch (error) {
     formStatus.textContent = 'Something went wrong. Please call or text us and we will help you directly.'
   } finally {
@@ -1149,3 +1151,4 @@ document.head.appendChild(faqSchemaScript)
 
 mountSmsConsent()
 mountChatWidget()
+mountOutboundTracking()

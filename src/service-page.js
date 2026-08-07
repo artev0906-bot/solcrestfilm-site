@@ -2,6 +2,7 @@ import './style.css'
 import { icon } from './icons.js'
 import { mountChatWidget } from './chat-widget.js'
 import { smsConsentFields, mountSmsConsent } from './sms-consent.js'
+import { mountOutboundTracking, trackLead } from './analytics.js'
 
 const business = {
   phoneDisplay: '+1 (213) 214-3212',
@@ -1789,6 +1790,7 @@ contactForm?.addEventListener('submit', async (event) => {
     contactForm.reset()
     if (replyToField) replyToField.value = ''
     formStatus.textContent = "Thank you! We'll get back to you within 24 hours."
+    trackLead('estimate_form')
   } catch (error) {
     formStatus.textContent = 'Something went wrong. Please call or text us and we will help you directly.'
   } finally {
@@ -1796,9 +1798,53 @@ contactForm?.addEventListener('submit', async (event) => {
   }
 })
 
-// FAQ structured data for pages that define their own FAQ
+// ── Structured data ─────────────────────────────
+const PAGE_URL = `https://solcrestfilm.com/${page.file}`
+
+// The communities named in the page copy and in the footer, so the markup does
+// not claim coverage the page itself does not state.
+const SCHEMA_AREAS = [
+  'Los Angeles',
+  'Beverly Hills',
+  'Glendale',
+  'Burbank',
+  'Woodland Hills',
+  'West Hills',
+  'Porter Ranch',
+  'West Hollywood',
+  'Santa Monica',
+  'Pasadena',
+]
+
+const schemas = []
+
+// Ties each service page to the one LocalBusiness declared on the homepage
+// rather than repeating the business details seven times.
+schemas.push({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${PAGE_URL}#service`,
+  name: page.title,
+  serviceType: page.eyebrow,
+  description: page.description,
+  url: PAGE_URL,
+  provider: { '@id': 'https://solcrestfilm.com/#business' },
+  areaServed: SCHEMA_AREAS.map((name) => ({ '@type': 'City', name })),
+  ...(page.heroImage?.src ? { image: `https://solcrestfilm.com${page.heroImage.src}` } : {}),
+})
+
+// Mirrors the visible breadcrumb above the hero, label for label.
+schemas.push({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://solcrestfilm.com/' },
+    { '@type': 'ListItem', position: 2, name: page.eyebrow, item: PAGE_URL },
+  ],
+})
+
 if (page.faq) {
-  const faqSchema = {
+  schemas.push({
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: page.faq.map(([question, answer]) => ({
@@ -1806,12 +1852,16 @@ if (page.faq) {
       name: question,
       acceptedAnswer: { '@type': 'Answer', text: answer },
     })),
-  }
+  })
+}
+
+for (const schema of schemas) {
   const schemaScript = document.createElement('script')
   schemaScript.type = 'application/ld+json'
-  schemaScript.textContent = JSON.stringify(faqSchema)
+  schemaScript.textContent = JSON.stringify(schema)
   document.head.appendChild(schemaScript)
 }
 
 mountSmsConsent()
 mountChatWidget()
+mountOutboundTracking()

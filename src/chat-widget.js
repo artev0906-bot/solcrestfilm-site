@@ -1,4 +1,5 @@
 import { icon } from './icons.js'
+import { trackEvent, trackLead } from './analytics.js'
 
 const faqItems = [
   {
@@ -237,7 +238,9 @@ export function mountChatWidget() {
   }
 
   toggleButton.addEventListener('click', () => {
-    setOpen(panel.hidden)
+    const opening = panel.hidden
+    setOpen(opening)
+    if (opening) trackEvent('chat_open', { page_path: window.location.pathname })
   })
 
   closeButton.addEventListener('click', () => setOpen(false))
@@ -317,6 +320,7 @@ export function mountChatWidget() {
         if (!r.ok) throw new Error('Failed')
         leadFormStatus.textContent = "Thanks! We'll get back to you soon."
         addBubble("Thanks — we'll get back to you soon!", 'assistant')
+        trackLead('chat_widget')
       })
       .catch(() => {
         leadFormStatus.textContent = 'Something went wrong. Please call or text us directly.'
