@@ -26,9 +26,42 @@ import { createServer } from 'vite'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 
+/**
+ * Every page served to a crawler. service-page.js picks which service it
+ * renders from `window.location.pathname`, so each service target only differs
+ * by `location` — the same module produces a different page per entry.
+ */
+const servicePages = [
+  'residential-window-film-los-angeles',
+  'commercial-window-film-los-angeles',
+  'safety-security-window-film-los-angeles',
+  'anti-graffiti-window-film-los-angeles',
+  'decorative-privacy-window-film-los-angeles',
+  'smart-film-installation-los-angeles',
+  'storefront-window-protection-los-angeles',
+]
+
 /** url is only used for the message; file is what gets rewritten. */
 const targets = [
   { url: '/', file: 'dist/index.html', module: '/src/main.js', location: 'https://solcrestfilm.com/' },
+  ...servicePages.map((slug) => ({
+    url: `/${slug}.html`,
+    file: `dist/${slug}.html`,
+    module: '/src/service-page.js',
+    location: `https://solcrestfilm.com/${slug}.html`,
+  })),
+  {
+    url: '/about.html',
+    file: 'dist/about.html',
+    module: '/src/about.js',
+    location: 'https://solcrestfilm.com/about.html',
+  },
+  {
+    url: '/our-work.html',
+    file: 'dist/our-work.html',
+    module: '/src/our-work.js',
+    location: 'https://solcrestfilm.com/our-work.html',
+  },
   {
     url: '/privacy-policy',
     file: 'dist/privacy-policy.html',

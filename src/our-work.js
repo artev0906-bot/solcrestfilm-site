@@ -51,7 +51,7 @@ const heroHTML = `
     <div class="ow-hero-overlay"></div>
     <div class="ow-hero-content">
       <p class="eyebrow" style="color:rgba(255,255,255,0.8)">Solcrest Film Co — Los Angeles</p>
-      <h1>Our Work</h1>
+      <h1>Our Window Film Work in Los Angeles</h1>
       <p class="ow-hero-sub">Window film projects completed across Los Angeles — storefronts, offices, homes and interior glass. The featured projects below show the work completed and the film systems used; the gallery underneath is updated with more of our work.</p>
       <a class="button button-primary" href="/#contact">${icon('badgeCheck')}Get Free Estimate</a>
     </div>
@@ -681,11 +681,16 @@ const breadcrumbSchema = {
   ],
 }
 
+// Inside #app rather than <head>: the pre-render step captures #app and
+// nothing else, so a head injection never reached the static HTML a crawler
+// reads. See the fuller note in service-page.js.
 ;[collectionSchema, breadcrumbSchema].forEach((schema) => {
-  const script = document.createElement('script')
-  script.type = 'application/ld+json'
-  script.textContent = JSON.stringify(schema)
-  document.head.appendChild(script)
+  document
+    .querySelector('#app')
+    .insertAdjacentHTML(
+      'beforeend',
+      `<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, '\\u003c')}</script>`,
+    )
 })
 
 mountOutboundTracking()
