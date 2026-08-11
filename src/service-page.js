@@ -36,7 +36,9 @@ const servicePages = [
   {
     file: 'residential-window-film-los-angeles.html',
     eyebrow: 'Premium Residential Window Film',
+    breadcrumb: 'Residential Window Film',
     title: 'Residential Window Film in Los Angeles',
+    serviceType: 'Residential window film installation',
     description:
       'Reduce heat, glare, UV exposure and privacy issues for homes, bedrooms, bathrooms and living spaces across Los Angeles.',
     heroImage: {
@@ -57,8 +59,8 @@ const servicePages = [
       ['Heat Control Film', 'Nano-ceramic and solar-control films that cut heat and glare while keeping rooms bright and views clear.'],
       ['Clear UV Film', 'Nearly invisible film that reduces UV exposure to help protect floors, furniture and artwork from fading.'],
       ['Daytime Privacy Film', 'Reflective films that make it hard to see in from the street during the day without blocking your view out.'],
-      ['Frosted & Decorative Film', 'Frosted, gradient and patterned finishes for bathrooms, entry glass, sidelites and interior doors.'],
-      ['Safety Film for Doors & Ground-Floor Windows', 'Thicker film that helps hold shattered glass together on sliding doors and accessible windows.'],
+      ['Frosted & Decorative Film', 'Frosted, gradient and patterned finishes for bathrooms, entry glass, sidelites and interior doors.', { href: '/decorative-privacy-window-film-los-angeles.html', label: 'Decorative & Privacy Film →' }],
+      ['Safety Film for Doors & Ground-Floor Windows', 'Thicker film that helps hold shattered glass together on sliding doors and accessible windows.', { href: '/safety-security-window-film-los-angeles.html', label: 'Safety & Security Film →' }],
       ['Exterior Film for Difficult Glass', 'Exterior-rated films for skylights and glass that cannot be treated from the inside, where the glass type allows it.'],
     ],
     chooserTitle: 'Which residential window film is right for your home?',
@@ -141,6 +143,7 @@ const servicePages = [
     file: 'commercial-window-film-los-angeles.html',
     eyebrow: 'Commercial Window Film',
     title: 'Commercial Window Film in Los Angeles',
+    serviceType: 'Commercial window film installation',
     description:
       'Window film for offices, retail, restaurants, schools, clinics and industrial buildings — solar control, privacy, safety and surface protection across commercial glazing.',
     layout: ['problems', 'filmTypes', 'chooser', 'info', 'benefits', 'projects', 'process', 'faq', 'areas'],
@@ -307,6 +310,7 @@ const servicePages = [
     file: 'safety-security-window-film-los-angeles.html',
     eyebrow: 'Safety & Security Film',
     title: 'Safety & Security Window Film in Los Angeles',
+    serviceType: 'Safety and security window film installation',
     description:
       'Strengthen vulnerable glass, help hold shattered glass together and add resistance against impact and forced-entry attempts.',
     heroImage: {
@@ -326,10 +330,10 @@ const servicePages = [
     filmTypes: [
       ['8 Mil Safety Film', 'A strong entry-level security film that holds shattered glass together and significantly increases the time and effort needed to break through the opening. A practical option for residential doors, accessible windows and lower-risk storefront applications.'],
       ['12 Mil Safety Film', 'A heavier security film that provides greater resistance to repeated impact and is commonly recommended when forced-entry deterrence is the main goal. Suitable for storefronts, entry doors and exposed ground-floor glazing.'],
-      ['16 Mil Safety Film', 'A high-strength security film designed for projects that need more resistance to sustained impact and repeated forced-entry attempts. Often selected for higher-risk storefronts, commercial entries and vulnerable residential glass.'],
+      ['16 Mil Safety Film', 'A high-strength security film designed for projects that need more resistance to sustained impact and repeated forced-entry attempts. Often selected for higher-risk storefronts, commercial entries and vulnerable residential glass.', { href: '/storefront-window-protection-los-angeles.html', label: 'Storefront Window Film →' }],
       ['21–24 Mil Security Film', 'The heaviest architectural security-film options for elevated protection requirements. These films provide the greatest resistance within the film system, but final performance depends heavily on the glass, frame condition and attachment system.'],
       ['Clear Safety Film', 'Optically clear at any of the above thicknesses — the glass keeps its appearance and light level, with no tint or visible change.'],
-      ['Safety + Solar Control Film', 'Combines the safety interlayer with a solar-control layer, so one install handles both heat and glare and the protection goal.'],
+      ['Safety + Solar Control Film', 'Combines the safety interlayer with a solar-control layer, so one install handles both heat and glare and the protection goal.', { href: '/residential-window-film-los-angeles.html', label: 'Solar Control Film →' }],
     ],
     attachmentTitle: 'Wet Glaze Attachment System',
     attachmentIntro:
@@ -424,7 +428,9 @@ const servicePages = [
   {
     file: 'anti-graffiti-window-film-los-angeles.html',
     eyebrow: 'Anti-Graffiti Film',
-    title: 'Anti-Graffiti Film in Los Angeles',
+    breadcrumb: 'Anti-Graffiti Window Film',
+    title: 'Anti-Graffiti Window Film in Los Angeles',
+    serviceType: 'Anti-graffiti window film installation',
     description:
       'Protect storefront glass from scratches, tagging and costly replacement with a sacrificial anti-graffiti layer.',
     layout: ['problems', 'info', 'filmTypes', 'chooser', 'benefits', 'projects', 'process', 'faq', 'areas'],
@@ -453,6 +459,10 @@ const servicePages = [
           'It suits storefront glass, entry doors, display windows and interior commercial glazing.',
           'It changes what damage costs you; it does not stop damage from happening.',
         ],
+        link: {
+          href: '/storefront-window-protection-los-angeles.html',
+          label: 'Protecting a whole frontage? See Storefront Window Film →',
+        },
       },
       {
         eyebrow: 'How it works',
@@ -560,7 +570,9 @@ const servicePages = [
   {
     file: 'decorative-privacy-window-film-los-angeles.html',
     eyebrow: 'Decorative & Privacy Film',
-    title: 'Decorative & Privacy Window Film in Los Angeles',
+    breadcrumb: 'Privacy & Decorative Window Film',
+    title: 'Privacy & Decorative Window Film in Los Angeles',
+    serviceType: 'Privacy and decorative window film installation',
     description:
       'Frosted, blackout, gradient and custom decorative films for offices, bathrooms, conference rooms, entry glass and interior partitions.',
     heroImage: {
@@ -583,7 +595,8 @@ const servicePages = [
       ['Whiteout Film', 'Opaque white film that conceals storage, equipment and work areas while maintaining a clean, bright appearance.'],
       ['Gradient Film', 'A graded fade from frosted to clear, used to cover sightlines at seated height while leaving the upper glass open.'],
       ['Patterned Decorative Film', 'Bands, geometric patterns and textured finishes that add design to plain glass and mark it as visible.'],
-      ['Custom Printed / Branded Film', 'Cut logos, lettering and printed graphics applied to glass for storefronts, offices and interior branding.'],
+      ['Custom Printed / Branded Film', 'Cut logos, lettering and printed graphics applied to glass for storefronts, offices and interior branding.', { href: '/storefront-window-protection-los-angeles.html', label: 'Storefront Window Film →' }],
+      ['Switchable Smart Film', 'Where the glass only needs privacy part of the time, a switchable panel changes between transparent and private on demand instead of frosting the glass permanently.', { href: '/smart-film-installation-los-angeles.html', label: 'Smart Film & Switchable Privacy →' }],
     ],
     whereBestTitle: 'Where decorative and privacy film works best',
     whereBest: [
@@ -663,7 +676,9 @@ const servicePages = [
   {
     file: 'smart-film-installation-los-angeles.html',
     eyebrow: 'Smart Film',
-    title: 'Smart Film Installation in Los Angeles',
+    breadcrumb: 'Smart Film & Switchable Privacy',
+    title: 'Smart Film & Switchable Privacy Film in Los Angeles',
+    serviceType: 'Smart film and switchable privacy film installation',
     description:
       'PDLC switchable film that changes between transparent and private modes using electrical power — for offices, conference rooms, clinics and homes across Los Angeles.',
     // Real projects are not published yet; the section returns once we have
@@ -888,7 +903,9 @@ const servicePages = [
   {
     file: 'storefront-window-protection-los-angeles.html',
     eyebrow: 'Storefront Window Protection',
-    title: 'Storefront Window Protection in Los Angeles',
+    breadcrumb: 'Storefront Window Film',
+    title: 'Storefront Window Film & Protection in Los Angeles',
+    serviceType: 'Storefront window film installation',
     description:
       'Anti-graffiti, solar-control and safety film solutions for storefront glass, entry doors and customer-facing commercial spaces.',
     layout: ['problems', 'filmTypes', 'chooser', 'info', 'benefits', 'projects', 'process', 'faq', 'areas'],
@@ -907,11 +924,11 @@ const servicePages = [
     ],
     filmTypesTitle: 'Storefront Film Solutions',
     filmTypes: [
-      ['Anti-Graffiti Film', 'A replaceable sacrificial layer that protects storefront glass from scratches, acid etching and vandalism.'],
+      ['Anti-Graffiti Film', 'A replaceable sacrificial layer that protects storefront glass from scratches, acid etching and vandalism.', { href: '/anti-graffiti-window-film-los-angeles.html', label: 'Anti-Graffiti Window Film →' }],
       ['Solar Control Film', 'Reduces heat and glare in customer-facing spaces while helping protect displays and interior finishes.'],
-      ['Safety & Security Film', 'Helps hold shattered glass together and increases the time and effort required to create an opening.'],
+      ['Safety & Security Film', 'Helps hold shattered glass together and increases the time and effort required to create an opening.', { href: '/safety-security-window-film-los-angeles.html', label: 'Safety & Security Film →' }],
       ['Clear UV Film', 'Provides nearly invisible UV protection for merchandise, displays and interior finishes.'],
-      ['Decorative & Branded Film', 'Adds privacy, logos, patterns or visual separation to storefront and interior commercial glass.'],
+      ['Decorative & Branded Film', 'Adds privacy, logos, patterns or visual separation to storefront and interior commercial glass.', { href: '/decorative-privacy-window-film-los-angeles.html', label: 'Decorative & Privacy Film →' }],
       ['Combined Film Packages', 'Combines compatible film solutions when the storefront needs heat control, glass protection and security support.'],
     ],
     chooserTitle: 'Choose a Storefront Film by Goal',
@@ -1457,6 +1474,10 @@ const bodySections = (page.layout ?? DEFAULT_LAYOUT)
   })
   .join('\n')
 
+// Label shared by the visible breadcrumb and the BreadcrumbList schema below,
+// so the two can never describe the page differently.
+const breadcrumbLabel = page.breadcrumb ?? page.eyebrow
+
 document.querySelector('#app').innerHTML = `
   <div class="site-shell service-page-shell">
     <header class="topbar" id="topbar">
@@ -1499,7 +1520,7 @@ document.querySelector('#app').innerHTML = `
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="/">Home</a>
         <span aria-hidden="true">→</span>
-        <span aria-current="page">${page.eyebrow}</span>
+        <span aria-current="page">${breadcrumbLabel}</span>
       </nav>
 
       ${heroSection}
@@ -1825,7 +1846,7 @@ schemas.push({
   '@type': 'Service',
   '@id': `${PAGE_URL}#service`,
   name: page.title,
-  serviceType: page.eyebrow,
+  serviceType: page.serviceType ?? page.eyebrow,
   description: page.description,
   url: PAGE_URL,
   provider: { '@id': 'https://solcrestfilm.com/#business' },
@@ -1839,7 +1860,7 @@ schemas.push({
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://solcrestfilm.com/' },
-    { '@type': 'ListItem', position: 2, name: page.eyebrow, item: PAGE_URL },
+    { '@type': 'ListItem', position: 2, name: breadcrumbLabel, item: PAGE_URL },
   ],
 })
 
@@ -1855,11 +1876,24 @@ if (page.faq) {
   })
 }
 
+/**
+ * The blocks go inside #app, not <head>.
+ *
+ * The pre-render step captures `#app.innerHTML` and nothing else, so anything
+ * appended to <head> at runtime never reached the static HTML — it only existed
+ * for clients that execute JS, which is exactly the audience structured data is
+ * not written for. Appending here puts it in the file a crawler reads.
+ *
+ * JSON-LD is a data block rather than an executed script, so body placement is
+ * valid and the CSP script-src rule does not apply to it. `<` is escaped so a
+ * stray "</script>" in any answer text could not close the block early.
+ */
+const schemaHost = document.querySelector('#app')
 for (const schema of schemas) {
-  const schemaScript = document.createElement('script')
-  schemaScript.type = 'application/ld+json'
-  schemaScript.textContent = JSON.stringify(schema)
-  document.head.appendChild(schemaScript)
+  schemaHost.insertAdjacentHTML(
+    'beforeend',
+    `<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, '\\u003c')}</script>`,
+  )
 }
 
 mountSmsConsent()

@@ -296,6 +296,27 @@ const renderAreas = () =>
 
 const igSkeletons = Array(9).fill('<div class="ig-feed-skeleton"></div>').join('')
 
+/**
+ * FAQ structured data, built from the same array the visible block renders
+ * from. It goes inside #app rather than being appended to <head> at runtime:
+ * the pre-render step captures #app and nothing else, so a head injection
+ * never reached the static HTML and only existed for clients that run JS.
+ * JSON-LD is a data block, not an executed script, so body placement is valid
+ * and CSP does not apply to it.
+ *
+ * The business and site nodes stay in index.html — they are static and do not
+ * depend on anything this module builds.
+ */
+const faqSchemaScript = `<script type="application/ld+json">${JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: homeFaq.map(([question, answer]) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: { '@type': 'Answer', text: answer },
+  })),
+}).replace(/</g, '\\u003c')}</script>`
+
 document.querySelector('#app').innerHTML = `
     <header class="topbar topbar-on-photo" id="topbar">
       <a class="brand" href="#hero" aria-label="Solcrest Film Co home">
@@ -341,7 +362,7 @@ document.querySelector('#app').innerHTML = `
           <div class="hero-photo-content">
             <span class="hero-badge">${icon('shieldCheck')}Licensed &amp; Insured</span>
             <p class="eyebrow">Premium Window Film Installation in Los Angeles</p>
-            <h1>Window Film in Los Angeles for Homes, Businesses &amp; Commercial Buildings</h1>
+            <h1>Window Film Installation in Los Angeles for Homes &amp; Businesses</h1>
             <p class="hero-photo-text">
               We install premium window films that reduce heat and glare, add privacy and security, protect your interiors, and elevate the look of your glass.
             </p>
@@ -761,6 +782,8 @@ document.querySelector('#app').innerHTML = `
     <a class="sticky-cta-call" href="${business.phoneHref}">${icon('smartphone')}<span>Call</span></a>
     <a class="sticky-cta-request" href="#contact">${icon('badgeCheck')}<span>Get Estimate</span></a>
   </div>
+
+  ${faqSchemaScript}
 `
 
 const topbar = document.querySelector('.topbar')
@@ -1133,21 +1156,6 @@ async function loadInstagramFeed() {
   window.addEventListener('mouseup',    () => { dragging = false })
   window.addEventListener('touchend',   () => { dragging = false })
 })()
-
-// FAQ structured data, built from the same array the visible block renders from
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: homeFaq.map(([question, answer]) => ({
-    '@type': 'Question',
-    name: question,
-    acceptedAnswer: { '@type': 'Answer', text: answer },
-  })),
-}
-const faqSchemaScript = document.createElement('script')
-faqSchemaScript.type = 'application/ld+json'
-faqSchemaScript.textContent = JSON.stringify(faqSchema)
-document.head.appendChild(faqSchemaScript)
 
 mountSmsConsent()
 mountChatWidget()

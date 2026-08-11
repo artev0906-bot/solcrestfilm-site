@@ -686,11 +686,16 @@ const breadcrumbSchema = {
   ],
 }
 
+// Inside #app rather than <head>: the pre-render step captures #app and
+// nothing else, so a head injection never reached the static HTML a crawler
+// reads. See the fuller note in service-page.js.
 ;[aboutSchema, breadcrumbSchema].forEach((schema) => {
-  const script = document.createElement('script')
-  script.type = 'application/ld+json'
-  script.textContent = JSON.stringify(schema)
-  document.head.appendChild(script)
+  document
+    .querySelector('#app')
+    .insertAdjacentHTML(
+      'beforeend',
+      `<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, '\\u003c')}</script>`,
+    )
 })
 
 mountSmsConsent()
